@@ -34,6 +34,22 @@ const Landing = () => {
           about investing in the future.
         </p>
       </div>
+      <div className="w-full grid grid-cols-2 grid-rows-1 place-items-center py-5 bg-[#efe8da]">
+        <div className='w-full flex flex-col items-start pl-24'>
+          <h3 className="text-2xl text-center border-b-2 border-orange-700">Our Mission</h3>
+          <p className='py-4'>
+            Our mission is to help people invest in the future of renewable energy and sustainable
+            agriculture. We believe that investing in these projects is not only good for the
+            environment, but also good for your wallet. By investing in these projects, you can help
+            create a more sustainable future for everyone.
+          </p>
+          <button className="bg-orange-700 text-white px-4 py-2 rounded-lg">
+            Sign up and make an impact
+          </button>
+        </div>
+        <img src="./solar_panels.jpg" alt="solar panels" className='w-2/3' />
+      </div>
+      
     </div>
   );
 };
