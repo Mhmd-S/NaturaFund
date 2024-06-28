@@ -11,8 +11,8 @@ import {
 const Landing = () => {
   return (
     <div className="relative w-full h-full flex flex-col items-center overflow-x-hidden">
-      <NavBar />
-      <div className='absolute w-screen h-screen overflow-hidden'>
+      {/* <NavBar /> */}
+      <div className="absolute w-screen h-screen overflow-hidden">
         <video src="./vid8.mp4" className="w-screen" autoPlay loop muted />
       </div>
       <div className="w-screen h-screen">
@@ -23,13 +23,15 @@ const Landing = () => {
           </p>
         </div>
       </div>
-      <div className="relative w-full px-2 grid grid-cols-[30%_5%_30%_5%_30%] grid-rows-2 bg-[#fbf7eb] text-center text-lg place-items-center [&>*]:px-8 [&>*]:flex [&>*]:flex-col [&>*]:items-center">
-        <p className="absolute text-2xl font-bold -top-5">HOW IT WORKS</p>
-        <FontAwesomeIcon icon={faHandHoldingDollar} className="text-5xl text-green-500" />
-        <FontAwesomeIcon icon={faExchange} className="text-5xl text-black" />
-        <FontAwesomeIcon icon={faLeaf} className="text-5xl text-gray-500" />
-        <FontAwesomeIcon icon={faExchange} className="text-5xl text-black" />
-        <FontAwesomeIcon icon={faSolarPanel} className="text-5xl text-yellow-300" />
+      <div className="relative w-full px-6 py-14 grid grid-cols-[30%_5%_30%_5%_30%] grid-rows-2 bg-[#fbf7eb] text-center text-lg place-items-center [&>p]:px-8 [&>p]:flex [&>p]:flex-col [&>p]:items-center">
+        <h3 className="absolute text-3xl text-center border-b-2 border-orange-700 top-5">
+          HOW IT WORKS
+        </h3>
+        <FontAwesomeIcon icon={faHandHoldingDollar} className="text-6xl text-green-500" />
+        <FontAwesomeIcon icon={faExchange} className="text-4xl text-black" />
+        <FontAwesomeIcon icon={faLeaf} className="text-6xl text-gray-500" />
+        <FontAwesomeIcon icon={faExchange} className="text-4xl text-black" />
+        <FontAwesomeIcon icon={faSolarPanel} className="text-6xl text-yellow-300" />
         <p>
           Are you looking to invest in a sustainable future? Invest in projects that are good for
           the environment and good for your wallet.
@@ -45,9 +47,9 @@ const Landing = () => {
           about investing in the future.
         </p>
       </div>
-      <div className="w-full grid grid-cols-2 grid-rows-1 place-items-center py-5 bg-[#efe8da]">
-        <div className="w-full flex flex-col items-start pl-24">
-          <h3 className="text-2xl text-center border-b-2 border-orange-700">Our Mission</h3>
+      <div className="w-full grid grid-cols-2 grid-rows-1 place-items-center py-14 px-16 bg-[#efe8da]">
+        <div className="w-full flex flex-col items-start">
+          <h3 className="text-3xl text-center border-b-2 border-orange-700">Our Mission</h3>
           <p className="py-4">
             Our mission is to help people invest in the future of renewable energy and sustainable
             agriculture. We believe that investing in these projects is not only good for the
@@ -58,10 +60,16 @@ const Landing = () => {
             Sign up and make an impact
           </button>
         </div>
-        <img src="./solar_panels.jpg" alt="solar panels" className="w-2/3" />
+        <img src="./solar_panels.jpg" alt="solar panels" className="w-2/3 place-self-end" />
       </div>
-      <div>
-        <h3 className='"text-2xl text-center border-b-2 border-orange-700"'>Why NaturaFund</h3>
+      <div className="w-full py-14 px-16 flex flex-col items-center justify-center bg-[#81825d] text-white">
+        <h3 className="text-3xl text-center border-b-2 border-orange-700">Why NaturaFund</h3>
+        <p className="w-2/3 py-4 text-center text-2xl">
+          NaturaFund is a platform that allows you to invest in renewable energy and sustainable
+          agriculture projects. We believe that investing in these projects is not only good for the
+          environment, but also good for your wallet. By investing in these projects, you can help
+          create a more sustainable future for everyone.
+        </p>
       </div>
     </div>
   );

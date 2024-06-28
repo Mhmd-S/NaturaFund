@@ -4,7 +4,7 @@ import { faLeaf, faArrowCircleRight } from '@fortawesome/free-solid-svg-icons';
 
 const NavBar = () => {
   return (
-    <div className="sticky z-10 top-1 w-screen p-2 grid grid-cols-3 grid-rows-1 items-center place-self-center justify-self-center text-white backdrop-blur-xl">
+    <div className="sticky z-10 top-0 w-screen p-2 grid grid-cols-3 grid-rows-1 items-center place-self-center justify-self-center text-white backdrop-blur-xl">
       <h1 className="ml-8 font-serif text-3xl">
         NaturaFund
         <FontAwesomeIcon icon={faLeaf} className="text-white ml-3" />
