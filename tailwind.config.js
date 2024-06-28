@@ -3,6 +3,12 @@ export default {
 	content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
 	theme: {
 		extend: {
+			colors: {
+				'neu-gray': '#efefeb',
+				'earthy-orange': '#c2410c',
+				'deep-blue': '#0c58c2',
+				'med-gray': '#a8a8a8',
+			},
 			gridTemplateRows: {
 				settingsLargeScreen: 'repeat(6, 40%)',
 				settingsSmallScreen: 'repeat(6, 25%)',
@@ -10,9 +16,6 @@ export default {
 			fontFamily: {
 				Inter: ['Inter', 'sans-serif'],
 				'8bit': ['"Press Start 2P"', 'cursive'],
-			},
-			colors: {
-				'my-orange': '#F76301',
 			},
 			keyframes: {
 				wave: {
@@ -29,7 +32,7 @@ export default {
 					'0%': { transform: 'scale(0.9)' },
 					'100%': { transform: 'scale(1)' },
 				},
-				likeAndDislike:{
+				likeAndDislike: {
 					'0%': { transform: 'translateY(200%)', opacity: '0' },
 					'20%': { transform: 'translateY(0%)', opacity: '1' },
 					'40%': { transform: 'translateY(0%)', opacity: '1' },
@@ -65,7 +68,7 @@ export default {
 			},
 			animation: {
 				gradient: 'animatedgradient 6s ease infinite alternate',
-				fadeIn: 'fadeIn 200ms ease-in forwards', 
+				fadeIn: 'fadeIn 200ms ease-in forwards',
 				fadeOut: 'fadeOut 200ms ease-out forwards',
 				whiteWash: 'whiteWash 100ms ease-in forwards',
 				likeAndDislike: 'likeAndDislike 600ms ease-in forwards',
