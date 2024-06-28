@@ -7,6 +7,7 @@ import {
     faLeaf,
     faExchange,
     faArrowCircleRight,
+    faExternalLink,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Landing = () => {
@@ -154,11 +155,10 @@ const Landing = () => {
                     </a>
                 </div>
             </div>
-            <div className="w-full py-10 px-16 grid grid-cols-4 grid-row-2 gap-3 bg-med-gray text-white ">
+            <div className="w-full py-10 px-16 grid grid-cols-3 grid-row-2 gap-3 bg-med-gray text-white ">
                 <p className="text-xl font-semibold">Contact</p>
                 <p className="text-xl font-semibold">Other resources</p>
                 <p className="text-xl font-semibold">Legal</p>
-                <span /> {/* Spacer */}
                 <div className="flex flex-col w-fit">
                     <a className="cursor-pointer hover:text-deep-blue py-2">Contact Us</a>
                     <a className="cursor-pointer hover:text-deep-blue py-2">About Us</a>
@@ -169,8 +169,12 @@ const Landing = () => {
                     <a className="cursor-pointer hover:text-deep-blue py-2">News</a>
                 </div>
                 <div className="flex flex-col w-fit">
-                    <a className="cursor-pointer hover:text-deep-blue py-2">Privacy Policy</a>
-                    <a className="cursor-pointer hover:text-deep-blue py-2">Terms and Conditions</a>
+                    <a className="cursor-pointer hover:text-deep-blue py-2">Privacy Policy 
+                      <FontAwesomeIcon icon={faExternalLink} className="text-xs pl-2" />
+                    </a>
+                    <a className="cursor-pointer hover:text-deep-blue py-2">Terms and Conditions 
+                      <FontAwesomeIcon icon={faExternalLink} className="text-xs pl-2" />
+                    </a>
                 </div>
             </div>
             <div className="w-full px-12 py-2 bg-earthy-orange text-white flex justify-evenly items-center ">
