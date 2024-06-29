@@ -103,7 +103,7 @@ const Landing = () => {
                     </div>
                 </div>
             </div>
-            <div className="w-full px-6 flex flex-col items-center md:grid md:grid-cols-2 md:grid-rows-1 place-items-center py-24 md:px-16 bg-neu-gray">
+            <div className="w-full px-6 py-24 flex flex-col items-center place-items-center bg-neu-gray md:px-16 md:grid md:grid-cols-2 md:grid-rows-1">
                 <div className="w-full grid grid-cols-1 items-start">
                     <h3 className="w-fit text-3xl text-center border-b-2 border-orange-700 font-semibold">
                         Our Mission
@@ -122,25 +122,25 @@ const Landing = () => {
                 <img
                     src="./solar_panels.jpg"
                     alt="solar panels"
-                    className="w-full md:w-3/4 place-self-end rounded-lg"
+                    className="w-full place-self-end rounded-lg md:w-3/4"
                 />
             </div>
-            <div className="w-full py-24 px-16 flex flex-col items-center justify-center">
-                <h3 className="text-3xl text-center border-b-2 border-orange-700 font-semibold">
+            <div className="w-full py-24 px-6 flex flex-col items-center justify-center md:px-16">
+                <h3 className="text-2xl text-center border-b-2 border-orange-700 font-semibold md:text-3xl">
                     Why NaturaFund
                 </h3>
-                <p className="w-2/3 pt-12 text-center text-2xl">
+                <p className="w-full pt-12 text--xl text-center md:text-2xl">
                     NaturaFund is a platform that allows you to invest in renewable energy and
                     sustainable agriculture projects. We believe that investing in these projects is
                     not only good for the environment, but also good for your wallet. By investing
                     in these projects, you can help create a more sustainable future for everyone.
                 </p>
             </div>
-            <div className="w-full py-24 px-16 flex flex-col items-center justify-center bg-neu-gray">
+            <div className="w-full py-24 px-6 flex flex-col items-center justify-center bg-neu-gray md:px-16">
                 <h3 className="text-3xl text-center border-b-2 border-orange-700 font-semibold">
                     Learn more
                 </h3>
-                <div className="w-full grid grid-cols-4 grid-rows-1 gap-12 py-12">
+                <div className="w-full grid grid-cols-1 grid-rows-4 gap-12 py-12 md:grid-cols-4 md:grid-rows-1">
                     <a className="h-full flex flex-col justify-between items-end bg-white hover:bg-green-200 cursor-pointer px-6 py-4 rounded-md">
                         <h4 className="w-full font-bold">Insights</h4>
                         <p className="text-sm py-6">
