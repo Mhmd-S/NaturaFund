@@ -103,9 +103,9 @@ const Landing = () => {
                     </div>
                 </div>
             </div>
-            <div className="w-full grid grid-cols-2 grid-rows-1 place-items-center py-24 px-16 bg-neu-gray">
-                <div className="w-full flex flex-col items-start">
-                    <h3 className="text-3xl text-center border-b-2 border-orange-700 font-semibold">
+            <div className="w-full px-6 flex flex-col items-center md:grid md:grid-cols-2 md:grid-rows-1 place-items-center py-24 md:px-16 bg-neu-gray">
+                <div className="w-full grid grid-cols-1 items-start">
+                    <h3 className="w-fit text-3xl text-center border-b-2 border-orange-700 font-semibold">
                         Our Mission
                     </h3>
                     <p className="py-10 text-md">
@@ -115,14 +115,14 @@ const Landing = () => {
                         in these projects, you can help create a more sustainable future for
                         everyone.
                     </p>
-                    <button className="bg-orange-700 text-white px-4 py-2 rounded-lg">
-                        Sign up and make an impact
+                    <button className="w-fit bg-orange-700 text-white px-4 py-2 mb-8 rounded-lg justify-self-center">
+                        Make an impact now
                     </button>
                 </div>
                 <img
                     src="./solar_panels.jpg"
                     alt="solar panels"
-                    className="w-3/4 place-self-end rounded-lg"
+                    className="w-full md:w-3/4 place-self-end rounded-lg"
                 />
             </div>
             <div className="w-full py-24 px-16 flex flex-col items-center justify-center">
