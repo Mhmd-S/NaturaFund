@@ -1,14 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import useResponsive from "@/hooks/useResponsive";
 import { stopScrolling, allowScrolling } from "@/utils/scrollingControl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faLeaf,
-    faChevronDown,
-    faBars,
-    faClose,
-} from "@fortawesome/free-solid-svg-icons";
+import { faLeaf, faChevronDown, faBars, faClose } from "@fortawesome/free-solid-svg-icons";
 
 const NavBar = () => {
+    const { isMobile } = useResponsive();
+
     const [showMenu, setShowMenu] = useState(false);
 
     const toggleMenu = () => {
@@ -20,36 +18,42 @@ const NavBar = () => {
         }
     };
 
+    useEffect(() => {
+        if (!isMobile) setShowMenu(false);
+    }, [isMobile]);
+
     return (
-        <div className={`relative w-screen p-2 flex justify-between ${showMenu && "grid grid-cols-1 grid-rows[15%_85%]"} bg-white`}>
-            <h1 className="ml-8 pt-3 font-serif text-brand-800 text-xl md:text-3xl">
+        <div
+            className={`relative w-screen p-2 flex items-center ${showMenu && "grid grid-cols-1 grid-rows[15%_85%]"} bg-white md:border-b-[1px]`}
+        >
+            <h1 className="h-fit ml-8 pt-3 font-serif text-brand-800 text-xl md:flex md:items-center md:text-3xl md:border-r-[1px] md:border-r-brand-800 md:pr-6">
                 NaturaFund
                 <FontAwesomeIcon icon={faLeaf} className="ml-3" />
             </h1>
             <div
-                className={`absolute py-4 w-full h-screen grid grid-cols-1 grid-rows-8 place-items-center transition-all top-12 bg-white ${showMenu ? "left-0" : "left-[25rem]"} md:relative md:top-0 md:flex-row`}
+                className={`absolute py-4 w-full h-screen grid grid-cols-1 grid-rows-8 place-items-center transition-all top-12 bg-white ${showMenu ? "left-0" : "left-[25rem]"} md:static md:grid md:grid-cols-[17%_17%_17%_50%] md:grid-rows-1 md:justify-items-start md:justify-start md:px-6  md:h-min md:top-0`}
             >
-                <a className="w-full flex justify-between px-12">
-                    <span className="mr-2">Invest</span>
-                    <FontAwesomeIcon icon={faChevronDown} className="ml-2" />
+                <a className="w-full flex items-center justify-between py-2 px-12 cursor-pointer md:w-fit md:px-4 md:justify-center md:rounded-3xl md:hover:text-white md:hover:bg-brand-800 md:transition-colors ">
+                    Invest
+                    <FontAwesomeIcon icon={faChevronDown} className="ml-2 md:hidden" />
                 </a>
-                <a className="w-full flex justify-between px-12">
+                <a className="w-full flex items-center justify-between py-2 px-12 cursor-pointer md:w-fit md:px-4 md:justify-center md:rounded-3xl md:hover:text-white md:hover:bg-brand-800 md:transition-colors ">
                     Learn
-                    <FontAwesomeIcon icon={faChevronDown} className="ml-2" />
+                    <FontAwesomeIcon icon={faChevronDown} className="ml-2 md:hidden" />
                 </a>
-                <a className="w-full flex justify-between px-12">
+                <a className="w-full flex items-center justify-between py-2 px-12 cursor-pointer md:w-fit md:px-4 md:justify-center md:rounded-3xl md:hover:text-white md:hover:bg-brand-800 md:transition-colors ">
                     About
-                    <FontAwesomeIcon icon={faChevronDown} className="ml-2" />
+                    <FontAwesomeIcon icon={faChevronDown} className="ml-2 md:hidden" />
                 </a>
-                <span/>
-                <span/>
-                <span/>
-                <div className="w-full h-full flex items-center justify-evenly border-t-2 z-20 shadow-[inset_0px_2px_4px_#000000f]">
-                    <button className="w-2/5 rounded-md border-2 transition-all border-brand-800 text-brand-800 p-2 hover:border-green-900 hover:text-brand-900">
-                        Register
-                    </button>
-                    <button className="w-2/5 rounded-md transition-all bg-brand-800 p-2 border-2 hover:text-brand-800">
+                <span className="md:hidden" />
+                <span className="md:hidden" />
+                <span className="md:hidden" />
+                <div className="w-full h-full flex items-center justify-evenly border-t-2 z-20 shadow-[inset_0px_2px_4px_#000000f] md:pr-8 md:border-t-0 md:justify-end md:justify-self-end">
+                    <button className="w-2/5 rounded-md border-2 transition-all border-brand-800 text-brand-800 p-2 md:border-0 hover:text-brand-900 md:w-1/5 md:mr-6">
                         Log In
+                    </button>
+                    <button className="w-2/5 rounded-md transition-all bg-brand-800 p-2 border-2 text-white hover:text-brand-800 md:w-1/5  md:transition-all md:hover:bg-white md:border-brand-800">
+                        Sign Up
                     </button>
                 </div>
             </div>

@@ -8,7 +8,6 @@ import {
     faLeaf,
     faExchange,
     faArrowCircleRight,
-    faArrowCircleDown,
     faExternalLink,
 } from "@fortawesome/free-solid-svg-icons";
 
