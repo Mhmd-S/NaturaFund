@@ -1,5 +1,6 @@
 import React from "react";
 import NavBar from "@/components/Landing/NavBar";
+import useResponsive from "@/hooks/useResponsive";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faHandHoldingDollar,
@@ -7,67 +8,98 @@ import {
     faLeaf,
     faExchange,
     faArrowCircleRight,
+    faArrowCircleDown,
     faExternalLink,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Landing = () => {
+    const { isMobile } = useResponsive();
+
     return (
         <div className="relative w-full h-full overflow-x-hidden">
             <NavBar />
             <div className="absolute w-screen h-screen overflow-hidden top-0">
-                <video src="./vid8.mp4" className="w-screen" autoPlay loop muted />
+                <video
+                    src={isMobile ? "./landing_mobile.mp4" : "./vid8.mp4"}
+                    className="h-screen md:w-screen"
+                    autoPlay
+                    loop
+                    muted
+                />
             </div>
-            <div className="relative w-screen h-screen pr-40 pb-10 grid grid-cols-1 grid-rows-2 place-items-end text-white">
-                <h1 className="text-5xl pb-4 font-semibold">Invest in Nature</h1>
-                <p className="w-1/3 pt-2 justify-self-end align-self place-self-start text-xl font-light border-t-2">
+            <div className="relative w-screen h-screen grid grid-cols-1 grid-rows-[40%_40%_20%]  place-items-center text-white md:grid-rows-2 md:pr-40 md:pb-10 md:place-items-end">
+                <h1 className="pb-4 justify-self-center place-self-end text-4xl font-semibold md:text-5xl">
+                    Invest in Nature
+                </h1>
+                <p className="text-center mx-5 pt-2 place-self-start text-xl font-light border-t-2  md:w-1/3">
                     Invest in the future of renewable energy and a sustainable future.
                 </p>
+                <FontAwesomeIcon
+                    icon={faArrowCircleDown}
+                    className="text-5xl justify-self-center place-self-start animate-bounce md:hidden"
+                />
             </div>
             <div className="relative w-full px-6 py-20 flex flex-col items-center justify-center bg-white text-center text-lg place-items-center [&>p]:px-8 [&>p]:flex [&>p]:flex-col [&>p]:items-center">
                 <h3 className="text-3xl text-center border-b-2 border-orange-700 font-semibold">
                     How It Works
                 </h3>
-                <div className="w-full py-12 grid grid-cols-[30%_5%_30%_5%_30%] grid-rows-1">
+                <div className="w-full py-8 grid grid-rows-3 md:grid-cols-[30%_5%_30%_5%_30%] md:grid-rows-1 md:py-12">
+                    <div className="py-2 md:py-0">
+                        <FontAwesomeIcon
+                            icon={faHandHoldingDollar}
+                            className="text-6xl text-green-500 py-10 place-self-center"
+                        />
+                        <div>
+                            <h3 className="font-semibold pb-3">Investors</h3>
+                            <p className="text-sm">
+                                You invest in loans for renewable energy projects in emerging
+                                markets, providing them with capital to supply clean, affordable and
+                                stable electricity where it is needed the most. You can choose the
+                                projects you want to invest in and the amount you want to invest in
+                                each project. You can also choose to invest in a diversified
+                                portfolio of projects to spread your risk.
+                            </p>
+                        </div>
+                    </div>
                     <FontAwesomeIcon
-                        icon={faHandHoldingDollar}
-                        className="text-6xl text-green-500 py-10 place-self-center"
+                        icon={faExchange}
+                        className="hidden md:relative md:text-4xl md:text-black md:place-self-center"
                     />
-                    <FontAwesomeIcon icon={faExchange} className="text-4xl text-black place-self-center" />
-                    <FontAwesomeIcon icon={faLeaf} className="text-6xl text-gray-500 place-self-center" />
-                    <FontAwesomeIcon icon={faExchange} className="text-4xl text-black place-self-center" />
-                    <FontAwesomeIcon icon={faSolarPanel} className="text-6xl text-yellow-300 place-self-center" />
-                    <div>
-                        <h3 className="font-semibold pb-3">Investors</h3>
-                        <p className="text-sm">
-                            You invest in loans for renewable energy projects in emerging markets,
-                            providing them with capital to supply clean, affordable and stable
-                            electricity where it is needed the most. You can choose the projects you
-                            want to invest in and the amount you want to invest in each project. You
-                            can also choose to invest in a diversified portfolio of projects to
-                            spread your risk.
-                        </p>
+                    <div className="py-2 md:py-0">
+                        <FontAwesomeIcon
+                            icon={faLeaf}
+                            className="text-6xl text-gray-500 place-self-center py-10"
+                        />
+                        <div>
+                            <h3 className="font-semibold pb-3">NaturaFund</h3>
+                            <p className="text-sm">
+                                All projects have gone through a comprehensive risk assessment and
+                                approval by our investment team before going live on the site. We
+                                then monitor the sponsors' performance and impact on an ongoing
+                                basis. You can track the loan and impact on your dashboard.
+                            </p>
+                        </div>
                     </div>
-                    <span /> {/* Spacer */}
-                    <div>
-                        <h3 className="font-semibold pb-3">NaturaFund</h3>
-                        <p className="text-sm">
-                            All projects have gone through a comprehensive risk assessment and
-                            approval by our investment team before going live on the site. We then
-                            monitor the sponsors' performance and impact on an ongoing basis. You
-                            can track the loan and impact on your dashboard.
-                        </p>
-                    </div>
-                    <span /> {/* Spacer */}
-                    <div>
-                        <h3 className="font-semibold pb-3">Project Sponsors</h3>
-                        <p className="text-sm"> 
-                            Sponsors use the capital to fund their projects, such as installing
-                            solar systems for their end-customers, or building huge projects. Their
-                            customers can be anything from families, schools and hospitals to
-                            large-scale businesses. Once the company starts to repay their loan, you
-                            receive capital and interest in return. Repayments can be reinvested to
-                            make an even larger impact.
-                        </p>
+                    <FontAwesomeIcon
+                        icon={faExchange}
+                        className="hidden md:relative md:text-4xl md:text-black md:place-self-center"
+                    />
+                    <div className="py-2 md:py-0">
+                        <FontAwesomeIcon
+                            icon={faSolarPanel}
+                            className="text-6xl text-yellow-300 py-10 place-self-center"
+                        />
+                        <div>
+                            <h3 className="font-semibold pb-3">Project Sponsors</h3>
+                            <p className="text-sm">
+                                Sponsors use the capital to fund their projects, such as installing
+                                solar systems for their end-customers, or building huge projects.
+                                Their customers can be anything from families, schools and hospitals
+                                to large-scale businesses. Once the company starts to repay their
+                                loan, you receive capital and interest in return. Repayments can be
+                                reinvested to make an even larger impact.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -169,11 +201,13 @@ const Landing = () => {
                     <a className="cursor-pointer hover:text-deep-blue py-2">News</a>
                 </div>
                 <div className="flex flex-col w-fit">
-                    <a className="cursor-pointer hover:text-deep-blue py-2">Privacy Policy 
-                      <FontAwesomeIcon icon={faExternalLink} className="text-xs pl-2" />
+                    <a className="cursor-pointer hover:text-deep-blue py-2">
+                        Privacy Policy
+                        <FontAwesomeIcon icon={faExternalLink} className="text-xs pl-2" />
                     </a>
-                    <a className="cursor-pointer hover:text-deep-blue py-2">Terms and Conditions 
-                      <FontAwesomeIcon icon={faExternalLink} className="text-xs pl-2" />
+                    <a className="cursor-pointer hover:text-deep-blue py-2">
+                        Terms and Conditions
+                        <FontAwesomeIcon icon={faExternalLink} className="text-xs pl-2" />
                     </a>
                 </div>
             </div>
