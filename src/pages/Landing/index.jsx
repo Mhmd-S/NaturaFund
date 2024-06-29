@@ -16,30 +16,23 @@ const Landing = () => {
     const { isMobile } = useResponsive();
 
     return (
-        <div className="relative w-full h-full overflow-x-hidden">
+        <div className="relative w-full h-full flex flex-col overflow-x-hidden">
             <NavBar />
-            <div className="absolute w-screen h-screen overflow-hidden top-0">
-                <video
-                    src={isMobile ? "./landing_mobile.mp4" : "./vid8.mp4"}
-                    className="h-screen md:w-screen"
-                    autoPlay
-                    loop
-                    muted
-                />
-            </div>
-            <div className="relative w-screen h-screen grid grid-cols-1 grid-rows-[40%_40%_20%]  place-items-center text-white md:grid-rows-2 md:pr-40 md:pb-10 md:place-items-end">
-                <h1 className="pb-4 justify-self-center place-self-end text-4xl font-semibold md:text-5xl">
+            <div className="w-screen h-screen flex flex-col items-center text-brand-800 md:grid-rows-2 md:pr-40 md:pb-10 md:place-items-end">
+                <h1 className="pb-4 text-4xl font-semibold md:justify-self-end md:text-5xl">
                     Invest in Nature
                 </h1>
-                <p className="text-center mx-5 pt-2 place-self-start text-xl font-light border-t-2  md:w-1/3">
-                    Invest in the future of renewable energy and a sustainable future.
+                <p className="mx-3 pt-2 text-sm font-light border-t-2 md:place-self-start md:justify-self-end md:w-1/3">
+                    Buy solar panels in rooftop projects
                 </p>
-                <FontAwesomeIcon
-                    icon={faArrowCircleDown}
-                    className="text-5xl justify-self-center place-self-start animate-bounce md:hidden"
-                />
+                <p className="mx-3 pt-2  text-sm font-light md:place-self-start md:justify-self-end md:w-1/3">
+                    Earn 10-13% returns from electricity your panels generate
+                </p>
+                <p className="mx-3 pt-2  text-sm font-light md:place-self-start md:justify-self-end md:w-1/3">
+                    Vested takes care of the installation and maintenance of your panels
+                </p>
             </div>
-            <div className="relative w-full px-6 py-20 flex flex-col items-center justify-center bg-white text-center text-lg place-items-center [&>p]:px-8 [&>p]:flex [&>p]:flex-col [&>p]:items-center">
+            <div className="relative w-full px-6 py-20 flex flex-col items-center justify-center bg-white text-center text-lg place-items-center [&>p]:px-8 [&>p]:flex [&>p]:flex-col [&>p]:items-center md:px-16">
                 <h3 className="text-3xl text-center border-b-2 border-orange-700 font-semibold">
                     How It Works
                 </h3>
@@ -63,7 +56,7 @@ const Landing = () => {
                     </div>
                     <FontAwesomeIcon
                         icon={faExchange}
-                        className="hidden md:relative md:text-4xl md:text-black md:place-self-center"
+                        className="hidden md:inline md:text-4xl md:text-black md:mt-14"
                     />
                     <div className="py-2 md:py-0">
                         <FontAwesomeIcon
@@ -82,7 +75,7 @@ const Landing = () => {
                     </div>
                     <FontAwesomeIcon
                         icon={faExchange}
-                        className="hidden md:relative md:text-4xl md:text-black md:place-self-center"
+                        className="hidden md:inline md:text-4xl md:text-black md:mt-14"
                     />
                     <div className="py-2 md:py-0">
                         <FontAwesomeIcon
@@ -115,7 +108,7 @@ const Landing = () => {
                         in these projects, you can help create a more sustainable future for
                         everyone.
                     </p>
-                    <button className="w-fit bg-orange-700 text-white px-4 py-2 mb-8 rounded-lg justify-self-center">
+                    <button className="w-fit bg-orange-700 text-white px-4 py-2 mb-8 rounded-lg justify-self-center md:justify-self-start">
                         Make an impact now
                     </button>
                 </div>
@@ -187,20 +180,20 @@ const Landing = () => {
                     </a>
                 </div>
             </div>
-            <div className="w-full py-10 px-16 grid grid-cols-3 grid-row-2 gap-3 bg-med-gray text-white ">
-                <p className="text-xl font-semibold">Contact</p>
-                <p className="text-xl font-semibold">Other resources</p>
-                <p className="text-xl font-semibold">Legal</p>
-                <div className="flex flex-col w-fit">
+            <div className="w-full py-10 px-6 grid grid-cols-3 grid-row-2 gap-3 bg-med-gray text-white md:px-16">
+                <p className="text-sm font-semibold md:text-xl">Contact</p>
+                <p className="text-sm font-semibold md:text-xl">Other resources</p>
+                <p className="text-sm font-semibold md:text-xl">Legal</p>
+                <div className="text-sm flex flex-col w-fit">
                     <a className="cursor-pointer hover:text-deep-blue py-2">Contact Us</a>
                     <a className="cursor-pointer hover:text-deep-blue py-2">About Us</a>
                 </div>
-                <div className="flex flex-col w-fit">
+                <div className="text-sm flex flex-col w-fit">
                     <a className="cursor-pointer hover:text-deep-blue py-2">FAQ</a>
                     <a className="cursor-pointer hover:text-deep-blue py-2">Insights</a>
                     <a className="cursor-pointer hover:text-deep-blue py-2">News</a>
                 </div>
-                <div className="flex flex-col w-fit">
+                <div className="text-sm flex flex-col w-fit">
                     <a className="cursor-pointer hover:text-deep-blue py-2">
                         Privacy Policy
                         <FontAwesomeIcon icon={faExternalLink} className="text-xs pl-2" />
@@ -211,7 +204,7 @@ const Landing = () => {
                     </a>
                 </div>
             </div>
-            <div className="w-full px-12 py-2 bg-earthy-orange text-white flex justify-evenly items-center ">
+            <div className="w-full px-12 py-2 text-white text-sm bg-earthy-orange">
                 <span>&copy; 2021 NaturaFund. All rights reserved.</span>
             </div>
         </div>
