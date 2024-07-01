@@ -1,7 +1,7 @@
 import React from "react";
 import NavBar from "@/components/Landing/NavBar";
 import useResponsive from "@/hooks/useResponsive";
-import Carasol from "@/components/Carasol";
+import Carousel from "@/components/Carousel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleRight, faExternalLink, faCheck } from "@fortawesome/free-solid-svg-icons";
 
@@ -63,7 +63,7 @@ const Landing = () => {
                 </button>
                 <img src="landing_1.svg" />
             </div>
-            <Carasol items={items} />
+            <Carousel items={items} />
             <div className="w-full px-6 py-24 flex flex-col items-center place-items-center bg-neu-gray md:px-16 md:grid md:grid-cols-2 md:grid-rows-1">
                 <div className="w-full grid grid-cols-1 items-start">
                     <h3 className="w-fit text-3xl text-center border-b-2 border-orange-700 font-semibold">

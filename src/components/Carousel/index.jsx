@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const Carasol = ({ items }) => {
+const Carousel = ({ items }) => {
     const [index, setIndex] = useState(0);
 
     useEffect(() => {
@@ -50,4 +50,4 @@ const Carasol = ({ items }) => {
     );
 };
 
-export default Carasol;
+export default Carousel;
