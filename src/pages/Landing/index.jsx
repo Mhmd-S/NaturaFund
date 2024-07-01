@@ -1,100 +1,69 @@
 import React from "react";
 import NavBar from "@/components/Landing/NavBar";
 import useResponsive from "@/hooks/useResponsive";
+import Carasol from "@/components/Carasol";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faHandHoldingDollar,
-    faSolarPanel,
-    faLeaf,
-    faExchange,
-    faArrowCircleRight,
-    faExternalLink,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowCircleRight, faExternalLink, faCheck } from "@fortawesome/free-solid-svg-icons";
+
+const items = {
+    0: {
+        title: "Investors",
+        content: `You invest in loans for renewable energy projects in emerging
+  markets, providing them with capital to supply clean, affordable and
+  stable electricity where it is needed the most. You can choose the
+  projects you want to invest in and the amount you want to invest in
+  each project. You can also choose to invest in a diversified
+  portfolio of projects to spread your risk.`,
+        img: "landing_carasol_1.svg",
+    },
+    1: {
+        title: "NaturaFund",
+        content: `All projects have gone through a comprehensive risk assessment and
+  approval by our investment team before going live on the site. We
+  then monitor the sponsors' performance and impact on an ongoing
+  basis. You can track the loan and impact on your dashboard.`,
+        img: "landing_carasol_2.svg",
+    },
+    2: {
+        title: "Project Sponsors",
+        content: `Sponsors use the capital to fund their projects, such as installing
+  solar systems for their end-customers, or building huge projects.
+  Their customers can be anything from families, schools and hospitals
+  to large-scale businesses. Once the company starts to repay their
+  loan, you receive capital and interest in return. Repayments can be
+  reinvested to make an even larger impact.`,
+        img: "landing_carasol_3.svg",
+    },
+};
 
 const Landing = () => {
     const { isMobile } = useResponsive();
 
     return (
-        <div className="relative w-full h-full flex flex-col overflow-x-hidden">
+        <div className="relative px-4 w-full h-full flex flex-col overflow-x-hidden">
             <NavBar />
-            <div className="w-screen h-screen flex flex-col items-center text-brand-800 md:grid-rows-2 md:pr-40 md:pb-10 md:place-items-end">
-                <h1 className="pb-4 text-4xl font-semibold md:justify-self-end md:text-5xl">
-                    Invest in Nature
+            <div className="h-screen mt-6 flex flex-col text-brand-800 md:pb-24 md:grid md:grid-rows-[20%_10%_10%_10%_10%] md:grid-cols-2 md:gap-2">
+                <h1 className="py-4 text-4xl font-bold md:text-5xl md:row-start-1 md:row-span-2">
+                    Earn returns while striving for a sustainable future
                 </h1>
-                <p className="mx-3 pt-2 text-sm font-light border-t-2 md:place-self-start md:justify-self-end md:w-1/3">
+                <p className="mt-2 pt-3 text-brand-800 text-md md:row-start-3">
+                    <FontAwesomeIcon icon={faCheck} className="mr-4 text-sm" />
                     Buy solar panels in rooftop projects
                 </p>
-                <p className="mx-3 pt-2  text-sm font-light md:place-self-start md:justify-self-end md:w-1/3">
+                <p className="pt-3 text-brand-800 text-md md:row-start-4">
+                    <FontAwesomeIcon icon={faCheck} className="mr-4 text-sm" />
                     Earn 10-13% returns from electricity your panels generate
                 </p>
-                <p className="mx-3 pt-2  text-sm font-light md:place-self-start md:justify-self-end md:w-1/3">
+                <p className="pt-3 text-brand-800 text-md md:row-start-5">
+                    <FontAwesomeIcon icon={faCheck} className="mr-4 text-sm" />
                     Vested takes care of the installation and maintenance of your panels
                 </p>
+                <button className="w-2/5 my-5 rounded-md transition-all bg-brand-800 p-2 border-2 text-white hover:text-brand-800 md:w-2/5 md:h-1/3 md:my-2 md:mt-4 md:row-start-6 md:align-self-center md:transition-all md:hover:bg-white md:border-brand-800">
+                    Sign Up Now
+                </button>
+                <img src="landing_1.svg" />
             </div>
-            <div className="relative w-full px-6 py-20 flex flex-col items-center justify-center bg-white text-center text-lg place-items-center [&>p]:px-8 [&>p]:flex [&>p]:flex-col [&>p]:items-center md:px-16">
-                <h3 className="text-3xl text-center border-b-2 border-orange-700 font-semibold">
-                    How It Works
-                </h3>
-                <div className="w-full py-8 grid grid-rows-3 md:grid-cols-[30%_5%_30%_5%_30%] md:grid-rows-1 md:py-12">
-                    <div className="py-2 md:py-0">
-                        <FontAwesomeIcon
-                            icon={faHandHoldingDollar}
-                            className="text-6xl text-green-500 py-10 place-self-center"
-                        />
-                        <div>
-                            <h3 className="font-semibold pb-3">Investors</h3>
-                            <p className="text-sm">
-                                You invest in loans for renewable energy projects in emerging
-                                markets, providing them with capital to supply clean, affordable and
-                                stable electricity where it is needed the most. You can choose the
-                                projects you want to invest in and the amount you want to invest in
-                                each project. You can also choose to invest in a diversified
-                                portfolio of projects to spread your risk.
-                            </p>
-                        </div>
-                    </div>
-                    <FontAwesomeIcon
-                        icon={faExchange}
-                        className="hidden md:inline md:text-4xl md:text-black md:mt-14"
-                    />
-                    <div className="py-2 md:py-0">
-                        <FontAwesomeIcon
-                            icon={faLeaf}
-                            className="text-6xl text-gray-500 place-self-center py-10"
-                        />
-                        <div>
-                            <h3 className="font-semibold pb-3">NaturaFund</h3>
-                            <p className="text-sm">
-                                All projects have gone through a comprehensive risk assessment and
-                                approval by our investment team before going live on the site. We
-                                then monitor the sponsors' performance and impact on an ongoing
-                                basis. You can track the loan and impact on your dashboard.
-                            </p>
-                        </div>
-                    </div>
-                    <FontAwesomeIcon
-                        icon={faExchange}
-                        className="hidden md:inline md:text-4xl md:text-black md:mt-14"
-                    />
-                    <div className="py-2 md:py-0">
-                        <FontAwesomeIcon
-                            icon={faSolarPanel}
-                            className="text-6xl text-yellow-300 py-10 place-self-center"
-                        />
-                        <div>
-                            <h3 className="font-semibold pb-3">Project Sponsors</h3>
-                            <p className="text-sm">
-                                Sponsors use the capital to fund their projects, such as installing
-                                solar systems for their end-customers, or building huge projects.
-                                Their customers can be anything from families, schools and hospitals
-                                to large-scale businesses. Once the company starts to repay their
-                                loan, you receive capital and interest in return. Repayments can be
-                                reinvested to make an even larger impact.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <Carasol items={items} />
             <div className="w-full px-6 py-24 flex flex-col items-center place-items-center bg-neu-gray md:px-16 md:grid md:grid-cols-2 md:grid-rows-1">
                 <div className="w-full grid grid-cols-1 items-start">
                     <h3 className="w-fit text-3xl text-center border-b-2 border-orange-700 font-semibold">
@@ -111,11 +80,6 @@ const Landing = () => {
                         Make an impact now
                     </button>
                 </div>
-                <img
-                    src="./solar_panels.jpg"
-                    alt="solar panels"
-                    className="w-full place-self-end rounded-lg md:w-3/4"
-                />
             </div>
             <div className="w-full py-24 px-6 flex flex-col items-center justify-center md:px-16">
                 <h3 className="text-2xl text-center border-b-2 border-orange-700 font-semibold md:text-3xl">

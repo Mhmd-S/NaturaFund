@@ -27,6 +27,10 @@ export default {
 				'8bit': ['"Press Start 2P"', 'cursive'],
 			},
 			keyframes: {
+				carasol_indicator: {
+					'0%': { width: '0' },
+					'100%': { width: 'full' },
+				},
 				wave: {
 					'0%': { transform: 'rotate(0.0deg)' },
 					'10%': { transform: 'rotate(14.0deg)' },
@@ -81,6 +85,7 @@ export default {
 				fadeOut: 'fadeOut 200ms ease-out forwards',
 				whiteWash: 'whiteWash 100ms ease-in forwards',
 				likeAndDislike: 'likeAndDislike 600ms ease-in forwards',
+				carasol_indicator_5s_ease_in: 'carasol_indicator 5s ease forwards',
 			},
 		},
 	},
