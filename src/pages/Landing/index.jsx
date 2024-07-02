@@ -10,17 +10,17 @@ const items = [
     {
         title: "Financial Benefits",
         content: "Investing in renewable energy projects can provide attractive financial returns.",
-        img: "landing_carasol_1.svg",
+        img: "landing_carousel_1.svg",
     },
     {
         title: "Environmental Impact",
         content: "Investing in renewable energy projects allows you to contribute to a sustainable future.",
-        img: "landing_carasol_2.svg",
+        img: "landing_carousel_2.svg",
     },
     {
         title: "Diversification",
         content: "Renewable energy projects in allows you to diversify your portofolio.",
-        img: "landing_carasol_3.svg",
+        img: "landing_carousel_3.svg",
     },
 ];
 
@@ -30,7 +30,7 @@ const Landing = () => {
     return (
         <div className="relative px-4 w-full h-full flex flex-col items-center overflow-x-hidden">
             <NavBar />
-            <div className="h-screen mt-6 flex flex-col text-brand-800 md:pb-20 md:grid md:grid-rows-[20%_10%_10%_10%_10%] md:grid-cols-2 md:gap-2">
+            <div className="h-[45rem] mt-6 flex flex-col text-brand-800 md:pb-20 md:grid md:grid-rows-[20%_10%_10%_10%_10%] md:grid-cols-2 md:gap-2">
                 <h1 className="py-4 text-4xl font-bold md:text-5xl md:row-start-1 md:row-span-2">
                     Earn returns while striving for a sustainable future
                 </h1>

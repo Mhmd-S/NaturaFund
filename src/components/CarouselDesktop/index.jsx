@@ -16,12 +16,12 @@ const CarouselDesktop = ({ items }) => {
             return (
                 <div
                     key={item.title}
-                    className={`w-3/4 grid grid-cols-[10%_90%] grid-row-3 items-center transition-all ${index == ind ? "h-full opacity-100" : "opacity-40 h-fit py-2"}`}
+                    onClick={() => setIndex(ind)}
+                    className={`w-3/4 grid grid-cols-[10%_90%] grid-row-3 items-center cursor-pointer ${index == ind ? "h-full opacity-100" : "opacity-40 h-fit py-2"}`}
                 >
                     <span
                         key={item.title}
                         className={`relative w-fit h-full row-start-1 row-span-5 pl-1 rounded-lg bg-brand-100 cursor-pointer`}
-                        onClick={() => setIndex(ind)}
                     >
                         <span
                             className={`absolute w-full h-full rounded-lg left-0 top-0 bg-brand-500 animate-carasol_indicator_desktop ${index == ind ? "inline" : "hidden"}`}
