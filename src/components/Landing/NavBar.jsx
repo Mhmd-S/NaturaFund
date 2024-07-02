@@ -26,7 +26,7 @@ const NavBar = () => {
         <div
             className={`relative w-screen p-2 flex items-center ${showMenu && "grid grid-cols-1 grid-rows[15%_85%]"} bg-white md:border-b-[1px] md:p-0`}
         >
-            <h1 className="h-fit pt-3 font-serif text-brand-800 text-xl md:py-2 md:flex md:items-center md:text-3xl md:border-r-[1px] md:border-r-brand-800 md:pr-6">
+            <h1 className="h-fit pt-3 font-serif text-brand-800 text-xl md:py-2 md:flex md:items-center md:text-3xl md:border-r-[1px] md:border-r-brand-800 md:px-6">
                 NaturaFund
                 <FontAwesomeIcon icon={faLeaf} className="ml-3" />
             </h1>
