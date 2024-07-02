@@ -90,7 +90,7 @@ export default {
 				whiteWash: 'whiteWash 100ms ease-in forwards',
 				likeAndDislike: 'likeAndDislike 600ms ease-in forwards',
 				carasol_indicator: 'carasol_indicator 5s ease forwards',
-				carasol_indicator_desktop: 'carasol_indicator 5s ease forwards',
+				carasol_indicator_desktop: 'carasol_indicator_desktop 5s ease forwards',
 			},
 		},
 	},

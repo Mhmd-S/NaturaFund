@@ -9,17 +9,17 @@ import { faArrowCircleRight, faExternalLink, faCheck } from "@fortawesome/free-s
 const items = [
     {
         title: "Financial Benefits",
-        content: "Investing in renewable energy projects can provide attractive financial returns. By diversifying your portfolio with loans for renewable energy projects in emerging markets, you can potentially earn competitive interest rates and generate steady cash flow.",
+        content: "Investing in renewable energy projects can provide attractive financial returns.",
         img: "landing_carasol_1.svg",
     },
     {
         title: "Environmental Impact",
-        content: "In addition to the financial benefits, investing in renewable energy projects allows you to contribute to a sustainable future. By supporting clean energy initiatives, you can help reduce carbon emissions and mitigate the effects of climate change.",
+        content: "Investing in renewable energy projects allows you to contribute to a sustainable future.",
         img: "landing_carasol_2.svg",
     },
     {
-        title: "Global Opportunity",
-        content: "Renewable energy projects in emerging markets present a unique investment opportunity. These markets often have high demand for clean energy solutions and offer potential for significant growth. By investing in these projects, you can tap into new markets and diversify your investment portfolio.",
+        title: "Diversification",
+        content: "Renewable energy projects in allows you to diversify your portofolio.",
         img: "landing_carasol_3.svg",
     },
 ];

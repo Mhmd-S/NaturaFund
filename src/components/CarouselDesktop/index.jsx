@@ -16,7 +16,7 @@ const CarouselDesktop = ({ items }) => {
             return (
                 <div
                     key={item.title}
-                    className={`w-fit grid grid-cols-[10%_90%] grid-row-3 items-center transition-all ${index == ind ? "h-full opacity-100" : "opacity-80 h-fit py-2"}`}
+                    className={`w-3/4 grid grid-cols-[10%_90%] grid-row-3 items-center transition-all ${index == ind ? "h-full opacity-100" : "opacity-40 h-fit py-2"}`}
                 >
                     <span
                         key={item.title}
@@ -24,12 +24,14 @@ const CarouselDesktop = ({ items }) => {
                         onClick={() => setIndex(ind)}
                     >
                         <span
-                            className={`absolute w-full h-full rounded-lg left-0 top-0 bg-brand-500 animate-carasol_indicator_5s_ease_in ${index == ind ? "block" : "hidden"}`}
+                            className={`absolute w-full h-full rounded-lg left-0 top-0 bg-brand-500 animate-carasol_indicator_desktop ${index == ind ? "inline" : "hidden"}`}
                         />
                     </span>
                     <h2>{"0" + (ind + 1)}</h2>
-                    <h3 className="w-full col-start-2 text-2xl font-semibold">{item.title}</h3>
-                    <div className={`text-white col-start-2 ${index == ind ? "block" : "hidden"}`}>
+                    <h3 className="w-full col-start-2 row-start-2 text-2xl font-semibold">
+                        {item.title}
+                    </h3>
+                    <div className={`text-white  ${index == ind ? "block" : "hidden"}`}>
                         {item.content}
                     </div>
                 </div>
@@ -55,11 +57,11 @@ const CarouselDesktop = ({ items }) => {
     };
 
     return (
-        <div className="w-5/6 h-[30rem] p-8 grid grid-cols-2 grid-flow-row gap-4 bg-brand-800 rounded-2xl text-white">
+        <div className="w-5/6 min-h-[30rem] p-8 grid grid-cols-2 grid-flow-row gap-4 bg-brand-800 rounded-2xl text-white">
             <h2 className="w-full text-4xl font-bold row-start-1 col-start-1">
-                How Invest With Us?
+                Why Invest With Us?
             </h2>
-            <div className="w-full h-full grid grid-flow-row grid-cols-1 justify-center col-start-1 row-start-2 row-span-3 ">
+            <div className="w-full h-full grid grid-flow-row grid-cols-1 items-center col-start-1 row-start-2 row-span-3 ">
                 {renderContent()}
             </div>
             <div className="relative w-full h-full flex items-center justify-center col-start-2 row-start-1 row-span-4">
