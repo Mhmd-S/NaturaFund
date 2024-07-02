@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const Carousel = ({ items }) => {
+const CarouselMobile = ({ items }) => {
     const [index, setIndex] = useState(0);
 
     useEffect(() => {
@@ -28,20 +28,12 @@ const Carousel = ({ items }) => {
     };
 
     const renderContent = () => {
-        const currentContent = items[index];
-        // const content = (
-        //     <>
-        //         <h3 className="w-full text-2xl font-semibold">{currentContent.title}</h3>
-        //         <div className="text-white">{currentContent.content}</div>
-        //         <img className="w-full rounded-b-lg" src={"./" + currentContent.img} />
-        //     </>
-        // )
         const content = Object.values(items).map((_, ind) => {
             const item = items[ind];
             return (
                 <div
                     key={item.title}
-                    className={`absolute w-full h-full transition-all ${index == ind ? "block left-0 right-0" : `${ind > index ? "left-[100rem]" : "right-[100rem]"}`}`}
+                    className={`absolute w-full h-full transition-all ${index == ind ? "block left-0 right-0" : `${ind > index ? "left-[105%] invisible" : "right-[105%] invisible"}`}`}
                 >
                     <h3 className="w-full text-2xl font-semibold">{item.title}</h3>
                     <div className="text-white">{item.content}</div>
@@ -54,14 +46,14 @@ const Carousel = ({ items }) => {
     };
 
     return (
-        <div className="w-full p-4 grid grid-cols-1 grid_flow-rows gap-4 bg-brand-900 bg-opacity-85 rounded-2xl text-white">
+        <div className="w-full p-4 grid grid-cols-1 grid_flow-rows gap-4 bg-brand-900 bg-opacity-85 rounded-2xl text-white md:w-1/2">
             <h2 className="w-full text-xl font-bold">How Does It Work?</h2>
-            <div className="w-full grid grid-flow-col grid-rows-1 gap-1 items-center ">
+            <div className="w-full grid grid-flow-col grid-rows-1 gap-1 items-center">
                 {renderIndicators()}
             </div>
-            <div className="relative w-full h-[30rem]">{renderContent()}</div>
+            <div className="relative w-full h-[34rem]">{renderContent()}</div>
         </div>
     );
 };
 
-export default Carousel;
+export default CarouselMobile;

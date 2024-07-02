@@ -31,6 +31,10 @@ export default {
 					'0%': { width: '0' },
 					'100%': { width: 'full' },
 				},
+				carasol_indicator_desktop: {
+					'0%': { height: '0' },
+					'100%': { height: 'full' },
+				},
 				wave: {
 					'0%': { transform: 'rotate(0.0deg)' },
 					'10%': { transform: 'rotate(14.0deg)' },
@@ -85,7 +89,8 @@ export default {
 				fadeOut: 'fadeOut 200ms ease-out forwards',
 				whiteWash: 'whiteWash 100ms ease-in forwards',
 				likeAndDislike: 'likeAndDislike 600ms ease-in forwards',
-				carasol_indicator_5s_ease_in: 'carasol_indicator 5s ease forwards',
+				carasol_indicator: 'carasol_indicator 5s ease forwards',
+				carasol_indicator_desktop: 'carasol_indicator 5s ease forwards',
 			},
 		},
 	},

@@ -1,48 +1,36 @@
 import React from "react";
 import NavBar from "@/components/Landing/NavBar";
 import useResponsive from "@/hooks/useResponsive";
-import Carousel from "@/components/Carousel";
+import CarouselMobile from "@/components/CarouselMobile";
+import CarouselDesktop from "@/components/CarouselDesktop";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleRight, faExternalLink, faCheck } from "@fortawesome/free-solid-svg-icons";
 
-const items = {
-    0: {
-        title: "Investors",
-        content: `You invest in loans for renewable energy projects in emerging
-  markets, providing them with capital to supply clean, affordable and
-  stable electricity where it is needed the most. You can choose the
-  projects you want to invest in and the amount you want to invest in
-  each project. You can also choose to invest in a diversified
-  portfolio of projects to spread your risk.`,
+const items = [
+    {
+        title: "Financial Benefits",
+        content: "Investing in renewable energy projects can provide attractive financial returns. By diversifying your portfolio with loans for renewable energy projects in emerging markets, you can potentially earn competitive interest rates and generate steady cash flow.",
         img: "landing_carasol_1.svg",
     },
-    1: {
-        title: "NaturaFund",
-        content: `All projects have gone through a comprehensive risk assessment and
-  approval by our investment team before going live on the site. We
-  then monitor the sponsors' performance and impact on an ongoing
-  basis. You can track the loan and impact on your dashboard.`,
+    {
+        title: "Environmental Impact",
+        content: "In addition to the financial benefits, investing in renewable energy projects allows you to contribute to a sustainable future. By supporting clean energy initiatives, you can help reduce carbon emissions and mitigate the effects of climate change.",
         img: "landing_carasol_2.svg",
     },
-    2: {
-        title: "Project Sponsors",
-        content: `Sponsors use the capital to fund their projects, such as installing
-  solar systems for their end-customers, or building huge projects.
-  Their customers can be anything from families, schools and hospitals
-  to large-scale businesses. Once the company starts to repay their
-  loan, you receive capital and interest in return. Repayments can be
-  reinvested to make an even larger impact.`,
+    {
+        title: "Global Opportunity",
+        content: "Renewable energy projects in emerging markets present a unique investment opportunity. These markets often have high demand for clean energy solutions and offer potential for significant growth. By investing in these projects, you can tap into new markets and diversify your investment portfolio.",
         img: "landing_carasol_3.svg",
     },
-};
+];
 
 const Landing = () => {
     const { isMobile } = useResponsive();
 
     return (
-        <div className="relative px-4 w-full h-full flex flex-col overflow-x-hidden">
+        <div className="relative px-4 w-full h-full flex flex-col items-center overflow-x-hidden">
             <NavBar />
-            <div className="h-screen mt-6 flex flex-col text-brand-800 md:pb-24 md:grid md:grid-rows-[20%_10%_10%_10%_10%] md:grid-cols-2 md:gap-2">
+            <div className="h-screen mt-6 flex flex-col text-brand-800 md:pb-20 md:grid md:grid-rows-[20%_10%_10%_10%_10%] md:grid-cols-2 md:gap-2">
                 <h1 className="py-4 text-4xl font-bold md:text-5xl md:row-start-1 md:row-span-2">
                     Earn returns while striving for a sustainable future
                 </h1>
@@ -63,7 +51,7 @@ const Landing = () => {
                 </button>
                 <img src="landing_1.svg" />
             </div>
-            <Carousel items={items} />
+            {isMobile ? <CarouselMobile items={items} /> : <CarouselDesktop items={items} />}
             <div className="w-full px-6 py-24 flex flex-col items-center place-items-center bg-neu-gray md:px-16 md:grid md:grid-cols-2 md:grid-rows-1">
                 <div className="w-full grid grid-cols-1 items-start">
                     <h3 className="w-fit text-3xl text-center border-b-2 border-orange-700 font-semibold">
