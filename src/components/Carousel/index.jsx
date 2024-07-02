@@ -29,24 +29,37 @@ const Carousel = ({ items }) => {
 
     const renderContent = () => {
         const currentContent = items[index];
-        const content = (
-            <>
-                <h3 className="w-full text-2xl font-semibold">{currentContent.title}</h3>
-                <div className="text-white">{currentContent.content}</div>
-                <img className="w-full rounded-b-lg" src={"./" + currentContent.img} />
-            </>
-        );
+        // const content = (
+        //     <>
+        //         <h3 className="w-full text-2xl font-semibold">{currentContent.title}</h3>
+        //         <div className="text-white">{currentContent.content}</div>
+        //         <img className="w-full rounded-b-lg" src={"./" + currentContent.img} />
+        //     </>
+        // )
+        const content = Object.values(items).map((_, ind) => {
+            const item = items[ind];
+            return (
+                <div
+                    key={item.title}
+                    className={`absolute w-full h-full transition-all ${index == ind ? "block left-0 right-0" : `${ind > index ? "left-[100rem]" : "right-[100rem]"}`}`}
+                >
+                    <h3 className="w-full text-2xl font-semibold">{item.title}</h3>
+                    <div className="text-white">{item.content}</div>
+                    <img className="w-full rounded-b-lg" src={"./" + item.img} />
+                </div>
+            );
+        });
 
         return content;
     };
 
     return (
-        <div className="w-full p-4 h-max grid grid-cols-1 grid_flow-rows gap-4 bg-brand-900 bg-opacity-85 rounded-2xl text-white">
+        <div className="w-full p-4 grid grid-cols-1 grid_flow-rows gap-4 bg-brand-900 bg-opacity-85 rounded-2xl text-white">
             <h2 className="w-full text-xl font-bold">How Does It Work?</h2>
             <div className="w-full grid grid-flow-col grid-rows-1 gap-1 items-center ">
                 {renderIndicators()}
             </div>
-            {renderContent()}
+            <div className="relative w-full h-[30rem]">{renderContent()}</div>
         </div>
     );
 };

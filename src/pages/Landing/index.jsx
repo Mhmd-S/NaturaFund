@@ -22,7 +22,7 @@ const items = {
   approval by our investment team before going live on the site. We
   then monitor the sponsors' performance and impact on an ongoing
   basis. You can track the loan and impact on your dashboard.`,
-        img: "landing_carasol_2.jpg",
+        img: "landing_carasol_2.svg",
     },
     2: {
         title: "Project Sponsors",
@@ -32,7 +32,7 @@ const items = {
   to large-scale businesses. Once the company starts to repay their
   loan, you receive capital and interest in return. Repayments can be
   reinvested to make an even larger impact.`,
-        img: "landing_carasol_3.jpg",
+        img: "landing_carasol_3.svg",
     },
 };
 
