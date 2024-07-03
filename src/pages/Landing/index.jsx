@@ -1,8 +1,8 @@
 import React from "react";
 import NavBar from "@/components/Landing/NavBar";
 import useResponsive from "@/hooks/useResponsive";
-import CarouselMobile from "@/components/CarouselMobile";
-import CarouselDesktop from "@/components/CarouselDesktop";
+import CarouselMobile from "@/components/SlidingCarousel/CarouselMobile";
+import CarouselDesktop from "@/components/SlidingCarousel/CarouselDesktop";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleRight, faExternalLink, faCheck } from "@fortawesome/free-solid-svg-icons";
 
