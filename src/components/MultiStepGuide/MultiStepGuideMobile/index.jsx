@@ -1,25 +1,29 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
+import Step from "@/components/MultiStepGuide/MultiStepGuideMobile/Step";
 
-const MultiStepGuide = ({ children }) => {
+const MultiStepGuide = ({ title, items }) => {
+    const [currentStep, setCurrentStep] = useState(0);
 
-  const [currentStep, setCurrentStep] = useState(0);
+    const renderItems = () => {
+        return items.map((item, index) => {
+            return (
+                <Step
+                    key={item.name}
+                    currentStep={currentStep}
+                    item={item}
+                    ind={index}
+                    setCurrentStep={setCurrentStep}
+                />
+            );
+        });
+    };
 
-  const renderChildren = () => {
-    return React.Children.map(children, (child, index) => {
-      if (index === currentStep) {
-        return React.cloneElement(child, {
-          currentStep,
-        })
-      }
-      return null;
-    })
-  }
-  
-  return (
-    <div>
-      {renderChildren}
-    </div>
-  )
-}
+    return (
+        <div className="w-full mt-4 grid grid-cols-1 grid-flow-row gap-4">
+            <h2 className="w-full text-center text-2xl text-brand-900 font-bold">{title}</h2>
+            {renderItems()}
+        </div>
+    );
+};
 
 export default MultiStepGuide;

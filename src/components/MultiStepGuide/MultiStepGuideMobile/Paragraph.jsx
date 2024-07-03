@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const Paragraph = ({ text }) => {
-  return (
-    <div>{text}</div>
-  )
-}
+    return <div>{text}</div>;
+};
 
-export default Paragraph
+export default Paragraph;
