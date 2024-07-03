@@ -47,7 +47,7 @@ const CarouselDesktop = ({ items }) => {
             return (
                 <img
                     key={item.title}
-                    className={`absolute w-full h-full rounded-lg ${index == ind ? "block top-auto bottom-auto" : `${ind > index ? "top-[105%] invisible" : "bottom-[105%] invisible"}`}`}
+                    className={`absolute w-full h-full rounded-lg transition-transform duration-700 ${index == ind ? "translate-y-0" : `${ind > index ? "translate-y-[100%]" : "-translate-y-[100%]"}`}`}
                     src={"./" + item.img}
                 />
             );
@@ -57,14 +57,14 @@ const CarouselDesktop = ({ items }) => {
     };
 
     return (
-        <div className="w-5/6 min-h-[30rem] p-8 grid grid-cols-2 grid-flow-row gap-4 bg-brand-800 rounded-2xl text-white">
+        <div className="w-5/6 h-[30rem] p-8 grid grid-cols-2 grid-flow-row gap-4 bg-brand-800 rounded-2xl text-white">
             <h2 className="w-full text-4xl font-bold row-start-1 col-start-1">
                 Why Invest With Us?
             </h2>
-            <div className="w-full h-full grid grid-flow-row grid-cols-1 items-center col-start-1 row-start-2 row-span-3 ">
+            <div className="w-full h-full overflow-y-hidden grid grid-flow-row grid-cols-1 items-center col-start-1 row-start-2 row-span-3 ">
                 {renderContent()}
             </div>
-            <div className="relative w-full h-full flex items-center justify-center col-start-2 row-start-1 row-span-4">
+            <div className="relative w-full h-full overflow-y-hidden flex flex-col items-center justify-center col-start-2 row-start-1 row-span-4">
                 {renderImage()}
             </div>
         </div>
