@@ -3,9 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import Title from "@/components/MultiStepGuide/MultiStepGuideMobile/Title";
 import Paragraph from "@/components/MultiStepGuide/MultiStepGuideMobile/Paragraph";
-import Subpoint from "@/components/MultiStepGuide/MultiStepGuideMobile/SubPoint";
 
-const Step = ({ currentStep, item, ind, setCurrentStep }) => {
+const Step = ({ currentStep, item, ind, setCurrentStep, height }) => {
     return (
         <div
             className="w-full p-3 flex flex-col bg-brand-50 rounded-lg transition-all duration-700 overflow-y-hidden"
@@ -22,15 +21,16 @@ const Step = ({ currentStep, item, ind, setCurrentStep }) => {
                     }`}
                 />
             </h2>
-            <div className={`overflow-y-hidden mt-8 p-4 text-sm text-slate-700 ${currentStep == ind ? "block" : "hidden"}`}>
+            <div
+                className={`overflow-y-hidden mt-8 p-4 text-sm text-slate-700 ${currentStep == ind ? "block" : "hidden"}`}
+            >
                 <Title title={item.title} ind={ind} />
                 <Paragraph text={item.paragraph} />
-                {item.subpoints.map((subpoint) => (
-                    <Subpoint
-                        key={subpoint.iconName}
-                        iconName={subpoint.iconName}
-                        text={subpoint.text}
-                    />
+                {item.subpoints.map((subpoint, ind) => (
+                    <div key={ind} className=" py-2 flex items-center">
+                        {subpoint.icon}
+                        <p className="pl-2">{subpoint.text}</p>
+                    </div>
                 ))}
                 {item.img && <img src={item.img} alt="step" />}
             </div>
