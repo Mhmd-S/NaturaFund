@@ -7,9 +7,14 @@ import Subpoint from "@/components/MultiStepGuide/MultiStepGuideMobile/SubPoint"
 
 const Step = ({ currentStep, item, ind, setCurrentStep }) => {
     return (
-        <div className={`w-full p-5 bg-brand-50 rounded-lg transition-all duration-700 origin-top ${currentStep == ind ? "scale-y-100" : "scale-y-1" }`} onClick={() => setCurrentStep(ind)}>
-            <h2 className="w-full pl-8 flex items-center justify-between font-bold text-slate-500">
-                <span>Step {ind + 1}</span>
+        <div
+            className="w-full p-3 flex flex-col bg-brand-50 rounded-lg transition-all duration-700 overflow-y-hidden"
+            onClick={() => setCurrentStep(ind)}
+        >
+            <h2 className="w-full pl-8 flex items-center justify-between font-semibold text-slate-600">
+                <span className={`px-3 py-2 ${currentStep == ind && "bg-white rounded-lg"}`}>
+                    Step {ind + 1}
+                </span>
                 <FontAwesomeIcon
                     icon={faChevronDown}
                     className={`transform transition-transform duration-700 ${
@@ -17,8 +22,8 @@ const Step = ({ currentStep, item, ind, setCurrentStep }) => {
                     }`}
                 />
             </h2>
-            <div className={` ${currentStep == ind ? "block" : "hidden"}`}>
-                <Title title={item.title} />
+            <div className={`overflow-y-hidden mt-8 p-4 text-sm text-slate-700 ${currentStep == ind ? "block" : "hidden"}`}>
+                <Title title={item.title} ind={ind} />
                 <Paragraph text={item.paragraph} />
                 {item.subpoints.map((subpoint) => (
                     <Subpoint

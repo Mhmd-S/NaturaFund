@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
 
-const Title = ({ title }) => {
-  return (
-    <h3>
-      {title}
-    </h3>
-  )
-}
+const Title = ({ title, ind }) => {
+    return (
+        <h3 className="text-lg text-brand-800">
+            <span>{"0" + (ind + 1) + ". | "}</span>
+            <span className="text-brand-900 font-bold">{title}</span>
+        </h3>
+    );
+};
 
-export default Title
+export default Title;
