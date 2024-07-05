@@ -9,11 +9,11 @@ const MultiStepGuide = ({ title, items }) => {
             return (
                 <h2
                     key={item.title}
-                    className="w-full flex items-center justify-between text-slate-600 cursor-pointer"
+                    className="w-full flex items-center justify-between text-slate-400 cursor-pointer"
                     onClick={() => setCurrentStep(index)}
                 >
                     <span
-                        className={`w-full px-3 py-1 text-2xl text-center ${currentStep == index && "text-brand-800 font-semibold bg-white rounded-lg"}`}
+                        className={`w-full px-3 py-2 text-center ${currentStep == index ? "text-brand-800 font-semibold bg-white rounded-t-lg text-2xl" : 'text-lg'}`}
                     >
                         Step {index + 1}
                     </span>
@@ -26,10 +26,8 @@ const MultiStepGuide = ({ title, items }) => {
         return (
             <Step
                 key={items[currentStep].name}
-                currentStep={currentStep}
                 item={items[currentStep]}
-                ind={Object.keys(items).indexOf(items)}
-                setCurrentStep={setCurrentStep}
+                ind={currentStep}
             />
         );
     };

@@ -2,13 +2,13 @@ import React from "react";
 import Title from "@/components/MultiStepGuide/Title";
 import Paragraph from "@/components/MultiStepGuide/Paragraph";
 
-const Step = ({ currentStep, item, ind }) => {
+const Step = ({ item, ind }) => {
     return (
         <div
-            className="w-full h-full p-3 flex flex-col rounded-lg transition-all duration-700 animate-fadeIn"
+            className="w-full h-full p-3 flex flex-col rounded-lg animate-fadeIn bg-white shadow-md"
         >
             <div
-                className="w-full justify-center mt-8 p-4 text-slate-700 text-lg grid grid-cols-2 grid-flow-row"
+                className={"w-full mt-8 p-4 text-slate-700 text-lg grid grid-cols-2 grid-flow-row"}
             >
                 <Title title={item.title} ind={ind} />
                 <Paragraph text={item.paragraph} />
@@ -16,7 +16,7 @@ const Step = ({ currentStep, item, ind }) => {
                     {item.subpoints.map((subpoint, ind) => (
                         <div key={ind} className=" py-2 flex items-center">
                             {subpoint.icon}
-                            <p className="pl-2">{subpoint.text}</p>
+                            <p className="pl-4">{subpoint.text}</p>
                         </div>
                     ))}
                 </div>
