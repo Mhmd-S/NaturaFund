@@ -1,9 +1,10 @@
 import React from "react";
-import MultiStepGuide from "@/components/MultiStepGuide/MultiStepGuideMobile";
+import MultiStepGuideMobile from "@/components/MultiStepGuide/mobile";
+import MultiStepGuideDesktop from "@/components/MultiStepGuide/desktop";
+import useResponsive from "@/hooks/useResponsive";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faListCheck,
-    faBold,
     faChartSimple,
     faIndustry,
     faGears,
@@ -79,7 +80,7 @@ const items = [
         paragraph:
             "Post full funding, it takes up to 3 months to bring the project to life. Once operational, the organization starts receiving sustainable clean energy and investors start earning returns on their original investment.",
         subpoints: [],
-        img: "landing_1.svg"
+        img: "landing_1.svg",
     },
     {
         title: "Earn returns",
@@ -110,7 +111,13 @@ const items = [
 ];
 
 const StepByStepGuide = () => {
-    return <MultiStepGuide title="How It Works" items={items} />;
+    const { isMobile } = useResponsive();
+
+    return isMobile ? (
+        <MultiStepGuideMobile title="How It Works" items={items} />
+    ) : (
+        <MultiStepGuideDesktop title="How It Works" items={items} />
+    );
 };
 
 export default StepByStepGuide;

@@ -1,8 +1,8 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import Title from "@/components/MultiStepGuide/MultiStepGuideMobile/Title";
-import Paragraph from "@/components/MultiStepGuide/MultiStepGuideMobile/Paragraph";
+import Title from "@/components/MultiStepGuide/Title";
+import Paragraph from "@/components/MultiStepGuide/Paragraph";
 
 const Step = ({ currentStep, item, ind, setCurrentStep, height }) => {
     return (
@@ -11,7 +11,9 @@ const Step = ({ currentStep, item, ind, setCurrentStep, height }) => {
             onClick={() => setCurrentStep(ind)}
         >
             <h2 className="w-full pl-8 flex items-center justify-between font-semibold text-slate-600">
-                <span className={`px-3 py-2 md:text-3xl ${currentStep == ind && "bg-white rounded-lg"}`}>
+                <span
+                    className={`px-3 py-2 md:text-3xl ${currentStep == ind && "bg-white rounded-lg"}`}
+                >
                     Step {ind + 1}
                 </span>
                 <FontAwesomeIcon
@@ -34,7 +36,13 @@ const Step = ({ currentStep, item, ind, setCurrentStep, height }) => {
                         </div>
                     ))}
                 </div>
-                {item.img && <img src={item.img} className="md:row-start-1 md:row-span-3 md:col-start-2" alt="step" />}
+                {item.img && (
+                    <img
+                        src={item.img}
+                        className="md:row-start-1 md:row-span-3 md:col-start-2"
+                        alt="step"
+                    />
+                )}
             </div>
         </div>
     );

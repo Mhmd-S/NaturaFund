@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Step from "@/components/MultiStepGuide/MultiStepGuideMobile/Step";
+import Step from "@/components/MultiStepGuide/mobile/Step";
 
 const MultiStepGuide = ({ title, items }) => {
     const [currentStep, setCurrentStep] = useState(0);
