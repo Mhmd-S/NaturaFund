@@ -47,7 +47,7 @@ const CarouselMobile = ({ items }) => {
 
     return (
         <div className="w-full p-4 grid grid-cols-1 grid_flow-rows gap-4 bg-brand-900 rounded-2xl text-white md:w-1/2">
-            <h2 className="w-full text-xl font-bold">Why Invest with Us?</h2>
+            <h2 className="w-full text-xl font-bold">Why Invest in Solar?</h2>
             <div className="w-full grid grid-flow-col grid-rows-1 gap-1 items-center">
                 {renderIndicators()}
             </div>

@@ -4,8 +4,14 @@ import useResponsive from "@/hooks/useResponsive";
 import CarouselMobile from "@/components/SlidingCarousel/CarouselMobile";
 import CarouselDesktop from "@/components/SlidingCarousel/CarouselDesktop";
 import StepByStepGuide from "@/components/Landing/StepByStepGuide";
+import WhyInvest from "@/components/Landing/WhyInvest";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowCircleRight, faExternalLink, faCheck } from "@fortawesome/free-solid-svg-icons";
+import {
+    faCheck,
+    faLocation,
+    faMobileScreenButton,
+    faSackDollar,
+} from "@fortawesome/free-solid-svg-icons";
 
 const items = [
     {
@@ -57,6 +63,7 @@ const Landing = () => {
             </div>
             {isMobile ? <CarouselMobile items={items} /> : <CarouselDesktop items={items} />}
             <StepByStepGuide />
+            <WhyInvest />
         </div>
     );
 };

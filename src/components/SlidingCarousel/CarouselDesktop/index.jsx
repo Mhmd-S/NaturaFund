@@ -59,7 +59,7 @@ const CarouselDesktop = ({ items }) => {
     return (
         <div className="w-5/6 h-[30rem] p-8 grid grid-cols-2 grid-flow-row gap-4 bg-brand-800 rounded-2xl text-white">
             <h2 className="w-full text-4xl font-bold row-start-1 col-start-1">
-                Why Invest With Us?
+                Why Invest in Solar?
             </h2>
             <div className="w-full h-full overflow-y-hidden grid grid-flow-row grid-cols-1 items-center col-start-1 row-start-2 row-span-3 ">
                 {renderContent()}
