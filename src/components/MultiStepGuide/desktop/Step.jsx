@@ -5,14 +5,14 @@ import Paragraph from "@/components/MultiStepGuide/Paragraph";
 const Step = ({ currentStep, item, ind }) => {
     return (
         <div
-            className="w-full h-full p-3 flex flex-col rounded-lg transition-all duration-700 overflow-y-hidden animate-fadeIn duration-300"
+            className="w-full h-full p-3 flex flex-col rounded-lg transition-all duration-700 animate-fadeIn"
         >
             <div
-                className={`w-full justify-center overflow-y-hidden mt-8 p-4 text-sm text-slate-700 md:text-lg md:grid md:grid-cols-2 md:grid-flow-row ${currentStep == ind ? "block" : "hidden"}`}
+                className="w-full justify-center mt-8 p-4 text-slate-700 text-lg grid grid-cols-2 grid-flow-row"
             >
                 <Title title={item.title} ind={ind} />
                 <Paragraph text={item.paragraph} />
-                <div className="w-full md:row-start-3 md:row-span-2 md:col-start-1">
+                <div className="w-full row-start-3 row-span-2 col-start-1">
                     {item.subpoints.map((subpoint, ind) => (
                         <div key={ind} className=" py-2 flex items-center">
                             {subpoint.icon}
@@ -23,7 +23,7 @@ const Step = ({ currentStep, item, ind }) => {
                 {item.img && (
                     <img
                         src={item.img}
-                        className="md:row-start-1 md:row-span-3 md:col-start-2"
+                        className="row-start-1 row-span-3 col-start-2"
                         alt="step"
                     />
                 )}
