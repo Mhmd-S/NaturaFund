@@ -23,7 +23,7 @@ const items = [
                 icon: (
                     <FontAwesomeIcon
                         icon={faListCheck}
-                        className="p-2 w-6 h-6 rounded-full bg-brand-100"
+                        className="p-2  rounded-full bg-brand-100 md:w-6 md:h-6"
                     />
                 ),
                 text: "Each site is evaluated on 12+ technical parameters including sunlight exposure, available space for installation, shadow effect, and annual weather conditions ",
@@ -32,7 +32,7 @@ const items = [
                 icon: (
                     <FontAwesomeIcon
                         icon={faPlugCircleBolt}
-                        className="p-2 w-6 h-6 rounded-full bg-brand-100"
+                        className="p-2 rounded-full bg-brand-100 md:w-6 md:h-6"
                     />
                 ),
                 text: "The power consumption of the end consumer is evaluated to ensure that the project is viable for both investors and the organization",
@@ -41,7 +41,7 @@ const items = [
                 icon: (
                     <FontAwesomeIcon
                         icon={faChartSimple}
-                        className="p-2 w-6 h-6 rounded-full bg-brand-100"
+                        className="p-2 rounded-full bg-brand-100 md:w-6 md:h-6"
                     />
                 ),
                 text: "Feasible projects are planned in detail and listed on Vested for investor consideration",
@@ -58,7 +58,7 @@ const items = [
                 icon: (
                     <FontAwesomeIcon
                         icon={faIndustry}
-                        className="p-2 w-6 h-6 rounded-full bg-brand-100"
+                        className="p-2 rounded-full bg-brand-100 md:w-6 md:h-6"
                     />
                 ),
                 text: "The manufacturing cost of the panel ",
@@ -67,7 +67,7 @@ const items = [
                 icon: (
                     <FontAwesomeIcon
                         icon={faGears}
-                        className="p-2 w-6 h-6 rounded-full bg-brand-100"
+                        className="p-2 rounded-full bg-brand-100 md:w-6 md:h-6"
                     />
                 ),
                 text: "Upfront cost of installation of the solar panels and getting the project started  ",

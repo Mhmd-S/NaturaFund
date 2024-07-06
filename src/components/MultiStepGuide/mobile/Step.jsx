@@ -22,7 +22,7 @@ const Step = ({ currentStep, item, ind, setCurrentStep, height }) => {
                 />
             </h2>
             <div
-                className={`w-full justify-center overflow-y-hidden mt-8 p-4 text-sm text-slate-700 ${currentStep == ind ? "block" : "hidden"}`}
+                className={`w-full flex flex-col justify-center gap-3 overflow-y-hidden mt-8 p-4 text-sm text-slate-700 ${currentStep == ind ? "block" : "hidden"}`}
             >
                 <Title title={item.title} ind={ind} />
                 <Paragraph text={item.paragraph} />
@@ -30,7 +30,7 @@ const Step = ({ currentStep, item, ind, setCurrentStep, height }) => {
                     {item.subpoints.map((subpoint, ind) => (
                         <div key={ind} className=" py-2 flex items-center">
                             {subpoint.icon}
-                            <p className="pl-2">{subpoint.text}</p>
+                            <p className="pl-4">{subpoint.text}</p>
                         </div>
                     ))}
                 </div>
