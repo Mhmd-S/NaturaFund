@@ -15,7 +15,7 @@ const CarouselMobile = ({ title, items }) => {
             return (
                 <span
                     key={item.title}
-                    className={`relative flex-1 p-1 rounded-lg bg-slate-600 cursor-pointer`}
+                    className={`relative flex-1 py-px rounded-lg bg-slate-600 cursor-pointer`}
                     onClick={() => setIndex(ind)}
                 >
                     <span
@@ -35,9 +35,9 @@ const CarouselMobile = ({ title, items }) => {
                     key={item.title}
                     className={`absolute w-full h-full flex flex-col items-center transition-all ${index == ind ? "block left-0 right-0" : `${ind > index ? "left-[105%] invisible" : "right-[105%] invisible"}`}`}
                 >
+                    <img className="w-full rounded-b-lg mt-5" src={"./" + item.img} />
                     <h3 className="w-full text-2xl font-semibold">{item.title}</h3>
                     <div className="text-white">{item.content}</div>
-                    <img className="w-full rounded-b-lg mt-5" src={"./" + item.img} />
                 </div>
             );
         });
