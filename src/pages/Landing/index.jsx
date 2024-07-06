@@ -5,13 +5,10 @@ import CarouselMobile from "@/components/SlidingCarousel/CarouselMobile";
 import CarouselDesktop from "@/components/SlidingCarousel/CarouselDesktop";
 import StepByStepGuide from "@/components/Landing/StepByStepGuide";
 import WhyInvest from "@/components/Landing/WhyInvest";
+import CarouselInvMobile from "@/components/SlidingCarouselInv/mobile";
+import CarouselInvDesktop from "@/components/SlidingCarouselInv/Desktop";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faCheck,
-    faLocation,
-    faMobileScreenButton,
-    faSackDollar,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 const items = [
     {
@@ -64,6 +61,11 @@ const Landing = () => {
             {isMobile ? <CarouselMobile items={items} /> : <CarouselDesktop items={items} />}
             <StepByStepGuide />
             <WhyInvest />
+            {isMobile ? (
+                <CarouselInvMobile title={"Diversify your portofolio in 3 steps"} items={items} />
+            ) : (
+                <CarouselInvDesktop title={"Diversify your portofolio in 3 steps"} items={items} />
+            )}
         </div>
     );
 };

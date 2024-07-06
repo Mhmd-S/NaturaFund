@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const CarouselMobile = ({ items }) => {
+const CarouselMobile = ({ title, items }) => {
     const [index, setIndex] = useState(0);
 
     useEffect(() => {
@@ -47,11 +47,11 @@ const CarouselMobile = ({ items }) => {
 
     return (
         <div className="w-full p-4 grid grid-cols-1 grid_flow-rows gap-4 bg-brand-900 rounded-2xl text-white md:w-1/2">
-            <h2 className="w-full text-xl font-bold">Why Invest in Solar?</h2>
+            <h2 className="w-full text-xl font-bold">{title}</h2>
+            <div className="relative w-full min-h-[23rem]">{renderContent()}</div>
             <div className="w-full grid grid-flow-col grid-rows-1 gap-1 items-center">
                 {renderIndicators()}
             </div>
-            <div className="relative w-full min-h-[23rem]">{renderContent()}</div>
         </div>
     );
 };

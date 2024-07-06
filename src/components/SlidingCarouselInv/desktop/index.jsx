@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const CarouselDesktop = ({ items }) => {
+const CarouselDesktop = ({ title, items }) => {
     const [index, setIndex] = useState(0);
 
     useEffect(() => {
@@ -17,7 +17,7 @@ const CarouselDesktop = ({ items }) => {
                 <div
                     key={item.title}
                     onClick={() => setIndex(ind)}
-                    className={`w-3/4 grid grid-cols-[10%_90%] grid-row-3 items-center cursor-pointer ${index == ind ? "h-full opacity-100" : "opacity-40 h-fit py-2"}`}
+                    className={`w-3/4 h-full py-2 grid grid-cols-[10%_90%] grid-row-3 items-center cursor-pointer ${index == ind ? " opacity-100" : "opacity-40 "}`}
                 >
                     <span
                         key={item.title}
@@ -31,9 +31,7 @@ const CarouselDesktop = ({ items }) => {
                     <h3 className="w-full col-start-2 row-start-2 text-2xl font-semibold">
                         {item.title}
                     </h3>
-                    <div className={`text-white}`}>
-                        {item.content}
-                    </div>
+                    <div className={`text-white}`}>{item.content}</div>
                 </div>
             );
         });
@@ -59,12 +57,12 @@ const CarouselDesktop = ({ items }) => {
     return (
         <div className="w-5/6 h-[30rem] p-8 grid grid-cols-2 grid-flow-row gap-4 rounded-2xl">
             <h2 className="w-full text-4xl font-bold row-start-1 col-start-1">
-                Why Invest in Solar?
+                {title}
             </h2>
-            <div className="relative w-full h-full overflow-y-hidden flex flex-col items-center justify-center col-start-2 row-start-1 row-span-4">
+            <div className="relative w-full h-full overflow-y-hidden flex flex-col items-center justify-center col-start-1 row-start-1 row-span-4">
                 {renderImage()}
             </div>
-            <div className="w-full h-full overflow-y-hidden grid grid-flow-row grid-cols-1 items-center col-start-1 row-start-2 row-span-3 ">
+            <div className="w-full h-full grid grid-flow-row grid-cols-1 items-center col-start-2 row-start-2 row-span-3 ">
                 {renderContent()}
             </div>
         </div>
