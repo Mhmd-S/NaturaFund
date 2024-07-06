@@ -56,10 +56,10 @@ const CarouselDesktop = ({ title, items }) => {
 
     return (
         <div className="w-5/6 h-[30rem] p-8 grid grid-cols-2 grid-flow-row gap-4 rounded-2xl">
-            <h2 className="w-full text-4xl font-bold row-start-1 col-start-1">
+            <h2 className="w-full text-center text-4xl font-bold row-start-1 col-start-1 col-span-2">
                 {title}
             </h2>
-            <div className="relative w-full h-full overflow-y-hidden flex flex-col items-center justify-center col-start-1 row-start-1 row-span-4">
+            <div className="relative w-full h-full overflow-y-hidden flex flex-col items-center justify-center col-start-1 row-start-2 row-span-4">
                 {renderImage()}
             </div>
             <div className="w-full h-full grid grid-flow-row grid-cols-1 items-center col-start-2 row-start-2 row-span-3 ">

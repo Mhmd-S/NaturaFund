@@ -7,6 +7,7 @@ import StepByStepGuide from "@/components/Landing/StepByStepGuide";
 import WhyInvest from "@/components/Landing/WhyInvest";
 import CarouselInvMobile from "@/components/SlidingCarouselInv/mobile";
 import CarouselInvDesktop from "@/components/SlidingCarouselInv/Desktop";
+import Footer from "@/components/common/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
@@ -29,11 +30,31 @@ const items = [
     },
 ];
 
+const portofolioItems = [
+    {
+        title: "Select A Solar Project",
+        content:
+            "Select a solar project, go through the details of the project and decide if it suits your investment goals.",
+        img: "landing_carousel_1.svg",
+    },
+    {
+        title: "Buy Solar Panels",
+        content:
+            "Buy the amount of solar panels you want to invest in the project. The more solar panels you buy, the more electricity you genera",
+        img: "landing_carousel_2.svg",
+    },
+    {
+        title: "Watch Your Investment Grow",
+        content: "Watch your investment grow as the projects generate electricity.",
+        img: "landing_carousel_3.svg",
+    },
+];
+
 const Landing = () => {
     const { isMobile } = useResponsive();
 
     return (
-        <div className="relative px-4 w-full h-full flex flex-col items-center gap-y-16 overflow-x-hidden">
+        <div className="relative px-6 w-full h-full flex flex-col items-center gap-y-16 overflow-x-hidden">
             <NavBar />
             <div className="h-fit flex flex-col text-brand-800 md:grid md:grid-flow-row md:grid-cols-2 md:gap-2">
                 <h1 className="py-4 text-4xl font-bold md:text-5xl md:row-start-1">
@@ -64,8 +85,12 @@ const Landing = () => {
             {isMobile ? (
                 <CarouselInvMobile title={"Diversify your portofolio in 3 steps"} items={items} />
             ) : (
-                <CarouselInvDesktop title={"Diversify your portofolio in 3 steps"} items={items} />
+                <CarouselInvDesktop
+                    title={"Diversify your portofolio in 3 steps"}
+                    items={portofolioItems}
+                />
             )}
+            <Footer />
         </div>
     );
 };
