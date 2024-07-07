@@ -1,16 +1,19 @@
-import '@/style/app.css';
-import { Suspense, lazy } from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import PageLoader from '@/components/PageLoader';
+import "@/style/app.css";
+import { Suspense, lazy } from "react";
+import { BrowserRouter } from "react-router-dom";
+import { AuthContextProvider } from "./context/AuthContext";
+import PageLoader from "@/components/PageLoader";
 
-const App = lazy(() => import('./apps/App'));
+const LoadApp = lazy(() => import("@/components/apps/LoadApp"));
 
 export default function RoutApp() {
-  return (
-    <BrowserRouter>
-        <Suspense fallback={<PageLoader />}>
-          <App />
-        </Suspense>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            {/* <AuthContextProvider> */}
+                <Suspense fallback={<PageLoader />}>
+                    <LoadApp />
+                </Suspense>
+            {/* </AuthContextProvider> */}
+        </BrowserRouter>
+    );
 }

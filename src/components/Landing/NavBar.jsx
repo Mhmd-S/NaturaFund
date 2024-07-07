@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 import useResponsive from "@/hooks/useResponsive";
 import { stopScrolling, allowScrolling } from "@/utils/scrollingControl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -48,12 +49,12 @@ const NavBar = () => {
                     </a>
                 </div>
                 <div className="w-full pt-6 flex items-center justify-evenly border-t-2 md:w-2/3 md:pt-0 md:pr-8 md:border-t-0 md:justify-end md:justify-self-end">
-                    <button className="w-2/5 rounded-md border-2 transition-all border-brand-800 text-brand-800 p-2 md:border-0 hover:text-brand-900 md:w-1/5 md:mr-6">
+                    <Link to="login" className="w-2/5 rounded-md border-2 transition-all border-brand-800 text-brand-800 p-2 md:border-0 hover:text-brand-900 md:w-1/5 md:mr-6">
                         Log In
-                    </button>
-                    <button className="w-2/5 rounded-md transition-all bg-brand-800 p-2 border-2 text-white hover:text-brand-800 md:w-1/5  md:transition-all md:hover:bg-white md:border-brand-800">
+                    </Link>
+                    <Link to="signup" className="w-2/5 rounded-md transition-all bg-brand-800 p-2 border-2 text-white hover:text-brand-800 md:w-1/5  md:transition-all md:hover:bg-white md:border-brand-800">
                         Sign Up
-                    </button>
+                    </Link>
                 </div>
             </div>
             <button

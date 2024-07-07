@@ -21,6 +21,9 @@ export default ({ mode }) => {
     },
     server: {
       port: 3000,
+      // headers: {
+      //   'Content-Type': 'application/javascript'
+      // },
       proxy: {
         '/api': {
           target: proxy_url,

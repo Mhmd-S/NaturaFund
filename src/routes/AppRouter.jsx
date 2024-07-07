@@ -1,5 +1,3 @@
-import {} from 'react-router-dom';
-import {} from 'react-router-dom';
 import { useRoutes } from 'react-router-dom';
 
 import routes from './routes';
