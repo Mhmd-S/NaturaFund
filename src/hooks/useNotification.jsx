@@ -1,6 +1,6 @@
 import React from 'react'
-import errorHandler from '@/utils/errorHandler'
-import successHandler from '@/utils/successHandler'
+import errorHandler from '@/request/errorHandler'
+import successHandler from '@/requet/successHandler'
 import { useAppContext } from '@/context/AppContext'
 
 const useNotification = () => {
