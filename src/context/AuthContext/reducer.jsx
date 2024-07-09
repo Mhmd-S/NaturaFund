@@ -1,13 +1,13 @@
 import * as actionTypes from './types';
 
-const INITIAL_STATE = {
+export const initialState = {
   current: {},
   isLoggedIn: false,
   isLoading: false,
   isSuccess: false,
 };
 
-const authReducer = (state = INITIAL_STATE, action) => {
+export const contextReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.REQUEST_LOADING:
       return {
@@ -16,7 +16,7 @@ const authReducer = (state = INITIAL_STATE, action) => {
         isLoading: true,
       };
     case actionTypes.REQUEST_FAILED:
-      return INITIAL_STATE;
+      return initialState;
 
     case actionTypes.REQUEST_SUCCESS:
       return {
@@ -34,7 +34,7 @@ const authReducer = (state = INITIAL_STATE, action) => {
         isSuccess: true,
       };
     case actionTypes.LOGOUT_SUCCESS:
-      return INITIAL_STATE;
+      return initialState;
 
     case actionTypes.LOGOUT_FAILED:
       return {
@@ -49,4 +49,4 @@ const authReducer = (state = INITIAL_STATE, action) => {
   }
 };
 
-export default authReducer;
+export default contextReducer;

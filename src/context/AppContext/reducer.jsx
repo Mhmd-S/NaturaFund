@@ -7,7 +7,7 @@ export const initialState = {
     description: null,
 };
 
-export function contextReducer(state, action) {
+export const contextReducer = (state, action) => {
     switch (action.type) {
         case actionTypes.CONFIG: {
             return {
@@ -34,4 +34,4 @@ export function contextReducer(state, action) {
             throw new Error(`Unhandled action type: ${action.type}`);
         }
     }
-}
+};

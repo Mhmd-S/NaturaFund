@@ -1,9 +1,9 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 
-import { AppContextProvider } from '@/context/appContext';
-import { useAuthContext } from '@/context/AuthContext';
+// import { AppContextProvider } from '@/context/appContext';
+// import { useAuthContext } from '@/context/AuthContext';
 import PageLoader from '@/components/PageLoader';
-import AuthRouter from '@/router/AuthRouter';
+import AuthRouter from '@/routes/AuthRouter';
 
 const App = lazy(() => import('@/apps/App'));
 
@@ -17,7 +17,7 @@ const DefaultApp = () => (
 
 export default function LoadApp() {
   // const { isLoggedIn } = useAuthContext();
-  const { isLoggedIn } = false;
+  const isLoggedIn = false;
 
   // // Online state
   // const [isOnline, setIsOnline] = useState(navigator.onLine);
