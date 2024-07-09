@@ -6,7 +6,7 @@ const Login = () => {
     const { loginType, setLoginType, renderLogin } = useLogin();
 
     return (
-      <div className="w-3/4">
+      <div className="w-3/4 md:h-3/5">
         {loginType !== 0 ? renderLogin() : <LoginMenu setLoginType={setLoginType} />}
         </div>
         );
