@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 
 // import { AppContextProvider } from '@/context/appContext';
-// import { useAuthContext } from '@/context/AuthContext';
+import { useAuthContext } from '@/context/AuthContext';
 import PageLoader from '@/components/PageLoader';
 import AuthRouter from '@/routes/AuthRouter';
 

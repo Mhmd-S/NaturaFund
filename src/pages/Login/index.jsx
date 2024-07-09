@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Login from "@/components/Login";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLeaf, faMapLocationDot, faSackDollar, faSun } from "@fortawesome/free-solid-svg-icons";

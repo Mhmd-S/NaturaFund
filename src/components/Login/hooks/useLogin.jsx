@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import LoginForm from "@/forms/LoginForm";
 
 const useLogin = () => {
     const [loginType, setLoginType] = useState(0);
@@ -6,11 +7,11 @@ const useLogin = () => {
     // Email, Google
     const renderLogin = () => {
       switch(loginType) {
-        case 0:
-          return;
         case 1:
-          return;
+          return <LoginForm />;
         case 2:
+          return;
+        case 3:
           return;
         default:
           return;
