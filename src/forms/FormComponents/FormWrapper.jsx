@@ -1,7 +1,7 @@
 import React from "react";
 import LoadingIcon from "@/components/common/LoadingIcon";
 
-const InitialForm = ({ children, onSubmit, loading }) => {
+const FormWrapper = ({ children, onSubmit, loading }) => {
     return (
         <>
             {loading ? (
@@ -11,7 +11,7 @@ const InitialForm = ({ children, onSubmit, loading }) => {
             ) : (
                 <form
                     onSubmit={onSubmit}
-                    className="w-full h-full flex flex-col items-center justify-evenly"
+                    className="w-full h-full flex flex-col items-center"
                 >
                     {children}
                 </form>
@@ -20,4 +20,4 @@ const InitialForm = ({ children, onSubmit, loading }) => {
     );
 };
 
-export default InitialForm;
+export default FormWrapper;

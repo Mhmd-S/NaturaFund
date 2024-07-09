@@ -25,7 +25,7 @@ const FormField = ({
                 placeholder={placeholder}
                 {...register(name, validationRules)}
                 {...inputProps}
-                className={`block w-full rounded-md p-1.5 py-2 text-gray-900 outline-none border-2 placeholder:text-gray-400  focus:border-purple-900  sm:text-sm sm:leading-6' ${errors[name] && " border-pink-600 active:border-3"}`}
+                className={`block w-full rounded-md p-2 py-3 text-gray-900 outline-none border-[1px] border-gray-400 placeholder:text-gray-400  focus:border-brand-800  sm:text-sm sm:leading-6' ${errors[name] && " border-pink-800 active:border-3"}`}
             />
 
             <FormFieldError name={name} errors={errors} />

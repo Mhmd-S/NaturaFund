@@ -6,11 +6,11 @@ import { faLeaf, faMapLocationDot, faSackDollar, faSun } from "@fortawesome/free
 const index = () => {
     return (
         <div className="w-full h-screen py-4 flex flex-col items-center gap-y-16 md:grid md:grid-cols-[35%_65%] md:grid-rows-1 md:py-0">
-            <div className="w-full h-full flex flex-col justify-center md:bg-brand-800 md:text-white md:gap-y-16 md:pl-16">
-                <h1 className="h-fit pt-3 flex items-center font-serif text-brand-800 text-3xl md:py-2 md:flex md:items-center md:text-4xl md:border-r-brand-800 md:text-white md:px-6">
+            <div className="w-full px-8 flex flex-col justify-center md:h-full md:bg-brand-800 md:text-white md:gap-y-16">
+                <h1 className="flex items-center font-serif text-brand-800 text-3xl md:text-5xl md:border-r-brand-800 md:text-white">
                     <FontAwesomeIcon
                         icon={faLeaf}
-                        className="mr-3 text-6xl rounded-md bg-brand-800 text-white md:bg-white md:text-brand-800 p-2"
+                        className="mr-3 rounded-md bg-brand-800 text-white md:bg-white md:text-brand-800 p-2"
                     />
                     NaturaFund
                 </h1>
@@ -48,8 +48,8 @@ const index = () => {
                     </div>
                 </div>
             </div>
-            <div className="w-full h-full flex flex-col items-center justify-center gap-y-8">
-                <h2 className="text-brand-900 text-xl font-semibold md:text-4xl">Welcome back!</h2>
+            <div className="w-full flex flex-col items-center justify-center gap-y-8 md:h-full">
+                <h2 className="text-brand-00 text-3xl font-semibold">Welcome back!</h2>
                 <Login />
             </div>
         </div>

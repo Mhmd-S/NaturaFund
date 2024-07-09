@@ -6,9 +6,9 @@ import { faGoogle, faFacebook, faApple } from "@fortawesome/free-brands-svg-icon
 
 const LoginMenu = ({ setLoginType }) => {
     return (
-        <div className="w-full h-full px-16 grid grid-cols-1 grid-flow-row items-center justify-evenly gap-y-6 text-brand-900 md:">
+        <div className="w-full h-full grid grid-cols-1 grid-flow-row items-center justify-evenly gap-y-6 text-brand-900">
           <p className="text-brand-900 font-semibold">
-            Login
+            Login with: 
           </p>
             <div
                 className="w-full px-4 py-2 border-2 border-slate-200 rounded-md flex items-center cursor-pointer hover:border-brand-900"

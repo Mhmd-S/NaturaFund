@@ -3,20 +3,28 @@ import FormButton from "@/forms/FormComponents/FormButton";
 import FormWrapper from "@/forms/FormComponents/FormWrapper";
 import useLoginForm from "@/forms/LoginForm/useLoginForm";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
-const LoginForm = () => {
+const LoginForm = ({ setLoginType }) => {
     const { register, handleSubmit, onSubmit, loading, errors } = useLoginForm();
+    console.log(errors);
     return (
-        <div className="w-full h-5/6 flex flex-col bg-white border-[1.5px] border-[#F76301] p-6 rounded-lg shadow-lg md:w-3/5 md:h-[95%]">
-            <h3 className="w-full text-center text-xl">
-                Please enter your <span className="text-purple-900 font-bold">TP Email</span> and{" "}
-                <span className="text-purple-900 font-bold">Password</span> to log in.
+        <div className="w-full flex flex-col items-center gap-y-8">
+            <h3 className="w-full text-xl">
+                <FontAwesomeIcon
+                    icon={faChevronLeft}
+                    className="mr-4 cursor-pointer"
+                    onClick={() => setLoginType(0)}
+                />
+                Login with Email
             </h3>
 
             <FormWrapper onSubmit={handleSubmit(onSubmit)}>
                 <FormField
                     name="email"
                     type="email"
+                    label="Email Address"
                     register={register}
                     errors={errors}
                     placeholder="Email"
@@ -32,6 +40,7 @@ const LoginForm = () => {
                 <FormField
                     name="password"
                     type="password"
+                    label="Password"
                     register={register}
                     placeholder={"Password"}
                     errors={errors}
@@ -40,23 +49,20 @@ const LoginForm = () => {
                     }}
                 />
 
-                <FormButton text="Log In" loading={loading} />
+                <FormButton
+                    text="Log In"
+                    loading={loading}
+                    disable={Object.keys(errors).length !== 0}
+                />
             </FormWrapper>
 
-            <div className="w-full text-center pt-2 flex flex-col">
+            <div className="w-full text-center text-sm pt-2 flex flex-col">
                 <span>Forgot your password? </span>
                 <Link
                     to="/request-reset-password"
-                    className="text-center text-[#F76301] hover:underline"
+                    className="text-center text-brand-700 hover:underline"
                 >
                     Reset password
-                </Link>
-            </div>
-
-            <div className="w-full text-center pt-2 flex flex-col">
-                <span>Don't have an account? </span>
-                <Link to="/registration" className="text-center text-[#F76301] hover:underline">
-                    Register
                 </Link>
             </div>
         </div>

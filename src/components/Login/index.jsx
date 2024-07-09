@@ -1,15 +1,12 @@
 import React from "react";
 import useLogin from "@/components/Login/hooks/useLogin";
-import LoginMenu from "@/components/Login/LoginMenu";
 
 const Login = () => {
-    const { loginType, setLoginType, renderLogin } = useLogin();
+    const { renderLogin } = useLogin();
 
     return (
-      <div className="w-3/4 md:h-3/5">
-        {loginType !== 0 ? renderLogin() : <LoginMenu setLoginType={setLoginType} />}
-        </div>
-        );
+        <div className="w-4/5 flex flex-col items-center md:h-3/5 md:px-24">{renderLogin()}</div>
+    );
 };
 
 export default Login;
