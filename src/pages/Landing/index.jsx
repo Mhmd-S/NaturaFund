@@ -54,7 +54,7 @@ const Landing = () => {
     const { isMobile } = useResponsive();
 
     return (
-        <div className="relative px-6 w-full h-full flex flex-col items-center gap-y-16 overflow-x-hidden">
+        <div className="relative px-6 w-full h-full flex flex-col items-center gap-y-20 overflow-x-hidden">
             <NavBar />
             <div className="h-fit flex flex-col text-brand-800 md:grid md:grid-flow-row md:grid-cols-2 md:gap-2">
                 <h1 className="py-4 text-4xl font-bold md:text-5xl md:row-start-1">
