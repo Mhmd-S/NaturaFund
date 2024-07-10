@@ -33,13 +33,10 @@ const EmailForm = ({ setRegistrationType, setCurrentStep, setEmail }) => {
                     type="email"
                     register={register}
                     errors={errors}
-                    placeholder="ex. TP012345@mail.apu.edu.my"
+                    placeholder="ex. JohnDoe@email.com"
                     validationRules={{
-                        required: "University email is required",
-                        pattern: {
-                            value: /^(TP\d{6}@mail\.apu\.edu\.my|\d{7}@sd\.taylors\.edu\.my|d{8}@imail\.sunway\.apu\.edu\.my)$/,
-                            message: "Invalid student email",
-                        },
+                        required: "Email is required",
+                        isEmail: "Invalid email",
                     }}
                 />
 
@@ -47,7 +44,7 @@ const EmailForm = ({ setRegistrationType, setCurrentStep, setEmail }) => {
                     label="Password"
                     name="password"
                     type="password"
-                    placeholder="Do not use your APU password"
+                    placeholder="********"
                     register={register}
                     errors={errors}
                     validationRules={{
@@ -73,14 +70,15 @@ const EmailForm = ({ setRegistrationType, setCurrentStep, setEmail }) => {
                     }}
                 /> */}
 
-                <FormButton text="Verify Email" loading={isLoading} />
+                <FormButton
+                    text="Create Account"
+                    loading={isLoading}
+                    disable={Object.keys(errors).length !== 0}
+                />
             </FormWrapper>
             <div className="w-full text-center text-sm pt-2 flex flex-col">
                 <span>Already have an account? </span>
-                <Link
-                    to="/login"
-                    className="text-center text-brand-700 hover:underline"
-                >
+                <Link to="/login" className="text-center text-brand-700 hover:underline">
                     Login Here!
                 </Link>
             </div>

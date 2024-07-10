@@ -27,13 +27,10 @@ const LoginForm = ({ setLoginType }) => {
                     label="Email Address"
                     register={register}
                     errors={errors}
-                    placeholder="Email"
+                    placeholder="ex. JohnDoe@gmail.com"
                     validationRules={{
-                        required: "TP email is required",
-                        pattern: {
-                            value: /^(TP\d{6}@mail\.apu\.edu\.my|\d{7}@sd\.taylors\.edu\.my|d{8}@imail\.sunway\.apu\.edu\.my)$/,
-                            message: "Invalid student email",
-                        },
+                        required: "Email is required",
+                        isEmail: "Invalid email",
                     }}
                 />
 
@@ -42,7 +39,7 @@ const LoginForm = ({ setLoginType }) => {
                     type="password"
                     label="Password"
                     register={register}
-                    placeholder={"Password"}
+                    placeholder="********"
                     errors={errors}
                     validationRules={{
                         required: "Password is required",
