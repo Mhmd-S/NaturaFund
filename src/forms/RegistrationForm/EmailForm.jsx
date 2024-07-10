@@ -5,6 +5,9 @@ import FormWrapper from "@/forms/formComponents/FormWrapper";
 import FormField from "@/forms/formComponents/FormField";
 import { validatePasswords } from "./utils/Step1Validation";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+
 import { Link } from "react-router-dom";
 
 const EmailForm = ({ setCurrentStep, setEmail }) => {
@@ -12,22 +15,20 @@ const EmailForm = ({ setCurrentStep, setEmail }) => {
         useEmailForm({ setCurrentStep, setEmail });
 
     return (
-        <div className="w-full h-full flex flex-col bg-white border-[1.5px] border-[#F76301] p-4 rounded-lg shadow-lg md:w-2/6 md:h-full">
-            <div className="w-full text-center text-xl border-b-[1.5px] pb-4 border-my-orange">
-                <p>
-                    Create a new <span className="text-purple-700 font-bold">account.</span>
-                </p>
-                <p>
-                    It is <span className="text-purple-700 font-bold">quick</span> and{" "}
-                    <span className="text-purple-700 font-bold">easy.</span>
-                </p>
-            </div>
-
+        <div className="w-full flex flex-col items-center gap-y-8">
+            <h3 className="w-full text-xl">
+                <FontAwesomeIcon
+                    icon={faChevronLeft}
+                    className="mr-4 cursor-pointer"
+                    onClick={() => setCurrentStep(0)}
+                />
+                Login with Email
+            </h3>
             <FormWrapper onSubmit={handleSubmit(onSubmit)}>
                 {generalError && <FormGeneralError message={generalError} />}
 
                 <FormField
-                    label="University email"
+                    label="Email"
                     name="email"
                     type="email"
                     register={register}
@@ -74,11 +75,13 @@ const EmailForm = ({ setCurrentStep, setEmail }) => {
 
                 <FormButton text="Verify Email" loading={isLoading} />
             </FormWrapper>
-
-            <div className="w-full text-center pt-2 flex flex-col">
-                <span>Already have an account? </span>
-                <Link to="/login" className="text-center text-[#F76301] hover:underline">
-                    Log In
+            <div className="w-full text-center text-sm pt-2 flex flex-col">
+                <span>Forgot your password? </span>
+                <Link
+                    to="/request-reset-password"
+                    className="text-center text-brand-700 hover:underline"
+                >
+                    Reset password
                 </Link>
             </div>
         </div>
