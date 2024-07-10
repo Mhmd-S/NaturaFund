@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import RegistrationForm from "@/forms/RegistrationForm";
-import RegistrationMenu from "@/components/Registration/RegistrationMenu";
+import RegistrationMenu from "@/modules/RegistrationModule/RegistrationMenu";
 
 const useRegistration = () => {
     const [registrationType, setRegistrationType] = useState(0);

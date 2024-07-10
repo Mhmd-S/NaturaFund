@@ -49,7 +49,7 @@ const Login = () => {
                 </div>
             </div>
             <div className="w-full flex flex-col items-center justify-center gap-y-8 md:h-full">
-                <h2 className="text-brand-00 text-3xl font-semibold">Welcome back!</h2>
+                <h2 className="text-brand-00 text-3xl font-semibold text-brand-900">Welcome back!</h2>
                 <LoginModule />
             </div>
         </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import useRegistration from "@/components/Registration/hooks/useRegistration";
+import useRegistration from "@/modules/RegistrationModule/hooks/useRegistration";
 
 const RegistrationModule = () => {
     const { renderRegistration } = useRegistration();

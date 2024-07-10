@@ -7,9 +7,10 @@ import { faGoogle, faApple } from "@fortawesome/free-brands-svg-icons";
 const RegistrationMenu = ({ setRegistrationType }) => {
     return (
         <div className="w-full h-full grid grid-cols-1 grid-flow-row items-center justify-evenly gap-y-6 text-brand-900">
-          <p className="text-brand-900 font-semibold">
-            Login with: 
-          </p>
+            <h3 className="text-sm text-gray-400">
+                Create an account to start investing in solar projects and earn returns.
+            </h3>
+            <p className="text-brand-900 font-semibold">Login with:</p>
             <div
                 className="w-full px-4 py-2 border-2 border-slate-200 rounded-md flex items-center cursor-pointer hover:border-brand-900"
                 onClick={() => setRegistrationType(1)}

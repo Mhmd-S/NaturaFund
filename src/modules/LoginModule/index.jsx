@@ -1,5 +1,5 @@
 import React from "react";
-import useLogin from "@/components/Login/hooks/useLogin";
+import useLogin from "@/modules/LoginModule/hooks/useLogin";
 
 const LoginModule = () => {
     const { renderLogin } = useLogin();

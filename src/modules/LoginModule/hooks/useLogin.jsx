@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import LoginForm from "@/forms/LoginForm";
-import LoginMenu from "@/components/Login/LoginMenu";
+import LoginMenu from "@/modules/LoginModule/LoginMenu";
 
 const useLogin = () => {
     const [loginType, setLoginType] = useState(0);
