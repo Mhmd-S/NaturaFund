@@ -1,12 +1,12 @@
 import React from "react";
-import Login from "@/components/Login";
+import LoginModule from "@/modules/LoginModule";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLeaf, faMapLocationDot, faSackDollar, faSun } from "@fortawesome/free-solid-svg-icons";
 
-const index = () => {
+const Login = () => {
     return (
         <div className="w-full h-screen py-4 flex flex-col items-center gap-y-16 md:grid md:grid-cols-[35%_65%] md:grid-rows-1 md:py-0">
-            <div className="w-full px-8 flex flex-col justify-center md:h-full md:bg-brand-800 md:text-white md:gap-y-16">
+            <div className="w-full px-8 flex flex-col justify-center md:h-full md:bg-brand-900 md:text-white md:gap-y-16">
                 <h1 className="flex items-center font-serif text-brand-800 text-3xl md:text-5xl md:border-r-brand-800 md:text-white">
                     <FontAwesomeIcon
                         icon={faLeaf}
@@ -50,10 +50,10 @@ const index = () => {
             </div>
             <div className="w-full flex flex-col items-center justify-center gap-y-8 md:h-full">
                 <h2 className="text-brand-00 text-3xl font-semibold">Welcome back!</h2>
-                <Login />
+                <LoginModule />
             </div>
         </div>
     );
 };
 
-export default index;
+export default Login;

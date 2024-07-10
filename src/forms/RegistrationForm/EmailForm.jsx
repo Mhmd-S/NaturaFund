@@ -10,7 +10,7 @@ import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 import { Link } from "react-router-dom";
 
-const EmailForm = ({ setCurrentStep, setEmail }) => {
+const EmailForm = ({ setRegistrationType, setCurrentStep, setEmail }) => {
     const { register, onSubmit, handleSubmit, isLoading, generalError, watchPassword, errors } =
         useEmailForm({ setCurrentStep, setEmail });
 
@@ -20,9 +20,9 @@ const EmailForm = ({ setCurrentStep, setEmail }) => {
                 <FontAwesomeIcon
                     icon={faChevronLeft}
                     className="mr-4 cursor-pointer"
-                    onClick={() => setCurrentStep(0)}
+                    onClick={() => setRegistrationType(0)}
                 />
-                Login with Email
+                Sign Up with Email
             </h3>
             <FormWrapper onSubmit={handleSubmit(onSubmit)}>
                 {generalError && <FormGeneralError message={generalError} />}
@@ -59,7 +59,7 @@ const EmailForm = ({ setCurrentStep, setEmail }) => {
                     }}
                 />
 
-                <FormField
+                {/* <FormField
                     label="Confirm Password"
                     name="confirmPassword"
                     type="password"
@@ -71,17 +71,17 @@ const EmailForm = ({ setCurrentStep, setEmail }) => {
                             return validatePasswords(value, watchPassword);
                         },
                     }}
-                />
+                /> */}
 
                 <FormButton text="Verify Email" loading={isLoading} />
             </FormWrapper>
             <div className="w-full text-center text-sm pt-2 flex flex-col">
-                <span>Forgot your password? </span>
+                <span>Already have an account? </span>
                 <Link
-                    to="/request-reset-password"
+                    to="/login"
                     className="text-center text-brand-700 hover:underline"
                 >
-                    Reset password
+                    Login Here!
                 </Link>
             </div>
         </div>

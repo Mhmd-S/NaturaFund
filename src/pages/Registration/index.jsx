@@ -1,5 +1,5 @@
 import React from "react";
-import Registration from "@/components/Registration";
+import RegistrationModule from "@/components/RegistrationModule";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLeaf, faMapLocationDot, faSackDollar, faSun } from "@fortawesome/free-solid-svg-icons";
@@ -53,7 +53,7 @@ const index = () => {
                 <h2 className="text-brand-00 text-3xl font-semibold">
                     Join us to a more sustainable future
                 </h2>
-                <Registration />
+                <RegistrationModule />
             </div>
         </div>
     );

@@ -1,7 +1,7 @@
 import React from "react";
 import useLogin from "@/components/Login/hooks/useLogin";
 
-const Login = () => {
+const LoginModule = () => {
     const { renderLogin } = useLogin();
 
     return (
@@ -9,4 +9,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default LoginModule;

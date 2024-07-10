@@ -1,7 +1,7 @@
 import React from "react";
 import useRegistration from "@/components/Registration/hooks/useRegistration";
 
-const Registration = () => {
+const RegistrationModule = () => {
     const { renderRegistration } = useRegistration();
 
     return (
@@ -11,4 +11,4 @@ const Registration = () => {
     );
 };
 
-export default Registration;
+export default RegistrationModule;
