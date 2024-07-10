@@ -1,7 +1,7 @@
 import react, { useState } from "react";
-import EmailForm from "@/forms/RegestrationForm/EmailForm";
-import EmailVerificationForm from "@/forms/RegestrationForm/EmailVerificationForm";
-import SuccessMessage from "@/forms/RegestrationForm/SuccessMessage";
+import EmailForm from "@/forms/RegistrationForm/EmailForm";
+import EmailVerificationForm from "@/forms/RegistrationForm/EmailVerificationForm";
+import SuccessMessage from "@/forms/RegistrationForm/SuccessMessage";
 
 const useRegistration = () => {
     const [currentStep, setCurrentStep] = useState(0);

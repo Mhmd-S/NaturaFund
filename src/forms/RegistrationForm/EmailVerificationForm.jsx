@@ -1,7 +1,7 @@
 import useEmailVerificationForm from "@/forms/RegistrationForm/hooks/useEmailVerificationForm";
 import FormField from "@/forms/formComponents/FormField";
 import FormButton from "@/forms/formComponents/FormButton";
-import InitialForm from "@/forms/formComponents/InitialForm";
+import FormWrapper from "@/forms/formComponents/FormWrapper";
 import FormGeneralError from "@/forms/formComponents/FormGeneralError";
 
 const Step2EmailVerification = () => {
@@ -14,7 +14,7 @@ const Step2EmailVerification = () => {
                 email.
             </h3>
 
-            <InitialForm onSubmit={handleSubmit(onSubmit)}>
+            <FormWrapper onSubmit={handleSubmit(onSubmit)}>
                 <FormGeneralError message={generalError} />
 
                 <FormField
@@ -33,7 +33,7 @@ const Step2EmailVerification = () => {
                 />
 
                 <FormButton text="Verify Code" loading={loading} />
-            </InitialForm>
+            </FormWrapper>
         </div>
     );
 };

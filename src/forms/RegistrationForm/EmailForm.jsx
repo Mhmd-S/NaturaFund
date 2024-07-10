@@ -1,8 +1,8 @@
 import { useEmailForm } from "./hooks/useEmailForm";
-import FormButton from "@/forms/FormComponents/FormButton";
-import FormGeneralError from "@/forms/FormComponents/FormGeneralError";
-import FormWrapper from "@/forms/FormComponents/FormWrapper";
-import FormField from "@/forms/FormComponents/FormField";
+import FormButton from "@/forms/formComponents/FormButton";
+import FormGeneralError from "@/forms/formComponents/FormGeneralError";
+import FormWrapper from "@/forms/formComponents/FormWrapper";
+import FormField from "@/forms/formComponents/FormField";
 import { validatePasswords } from "./utils/Step1Validation";
 
 import { Link } from "react-router-dom";
