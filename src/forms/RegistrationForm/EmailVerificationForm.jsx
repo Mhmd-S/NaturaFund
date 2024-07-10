@@ -4,7 +4,7 @@ import FormButton from "@/forms/formComponents/FormButton";
 import FormWrapper from "@/forms/formComponents/FormWrapper";
 import FormGeneralError from "@/forms/formComponents/FormGeneralError";
 
-const Step2EmailVerification = () => {
+const EmailVerificationForm = () => {
     const { onSubmit, handleSubmit, register, loading, generalError, errors } = useEmailVerificationForm();
 
     return (
@@ -38,4 +38,4 @@ const Step2EmailVerification = () => {
     );
 };
 
-export default Step2EmailVerification;
+export default EmailVerificationForm;

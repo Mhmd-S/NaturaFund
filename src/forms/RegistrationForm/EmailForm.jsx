@@ -7,7 +7,7 @@ import { validatePasswords } from "./utils/Step1Validation";
 
 import { Link } from "react-router-dom";
 
-const Step1Email = () => {
+const EmailForm = () => {
     const { register, handleSubmit, onSubmit, watchPassword, generalError, loading, errors } =
         useEmailForm();
 
@@ -85,4 +85,4 @@ const Step1Email = () => {
     );
 };
 
-export default Step1Email;
+export default EmailForm;
