@@ -7,9 +7,9 @@ import { validatePasswords } from "./utils/Step1Validation";
 
 import { Link } from "react-router-dom";
 
-const EmailForm = () => {
-    const { register, handleSubmit, onSubmit, watchPassword, generalError, loading, errors } =
-        useEmailForm();
+const EmailForm = ({ setCurrentStep, setEmail }) => {
+    const { register, onSubmit, handleSubmit, isLoading, generalError, watchPassword, errors } =
+        useEmailForm({ setCurrentStep, setEmail });
 
     return (
         <div className="w-full h-full flex flex-col bg-white border-[1.5px] border-[#F76301] p-4 rounded-lg shadow-lg md:w-2/6 md:h-full">
@@ -72,7 +72,7 @@ const EmailForm = () => {
                     }}
                 />
 
-                <FormButton text="Verify Email" loading={loading} />
+                <FormButton text="Verify Email" loading={isLoading} />
             </FormWrapper>
 
             <div className="w-full text-center pt-2 flex flex-col">

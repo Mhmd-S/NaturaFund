@@ -4,8 +4,9 @@ import FormButton from "@/forms/formComponents/FormButton";
 import FormWrapper from "@/forms/formComponents/FormWrapper";
 import FormGeneralError from "@/forms/formComponents/FormGeneralError";
 
-const EmailVerificationForm = () => {
-    const { onSubmit, handleSubmit, register, loading, generalError, errors } = useEmailVerificationForm();
+const EmailVerificationForm = ({ setCurrentStep, setEmail, email }) => {
+    const { onSubmit, handleSubmit, register, loading, generalError, errors } =
+        useEmailVerificationForm({ setCurrentStep, setEmail, email });
 
     return (
         <div className="w-full h-3/4 flex flex-col justify-evenly bg-white border-[1.5px] border-my-orange p-4 rounded-lg shadow-lg md:w-2/6 md:h-5/6">
