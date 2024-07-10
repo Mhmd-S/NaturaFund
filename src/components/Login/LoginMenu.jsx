@@ -33,7 +33,7 @@ const LoginMenu = ({ setLoginType }) => {
             </div>
             <p className="text-sm">
                 Dont have an account?{" "}
-                <Link className="text-brand-700 hover:text-brand-900 hover:underline">
+                <Link to="/registration" className="text-brand-700 hover:text-brand-900 hover:underline">
                     Register Here!
                 </Link>
             </p>
