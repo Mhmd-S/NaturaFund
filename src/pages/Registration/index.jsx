@@ -1,5 +1,5 @@
 import React from "react";
-import Registration from "@/forms/RegestrationForm";
+import Registration from "@/forms/RegistrationForm";
 
 const index = () => {
     return <Registration />;
