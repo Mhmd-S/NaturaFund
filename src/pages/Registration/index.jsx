@@ -50,7 +50,7 @@ const index = () => {
                 </div>
             </div>
             <div className="w-full flex flex-col items-center justify-center gap-y-8 md:h-full">
-                <h2 className="text-brand-00 text-3xl font-semibold text-brand-900">
+                <h2 className="text-brand-00 text-2xl font-semibold text-brand-900">
                     Join us to a more sustainable future!
                 </h2>
                 <RegistrationModule />

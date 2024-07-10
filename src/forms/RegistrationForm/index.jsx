@@ -1,9 +1,9 @@
 import { AuthContextProvider } from "@/context/AuthContext";
 
-import useRegistration from "./hooks/useRegistration";
+import useRegistrationForm from "./hooks/useRegistartionForm";
 
 const Registration = ({ setRegistrationType }) => {
-    const { renderStage } = useRegistration({ setRegistrationType });
+    const { renderStage } = useRegistrationForm({ setRegistrationType });
 
     return <AuthContextProvider>{renderStage()}</AuthContextProvider>;
 };

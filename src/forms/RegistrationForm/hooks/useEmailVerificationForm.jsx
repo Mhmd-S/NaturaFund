@@ -1,9 +1,14 @@
-import { useState } from "react";
-
+import react, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 
-const useVerifyEmail = () => {
+import { useAuthContext } from "@/context/AuthContext";
+
+const useVerifyEmail = ({ setCurrentStep, email }) => {
     const [generalError, setGeneralError] = useState("");
+
+    const { state, authContextAction } = useAuthContext();
+
+    const { isLoading, isSuccess } = state;
 
     const {
         register,
@@ -11,31 +16,20 @@ const useVerifyEmail = () => {
         formState: { errors },
     } = useForm();
 
+    useEffect(() => {
+        if (isSuccess) setCurrentStep(1);
+    }, [isSuccess, isLoading]);
 
     const onSubmit = (data) => {
-        handleVerifyCode(data);
-    };
-
-    const handleVerifyCode = async (data) => {
-        setLoading(true);
-        const response = await userAPI.verifyCode(userInfo.email, data.code);
-        setLoading(false);
-
-        if (response.data.status === "success") {
-            userAPI.registerUser(userInfo.email, userInfo.password).then(() => {
-                goNextStage();
-            });
-        } else {
-            console.log(response);
-            setGeneralError(response.data.message?.code || response.data.message);
-        }
+        // Todo
+        authContextAction.verifyEmail(data);
     };
 
     return {
         onSubmit,
         handleSubmit,
         register,
-        loading,
+        isLoading,
         generalError,
         errors,
     };
