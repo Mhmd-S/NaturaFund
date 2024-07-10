@@ -5,6 +5,7 @@ export const initialState = {
   isLoggedIn: false,
   isLoading: false,
   isSuccess: false,
+  error: null,
 };
 
 export const contextReducer = (state = initialState, action) => {
@@ -14,9 +15,14 @@ export const contextReducer = (state = initialState, action) => {
         ...state,
         isLoggedIn: false,
         isLoading: true,
+        error:null,
       };
+
     case actionTypes.REQUEST_FAILED:
-      return initialState;
+      return {
+        ...state,
+        error: action.payload,
+      };
 
     case actionTypes.REQUEST_SUCCESS:
       return {

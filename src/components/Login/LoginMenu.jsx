@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import { faGoogle, faFacebook, faApple } from "@fortawesome/free-brands-svg-icons";
+import { faGoogle, faApple } from "@fortawesome/free-brands-svg-icons";
 
 const LoginMenu = ({ setLoginType }) => {
     return (
@@ -16,13 +16,6 @@ const LoginMenu = ({ setLoginType }) => {
             >
                 <FontAwesomeIcon icon={faEnvelope} />
                 <p className="pl-6">Email</p>
-            </div>
-            <div
-                className="w-full px-4 p-2 border-2 border-slate-200 rounded-md flex items-center cursor-pointer hover:border-brand-900 "
-                onClick={() => setLoginType(2)}
-            >
-                <FontAwesomeIcon icon={faFacebook} />
-                <p className="pl-6">Facebook</p>
             </div>
             <div
                 className="w-full px-4 p-2 border-2 border-slate-200 rounded-md flex items-center cursor-pointer hover:border-brand-900 "
