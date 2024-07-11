@@ -1,12 +1,28 @@
 import React from "react";
-import useNav from "@/components/Nav/hooks/useNav";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLeaf } from "@fortawesome/free-solid-svg-icons";
+import { faLeaf, faHome, faCompass, faCog, faGauge } from "@fortawesome/free-solid-svg-icons";
+
+const items = [
+    {
+        name: "Home",
+        icon: faHome,
+    },
+    {
+        name: "Dashboard",
+        icon: faGauge,
+    },
+    {
+        name: "Explore",
+        icon: faCompass,
+    },
+    {
+        name: "Settings",
+        icon: faCog,
+    },
+];
 
 const Nav = () => {
-    const { renderNavItems } = useNav();
-
     return (
         <div className="w-48 h-screen flex flex-col items-center gap-y-8 bg-[#F1F2F7]">
             <Link
@@ -19,7 +35,17 @@ const Nav = () => {
                 />
                 <span>NaturaFund</span>
             </Link>
-            <ul className="flex flex-col gap-y-8 text-sm text-[#A6ABC8]">{renderNavItems()}</ul>
+            <ul className="flex flex-col gap-y-8 text-sm text-[#A6ABC8]">
+                {items.map((item, index) => (
+                    <li
+                        key={index}
+                        className="flex items-center gap-x-4 cursor-pointer hover:bg-[#A6ABC8]"
+                    >
+                        <FontAwesomeIcon icon={item.icon} />
+                        <span className="ml-2">{item.name}</span>
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 };
