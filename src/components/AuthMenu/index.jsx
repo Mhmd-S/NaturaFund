@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const AuthMenu = ({ items, setAuthType, alternative, title, subTitle }) => {
+    
     const renderItems = () => {
         return items.map((item, index) => (
             <div

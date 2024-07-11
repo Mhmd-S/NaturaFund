@@ -3,9 +3,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { useAppContext } from "@/context/appContext";
 
-import useLanguage from "@/locale/useLanguage";
-
-
 import useResponsive from "@/hooks/useResponsive";
 
 const items = [
@@ -30,7 +27,6 @@ const useNavContainer = () => {
     const [showLogoApp, setLogoApp] = useState(isNavMenuClose);
     const [currentPath, setCurrentPath] = useState(location.pathname.slice(1));
 
-    const translate = useLanguage();
     const navigate = useNavigate();
 
     useEffect(() => {
