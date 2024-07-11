@@ -60,7 +60,7 @@ let routes = {
             element: <Navigate to="/" />,
         },
         {
-            path: "/",
+            path: "/dashboard",
             element: <Dashboard />,
         },
         // {
