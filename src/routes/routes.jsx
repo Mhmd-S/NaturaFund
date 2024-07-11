@@ -1,6 +1,6 @@
-import { lazy } from 'react';
+import { lazy } from "react";
 
-import { Navigate } from 'react-router-dom';
+import { Navigate } from "react-router-dom";
 
 // const Logout = lazy(() => import('@/pages/Logout.jsx'));
 // const NotFound = lazy(() => import('@/pages/NotFound.jsx'));
@@ -42,147 +42,151 @@ import { Navigate } from 'react-router-dom';
 
 // const About = lazy(() => import('@/pages/About'));
 
-
+const Dashboard = lazy(() => import("@/pages/Dashboard"));
 
 let routes = {
-  expense: [],
-  default: [
-    {
-      path: '/login',
-      element: <Navigate to="/" />,
-    },
-    {
-      path: '/verify/*',
-      element: <Navigate to="/" />,
-    },
-    {
-      path: '/resetpassword/*',
-      element: <Navigate to="/" />,
-    },
-    // {
-    //   path: '/people',
-    //   element: <People />,
-    // },
-    // {
-    //   path: '/company',
-    //   element: <Company />,
-    // },
-    // {
-    //   path: '/product',
-    //   element: <Product />,
-    // },
-    // {
-    //   path: '/category/product',
-    //   element: <ProductCategory />,
-    // },
+    expense: [],
+    default: [
+        {
+            path: "/login",
+            element: <Navigate to="/" />,
+        },
+        {
+            path: "/verify/*",
+            element: <Navigate to="/" />,
+        },
+        {
+            path: "/resetpassword/*",
+            element: <Navigate to="/" />,
+        },
+        {
+            path: "/",
+            element: <Dashboard />,
+        },
+        // {
+        //   path: '/people',
+        //   element: <People />,
+        // },
+        // {
+        //   path: '/company',
+        //   element: <Company />,
+        // },
+        // {
+        //   path: '/product',
+        //   element: <Product />,
+        // },
+        // {
+        //   path: '/category/product',
+        //   element: <ProductCategory />,
+        // },
 
-    // {
-    //   path: '/invoice',
-    //   element: <Invoice />,
-    // },
-    // {
-    //   path: '/invoice/create',
-    //   element: <InvoiceCreate />,
-    // },
-    // {
-    //   path: '/invoice/read/:id',
-    //   element: <InvoiceRead />,
-    // },
-    // {
-    //   path: '/invoice/update/:id',
-    //   element: <InvoiceUpdate />,
-    // },
-    // {
-    //   path: '/invoice/pay/:id',
-    //   element: <InvoiceRecordPayment />,
-    // },
-    // {
-    //   path: '/quote',
-    //   element: <Quote />,
-    // },
-    // {
-    //   path: '/quote/create',
-    //   element: <QuoteCreate />,
-    // },
-    // {
-    //   path: '/quote/read/:id',
-    //   element: <QuoteRead />,
-    // },
-    // {
-    //   path: '/quote/update/:id',
-    //   element: <QuoteUpdate />,
-    // },
-    // {
-    //   path: '/payment',
-    //   element: <Payment />,
-    // },
-    // {
-    //   path: '/payment/read/:id',
-    //   element: <PaymentRead />,
-    // },
-    // {
-    //   path: '/payment/update/:id',
-    //   element: <PaymentUpdate />,
-    // },
+        // {
+        //   path: '/invoice',
+        //   element: <Invoice />,
+        // },
+        // {
+        //   path: '/invoice/create',
+        //   element: <InvoiceCreate />,
+        // },
+        // {
+        //   path: '/invoice/read/:id',
+        //   element: <InvoiceRead />,
+        // },
+        // {
+        //   path: '/invoice/update/:id',
+        //   element: <InvoiceUpdate />,
+        // },
+        // {
+        //   path: '/invoice/pay/:id',
+        //   element: <InvoiceRecordPayment />,
+        // },
+        // {
+        //   path: '/quote',
+        //   element: <Quote />,
+        // },
+        // {
+        //   path: '/quote/create',
+        //   element: <QuoteCreate />,
+        // },
+        // {
+        //   path: '/quote/read/:id',
+        //   element: <QuoteRead />,
+        // },
+        // {
+        //   path: '/quote/update/:id',
+        //   element: <QuoteUpdate />,
+        // },
+        // {
+        //   path: '/payment',
+        //   element: <Payment />,
+        // },
+        // {
+        //   path: '/payment/read/:id',
+        //   element: <PaymentRead />,
+        // },
+        // {
+        //   path: '/payment/update/:id',
+        //   element: <PaymentUpdate />,
+        // },
 
-    // {
-    //   path: '/settings',
-    //   element: <Settings />,
-    // },
-    // {
-    //   path: '/settings/edit/:settingsKey',
-    //   element: <Settings />,
-    // },
-    // {
-    //   path: '/payment/mode',
-    //   element: <PaymentMode />,
-    // },
-    // {
-    //   path: '/taxes',
-    //   element: <Taxes />,
-    // },
+        // {
+        //   path: '/settings',
+        //   element: <Settings />,
+        // },
+        // {
+        //   path: '/settings/edit/:settingsKey',
+        //   element: <Settings />,
+        // },
+        // {
+        //   path: '/payment/mode',
+        //   element: <PaymentMode />,
+        // },
+        // {
+        //   path: '/taxes',
+        //   element: <Taxes />,
+        // },
 
-    // {
-    //   path: '/settings/advanced',
-    //   element: <AdvancedSettings />,
-    // },
-    // {
-    //   path: '/profile',
-    //   element: <Profile />,
-    // },
-    // {
-    //   path: '/lead',
-    //   element: <Lead />,
-    // },
-    // {
-    //   path: '/offer',
-    //   element: <Offer />,
-    // },
-    // {
-    //   path: '/offer/create',
-    //   element: <OfferCreate />,
-    // },
-    // {
-    //   path: '/offer/read/:id',
-    //   element: <OfferRead />,
-    // },
-    // {
-    //   path: '/offer/update/:id',
-    //   element: <OfferUpdate />,
-    // },
-    // {
-    //   path: '/expenses',
-    //   element: <Expense />,
-    // },
-    // {
-    //   path: 'category/expenses',
-    //   element: <ExpenseCategory />,
-    // },
-    // {
-    //   path: '*',
-    //   element: <NotFound />,
-    // },
-  ],
+        // {
+        //   path: '/settings/advanced',
+        //   element: <AdvancedSettings />,
+        // },
+        // {
+        //   path: '/profile',
+        //   element: <Profile />,
+        // },
+        // {
+        //   path: '/lead',
+        //   element: <Lead />,
+        // },
+        // {
+        //   path: '/offer',
+        //   element: <Offer />,
+        // },
+        // {
+        //   path: '/offer/create',
+        //   element: <OfferCreate />,
+        // },
+        // {
+        //   path: '/offer/read/:id',
+        //   element: <OfferRead />,
+        // },
+        // {
+        //   path: '/offer/update/:id',
+        //   element: <OfferUpdate />,
+        // },
+        // {
+        //   path: '/expenses',
+        //   element: <Expense />,
+        // },
+        // {
+        //   path: 'category/expenses',
+        //   element: <ExpenseCategory />,
+        // },
+        // {
+        //   path: '*',
+        //   element: <NotFound />,
+        // },
+    ],
 };
 
 export default routes;
