@@ -2,7 +2,7 @@ import React from "react";
 import RegistrationModule from "@/modules/RegistrationModule";
 import AuthPage from "@/components/AuthPage";
 
-const index = () => {
+const Registration = () => {
     return (
         <AuthPage>
             <h2 className="text-lg font-semibold text-brand-900 md:text-2xl">
@@ -13,4 +13,4 @@ const index = () => {
     );
 };
 
-export default index;
+export default Registration;

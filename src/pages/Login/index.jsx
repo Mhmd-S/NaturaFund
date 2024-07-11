@@ -1,6 +1,7 @@
 import React from "react";
 import LoginModule from "@/modules/LoginModule";
 import AuthPage from "@/components/AuthPage";
+
 const Login = () => {
     return (
         <AuthPage>
