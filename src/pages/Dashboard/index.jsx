@@ -3,8 +3,8 @@ import Nav from '@/components/Nav'
 
 const Dashboard = () => {
   return (
-    <div className='w-screen'>
-      <Nav />
+    <div>
+      dash
     </div>
   )
 }
