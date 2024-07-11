@@ -52,7 +52,7 @@ const NavBar = () => {
                     <Link to="login" className="w-2/5 rounded-md border-2 transition-all border-brand-800 text-brand-800 p-2 md:border-0 hover:text-brand-900 md:w-1/5 md:mr-6">
                         Log In
                     </Link>
-                    <Link to="signup" className="w-2/5 rounded-md transition-all bg-brand-800 p-2 border-2 text-white hover:text-brand-800 md:w-1/5  md:transition-all md:hover:bg-white md:border-brand-800">
+                    <Link to="registration" className="w-2/5 rounded-md transition-all bg-brand-800 p-2 border-2 text-white hover:text-brand-800 md:w-1/5  md:transition-all md:hover:bg-white md:border-brand-800">
                         Sign Up
                     </Link>
                 </div>
