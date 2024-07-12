@@ -1,14 +1,13 @@
 import React from "react";
-import { BarChart } from "@mui/x-charts";
+import { PieChart } from "@mui/x-charts";
 
 const Portofolio = () => {
     return (
         <div className="w-full h-full flex flex-col">
             <div className="w-full h-full flex flex-col">
-                <p className="text-sm">Portofolio</p>
-                <p className="text-sm text-gray">Total: 12400</p>
+                <p className="text-black text-lg font-semibold">$0.00</p>
             </div>
-            <BarChart
+            <PieChart
                 series={[
                     {
                         data: [
