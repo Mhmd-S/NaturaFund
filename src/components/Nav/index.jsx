@@ -52,8 +52,8 @@ const Nav = () => {
                 />
                 <span>NaturaFund</span>
             </Link>
-            <div className="w-full flex flex-col px-4 text-sm text-[#A6ABC8]">
-                <p className="pl-5 text-[0.8rem]">MENU</p>
+            <div className="w-full flex flex-col px-4 text-[0.8rem] text-[#A6ABC8]">
+                <p className="pl-5 text-[0.75rem]">MENU</p>
                 {itemsMenu.map((item, index) => (
                     <Link
                         key={index}
@@ -65,8 +65,8 @@ const Nav = () => {
                     </Link>
                 ))}
             </div>
-            <div className="w-full flex flex-col px-4 text-sm text-[#A6ABC8]">
-                <p className="pl-5 text-[0.8rem]">OTHERS</p>
+            <div className="w-full flex flex-col px-4 text-[0.8rem] text-[#A6ABC8]">
+                <p className="pl-5 text-[0.75rem]">OTHERS</p>
                 {itemsOthers.map((item, index) => (
                     <Link
                         key={index}

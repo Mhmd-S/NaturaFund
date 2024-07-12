@@ -13,5 +13,5 @@ What should our dashboard have?
 - Investments type and amount - Pie chart
 -- A pie chart that displays the types of invesmtents, with the amount and net total
 
-- New Project Published
+- New Projects Published
 -- A few projects then a button that takes you to the explore tab
