@@ -1,8 +1,17 @@
-# React + Vite
+Types of investemnts?
+- Lending Style
+- Equity
+- Buying Solar Panels and leasing (RESCO style)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+------------------------------------------
 
-Currently, two official plugins are available:
+What should our dashboard have?
+- Total Revenue - Bar Chart
+-- Monthly Based
+--- Total returns received during that month
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Investments type and amount - Pie chart
+-- A pie chart that displays the types of invesmtents, with the amount and net total
+
+- New Project Published
+-- A few projects then a button that takes you to the explore tab

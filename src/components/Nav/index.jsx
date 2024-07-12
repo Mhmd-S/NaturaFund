@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLeaf, faHome, faCompass, faCog, faGauge, faQuestion, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faLeaf, faHome, faCompass, faCog, faGauge, faQuestion, faUser, faFunnelDollar } from "@fortawesome/free-solid-svg-icons";
 
 const itemsMenu = [
     {
@@ -15,6 +15,10 @@ const itemsMenu = [
     {
         name: "Explore",
         icon: faCompass,
+    },
+    {
+        name: "Sponsor Tab",
+        icon: faFunnelDollar,
     },
 ];
 
