@@ -1,5 +1,6 @@
 import React from "react";
 import Revenue from "@/components/Home/Revenue";
+import Portofolio from "@/components/Home/Portofolio";
 
 const Home = () => {
     return (
@@ -7,6 +8,7 @@ const Home = () => {
             <h1 className="text-2xl text-brand-800 font-semibold">Home</h1>
             <div className="w-full h-full py-6 grid grid-cols[70%_30%] grid-rows-2">
                 <Revenue />
+                <Portofolio />
             </div>
         </div>
     );
