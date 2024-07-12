@@ -77,7 +77,7 @@ const Landing = () => {
                 </div>
                 <Link
                     to="registration"
-                    className="w-2/5 my-5 flex items-center justify-center rounded-md transition-all bg-brand-800 p-2 border-2 text-white hover:text-brand-800    md:col-start-1 md:align-self-center md:transition-all md:hover:bg-white md:border-brand-800"
+                    className="w-2/5 my-5 flex items-center justify-center rounded-md transition-all bg-brand-800 p-2 border-2 text-white hover:text-brand-800 md:col-start-1 md:align-self-center md:transition-all md:hover:bg-white md:border-brand-800"
                 >
                     <span>Sign Up Now</span>
                 </Link>

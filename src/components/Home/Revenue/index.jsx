@@ -6,17 +6,17 @@ import { BarChart } from "@mui/x-charts";
 const Revenue = () => {
     return (
         <div className="w-full h-full p-4 grid grid-flow-row grid-cols-1 border-gray-light border-r-[1px] border-b-[1px]">
-            <div className="w-full h-full grid grid-cols-2 grid-rows-3 grid-flow-col">
+            <div className="w-full h-full grid grid-cols-2 grid-rows-2 grid-flow-col">
                 <p className="text-sm">Revenue</p>
                 <p className="text-lg font-semibold">$0.00</p>
-                <p className="text-sm text-gray-med">
+                <p className="text-sm text-gray-med text-right">2024</p>
+                <p className="text-sm text-gray-med text-right">
                     <span className="text-green-500">
                         <FontAwesomeIcon icon={faArrowUp} className="pr-1" />
                         0.00%
                     </span>{" "}
                     vs last month
                 </p>
-                <p className="text-sm text-gray-med text-right">Revenue from this year</p>
             </div>
             <BarChart
                 xAxis={[
@@ -49,9 +49,7 @@ const Revenue = () => {
                     legend: {
                         direction: "row",
                         position: { vertical: "bottom", horizontal: "left" },
-                        padding: {
-                            left:10,
-                        },
+                        padding: 0,
                         labelStyle: { fontSize: "0.7rem" },
                         itemMarkWidth: 5,
                         itemMarkHeight: 5,
@@ -60,7 +58,7 @@ const Revenue = () => {
                 grid={{ horizontal: true }}
                 margin={{
                     top: 10,
-                    left:25,
+                    left: 25,
                     bottom: 40,
                 }}
             />
