@@ -5,7 +5,7 @@ import { BarChart } from "@mui/x-charts";
 
 const Revenue = () => {
     return (
-        <div className="w-full h-full flex flex-col">
+        <div className="w-full h-full flex flex-col border-r-[1px] border-b-[1px]">
             <div className="w-full h-full grid grid-cols-2 grid-rows-3 grid-flow-col">
                 <p className="text-sm">Revenue</p>
                 <p className="text-lg font-semibold">$0.00</p>
