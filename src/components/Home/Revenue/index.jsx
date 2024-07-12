@@ -5,18 +5,18 @@ import { BarChart } from "@mui/x-charts";
 
 const Revenue = () => {
     return (
-        <div className="w-full h-full flex flex-col border-r-[1px] border-b-[1px]">
+        <div className="w-full h-full p-4 grid grid-flow-row grid-cols-1 border-gray-light border-r-[1px] border-b-[1px]">
             <div className="w-full h-full grid grid-cols-2 grid-rows-3 grid-flow-col">
                 <p className="text-sm">Revenue</p>
                 <p className="text-lg font-semibold">$0.00</p>
-                <p className="text-sm text-gray">
+                <p className="text-sm text-gray-med">
                     <span className="text-green-500">
                         <FontAwesomeIcon icon={faArrowUp} className="pr-1" />
                         0.00%
                     </span>{" "}
                     vs last month
                 </p>
-                <p className="text-sm text-gray">Revenue from this year</p>
+                <p className="text-sm text-gray-med text-right">Revenue from this year</p>
             </div>
             <BarChart
                 xAxis={[
@@ -36,22 +36,33 @@ const Revenue = () => {
                             "Nov",
                             "Dec",
                         ],
+                        categoryGapRatio: 0.5,
+                        barGapRatio: 0.6,
                     },
                 ]}
                 series={[
-                    { data: [3, 5] },
-                    { data: [6, 3] },
-                    { data: [5, 6] },
-                    { data: [7, 8] },
-                    { data: [9, 10] },
-                    { data: [10, 12] },
-                    { data: [12, 15] },
-                    { data: [15, 18] },
-                    { data: [18, 20] },
-                    { data: [20, 22] },
-                    { data: [22, 25] },
-                    { data: [25, 30] },
+                    { label: "This Year", data: [4, 3, 5, 6, 2, 5, 6, 2, 1, 7, 9, 11] },
+                    { label: "Last Year", data: [1, 6, 3, 6, 5, 2, 7, 4, 2, 7, 1, 2] },
                 ]}
+                colors={["#5A6ACF", "#E6E8EC"]}
+                slotProps={{
+                    legend: {
+                        direction: "row",
+                        position: { vertical: "bottom", horizontal: "left" },
+                        padding: {
+                            left:10,
+                        },
+                        labelStyle: { fontSize: "0.7rem" },
+                        itemMarkWidth: 5,
+                        itemMarkHeight: 5,
+                    },
+                }}
+                grid={{ horizontal: true }}
+                margin={{
+                    top: 10,
+                    left:25,
+                    bottom: 40,
+                }}
             />
         </div>
     );

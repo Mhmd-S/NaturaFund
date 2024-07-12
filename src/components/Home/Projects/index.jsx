@@ -33,7 +33,7 @@ const dummyProjects = [
 
 const Projects = () => {
     return (
-        <div className="w-full h-full p-4 flex flex-col">
+        <div className="w-full h-full p-4 flex flex-col border-gray-light border-r-[1px]">
             <div className="w-full flex justify-between items-center">
                 <p className="text-sm">New Projects</p>
                 <button className="py-1 px-2 rounded-md border-[0.5px] border-brand-200 shadow-sm text-brand-900 bg-brand-50">

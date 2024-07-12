@@ -17,7 +17,10 @@ export default {
 					900: '#5A6ACF',
 					950: '#212C73',
 				},
-				gray: '#7d7d7d',
+				gray: {
+					light: 'C8CBD9',
+					med: '#7d7d7d',
+				},
 			},
 			gridTemplateRows: {
 				settingsLargeScreen: 'repeat(6, 40%)',
