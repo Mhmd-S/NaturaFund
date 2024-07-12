@@ -5,18 +5,19 @@ export default {
 		extend: {
 			colors: {
 				brand: {
-					50: "#E5F2FF",
-					100: "#D1E7FF",
-					200: "#9ECDFF",
-					300: "#70B5FF",
-					400: "#429EFF",
-					500: "#0F83FF",
-					600: "#006CE0",
-					700: "#0056B3",
-					800: "#003E80",
-					900: "#002852",
-					950: "#001429"
+					50: '#F7F8FD',
+					100: '#EBEDF9',
+					200: '#DBDFF5',
+					300: '#C8CDEF',
+					400: '#B4BBE9',
+					500: '#A4ADE5',
+					600: '#909BDF',
+					700: '#7D89D9',
+					800: '#6D7BD4',
+					900: '#5A6ACF',
+					950: '#212C73',
 				},
+				gray: '#7d7d7d',
 			},
 			gridTemplateRows: {
 				settingsLargeScreen: 'repeat(6, 40%)',

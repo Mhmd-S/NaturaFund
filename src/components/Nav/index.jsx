@@ -41,10 +41,10 @@ const Nav = () => {
     const location = useLocation();
 
     return (
-        <div className="w-52 h-screen flex flex-col items-center gap-y-8 bg-brand-50 bg-opacity-45">
+        <div className="w-full h-full flex flex-col items-center gap-y-5 bg-brand-50 bg-opacity-45">
             <Link
                 to="/"
-                className="w-full py-2 flex items-center justify-center font-serif text-brand-800 text-xl border-b-[1px] border-[#C8CBD9] cursor-pointer md:text-xl md:border-r-brand-800"
+                className="w-full p-4 flex items-center font-serif text-brand-800 text-xl cursor-pointer md:text-xl md:border-r-brand-800"
             >
                 <FontAwesomeIcon
                     icon={faLeaf}

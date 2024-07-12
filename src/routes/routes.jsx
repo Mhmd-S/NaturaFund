@@ -43,6 +43,7 @@ import { Navigate } from "react-router-dom";
 // const About = lazy(() => import('@/pages/About'));
 
 const Dashboard = lazy(() => import("@/pages/Dashboard"));
+const Home = lazy(() => import("@/pages/Home"));
 
 let routes = {
     expense: [],
@@ -58,6 +59,10 @@ let routes = {
         {
             path: "/resetpassword/*",
             element: <Navigate to="/" />,
+        },
+        {
+            path: "/home",
+            element: <Home />,
         },
         {
             path: "/dashboard",
