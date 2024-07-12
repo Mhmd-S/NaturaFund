@@ -1,9 +1,9 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLeaf, faHome, faCompass, faCog, faGauge } from "@fortawesome/free-solid-svg-icons";
+import { faLeaf, faHome, faCompass, faCog, faGauge, faQuestion, faUser } from "@fortawesome/free-solid-svg-icons";
 
-const items = [
+const itemsMenu = [
     {
         name: "Home",
         icon: faHome,
@@ -16,11 +16,22 @@ const items = [
         name: "Explore",
         icon: faCompass,
     },
+];
+
+const itemsOthers = [
+    {
+        name: "Profile",
+        icon: faUser,
+    },
     {
         name: "Settings",
         icon: faCog,
     },
-];
+    {
+        name: "Help",
+        icon: faQuestion,
+    },
+]
 
 const Nav = () => {
     const location = useLocation();
@@ -39,11 +50,24 @@ const Nav = () => {
             </Link>
             <div className="w-full flex flex-col px-4 text-sm text-[#A6ABC8]">
                 <p className="pl-5 text-[0.8rem]">MENU</p>
-                {items.map((item, index) => (
+                {itemsMenu.map((item, index) => (
                     <Link
                         key={index}
                         to={`/${item.name.toLowerCase()}`}
-                        className={`w-full px-5 py-3 flex items-center gap-x-4 cursor-pointer rounded-md hover:bg-brand-100 hover:bg-opacity-50 ${location.pathname === `/${item.name.toLowerCase()}` ? "bg-brand-100 bg-opacity-40 text-brand-900" : ""}`}
+                        className={`w-full px-5 py-3 flex items-center gap-x-4 cursor-pointer rounded-md hover:bg-brand-100 hover:bg-opacity-50 ${location.pathname === `/${item.name.toLowerCase()}` ? "bg-brand-100 bg-opacity-40 text-brand-800" : ""}`}
+                    >
+                        <FontAwesomeIcon icon={item.icon} />
+                        <span className="ml-2">{item.name}</span>
+                    </Link>
+                ))}
+            </div>
+            <div className="w-full flex flex-col px-4 text-sm text-[#A6ABC8]">
+                <p className="pl-5 text-[0.8rem]">OTHERS</p>
+                {itemsOthers.map((item, index) => (
+                    <Link
+                        key={index}
+                        to={`/${item.name.toLowerCase()}`}
+                        className={`w-full px-5 py-3 flex items-center gap-x-4 cursor-pointer rounded-md hover:bg-brand-100 hover:bg-opacity-50 ${location.pathname === `/${item.name.toLowerCase()}` ? "bg-brand-100 bg-opacity-40 text-brand-800" : ""}`}
                     >
                         <FontAwesomeIcon icon={item.icon} />
                         <span className="ml-2">{item.name}</span>
