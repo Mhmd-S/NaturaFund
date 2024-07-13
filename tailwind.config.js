@@ -83,6 +83,10 @@ export default {
 						border: '2px solid rgb(239, 68, 68)',
 					},
 				},
+				RotatingDisplay: {
+					'0%': { transform: 'translateX(100%)' },
+					'100%': { transform: 'translateX(-100%)' },
+				},
 			},
 			backgroundSize: {
 				'300%': '300%',
@@ -96,6 +100,7 @@ export default {
 				carasol_indicator: 'carasol_indicator 5s ease forwards',
 				carasol_indicator_desktop:
 					'carasol_indicator_desktop 5s ease forwards',
+				rotatingDisplay: 'RotatingDisplay 25s linear infinite',
 			},
 		},
 	},
