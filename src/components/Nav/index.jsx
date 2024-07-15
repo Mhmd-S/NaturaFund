@@ -41,7 +41,7 @@ const Nav = () => {
     const location = useLocation();
 
     return (
-        <div className="w-full h-full flex flex-col items-center gap-y-5 bg-brand-50 bg-opacity-45 row-span-full">
+        <div className="w-full h-full flex flex-col items-center gap-y-5 bg-brand-50 bg-opacity-45 row-span-full border-r-[1px] border-brand-800">
             <Link
                 to="/"
                 className="w-full p-4 flex items-center font-serif text-brand-800 text-xl cursor-pointer md:text-xl md:border-r-brand-800"

@@ -4,7 +4,7 @@ import RotatingDisplay from "@/components/RotatingDisplay";
 
 export default function App() {
     return (
-        <div className="w-screen h-screen grid grid-cols-[17%_83%] grid-rows-[5%_95%]">
+        <div className="w-screen h-screen grid grid-cols-[15%_85%] grid-rows-[3%_97%]">
             <RotatingDisplay />
             <Nav />
             <AppRouter />
