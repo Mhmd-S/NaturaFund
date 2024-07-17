@@ -11,6 +11,8 @@ const dummyProjects = [
             return: "10%",
         },
         owner: "Owner 1",
+        description: "This is a description of the project",
+        image: "https://via.placeholder.com/150",
     },
     {
         name: "Asia Pacific University",
@@ -20,6 +22,8 @@ const dummyProjects = [
             return: "5%",
         },
         owner: "Owner 2",
+        description: "This is a description of the project",
+        image: "https://via.placeholder.com/150",
     },
     {
         name: "The Solar Project",
@@ -29,10 +33,12 @@ const dummyProjects = [
             return: "15%",
         },
         owner: "Owner 3",
+        description: "This is a description of the project",
+        image: "https://via.placeholder.com/150",
     },
 ];
 
-const Projects = () => {
+const Projects = ({ setProjectInfo }) => {
     return (
         <div className="w-full h-full p-4 flex flex-col gap-y-3 border-gray-light border-r-[1px]">
             <div className="w-full flex justify-between items-center">
@@ -41,7 +47,11 @@ const Projects = () => {
             </div>
             <div className="w-full flex items-center gap-x-7">
                 {dummyProjects.map((project, index) => (
-                    <ProjectCard key={index} project={project} />
+                    <ProjectCard
+                        key={index}
+                        project={project}
+                        setProjectInfo={setProjectInfo}
+                    />
                 ))}
             </div>
         </div>
