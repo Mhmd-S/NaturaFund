@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import Step from "@/components/MultiStepGuide/mobile/Step";
+import Tab from "@/components/MultiStepGuide/mobile/Tab";
 
-const MultiStepGuide = ({ title, items }) => {
+const MultiTabGuide = ({ title, items }) => {
     const [currentStep, setCurrentStep] = useState(0);
 
     const renderItems = () => {
         return items.map((item, index) => {
             return (
-                <Step
+                <Tab
                     key={item.name}
                     currentStep={currentStep}
                     item={item}
@@ -26,4 +26,4 @@ const MultiStepGuide = ({ title, items }) => {
     );
 };
 
-export default MultiStepGuide;
+export default MultiTabGuide;

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Step from "@/components/MultiStepGuide/desktop/Step";
+import Tab from "@/components/MultiStepGuide/desktop/Tab";
 
 const MultiStepGuide = ({ title, items }) => {
-    const [currentStep, setCurrentStep] = useState(0);
+    const [currentTab, setCurrentTab] = useState(0);
 
     const renderHeader = () => {
         return items.map((item, index) => {
@@ -10,12 +10,12 @@ const MultiStepGuide = ({ title, items }) => {
                 <h2
                     key={item.title}
                     className="w-full flex items-center justify-between text-slate-400 cursor-pointer"
-                    onClick={() => setCurrentStep(index)}
+                    onClick={() => setCurrentTab(index)}
                 >
                     <span
-                        className={`w-full px-3 py-2 text-center ${currentStep == index ? "text-brand-800 font-semibold bg-white rounded-t-lg text-2xl" : 'text-lg'}`}
+                        className={`w-full px-3 py-2 text-center ${currentTab == index ? "text-brand-800 font-semibold bg-white rounded-t-lg text-2xl" : 'text-lg'}`}
                     >
-                        Step {index + 1}
+                        {items.header}
                     </span>
                 </h2>
             );
@@ -24,10 +24,10 @@ const MultiStepGuide = ({ title, items }) => {
 
     const renderItem = () => {
         return (
-            <Step
-                key={items[currentStep].name}
-                item={items[currentStep]}
-                ind={currentStep}
+            <Tab
+                key={items[currentTab].name}
+                item={items[currentTab]}
+                ind={currentTab}
             />
         );
     };

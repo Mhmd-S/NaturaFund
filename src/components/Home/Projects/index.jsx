@@ -11,7 +11,8 @@ const dummyProjects = [
             return: "10%",
         },
         owner: "Owner 1",
-        description: "This is a description of the project",
+        description:
+            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde recusandae repellendus nihil inventore, temporibus dolor sapiente magni exercitationem? Reiciendis eaque maxime magni aspernatur amet. Atque sit odit a cum velit!",
         image: "https://via.placeholder.com/150",
     },
     {
@@ -22,7 +23,8 @@ const dummyProjects = [
             return: "5%",
         },
         owner: "Owner 2",
-        description: "This is a description of the project",
+        description:
+            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde recusandae repellendus nihil inventore, temporibus dolor sapiente magni exercitationem? Reiciendis eaque maxime magni aspernatur amet. Atque sit odit a cum velit!",
         image: "https://via.placeholder.com/150",
     },
     {
@@ -33,7 +35,8 @@ const dummyProjects = [
             return: "15%",
         },
         owner: "Owner 3",
-        description: "This is a description of the project",
+        description:
+            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde recusandae repellendus nihil inventore, temporibus dolor sapiente magni exercitationem? Reiciendis eaque maxime magni aspernatur amet. Atque sit odit a cum velit!",
         image: "https://via.placeholder.com/150",
     },
 ];
@@ -47,11 +50,7 @@ const Projects = ({ setProjectInfo }) => {
             </div>
             <div className="w-full flex items-center gap-x-7">
                 {dummyProjects.map((project, index) => (
-                    <ProjectCard
-                        key={index}
-                        project={project}
-                        setProjectInfo={setProjectInfo}
-                    />
+                    <ProjectCard key={index} project={project} setProjectInfo={setProjectInfo} />
                 ))}
             </div>
         </div>

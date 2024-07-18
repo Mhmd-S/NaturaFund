@@ -2,7 +2,7 @@ import React from "react";
 import Title from "@/components/MultiStepGuide/Title";
 import Paragraph from "@/components/MultiStepGuide/Paragraph";
 
-const Step = ({ item, ind }) => {
+const Tab = ({ item, ind }) => {
     return (
         <div
             className="w-full h-full p-3 flex flex-col rounded-lg animate-fadeIn bg-white shadow-md"
@@ -32,4 +32,4 @@ const Step = ({ item, ind }) => {
     );
 };
 
-export default Step;
+export default Tab;

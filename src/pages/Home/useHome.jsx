@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 
 const useHome = () => {
-    const [showModal, setShowModal] = useState(false);
-    const [projectInfo, setProjectInfo] = useState({});
+    const [projectInfo, setProjectInfo] = useState(null);
 
-    return { showModal, setShowModal, projectInfo, setProjectInfo };
+    return { projectInfo, setProjectInfo };
 };
 
 export default useHome;

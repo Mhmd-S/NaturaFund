@@ -10,18 +10,18 @@ const Home = () => {
     const { projectInfo, setProjectInfo } = useHome();
 
     return (
-        <div className="w-full h-full p-2 grid grid-cols-[65%_35%] grid-rows-2">
+        <>
             {projectInfo ? (
                 <ProjectModal projectInfo={projectInfo} setProjectInfo={setProjectInfo} />
             ) : (
-                <>
+                <div className="w-full h-full p-2 grid grid-cols-[65%_35%] grid-rows-2">
                     <Revenue />
                     <Portofolio />
                     <Projects setProjectInfo={setProjectInfo} />
                     <News />
-                </>
+                </div>
             )}
-        </div>
+        </>
     );
 };
 

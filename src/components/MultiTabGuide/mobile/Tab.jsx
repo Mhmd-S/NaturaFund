@@ -4,7 +4,7 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import Title from "@/components/MultiStepGuide/Title";
 import Paragraph from "@/components/MultiStepGuide/Paragraph";
 
-const Step = ({ currentStep, item, ind, setCurrentStep, height }) => {
+const Tab = ({ currentStep, item, ind, setCurrentStep, height }) => {
     return (
         <div
             className="w-full p-3 flex flex-col bg-brand-50 rounded-lg transition-all duration-700 overflow-y-hidden"
@@ -40,4 +40,4 @@ const Step = ({ currentStep, item, ind, setCurrentStep, height }) => {
     );
 };
 
-export default Step;
+export default Tab;

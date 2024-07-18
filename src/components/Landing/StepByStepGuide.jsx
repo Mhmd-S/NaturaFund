@@ -1,6 +1,6 @@
 import React from "react";
-import MultiStepGuideMobile from "@/components/MultiStepGuide/mobile";
-import MultiStepGuideDesktop from "@/components/MultiStepGuide/desktop";
+import MultiTabGuideMobile from "@/components/MultiTabGuide/mobile";
+import MultiTabGuideDesktop from "@/components/MultiTabGuide/desktop";
 import useResponsive from "@/hooks/useResponsive";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -114,9 +114,9 @@ const StepByStepGuide = () => {
     const { isMobile } = useResponsive();
 
     return isMobile ? (
-        <MultiStepGuideMobile title="How It Works" items={items} />
+        <MultiTabGuideMobile title="How It Works" items={items} />
     ) : (
-        <MultiStepGuideDesktop title="How It Works" items={items} />
+        <MultiTabGuideDesktop title="How It Works" items={items} />
     );
 };
 
