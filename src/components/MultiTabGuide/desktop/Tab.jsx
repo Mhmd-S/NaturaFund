@@ -1,6 +1,6 @@
 import React from "react";
-import Title from "@/components/MultiStepGuide/Title";
-import Paragraph from "@/components/MultiStepGuide/Paragraph";
+import Title from "@/components/MultiTabGuide/Title";
+import Paragraph from "@/components/MultiTabGuide/Paragraph";
 
 const Tab = ({ item, ind }) => {
     return (

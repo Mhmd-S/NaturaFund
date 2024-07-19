@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Tab from "@/components/MultiStepGuide/mobile/Tab";
+import Tab from "@/components/MultiTabGuide/mobile/Tab";
 
 const MultiTabGuide = ({ title, items }) => {
     const [currentStep, setCurrentStep] = useState(0);

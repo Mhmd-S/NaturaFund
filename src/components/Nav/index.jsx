@@ -1,7 +1,16 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLeaf, faHome, faCompass, faCog, faGauge, faQuestion, faUser, faFunnelDollar } from "@fortawesome/free-solid-svg-icons";
+import {
+    faLeaf,
+    faHome,
+    faCompass,
+    faCog,
+    faGauge,
+    faQuestion,
+    faUser,
+    faFunnelDollar,
+} from "@fortawesome/free-solid-svg-icons";
 
 const itemsMenu = [
     {
@@ -35,13 +44,13 @@ const itemsOthers = [
         name: "Help",
         icon: faQuestion,
     },
-]
+];
 
 const Nav = () => {
     const location = useLocation();
 
     return (
-        <div className="w-full h-full flex flex-col items-center gap-y-5 bg-brand-50 bg-opacity-45 row-span-full border-r-[1px] border-brand-800">
+        <div className="w-full h-full flex flex-col items-center gap-y-5 bg-brand-100 bg-opacity-45 row-span-full">
             <Link
                 to="/"
                 className="w-full p-4 flex items-center font-serif text-brand-800 text-xl cursor-pointer md:text-xl md:border-r-brand-800"
@@ -58,7 +67,7 @@ const Nav = () => {
                     <Link
                         key={index}
                         to={`/${item.name.toLowerCase()}`}
-                        className={`w-full px-5 py-3 flex items-center gap-x-4 cursor-pointer rounded-md hover:bg-brand-100 hover:bg-opacity-50 ${location.pathname === `/${item.name.toLowerCase()}` ? "bg-brand-100 bg-opacity-40 text-brand-800" : ""}`}
+                        className={`w-full px-5 py-3 flex items-center gap-x-4 cursor-pointer rounded-md hover:bg-gray-light hover:bg-opacity-50 ${location.pathname === `/${item.name.toLowerCase()}` ? "bg-brand-300 bg-opacity-40 text-brand-800 font-semibold" : ""}`}
                     >
                         <FontAwesomeIcon icon={item.icon} />
                         <span className="ml-2">{item.name}</span>
@@ -71,7 +80,7 @@ const Nav = () => {
                     <Link
                         key={index}
                         to={`/${item.name.toLowerCase()}`}
-                        className={`w-full px-5 py-3 flex items-center gap-x-4 cursor-pointer rounded-md hover:bg-brand-100 hover:bg-opacity-50 ${location.pathname === `/${item.name.toLowerCase()}` ? "bg-brand-100 bg-opacity-40 text-brand-800" : ""}`}
+                        className={`w-full px-5 py-3 flex items-center gap-x-4 cursor-pointer rounded-md hover:bg-gray-light hover:bg-opacity-50 ${location.pathname === `/${item.name.toLowerCase()}` ? "bg-brand-300 bg-opacity-40 text-brand-800 font-semibold" : ""}`}
                     >
                         <FontAwesomeIcon icon={item.icon} />
                         <span className="ml-2">{item.name}</span>

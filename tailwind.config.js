@@ -18,7 +18,7 @@ export default {
 					950: '#212C73',
 				},
 				gray: {
-					light: 'C8CBD9',
+					light: '#C8CBD9',
 					med: '#7d7d7d',
 				},
 			},

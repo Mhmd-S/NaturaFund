@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Tab from "@/components/MultiStepGuide/desktop/Tab";
+import Tab from "@/components/MultiTabGuide/desktop/Tab";
 
 const MultiStepGuide = ({ title, items }) => {
     const [currentTab, setCurrentTab] = useState(0);
@@ -15,7 +15,7 @@ const MultiStepGuide = ({ title, items }) => {
                     <span
                         className={`w-full px-3 py-2 text-center ${currentTab == index ? "text-brand-800 font-semibold bg-white rounded-t-lg text-2xl" : 'text-lg'}`}
                     >
-                        {items.header}
+                        {item.header}
                     </span>
                 </h2>
             );
