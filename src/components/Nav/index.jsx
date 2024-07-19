@@ -18,7 +18,7 @@ const itemsMenu = [
         icon: faHome,
     },
     {
-        name: "Dashboard",
+        name: "Portfolio",
         icon: faGauge,
     },
     {

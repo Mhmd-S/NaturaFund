@@ -42,7 +42,7 @@ import { Navigate } from "react-router-dom";
 
 // const About = lazy(() => import('@/pages/About'));
 
-const Dashboard = lazy(() => import("@/pages/Dashboard"));
+const Portfolio = lazy(() => import("@/pages/Portfolio"));
 const Home = lazy(() => import("@/pages/Home"));
 
 let routes = {
@@ -65,8 +65,8 @@ let routes = {
             element: <Home />,
         },
         {
-            path: "/dashboard",
-            element: <Dashboard />,
+            path: "/Portfolio",
+            element: <Portfolio />,
         },
         // {
         //   path: '/people',

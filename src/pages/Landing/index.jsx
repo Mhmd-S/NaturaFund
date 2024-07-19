@@ -26,12 +26,12 @@ const items = [
     },
     {
         title: "Diversification",
-        content: "Renewable energy projects in allows you to diversify your portofolio.",
+        content: "Renewable energy projects in allows you to diversify your Portfolio.",
         img: "landing_carousel_3.svg",
     },
 ];
 
-const portofolioItems = [
+const PortfolioItems = [
     {
         title: "Select A Solar Project",
         content:
@@ -87,11 +87,11 @@ const Landing = () => {
             <StepByStepGuide />
             <WhyInvest />
             {isMobile ? (
-                <CarouselInvMobile title={"Diversify your portofolio in 3 steps"} items={items} />
+                <CarouselInvMobile title={"Diversify your Portfolio in 3 steps"} items={items} />
             ) : (
                 <CarouselInvDesktop
-                    title={"Diversify your portofolio in 3 steps"}
-                    items={portofolioItems}
+                    title={"Diversify your Portfolio in 3 steps"}
+                    items={PortfolioItems}
                 />
             )}
             <Footer />

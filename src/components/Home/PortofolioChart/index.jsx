@@ -1,11 +1,11 @@
 import React from "react";
 import { PieChart, pieArcLabelClasses } from "@mui/x-charts";
 
-const Portofolio = () => {
+const PortfolioChart = () => {
     return (
         <div className="w-full h-full grid grid-cols-1 p-4 border-gray-light border-b-[1px]">
             <div className="w-full h-full flex flex-col">
-                <p className="text-sm">Portofolio</p>
+                <p className="text-sm">Portfolio</p>
                 <p className="text-black text-lg font-semibold">$0.00</p>
             </div>
             <PieChart
@@ -50,4 +50,4 @@ const Portofolio = () => {
     );
 };
 
-export default Portofolio;
+export default PortfolioChart;

@@ -1,9 +1,9 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
-import { BarChart } from "@mui/x-charts";
+import { LineChart } from "@mui/x-charts";
 
-const Revenue = () => {
+const RevenueChart = () => {
     return (
         <div className="w-full h-full p-4 grid grid-flow-row grid-cols-1 border-gray-light border-r-[1px] border-b-[1px]">
             <div className="w-full h-full grid grid-cols-2 grid-rows-2 grid-flow-col">
@@ -18,7 +18,7 @@ const Revenue = () => {
                     vs last month
                 </p>
             </div>
-            <BarChart
+            <LineChart
                 xAxis={[
                     {
                         scaleType: "band",
@@ -66,4 +66,4 @@ const Revenue = () => {
     );
 };
 
-export default Revenue;
+export default RevenueChart;
