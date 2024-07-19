@@ -43,7 +43,7 @@ const dummyProjects = [
 
 const Projects = ({ setProjectInfo }) => {
     return (
-        <div className="w-full h-full p-4 flex flex-col gap-y-3 border-gray-light border-r-[1px]">
+        <div className="w-full h-full p-4 flex flex-col gap-y-3">
             <div className="w-full flex justify-between items-center">
                 <p className="text-sm">New Projects</p>
                 <Link className="text-brand-900 hover:underline">Go To Explore</Link>

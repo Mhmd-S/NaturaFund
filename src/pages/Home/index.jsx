@@ -6,7 +6,7 @@ import News from "@/components/Home/News";
 
 const Home = () => {
     return (
-        <div className="w-full h-full p-2 grid grid-cols-[65%_35%] grid-rows-2">
+        <div className="w-full h-full overflow-hidden grid grid-cols-[65%_35%] grid-rows-2 gap-[2px] bg-gray-100 [&>*]:bg-white">
             <Revenue />
             <Portfolio />
             <Projects />
