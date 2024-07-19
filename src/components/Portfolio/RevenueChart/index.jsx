@@ -1,22 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { faArrowUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { LineChart } from "@mui/x-charts";
+import Dropdown from "@/components/common/Dropdown";
 
 const RevenueChart = () => {
+    const [minimized, setMinimized] = useState(false);
+
     return (
-        <div className="w-full h-full p-4 grid grid-flow-row grid-cols-1 border-gray-light border-r-[1px] border-b-[1px]">
-            <div className="w-full h-full grid grid-cols-2 grid-rows-2 grid-flow-col">
+        <div
+            className={`relative w-full p-4 grid place-items-center transition-all ${minimized ? "h-3/5 grid-cols-1 " : "h-1/4 grid-cols-2"}`}
+        >
+            <div className={`w-full h-full grid grid-cols-1 gap-1`}>
                 <p className="text-sm">Revenue</p>
                 <p className="text-lg font-semibold">$0.00</p>
-                <p className="text-sm text-gray-med text-right">2024</p>
-                <p className="text-sm text-gray-med text-right">
+                <p className="text-sm text-gray-med">
                     <span className="text-green-500">
                         <FontAwesomeIcon icon={faArrowUp} className="pr-1" />
                         0.00%
                     </span>{" "}
                     vs last month
                 </p>
+                <Dropdown />
             </div>
             <LineChart
                 xAxis={[
@@ -62,6 +67,15 @@ const RevenueChart = () => {
                     bottom: 40,
                 }}
             />
+            <button
+                className="absolute bottom-0 px-2 text-sm border-2 border-gray-200 border-b-0 rounded-t-md bg-white text-brand-500 cursor-pointer hover:text-brand-800"
+                onClick={() => setMinimized(!minimized)}
+            >
+                <FontAwesomeIcon
+                    icon={faChevronDown}
+                    className={`${minimized ? "rotate-180" : ""}`}
+                />
+            </button>
         </div>
     );
 };
