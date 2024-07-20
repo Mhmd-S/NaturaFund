@@ -4,6 +4,13 @@ import { faArrowUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { LineChart } from "@mui/x-charts";
 import Dropdown from "@/components/common/Dropdown";
 
+const options = [
+    { label: "This Year", value: "this-year" },
+    { label: "Last Year", value: "last-year" },
+    { label: "Last 3 Years", value: "last-3-years" },
+    { label: "Last 5 Years", value: "last-5-years" },
+];
+
 const RevenueChart = () => {
     const [minimized, setMinimized] = useState(false);
 
@@ -21,7 +28,7 @@ const RevenueChart = () => {
                     </span>{" "}
                     vs last month
                 </p>
-                <Dropdown />
+                <Dropdown options={options} />
             </div>
             <LineChart
                 xAxis={[
