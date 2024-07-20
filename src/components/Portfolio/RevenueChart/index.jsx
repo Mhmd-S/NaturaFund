@@ -51,20 +51,9 @@ const RevenueChart = () => {
                     },
                 ]}
                 series={[
-                    { label: "This Year", data: [4, 3, 5, 6, 2, 5, 6, 2, 1, 7, 9, 11] },
-                    { label: "Last Year", data: [1, 6, 3, 6, 5, 2, 7, 4, 2, 7, 1, 2] },
+                    { data: [4, 3, 5, 6, 2, 5, 6, 2, 1, 7, 9, 11] },
                 ]}
                 colors={["#5A6ACF", "#E6E8EC"]}
-                slotProps={{
-                    legend: {
-                        direction: "row",
-                        position: { vertical: "bottom", horizontal: "left" },
-                        padding: 0,
-                        labelStyle: { fontSize: "0.7rem" },
-                        itemMarkWidth: 5,
-                        itemMarkHeight: 5,
-                    },
-                }}
                 grid={{ horizontal: true }}
                 margin={{
                     top: 10,
@@ -78,7 +67,7 @@ const RevenueChart = () => {
             >
                 <FontAwesomeIcon
                     icon={faChevronDown}
-                    className={`${minimized ? "rotate-180" : ""}`}
+                    className={`${minimized ? "" : "rotate-180"}`}
                 />
             </button>
         </div>
