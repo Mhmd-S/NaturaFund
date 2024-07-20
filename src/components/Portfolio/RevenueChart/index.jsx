@@ -16,9 +16,9 @@ const RevenueChart = () => {
 
     return (
         <div
-            className={`relative w-full p-4 grid place-items-center transition-all ${minimized ? "h-3/5 grid-cols-1 " : "h-1/4 grid-cols-2"}`}
+            className={`relative w-full p-4 grid place-items-center transition-all ${!minimized ? "h-3/5 grid-cols-1 " : "h-1/4 grid-cols-2"}`}
         >
-            <div className={`w-full h-full grid grid-cols-1 gap-1`}>
+            <div className={`w-full h-full grid grid-cols-2 grid-rows-3 grid-flow-col gap-1`}>
                 <p className="text-sm">Revenue</p>
                 <p className="text-lg font-semibold">$0.00</p>
                 <p className="text-sm text-gray-med">
@@ -28,7 +28,7 @@ const RevenueChart = () => {
                     </span>{" "}
                     vs last month
                 </p>
-                <Dropdown options={options} />
+                {!minimized && <Dropdown options={options} />}
             </div>
             <LineChart
                 xAxis={[

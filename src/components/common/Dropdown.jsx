@@ -32,20 +32,20 @@ const Dropdown = ({ options }) => {
     return (
         <div
             ref={dropdownRef}
-            className="min-w-32 w-32 text-sm p-1 flex flex-col items-center bg-white text-gray-med border-[1px] rounded-lg"
+            className="relative min-w-32 max-w-48 z-10 text-sm flex flex-col items-center bg-white text-gray-med border-[1px] rounded-md"
         >
-            <button className="dropdown-toggle" onClick={() => setIsOpen(!isOpen)}>
+            <button
+                className="w-full flex justify-between px-4 py-2 text-sm/none text-gray-600 hover:bg-gray-50 hover:text-gray-700"
+                onClick={() => setIsOpen(!isOpen)}
+            >
                 {selectedOption ? selectedOption.label : "Select an option"}
-                <FontAwesomeIcon
-                    icon={faChevronDown}
-                    className={`ml-1 ${isOpen && "rotate-180"}`}
-                />
+                <FontAwesomeIcon icon={faChevronDown} />
             </button>
             {isOpen && (
-                <ul className="w-full">
+                <ul className="absolute top-full z-10 mt-2 w-full rounded-md border border-gray-100 bg-white shadow-lg">
                     {options.map((option) => (
                         <li
-                            className="w-full p-1 cursor-pointer rounded-md hover:bg-slate-200"
+                            className="block rounded-lg px-4 py-2 text-sm text-gray-500 cursor-pointer hover:bg-gray-50 hover:text-gray-700"
                             key={option.value}
                             onClick={() => handleOptionClick(option)}
                         >
