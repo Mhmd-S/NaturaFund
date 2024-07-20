@@ -1,15 +1,7 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { faArrowUp, faChevronDown, faChevronRight, faChevronLeft} from "@fortawesome/free-solid-svg-icons";
 import { LineChart } from "@mui/x-charts";
-import Dropdown from "@/components/common/Dropdown";
-
-const options = [
-    { label: "This Year", value: "this-year" },
-    { label: "Last Year", value: "last-year" },
-    { label: "Last 3 Years", value: "last-3-years" },
-    { label: "Last 5 Years", value: "last-5-years" },
-];
 
 const RevenueChart = () => {
     const [minimized, setMinimized] = useState(false);
@@ -28,7 +20,13 @@ const RevenueChart = () => {
                     </span>{" "}
                     vs last month
                 </p>
-                {!minimized && <Dropdown options={options} />}
+                {!minimized && (
+                    <span className="w-28 mr-10 flex items-center justify-between justify-self-end row-start-3">
+                        <FontAwesomeIcon icon={faChevronLeft}  className="p-2 text-brand-900 rounded-sm cursor-pointer hover:bg-slate-100"/>
+                            <text className="text-gray-med">2024</text>
+                        <FontAwesomeIcon icon={faChevronRight} className="p-2 text-brand-900 rounded-sm cursor-pointer hover:bg-slate-100"/>
+                    </span>
+                )}
             </div>
             <LineChart
                 xAxis={[
