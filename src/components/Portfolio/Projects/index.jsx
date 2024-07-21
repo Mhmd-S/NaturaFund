@@ -4,7 +4,7 @@ import ProjectsTable from "./ProjectsTable";
 
 const index = () => {
     return (
-        <div className="w-full p-4 flex flex-col justify-between items-center">
+        <div className="w-full h-full p-4 flex flex-col gap-y-2">
             <div className="w-full flex justify-between items-center">
                 <p className="text-lg">Your Investments</p>
                 <div className="w-1/3">

@@ -8,7 +8,7 @@ const RevenueChart = () => {
 
     return (
         <div
-            className={`relative w-full p-4 grid place-items-center transition-all ${!minimized ? "h-3/5 grid-cols-1 " : "h-1/4 grid-cols-2"}`}
+            className={`relative w-full h-1/2 p-4 grid place-items-center transition-all `}
         >
             <div className={`w-full h-full grid grid-cols-2 grid-rows-3 grid-flow-col gap-1`}>
                 <p className="text-sm">Revenue</p>

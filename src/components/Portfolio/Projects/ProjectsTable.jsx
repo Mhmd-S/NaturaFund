@@ -1,147 +1,117 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import index from ".";
+
+const headerData = [
+    "Name",
+    "Project Type",
+    "Investment Type",
+    "Status",
+    "Generated Revenue",
+];
+
+const dummyData = [
+    {
+        name: "Solaris Solar Project",
+        projectType: "Solar",
+        investmentType: "Debt",
+        status: "Active",
+        generatedRevenue: "$120,000",
+    },
+    // {
+    //     name: "Solaris Solar Project",
+    //     projectType: "Solar",
+    //     investmentType: "Debt",
+    //     status: "Active",
+    //     generatedRevenue: "$120,000",
+    // },
+    // {
+    //     name: "Solaris Solar Project",
+    //     projectType: "Solar",
+    //     investmentType: "Debt",
+    //     status: "Active",
+    //     generatedRevenue: "$120,000",
+    // },
+    // {
+    //     name: "Solaris Solar Project",
+    //     projectType: "Solar",
+    //     investmentType: "Debt",
+    //     status: "Active",
+    //     generatedRevenue: "$120,000",
+    // },
+    // {
+    //     name: "Solaris Solar Project",
+    //     projectType: "Solar",
+    //     investmentType: "Debt",
+    //     status: "Active",
+    //     generatedRevenue: "$120,000",
+    // },
+    // {
+    //     name: "Solaris Solar Project",
+    //     projectType: "Solar",
+    //     investmentType: "Debt",
+    //     status: "Active",
+    //     generatedRevenue: "$120,000",
+    // },
+    //   {
+    //       name: "Solaris Solar Project",
+    //       projectType: "Solar",
+    //       investmentType: "Debt",
+    //       status: "Active",
+    //       generatedRevenue: "$120,000",
+    //   },
+];
 
 const ProjectsTable = () => {
     return (
         <div className="w-full h-full flex flex-col justify-between">
             <div className="overflow-x-auto rounded-t-lg">
                 <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
-                    <thead className="ltr:text-left rtl:text-right">
+                    <thead>
                         <tr>
-                            <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 cursor-pointer">
-                                Name
-                                <FontAwesomeIcon icon={faChevronDown} className="ml-1" />
-                            </th>
-                            <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                                Date of Birth
-                                <FontAwesomeIcon icon={faChevronDown} className="ml-1" />
-                            </th>
-                            <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                                Role
-                                <FontAwesomeIcon icon={faChevronDown} className="ml-1" />
-                            </th>
-                            <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                                Salary
-                                <FontAwesomeIcon icon={faChevronDown} className="ml-1" />
-                            </th>
+                            {headerData.map((header, index) => {
+                                return (
+                                    <th
+                                        key={index}
+                                        className="text-left whitespace-nowrap px-4 py-2 font-medium text-gray-900 cursor-pointer"
+                                    >
+                                        {header}
+                                        <FontAwesomeIcon icon={faChevronDown} className="ml-1" />
+                                    </th>
+                                );
+                            })}
                         </tr>
                     </thead>
 
-                    <tbody className="divide-y divide-gray-200">
-                        <tr>
-                            <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                                John Doe
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                                24/05/1995
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                                Web Developer
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">$120,000</td>
-                        </tr>
-                        <tr>
-                            <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                                John Doe
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                                24/05/1995
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                                Web Developer
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">$120,000</td>
-                        </tr>
-                        <tr>
-                            <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                                John Doe
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                                24/05/1995
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                                Web Developer
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">$120,000</td>
-                        </tr>
-                        <tr>
-                            <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                                John Doe
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                                24/05/1995
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                                Web Developer
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">$120,000</td>
-                        </tr>
-                        <tr>
-                            <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                                John Doe
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                                24/05/1995
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                                Web Developer
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">$120,000</td>
-                        </tr>
-                        <tr>
-                            <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                                John Doe
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                                24/05/1995
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                                Web Developer
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">$120,000</td>
-                        </tr>
-                        <tr>
-                            <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                                John Doe
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                                24/05/1995
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                                Web Developer
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">$120,000</td>
-                        </tr>
-
-                        <tr>
-                            <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                                Jane Doe
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                                04/11/1980
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                                Web Designer
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">$100,000</td>
-                        </tr>
-
-                        <tr>
-                            <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                                Gary Barlow
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                                24/05/1995
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">Singer</td>
-                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">$20,000</td>
-                        </tr>
+                    <tbody className="divide-y divide-gray-200 cursor-default">
+                        {dummyData.map((data, index) => (
+                            <tr key={index}>
+                                <td className="px-4 py-2 whitespace-nowrap text-brand-900">
+                                    {data.name}
+                                </td>
+                                <td className="px-4 py-2 whitespace-nowrap text-gray-900">
+                                    {data.projectType}
+                                </td>
+                                <td className="px-4 py-2 whitespace-nowrap text-gray-900">
+                                    {data.investmentType}
+                                </td>
+                                <td className="px-4 py-2 whitespace-nowrap text-gray-900">
+                                    {data.status}
+                                </td>
+                                <td className="px-4 py-2 whitespace-nowrap text-gray-900">
+                                    {data.generatedRevenue}
+                                </td>
+                                <td className="px-4 py-2 whitespace-nowrap text-gray-900">
+                                    <button className="px-4 py-2 border-[1px] border-brand-900 rounded-lg text-white bg-brand-900 transition-all hover:bg-white hover:text-brand-900">View</button>
+                                </td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>
 
-            <div className="rounded-b-lg border-t border-gray-200 px-4 py-2">
+            <div className="rounded-b-lg border-t border-gray-200 px-4 pt-2">
                 <ol className="flex justify-end gap-1 text-xs font-medium">
                     <li>
                         <a
@@ -175,24 +145,6 @@ const ProjectsTable = () => {
 
                     <li className="block size-8 rounded border-blue-600 bg-blue-600 text-center leading-8 text-white">
                         2
-                    </li>
-
-                    <li>
-                        <a
-                            href="#"
-                            className="block size-8 rounded border border-gray-100 bg-white text-center leading-8 text-gray-900"
-                        >
-                            3
-                        </a>
-                    </li>
-
-                    <li>
-                        <a
-                            href="#"
-                            className="block size-8 rounded border border-gray-100 bg-white text-center leading-8 text-gray-900"
-                        >
-                            4
-                        </a>
                     </li>
 
                     <li>
