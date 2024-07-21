@@ -27,18 +27,6 @@ const dummyProjects = [
             "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde recusandae repellendus nihil inventore, temporibus dolor sapiente magni exercitationem? Reiciendis eaque maxime magni aspernatur amet. Atque sit odit a cum velit!",
         image: "https://via.placeholder.com/150",
     },
-    {
-        name: "The Solar Project",
-        type: "Solar",
-        investment: {
-            type: "Equity",
-            return: "15%",
-        },
-        owner: "Owner 3",
-        description:
-            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde recusandae repellendus nihil inventore, temporibus dolor sapiente magni exercitationem? Reiciendis eaque maxime magni aspernatur amet. Atque sit odit a cum velit!",
-        image: "https://via.placeholder.com/150",
-    },
 ];
 
 const Projects = ({ setProjectInfo }) => {
@@ -48,7 +36,7 @@ const Projects = ({ setProjectInfo }) => {
                 <p className="text-lg font-bold text-brand-900">New Projects</p>
                 <Link className="text-brand-900 hover:underline">Go To Explore</Link>
             </div>
-            <div className="w-full flex items-center gap-x-7">
+            <div className="w-full flex justify-evenly items-center">
                 {dummyProjects.map((project, index) => (
                     <ProjectCard key={index} project={project} setProjectInfo={setProjectInfo} />
                 ))}
