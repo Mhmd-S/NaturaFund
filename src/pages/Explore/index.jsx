@@ -1,6 +1,8 @@
 import React from "react";
 import ProjectCard from "@/components/common/ProjectCard";
 import SearchBar from "@/components/common/SearchBar";
+import Dropdown from "@/components/common/Dropdown";
+import Pagination from "@/components/common/Pagination";
 
 const dummyProjects = [
     {
@@ -77,20 +79,61 @@ const dummyProjects = [
     },
 ];
 
+const filterOptions = [
+    {
+        type: "Duration",
+        options: [
+            {
+                label: "1 Year",
+                value: "1",
+            },
+            {
+                label: "2 Years",
+                value: "2",
+            },
+            {
+                label: "3 Years",
+                value: "3",
+            },
+            {
+                label: "4 Years",
+                value: "4",
+            },
+            {
+                label: "5 Years",
+                value: "5",
+            },
+        ],
+    },
+    {
+        type: "Return",
+        value: "solar",
+    },
+    {
+        label: "Wind",
+        value: "wind",
+    },
+    {
+        label: "Hydro",
+        value: "hydro",
+    },
+];
+
 const Explore = () => {
     return (
         <div className="w-full h-full p-4 bg-white">
             <div className="w-full flex justify-between items-center">
-                <p className="text-lg font-bold text-brand-900">Explore</p>
+                <h2 className="text-lg font-bold text-brand-900">Explore</h2>
                 <div className="w-1/3">
                     <SearchBar />
                 </div>
             </div>
-            <div className="w-full py-4 grid grid-cols-4 gap-12">
-              {dummyProjects.map((project, index) => (
-                <ProjectCard project={project} key={index} />
-              ))}
+            <div className="w-full py-4 grid grid-cols-3 gap-y-2 gap-x-16">
+                {dummyProjects.map((project, index) => (
+                    <ProjectCard project={project} key={index} />
+                ))}
             </div>
+            <Pagination />
         </div>
     );
 };
