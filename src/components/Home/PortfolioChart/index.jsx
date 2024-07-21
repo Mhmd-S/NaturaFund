@@ -5,7 +5,7 @@ const PortfolioChart = () => {
     return (
         <div className="w-full h-full grid grid-cols-1 p-4 ">
             <div className="w-full h-full flex flex-col">
-                <p className="text-sm">Portfolio</p>
+                <p className="text-lg font-bold text-brand-900">Portfolio</p>
                 <p className="text-black text-lg font-semibold">$0.00</p>
             </div>
             <PieChart

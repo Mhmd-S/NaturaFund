@@ -27,17 +27,16 @@ const items = [
         content: "Content 5",
         date: "Date 5",
     },
-]
+];
 
 const News = () => {
     return (
         <div className="w-full h-full p-4 grid grid-rows-[10%_90%]">
-            <p className="text-sm">News</p>
+            <p className="text-lg font-bold text-brand-900">News</p>
             <div className="w-full h-full py-1 overflow-y-auto flex flex-col pr-2">
-               {items.map((item, index) => (
+                {items.map((item, index) => (
                     <NewsItem key={index} newsItem={item} />
-                ))    
-            }
+                ))}
             </div>
         </div>
     );

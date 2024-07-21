@@ -7,7 +7,7 @@ const RevenueChart = () => {
     return (
         <div className="w-full h-full p-4 grid grid-flow-row grid-cols-1">
             <div className="w-full h-full grid grid-cols-2 grid-rows-2 grid-flow-col">
-                <p className="text-sm">Revenue</p>
+                <p className="text-lg font-bold text-brand-900">Revenue</p>
                 <p className="text-lg font-semibold">$0.00</p>
                 <p className="text-sm text-gray-med text-right">2024</p>
                 <p className="text-sm text-gray-med text-right">

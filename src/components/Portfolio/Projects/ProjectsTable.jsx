@@ -116,7 +116,7 @@ const ProjectsTable = () => {
                     <li>
                         <a
                             href="#"
-                            className="inline-flex size-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180"
+                            className="inline-flex size-8 items-center justify-center rounded border border-gray-200 bg-white text-gray-900 rtl:rotate-180"
                         >
                             <span className="sr-only">Prev Page</span>
                             <svg
@@ -137,20 +137,20 @@ const ProjectsTable = () => {
                     <li>
                         <a
                             href="#"
-                            className="block size-8 rounded border border-gray-100 bg-white text-center leading-8 text-gray-900"
+                            className="block size-8 rounded border border-gray-200 bg-white text-center leading-8 text-gray-900"
                         >
                             1
                         </a>
                     </li>
 
-                    <li className="block size-8 rounded border-blue-600 bg-blue-600 text-center leading-8 text-white">
+                    <li className="block size-8 rounded border-brand-900 bg-brand-900 text-center leading-8 text-white">
                         2
                     </li>
 
                     <li>
                         <a
                             href="#"
-                            className="inline-flex size-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180"
+                            className="inline-flex size-8 items-center justify-center rounded border border-gray-200 bg-white text-gray-900 rtl:rotate-180"
                         >
                             <span className="sr-only">Next Page</span>
                             <svg
