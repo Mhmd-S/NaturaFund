@@ -15,7 +15,7 @@ const dummyProjects = [
         owner: "Owner 1",
         description:
             "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde recusandae repellendus nihil inventore, temporibus dolor sapiente magni exercitationem? Reiciendis eaque maxime magni aspernatur amet. Atque sit odit a cum velit!",
-        image: "https://via.placeholder.com/150",
+        image: "https://picsum.photos/400/294",
     },
     {
         name: "Asia Pacific University",
@@ -27,7 +27,7 @@ const dummyProjects = [
         owner: "Owner 2",
         description:
             "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde recusandae repellendus nihil inventore, temporibus dolor sapiente magni exercitationem? Reiciendis eaque maxime magni aspernatur amet. Atque sit odit a cum velit!",
-        image: "https://via.placeholder.com/150",
+        image: "https://picsum.photos/400/295",
     },
     {
         name: "The Solar Project",
@@ -39,7 +39,7 @@ const dummyProjects = [
         owner: "Owner 3",
         description:
             "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde recusandae repellendus nihil inventore, temporibus dolor sapiente magni exercitationem? Reiciendis eaque maxime magni aspernatur amet. Atque sit odit a cum velit!",
-        image: "https://via.placeholder.com/150",
+        image: "https://picsum.photos/400/296",
     },
     {
         name: "The Solar Project",
@@ -51,7 +51,7 @@ const dummyProjects = [
         owner: "Owner 3",
         description:
             "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde recusandae repellendus nihil inventore, temporibus dolor sapiente magni exercitationem? Reiciendis eaque maxime magni aspernatur amet. Atque sit odit a cum velit!",
-        image: "https://via.placeholder.com/150",
+        image: "https://picsum.photos/400/297",
     },
     {
         name: "The Solar Project",
@@ -63,7 +63,7 @@ const dummyProjects = [
         owner: "Owner 3",
         description:
             "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde recusandae repellendus nihil inventore, temporibus dolor sapiente magni exercitationem? Reiciendis eaque maxime magni aspernatur amet. Atque sit odit a cum velit!",
-        image: "https://via.placeholder.com/150",
+        image: "https://picsum.photos/400/298",
     },
     {
         name: "The Solar Project",
@@ -75,7 +75,7 @@ const dummyProjects = [
         owner: "Owner 3",
         description:
             "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde recusandae repellendus nihil inventore, temporibus dolor sapiente magni exercitationem? Reiciendis eaque maxime magni aspernatur amet. Atque sit odit a cum velit!",
-        image: "https://via.placeholder.com/150",
+        image: "https://picsum.photos/400/299",
     },
 ];
 

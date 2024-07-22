@@ -2,7 +2,7 @@ import React from "react";
 
 const TabNav = ({ tabs, currentTab, setCurrentTab }) => {
     return (
-        <ul className="flex gap-6" aria-label="Tabs">
+        <ul className="fixed flex gap-6 bg-white p-2 rounded-md shadow-md z-10" aria-label="Tabs">
             {tabs.map((tab) => {
                 return (
                     <li

@@ -10,8 +10,8 @@ const ProjectCard = ({ project }) => {
     return (
         <a href="#" className="block rounded-lg p-3 shadow-md shadow-brand-100 transition-shadow hover:shadow-lg">
             <img
-                alt=""
-                src="https://images.unsplash.com/photo-1613545325278-f24b0cae1224?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+                alt={project.name}
+                src={project.image}
                 className="h-20 w-full rounded-md object-cover"
             />
 
@@ -20,13 +20,13 @@ const ProjectCard = ({ project }) => {
                     <div>
                         <dt className="sr-only">Name</dt>
 
-                        <dd className="font-medium">123 Wallaby Avenue, Park Road</dd>
+                        <dd className="font-medium">{project.name}</dd>
                     </div>
 
                     <div>
                         <dt className="sr-only">By</dt>
 
-                        <dd className="text-sm text-gray-500">Invested: $240,000</dd>
+                        <dd className="text-sm text-gray-500">{project.owner}</dd>
                     </div>
                 </dl>
 
