@@ -45,6 +45,7 @@ import { Navigate } from "react-router-dom";
 const Portfolio = lazy(() => import("@/pages/Portfolio"));
 const Home = lazy(() => import("@/pages/Home"));
 const Explore = lazy(() => import("@/pages/Explore"));
+const Project = lazy(() => import("@/pages/Project"));
 
 let routes = {
     expense: [],
@@ -72,6 +73,10 @@ let routes = {
         {
             path: "/explore",
             element: <Explore />,
+        },
+        {
+            path: "/project",
+            element: <Project />,
         },
         // {
         //   path: '/people',
