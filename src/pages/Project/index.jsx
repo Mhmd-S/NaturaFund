@@ -12,6 +12,14 @@ const project = {
     owner: {
         name: "Green Energy Sdn Bhd",
         website: "https://example.com",
+        description:
+            "Green Energy is a Dutch company founded in 2016, situated in Gouda. It provides an affordable and hassle-free solution for homeowners to generate and store their own sustainable energy. Green Energy already leases solar panels to some 13.000 private homeowners and has now started to lease out home battery systems to their customers, making the switch to renewable energy accessible to a wide audience. Thanks to the lease proposition offered, customers get the benefits of (trading with) self-stored energy without having to make a big investment upfront.",
+        "Company Name": "Green Energt Sdn Bhd",
+        "Managing Team": "Jonas Streng, Robert Lamot and Kees van Wensem",
+        "Business ID": "68693921",
+        "Founding Year": "2016",
+        Address: "Persiaran 1, Subang Jaya, Selangor, Malaysia",
+        "Employees Num": "300",
     },
     duration: "2024-2025",
     type: "Solar",
@@ -95,7 +103,9 @@ const Project = () => {
             case "overview":
                 return <Overview project={project} />;
             case "Investment Details":
-                return <DetailsTable items={project.investment.details} />;
+                return (
+                    <DetailsTable title="Investment Details" items={project.investment.details} />
+                );
             case "Financial Details":
                 return <DetailsTable items={project.finance} />;
             case "Documents":
@@ -110,7 +120,9 @@ const Project = () => {
     return (
         <div className="w-full overflow-y-auto flex flex-col items-center pt-4">
             <TabNav tabs={tabs} currentTab={currentTab} setCurrentTab={setCurrentTab} />
-            {renderDetail()}
+            <section className="mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+                {renderDetail()}
+            </section>
         </div>
     );
 };
