@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import TabNav from "@/components/TabNav";
 import DetailsTable from "@/components/common/DetailsTable";
 import Overview from "@/components/common/ProjectDetails/Overview";
+import InvestmentDetails from "@/components/common/ProjectDetails/InvestmentDetails";
 
 const tabs = ["overview", "Investment Details", "Financial Details", "Documents", "Updates"];
 
@@ -25,7 +26,7 @@ const project = {
     type: "Solar",
     investment: {
         type: "Bond",
-        details: {
+        features: {
             "Bond Type": "Green Bond",
             "Face Value": "RM 1,000",
             "Issued Date": "2024-01-01",
@@ -33,10 +34,13 @@ const project = {
             "Coupuon Rate": "5%",
             "Copoun Frequency": "Quarterly",
             "Redemption Terms": "Bullet",
-            "Bond Rating": "AAA",
-            Secured: "Yes",
-            Callability: "No",
-            "Liquidation Preference": "Senior",
+            "Bond Rating": "AAA (from S&P)",
+            "Collateral": "None",
+            "Intrest Calculation": "Actual/360",
+            "Repaiment Terms": "Principal repaid at maturity, interest paid semi-annually",
+            "Call/Put Options": "None",
+            "Tax Implecations": "Interest is taxable",
+            description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione dolo eligendi, optio doloremque earum laudantium? Optio obcaecati voluptas natuconsequatur? Iusto sequi recusandae eligendi modi doloribus aspernatur officisuscipit at. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel id quidem odit nostrum nisi, commodi numquam fugiat modi quaerat. Doloribus corporis dolore blanditiis eos quidem delectus, itaque soluta. Perspiciatis, nihil? Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium cupiditate, facilis accusamus molestiae culpa quasi quod magni quam, tempora aperiam ipsa excepturi laborum voluptates est, itaque nesciunt iste! Ut, atqueLorem ipsum dolor sit amet consectetur adipisicing elit. Vel illo ipsa voluptate tempora laudantium. Rem, ullam, alias dolores deserunt neque odit, eum possimus fuga perspiciatis eius consectetur? Tempore, fugiat rerumLorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque alias aliquid sint omnis ducimus, quam impedit consequatur quo voluptatum quibusdam nihil ad aut vero necessitatibus, ipsam at rem reprehenderit doloribus."
         },
     },
     finance: {
@@ -103,9 +107,7 @@ const Project = () => {
             case "overview":
                 return <Overview project={project} />;
             case "Investment Details":
-                return (
-                    <DetailsTable title="Investment Details" items={project.investment.details} />
-                );
+                return <InvestmentDetails investment={project.investment} />;
             case "Financial Details":
                 return <DetailsTable items={project.finance} />;
             case "Documents":
