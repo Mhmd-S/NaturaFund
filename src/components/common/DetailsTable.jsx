@@ -8,7 +8,7 @@ const DetailsTable = ({ title, items }) => {
                     {title}
                 </h4>
             )}
-            <dl className="-my-3 pt-2 divide-y divide-gray-100 text-sm">
+            <dl className="-my-3 divide-y divide-gray-100 text-sm">
                 {Object.entries(items).map(([key, value], index) => (
                     <div
                         key={index}

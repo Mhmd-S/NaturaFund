@@ -111,7 +111,7 @@ const Project = () => {
             case "Investment Details":
                 return <InvestmentDetails investment={project.investment} />;
             case "Financial Details":
-                return <FinancialDetails financial={project.finance} />;
+                return <FinancialDetails finance={project.finance} />;
             case "Documents":
                 return <DetailsTable items={project.legal} />;
             case "Updates":
