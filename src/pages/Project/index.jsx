@@ -4,13 +4,18 @@ import DetailsTable from "@/components/common/DetailsTable";
 import Overview from "@/components/common/ProjectDetails/Overview";
 import InvestmentDetails from "@/components/common/ProjectDetails/InvestmentDetails";
 import FinancialDetails from "@/components/common/ProjectDetails/FinancialDetails";
+import Status from "@/components/common/ProjectDetails/Status";
 
-const tabs = ["overview", "Investment Details", "Financial Details", "Documents", "Updates"];
+const tabs = ["overview", "Investment Details", "Financial Details", "Status", "Documents"];
 
 const project = {
     name: "Aventura Solar Farms @ Penang",
     description:
         "A 10MW solar farm located in Penang, Malaysia. The project is expected to generate 10,000 MWh of clean energy annually. The project is expected to reduce 5,000 tons of CO2 emissions annually.",
+    status: {
+        current: "Funding",
+        description: "The project is currently under construction and is expected to be completed by the end of 2024.",
+    },
     owner: {
         name: "Green Energy Sdn Bhd",
         website: "https://example.com",
@@ -40,7 +45,7 @@ const project = {
             "Bond Rating": "AAA (from S&P)",
             collateral: "None",
             "Priority of Claims": "Senior",
-            "Seniority": "Senior",
+            Seniority: "Senior",
             "Call/Put Options": "None",
             "Tax Implecations": "Interest is taxable",
         },
@@ -56,7 +61,7 @@ const project = {
             "Working Capital": "20%",
         },
         projections: {
-            revenueForecast: { 
+            revenueForecast: {
                 "Year 1": "RM 10,000",
                 "Year 2": "RM 20,000",
                 "Year 3": "RM 30,000",
@@ -114,8 +119,8 @@ const Project = () => {
                 return <FinancialDetails finance={project.finance} />;
             case "Documents":
                 return <DetailsTable items={project.legal} />;
-            case "Updates":
-                return <DetailsTable items={project.metrics} />;
+            case "Status":
+                return <Status status={project.status} />;
             default:
                 return <Overview project={project} />;
         }
@@ -124,9 +129,9 @@ const Project = () => {
     return (
         <div className="w-full overflow-y-auto flex flex-col items-center pt-4">
             <TabNav tabs={tabs} currentTab={currentTab} setCurrentTab={setCurrentTab} />
-            <section className="mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+            <div className="px-8 py-16">
                 {renderDetail()}
-            </section>
+            </div>
         </div>
     );
 };

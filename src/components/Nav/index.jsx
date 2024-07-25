@@ -60,7 +60,7 @@ const Nav = () => {
 
                 <div className="border-t border-gray-100">
                     <div className="px-2">
-                        <ul className="space-y-1 border-t border-gray-100 pt-4">
+                        <ul className="space-y-1 border-t border-gray-100 py-4">
                             {itemsMenu.map((item) => {
                                 return (
                                     <li key={item.name}>
