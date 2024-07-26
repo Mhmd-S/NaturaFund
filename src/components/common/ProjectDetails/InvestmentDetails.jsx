@@ -2,14 +2,11 @@ import React from "react";
 import DetailsTable from "../DetailsTable";
 
 const InvestmentDetails = ({ investment }) => {
-
     return (
-        <div className="mt-8 grid grid-cols-2 gap-8 lg:grid-cols-2 lg:gap-16">
-            <section className="col-span-1">
+        <>
+            <section>
                 <h2 className="text-3xl py-4 font-semibold capatalize">Investment Description</h2>
-                <p>
-                {investment.description}
-                </p>
+                <p>{investment.description}</p>
             </section>
             <div>
                 <h2 className="text-3xl py-4 font-semibold capatalize">
@@ -17,7 +14,7 @@ const InvestmentDetails = ({ investment }) => {
                 </h2>
                 <DetailsTable items={investment.features} />
             </div>
-        </div>
+        </>
     );
 };
 

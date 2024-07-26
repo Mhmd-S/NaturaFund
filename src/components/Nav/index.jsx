@@ -72,7 +72,7 @@ const Nav = () => {
                                                 icon={item.icon}
                                                 className="size-5 opacity-75"
                                             />
-                                            <span className="invisible z-10 absolute start-full top-1/2 ms-4 -translate-y-1/2 rounded bg-gray-900 px-2 py-1.5 text-xs font-medium text-white group-hover:visible">
+                                            <span className="invisible z-50 absolute start-full top-1/2 ms-4 -translate-y-1/2 rounded bg-gray-900 px-2 py-1.5 text-xs font-medium text-white group-hover:visible">
                                                 {item.name}
                                             </span>
                                         </Link>
@@ -97,7 +97,7 @@ const Nav = () => {
                                                 icon={item.icon}
                                                 className="size-5 opacity-75"
                                             />
-                                            <span className="invisible z-10 absolute start-full top-1/2 ms-4 -translate-y-1/2 rounded bg-gray-900 px-2 py-1.5 text-xs font-medium text-white group-hover:visible">
+                                            <span className="invisible z-50 absolute start-full top-1/2 ms-4 -translate-y-1/2 rounded bg-gray-900 px-2 py-1.5 text-xs font-medium text-white group-hover:visible">
                                                 {item.name}
                                             </span>
                                         </Link>

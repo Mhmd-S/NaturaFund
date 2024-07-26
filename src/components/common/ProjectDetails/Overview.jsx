@@ -9,7 +9,7 @@ const Overview = ({ project }) => {
     };
 
     return (
-        <div className="mt-8 grid grid-cols-2 gap-8 lg:grid-cols-2 lg:gap-16">
+        <>
             {/* Image */}
             <img
                 alt=""
@@ -38,7 +38,7 @@ const Overview = ({ project }) => {
                 <h2 className="text-3xl py-4 font-semibold">Company Info</h2>
                 <DetailsTable items={getCompanyDetails()} />
             </div>
-        </div>
+        </>
     );
 };
 

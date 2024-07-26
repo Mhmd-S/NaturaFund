@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import TabNav from "@/components/TabNav";
-import DetailsTable from "@/components/common/DetailsTable";
+import Documents from "@/components/common/ProjectDetails/Documents";
 import Overview from "@/components/common/ProjectDetails/Overview";
 import InvestmentDetails from "@/components/common/ProjectDetails/InvestmentDetails";
 import FinancialDetails from "@/components/common/ProjectDetails/FinancialDetails";
@@ -14,7 +14,8 @@ const project = {
         "A 10MW solar farm located in Penang, Malaysia. The project is expected to generate 10,000 MWh of clean energy annually. The project is expected to reduce 5,000 tons of CO2 emissions annually.",
     status: {
         current: "Funding",
-        description: "The project is currently under construction and is expected to be completed by the end of 2024.",
+        description:
+            "The project is currently under construction and is expected to be completed by the end of 2024.",
     },
     owner: {
         name: "Green Energy Sdn Bhd",
@@ -118,7 +119,7 @@ const Project = () => {
             case "Financial Details":
                 return <FinancialDetails finance={project.finance} />;
             case "Documents":
-                return <DetailsTable items={project.legal} />;
+                return <Documents legal={project.legal} />;
             case "Status":
                 return <Status status={project.status} />;
             default:
@@ -129,7 +130,7 @@ const Project = () => {
     return (
         <div className="w-full overflow-y-auto flex flex-col items-center pt-4">
             <TabNav tabs={tabs} currentTab={currentTab} setCurrentTab={setCurrentTab} />
-            <div className="px-8 py-16">
+            <div className="px-12 my-20 grid grid-cols-2 gap-8 lg:grid-cols-2 lg:gap-16">
                 {renderDetail()}
             </div>
         </div>
