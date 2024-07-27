@@ -7,8 +7,14 @@ import FinancialDetails from "@/components/ProjectDetails/FinancialDetails";
 import Status from "@/components/ProjectDetails/Status";
 import RevenueGenerated from "@/components/ProjectDetails/RevenueGenerated";
 
-const tabs = ["overview", "Investment Details", "Financial Details", "Status", "Documents", "Revenue Generated"];
-
+const tabs = [
+    "overview",
+    "Investment Details",
+    "Financial Details",
+    "Status",
+    "Documents",
+    "Revenue Generated",
+];
 const project = {
     name: "Aventura Solar Farms @ Penang",
     description:
@@ -123,8 +129,8 @@ const Project = () => {
                 return <Documents legal={project.legal} />;
             case "Status":
                 return <Status status={project.status} />;
-                case "Revenue Generated":
-                    return <RevenueGenerated />;
+            case "Revenue Generated":
+                return <RevenueGenerated />;
             default:
                 return <Overview project={project} />;
         }
@@ -132,10 +138,12 @@ const Project = () => {
 
     return (
         <div className="w-full overflow-y-auto flex flex-col items-center pt-4">
-            <TabNav tabs={tabs} currentTab={currentTab} setCurrentTab={setCurrentTab} />
-            <div className="px-12 my-20 grid grid-cols-2 gap-16">
-                {renderDetail()}
-            </div>
+            <TabNav
+                tabs={project.status.current == "Electricity Generated" ? tabs : tabs.slice(0, 5)}
+                currentTab={currentTab}
+                setCurrentTab={setCurrentTab}
+            />
+            <div className="px-12 my-20 grid grid-cols-2 gap-16">{renderDetail()}</div>
         </div>
     );
 };
