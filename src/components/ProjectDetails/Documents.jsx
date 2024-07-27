@@ -1,5 +1,5 @@
 import React from "react";
-import DetailsTable from "../DetailsTable";
+import DetailsTable from "../common/DetailsTable";
 
 const Documents = ({ legal }) => {
     return (

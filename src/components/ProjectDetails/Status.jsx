@@ -1,4 +1,5 @@
 import React from "react";
+import RevenueGenerated from "@/components/ProjectDetails/RevenueGenerated";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faC, faCheck, faCircle } from "@fortawesome/free-solid-svg-icons";
 
@@ -28,7 +29,7 @@ const Status = ({ status }) => {
 
     return (
         <>
-            <section className="pl-24">
+            <section>
                 <h2 className="text-3xl py-4 font-semibold capatalize">Steps</h2>
                 <div>
                     <ol className="h-full flex flex-col gap-2 text-md font-medium text-gray-500 sm:gap-4">
@@ -66,11 +67,15 @@ const Status = ({ status }) => {
                     </ol>
                 </div>
             </section>
-            <section className="pr-24">
+            <section>
                 <h2 className="text-3xl py-4 font-semibold capatalize">Updates</h2>
-                <p>{status.description} Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate aliquid quasi eum in est repellat placeat, nostrum, quam, a ab magnam natus. Delectus adipisci aliquid rem corrupti at saepe neque.</p>
+                <p>
+                    {status.description} Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Cupiditate aliquid quasi eum in est repellat placeat, nostrum, quam, a ab magnam
+                    natus. Delectus adipisci aliquid rem corrupti at saepe neque.
+                </p>
             </section>
-            </>
+        </>
     );
 };
 

@@ -1,6 +1,6 @@
 import React from "react";
-import DetailsTable from "../DetailsTable";
-import MultiColDetailsTable from "../MultiColDetailsTable";
+import DetailsTable from "../common/DetailsTable";
+import MultiColDetailsTable from "../common/MultiColDetailsTable";
 
 const FinancialDetails = ({ finance }) => {
     return (

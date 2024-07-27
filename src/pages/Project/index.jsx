@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 import TabNav from "@/components/TabNav";
-import Documents from "@/components/common/ProjectDetails/Documents";
-import Overview from "@/components/common/ProjectDetails/Overview";
-import InvestmentDetails from "@/components/common/ProjectDetails/InvestmentDetails";
-import FinancialDetails from "@/components/common/ProjectDetails/FinancialDetails";
-import Status from "@/components/common/ProjectDetails/Status";
+import Documents from "@/components/ProjectDetails/Documents";
+import Overview from "@/components/ProjectDetails/Overview";
+import InvestmentDetails from "@/components/ProjectDetails/InvestmentDetails";
+import FinancialDetails from "@/components/ProjectDetails/FinancialDetails";
+import Status from "@/components/ProjectDetails/Status";
+import RevenueGenerated from "@/components/ProjectDetails/RevenueGenerated";
 
-const tabs = ["overview", "Investment Details", "Financial Details", "Status", "Documents"];
+const tabs = ["overview", "Investment Details", "Financial Details", "Status", "Documents", "Revenue Generated"];
 
 const project = {
     name: "Aventura Solar Farms @ Penang",
     description:
         "A 10MW solar farm located in Penang, Malaysia. The project is expected to generate 10,000 MWh of clean energy annually. The project is expected to reduce 5,000 tons of CO2 emissions annually.",
     status: {
-        current: "Funding",
+        current: "Electricity Generated",
         description:
             "The project is currently under construction and is expected to be completed by the end of 2024.",
     },
@@ -122,6 +123,8 @@ const Project = () => {
                 return <Documents legal={project.legal} />;
             case "Status":
                 return <Status status={project.status} />;
+                case "Revenue Generated":
+                    return <RevenueGenerated />;
             default:
                 return <Overview project={project} />;
         }
@@ -130,7 +133,7 @@ const Project = () => {
     return (
         <div className="w-full overflow-y-auto flex flex-col items-center pt-4">
             <TabNav tabs={tabs} currentTab={currentTab} setCurrentTab={setCurrentTab} />
-            <div className="px-12 my-20 grid grid-cols-2 gap-8 lg:grid-cols-2 lg:gap-16">
+            <div className="px-12 my-20 grid grid-cols-2 gap-16">
                 {renderDetail()}
             </div>
         </div>
