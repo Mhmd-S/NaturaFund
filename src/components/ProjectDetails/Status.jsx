@@ -29,7 +29,7 @@ const Status = ({ status }) => {
 
     return (
         <>
-            <section>
+            <section className="pl-24">
                 <h2 className="text-3xl py-4 font-semibold capatalize">Steps</h2>
                 <div>
                     <ol className="h-full flex flex-col gap-2 text-md font-medium text-gray-500 sm:gap-4">
@@ -67,7 +67,7 @@ const Status = ({ status }) => {
                     </ol>
                 </div>
             </section>
-            <section>
+            <section className="pr-24">
                 <h2 className="text-3xl py-4 font-semibold capatalize">Updates</h2>
                 <p>
                     {status.description} Lorem ipsum dolor sit amet consectetur, adipisicing elit.

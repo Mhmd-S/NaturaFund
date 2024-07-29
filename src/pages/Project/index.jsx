@@ -105,7 +105,7 @@ const project = {
     },
     legal: {
         prospectus: "https://example.com/prospectus.pdf",
-        bondIndenture: "https://example.com/bond-indenture.pdf",
+        "Bond Terms": "https://example.com/bond-indenture.pdf",
         terms: "https://example.com/terms.pdf",
     },
     metrics: {
@@ -143,7 +143,7 @@ const Project = () => {
                 currentTab={currentTab}
                 setCurrentTab={setCurrentTab}
             />
-            <div className="px-12 my-20 grid grid-cols-2 gap-16">{renderDetail()}</div>
+            <div className="w-full px-12 my-20 grid grid-cols-2 gap-16">{renderDetail()}</div>
         </div>
     );
 };
