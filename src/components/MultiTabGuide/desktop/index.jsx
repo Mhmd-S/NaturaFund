@@ -13,9 +13,9 @@ const MultiStepGuide = ({ title, items }) => {
                     onClick={() => setCurrentTab(index)}
                 >
                     <span
-                        className={`w-full px-3 py-2 text-center ${currentTab == index ? "text-brand-800 font-semibold bg-white rounded-t-lg text-2xl" : 'text-lg'}`}
+                        className={`w-full px-3 py-2 text-center ${currentTab == index && "text-brand-800 font-semibold bg-white rounded-t-lg"}`}
                     >
-                        {item.header}
+                        {item.title}
                     </span>
                 </h2>
             );

@@ -15,7 +15,7 @@ const Documents = ({ legal }) => {
                         <FontAwesomeIcon icon={faPaperclip} className="cursor-pointer text-gray-400" />
                         <dt className="capitalize">{key}</dt>
                         <dd className="text-sm text-gray-400">1.9 mb</dd>
-                        <a href={value} className="text-blue-800 justify-self-end" >
+                        <a href={value} className="text-blue-800 justify-self-end hover:underline" >
                             Download
                         </a>
                     </div>

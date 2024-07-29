@@ -25,10 +25,6 @@ const itemsMenu = [
         name: "Explore",
         icon: faCompass,
     },
-    {
-        name: "Sponsor Tab",
-        icon: faFunnelDollar,
-    },
 ];
 
 const itemsOthers = [

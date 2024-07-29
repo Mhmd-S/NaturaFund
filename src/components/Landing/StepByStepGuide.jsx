@@ -15,7 +15,7 @@ import {
 
 const items = [
     {
-        title: "Sourcing solar projects",
+        title: "Sourcing Solar Projects",
         paragraph:
             "Vested identifies organizations such as corporates, schools or hospitals that want to install solar plants. We do lengthy due diligence on each project:",
         subpoints: [
@@ -76,14 +76,14 @@ const items = [
         img: "landing_guide_2.svg",
     },
     {
-        title: "Solar project installation",
+        title: "Solar Project Installation",
         paragraph:
             "Post full funding, it takes up to 3 months to bring the project to life. Once operational, the organization starts receiving sustainable clean energy and investors start earning returns on their original investment.",
         subpoints: [],
         img: "landing_1.svg",
     },
     {
-        title: "Earn returns",
+        title: "Earn Returns",
         paragraph:
             "Experience the benefits of your asset-backed investment with regular updates and attractive returns. We provide daily & monthly performance updates on the:",
         subpoints: [
