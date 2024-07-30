@@ -1,12 +1,14 @@
 import React from "react";
 import EmptyState from "@/components/common/EmptyState";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBank, faUser, faCheck, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faBank, faUser, faCheck, faRemove } from "@fortawesome/free-solid-svg-icons";
+
+// ToDo: If there is only one bank account, the remove button should be disabled.
 
 const PaymentDetails = () => {
     return (
         <div className="w-full">
-            {/* Render if no state found */}
+            {/* ToDo: Render if no state found */}
             {/* <div className="mt-24"> 
                 <EmptyState
                     title={"No Bank Accounts"}
@@ -19,9 +21,13 @@ const PaymentDetails = () => {
             <h2 className="mt-4 text-3xl py-4 font-semibold">Payment Details</h2>
             <ol className="w-full h-80 p-3 grid grid-cols-3 gap-3 border border-gray-200 rounded-lg">
                 <li className="w-full bg-[rgb(249,250,251)] grid grid-rows-[30%_45%_25%] grid-cols-1 rounded-md border-[1px] shadow-sm divide-y divide-gray-300">
-                    <div className="px-4 flex flex-col justify-center">
+                    <div className="relative px-4 flex flex-col justify-center">
                         <dt className="text-sm font-semibold">Account Number</dt>
                         <dd>DE68500105178297336485</dd>
+                        <FontAwesomeIcon
+                            icon={faRemove}
+                            className="absolute right-2 top-2 text-red-500 cursor-pointer"
+                        />
                     </div>
                     <div className="h-full px-4 flex flex-col justify-center gap-3 text-sm text-gray-500">
                         <text>
