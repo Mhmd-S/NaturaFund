@@ -10,7 +10,7 @@ const TabNav = ({ tabs, currentTab, setCurrentTab }) => {
                         href="#"
                         className={`shrink-0 rounded-lg p-2 text-sm font-medium  cursor-pointer capitalize  ${
                             currentTab === tab
-                                ? "bg-sky-100 text-sky-600"
+                                ? "bg-brand-100 text-brand-800"
                                 : "text-gray-500 hover:bg-gray-50 hover:text-gray-700"
                         }`}
                         onClick={() => setCurrentTab(tab)}
