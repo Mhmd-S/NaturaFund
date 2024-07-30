@@ -18,7 +18,7 @@ const AuthMenu = ({ items, setAuthType, alternative, title, subTitle }) => {
     };
 
     return (
-        <div className="w-full h-full grid grid-cols-1 grid-flow-row items-center justify-evenly gap-y-6 text-brand-900">
+        <div className="w-full h-full grid grid-cols-1 grid-flow-row items-center justify-evenly gap-y-8 text-brand-900">
             <h3 className="text-sm text-gray-400 text-center">{title}</h3>
             <p className="text-brand-900 font-semibold">{subTitle}</p>
             {renderItems()}

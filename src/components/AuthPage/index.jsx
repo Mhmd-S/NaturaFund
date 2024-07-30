@@ -51,7 +51,7 @@ const AuthPage = ({ children }) => {
                     </div>
                 </div>
             </div>
-            <div className="w-full flex flex-col items-center justify-center gap-y-8 md:h-full">
+            <div className="w-full pt-12 flex flex-col items-center gap-y-8 md:h-full">
                 {children}
             </div>
         </div>

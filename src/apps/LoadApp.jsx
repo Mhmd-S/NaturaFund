@@ -17,7 +17,7 @@ const DefaultApp = () => (
 
 export default function LoadApp() {
     // const { current } = useAuthContext();
-    const isLoggedIn = true;
+    const isLoggedIn = false;
 
     // // Online state
     // const [isOnline, setIsOnline] = useState(navigator.onLine);
