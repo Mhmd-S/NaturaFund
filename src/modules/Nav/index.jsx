@@ -1,18 +1,16 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useLocation } from "react-router-dom";
 import {
-    faLeaf,
     faHomeLg,
     faCompass,
     faCog,
     faGauge,
     faQuestion,
     faUser,
-    faFunnelDollar,
 } from "@fortawesome/free-solid-svg-icons";
+import NavSection from "@/modules/Nav/NavSection";
 
-const itemsMenu = [
+const PRIMARY_ITEMS = [
     {
         name: "Home",
         icon: faHomeLg,
@@ -27,7 +25,7 @@ const itemsMenu = [
     },
 ];
 
-const itemsOthers = [
+const SECONDARY_ITEMS = [
     {
         name: "Profile",
         icon: faUser,
@@ -43,6 +41,7 @@ const itemsOthers = [
 ];
 
 const Nav = () => {
+
     const location = useLocation();
 
     return (
@@ -54,55 +53,9 @@ const Nav = () => {
                     </span>
                 </div>
 
-                <div className="border-t border-gray-100">
-                    <div className="px-2">
-                        <ul className="space-y-1 border-t border-gray-100 py-4">
-                            {itemsMenu.map((item) => {
-                                return (
-                                    <li key={item.name}>
-                                        <Link
-                                            to={`/${item.name.toLowerCase()}`}
-                                            className={`group relative flex justify-center rounded px-2 py-2 ${location.pathname === `/${item.name.toLowerCase()}` ? "bg-brand-100 text-brand-800" : "text-gray-500 hover:bg-gray-50 hover:text-gray-700"}`}
-                                        >
-                                            <FontAwesomeIcon
-                                                icon={item.icon}
-                                                className="size-5 opacity-75"
-                                            />
-                                            <span className="invisible z-50 absolute start-full top-1/2 ms-4 -translate-y-1/2 rounded bg-gray-900 px-2 py-1.5 text-xs font-medium text-white group-hover:visible">
-                                                {item.name}
-                                            </span>
-                                        </Link>
-                                    </li>
-                                );
-                            })}
-                        </ul>
-                    </div>
-                </div>
+                <NavSection location={location} items={PRIMARY_ITEMS} />
 
-                <div className="border-t border-gray-100">
-                    <div className="px-2">
-                        <ul className="space-y-1 border-t border-gray-100 pt-4">
-                            {itemsOthers.map((item) => {
-                                return (
-                                    <li key={item.name}>
-                                        <Link
-                                            to={`/${item.name.toLowerCase()}`}
-                                            className={`group relative flex justify-center rounded px-2 py-2 ${location.pathname === `/${item.name.toLowerCase()}` ? "bg-blue-50 text-blue-700" : "text-gray-500 hover:bg-gray-50 hover:text-gray-700"}`}
-                                        >
-                                            <FontAwesomeIcon
-                                                icon={item.icon}
-                                                className="size-5 opacity-75"
-                                            />
-                                            <span className="invisible z-50 absolute start-full top-1/2 ms-4 -translate-y-1/2 rounded bg-gray-900 px-2 py-1.5 text-xs font-medium text-white group-hover:visible">
-                                                {item.name}
-                                            </span>
-                                        </Link>
-                                    </li>
-                                );
-                            })}
-                        </ul>
-                    </div>
-                </div>
+                <NavSection location={location} items={SECONDARY_ITEMS} />
             </div>
 
             <div className="sticky inset-x-0 bottom-0 border-t border-gray-100 bg-white p-2">
