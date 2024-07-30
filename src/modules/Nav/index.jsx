@@ -46,7 +46,7 @@ const Nav = () => {
 
     return (
         <div className="flex h-screen w-16 flex-col justify-between border-e bg-white">
-            <div>
+            <div className="divide-y">
                 <div className="inline-flex size-16 items-center justify-center">
                     <span className="grid size-10 place-content-center rounded-lg bg-gray-100 text-xs text-gray-600">
                         L
@@ -58,7 +58,7 @@ const Nav = () => {
                 <NavSection location={location} items={SECONDARY_ITEMS} />
             </div>
 
-            <div className="sticky inset-x-0 bottom-0 border-t border-gray-100 bg-white p-2">
+            <div className="sticky inset-x-0 bottom-0 border-t bg-white p-2">
                 <form action="#">
                     <button
                         type="submit"
