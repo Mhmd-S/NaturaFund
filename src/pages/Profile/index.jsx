@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import TabNav from "@/components/TabNav"
+import TabNav from "@/components/common/TabNav"
 import Verification from "@/modules/Profile/Verification";
 import PersonalDetails from "@/modules/Profile/PersonalDetails";
 import PaymentDetails from "@/modules/Profile/PaymentDetails";

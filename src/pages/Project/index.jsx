@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import TabNav from "@/components/TabNav";
+import TabNav from "@/components/common/TabNav";
 import Documents from "@/components/ProjectDetails/Documents";
 import Overview from "@/components/ProjectDetails/Overview";
 import InvestmentDetails from "@/components/ProjectDetails/InvestmentDetails";
