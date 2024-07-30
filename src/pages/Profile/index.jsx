@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import TabNav from "@/components/TabNav"
+import Verification from "@/components/Profile/Verification";
+import PersonalDetails from "@/components/Profile/PersonalDetails";
+import PaymentDetails from "@/components/Profile/PaymentDetails";
 
-const tabs = ["Personal Info", "Payment Details", "Tax Details"];
+const tabs = ["Personal Info", "Payment Details", "Verification"];
 
 const Profile = () => {
   const [currentTab, setCurrentTab] = useState("Personal Info");
@@ -12,8 +15,8 @@ const Profile = () => {
                 return <PersonalDetails />;
             case "Payment Details":
                 return <PaymentDetails />;
-            case "Tax Details":
-                return <TaxDetails />;
+            case "Verification":
+                return <Verification />
             default:
                 return <PersonalDetails />;
         }
