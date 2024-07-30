@@ -1,7 +1,6 @@
 import React from "react";
 import ProjectCard from "@/components/common/ProjectCard";
 import SearchBar from "@/components/common/SearchBar";
-import Dropdown from "@/components/common/Dropdown";
 import Pagination from "@/components/common/Pagination";
 
 const dummyProjects = [

@@ -1,8 +1,8 @@
 import React from "react";
-import Revenue from "@/components/Home/RevenueCHart";
-import Portfolio from "@/components/Home/PortfolioChart";
-import Projects from "@/components/Home/Projects";
-import News from "@/components/Home/News";
+import Revenue from "@/modules/Home/RevenueCHart";
+import Portfolio from "@/modules/Home/PortfolioChart";
+import Projects from "@/modules/Home/Projects";
+import News from "@/modules/Home/News";
 
 const Home = () => {
     return (

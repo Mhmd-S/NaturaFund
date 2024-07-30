@@ -1,5 +1,5 @@
 import AppRouter from "@/routes/AppRouter";
-import Nav from "@/components/Nav";
+import Nav from "@/modules/Nav";
 
 export default function App() {
     return (

@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import NavBar from "@/components/Landing/NavBar";
+import NavBar from "@/components/common/NavBar";
 import useResponsive from "@/hooks/useResponsive";
 import CarouselMobile from "@/components/SlidingCarousel/CarouselMobile";
 import CarouselDesktop from "@/components/SlidingCarousel/CarouselDesktop";
-import StepByStepGuide from "@/components/Landing/StepByStepGuide";
-import WhyInvest from "@/components/Landing/WhyInvest";
+import StepByStepGuide from "@/modules/Landing/StepByStepGuide";
+import WhyInvest from "@/modules/Landing/WhyInvest";
 import CarouselInvMobile from "@/components/SlidingCarouselInv/mobile";
 import CarouselInvDesktop from "@/components/SlidingCarouselInv/Desktop";
 import Footer from "@/components/common/Footer";

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import TabNav from "@/components/TabNav"
-import Verification from "@/components/Profile/Verification";
-import PersonalDetails from "@/components/Profile/PersonalDetails";
-import PaymentDetails from "@/components/Profile/PaymentDetails";
+import Verification from "@/modules/Profile/Verification";
+import PersonalDetails from "@/modules/Profile/PersonalDetails";
+import PaymentDetails from "@/modules/Profile/PaymentDetails";
 
 const tabs = ["Personal Info", "Payment Details", "Verification"];
 
