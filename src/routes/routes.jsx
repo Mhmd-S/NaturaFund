@@ -43,7 +43,7 @@ import { Navigate } from "react-router-dom";
 // const About = lazy(() => import('@/pages/About'));
 
 const Portfolio = lazy(() => import("@/pages/Portfolio"));
-const Home = lazy(() => import("@/pages/About/Home"));
+const Home = lazy(() => import("@/pages/Home"));
 const Explore = lazy(() => import("@/pages/Explore"));
 const Project = lazy(() => import("@/pages/Project"));
 const Profile = lazy(()=> import("@/pages/Profile"));
