@@ -24,7 +24,8 @@ const PersonalDetails = () => {
 
     return (
         <FormWrapper onSubmit={handleSubmit(onSubmit)}>
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col">
+                <h2 className="text-3xl py-4 font-semibold capatalize">Personal Details</h2>
                 <div className="grid grid-cols-2 gap-4">
                     <FormField
                         name="firstName"
@@ -99,7 +100,8 @@ const PersonalDetails = () => {
                     options={COUNTRY_LIST}
                     validationRules={{
                         required: "Nationality is required",
-                        validate: value => value !== 'DEFAULT' ? true : 'Nationality is required'
+                        validate: (value) =>
+                            value !== "DEFAULT" ? true : "Nationality is required",
                     }}
                 />
                 <FormButton text="Next" disable={Object.keys(errors).length !== 0} />

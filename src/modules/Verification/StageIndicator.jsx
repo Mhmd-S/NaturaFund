@@ -8,7 +8,7 @@ const StageIndicator = ({ steps }) => {
     const stepsTitles = steps.map((step) => step.title);
 
     return (
-        <section>
+        <section className="sticky top-1 left-2">
             <h2 className="text-3xl py-4 font-semibold capatalize">Steps</h2>
             <div>
                 <Steps steps={stepsTitles} currentStep={stage} />
