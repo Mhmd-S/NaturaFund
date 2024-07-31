@@ -78,7 +78,7 @@ const PaymentDetails = () => {
                     </div>
                 </li>
                 <li className="w-full flex flex-col items-center justify-center rounded-md border-[1px] shadow-sm">
-                    <button className="w-1/3  py-2 border bg-white text-brand-800 border-brand-800 rounded-md transition-colors b hover:bg-brand-800 hover:text-white">
+                    <button className="w-1/3  py-2 border bg-white text-brand-800 border-brand-800 rounded-md transition-colors hover:bg-brand-800 hover:text-white">
                         Add
                     </button>
                 </li>
