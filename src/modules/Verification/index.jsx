@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { VerificationProvider } from "@/modules/Verification/context/useVerificationContext";
 import StageIndicator from "@/modules/Verification/StageIndicator";
+import PersonalDetails from "@/forms/Verification/PersonalDetails";
 
 // e-KYC
 // ToDo: Implement Verification component
@@ -8,7 +9,6 @@ import StageIndicator from "@/modules/Verification/StageIndicator";
 // Notes: Proof of Address and Proof of Identity
 // Notes: Add a button to upload the documents
 /* User should first insert his details, goverment ID and lastly Facial Recogintion */
-
 
 const VERIFICATION_STEPS = [
     {
@@ -31,15 +31,14 @@ const VERIFICATION_STEPS = [
         description:
             "Please upload a valid proof of address document, such as a utility bill or bank statement. This document should clearly show your name and residential address, and it should be recent (within the last 3 months).",
     },
-  ];
-  
+];
 
 const Verification = () => {
     return (
         <div className="w-full grid grid-cols-[30%_70%]">
             <VerificationProvider>
                 <StageIndicator steps={VERIFICATION_STEPS} />
-                <section></section>
+                <PersonalDetails />
             </VerificationProvider>
         </div>
     );
