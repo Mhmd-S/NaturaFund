@@ -5,7 +5,7 @@ import FormFieldError from "@/forms/formComponents/FormFieldError";
 import { validateImage } from "@/utils/validateImage";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleNotch, faClose, faFileUpload } from "@fortawesome/free-solid-svg-icons";
+import { faPause, faTrashAlt, faUpload, faCheck } from "@fortawesome/free-solid-svg-icons";
 
 const FileUploadField = ({
     name,
@@ -18,7 +18,7 @@ const FileUploadField = ({
     resetField,
     ...inputProps
 }) => {
-    const [imageFile, setImageFile] = useState(usersPicture);
+    const [file, setFile] = useState(usersPicture);
     const [loading, setLoading] = useState(false);
 
     const handleFileChange = async (event) => {
@@ -34,14 +34,14 @@ const FileUploadField = ({
                 return;
             }
 
-            setImageFile(selectedFile);
+            setFile(selectedFile);
         }
         setLoading(false);
     };
 
-    const handleRemoveImage = () => {
+    const handleRemoveFile = () => {
         resetField(`${name}`, { defaultValue: "" }); // Not optimal, but it works
-        setImageFile(null);
+        setFile(null);
     };
 
     return (
@@ -53,67 +53,80 @@ const FileUploadField = ({
                 {label}
             </label>
             <div
-                className={`relative h-full w-full border border-gray-900/25 border-dashed rounded-md ${
-                    errors[name] && "border-pink-600"
+                className={`relative h-full w-full px-4 pt-4 border  border-dashed rounded-md ${
+                    errors[name] ? "border-pink-600" : "border-gray-900/25"
                 }`}
             >
-                {loading && <FontAwesomeIcon icon={faCircleNotch} className="animate-spin" />}
-
-                {/* The icon for adding an image */}
-                <div
-                    htmlFor={name}
-                    className={`h-full pt-4 grid grid-rows-[35%_25%_25%_minmax(5%,10%)] grid-cols-1 place-items-center items-center text-gray-600 ${
-                        imageFile && "hidden"
-                    } `}
-                >
-                    <FontAwesomeIcon icon={faFileUpload} className="size-8 text-gray-300" />
-
-                    <span>
-                        <span className="text-brand-900 font-semibold">Upload a File </span>
-                        or drag and drop
-                    </span>
-                    <span>PNG, JPG, GIF up to 3MB</span>
-
-                    <FormFieldError name={name} errors={errors} />
-                </div>
-
-                {/* The remove button for an image */}
-                {imageFile && (
-                    <>
-                        <div className="absolute right-[-7%] top-[-5%] z-10">
-                            <div className="relative w-full h-full">
-                                <FontAwesomeIcon
-                                    icon={faClose}
-                                    className="w-3 h-3 aboslute text-lg text-white bg-red-500 rounded-full p-1 cursor-pointer"
-                                    onClick={() => {
-                                        handleRemoveImage();
-                                        inputProps?.handleDeleteImage();
-                                    }}
-                                />
-                            </div>
-                        </div>
-
+                {file ? (
+                    <div className="w-full grid grid-cols-[10%_80%_10%] grid-rows-2 items-center">
                         <img
-                            className="w-full h-full object-cover relative rounded-md"
-                            src={
-                                typeof imageFile == "string"
-                                    ? imageFile
-                                    : URL.createObjectURL(imageFile)
-                            }
+                            className="size-10 object-cover rounded-md"
+                            src={typeof file == "string" ? file : URL.createObjectURL(file)}
                             alt="Preview"
+                        />
+                        <div className="flex flex-col">
+                            <text className="text-sm">File_Name</text>
+                            <text className="text-xs text-gray-400">6 MB</text>
+                        </div>
+                        <div className="flex justify-center items-center gap-2 text-gray-300">
+                            <FontAwesomeIcon
+                                icon={file ? faCheck : faPause}
+                                className={`p-1 size-3 cursor-pointer rounded-full ${file && "text-white bg-green-500"}`}
+                            />
+
+                            <FontAwesomeIcon
+                                icon={faTrashAlt}
+                                className="p-1 size-4 cursor-pointer"
+                                onClick={() => {
+                                    handleRemoveFile();
+                                    inputProps?.handleDeleteImage();
+                                }}
+                            />
+                        </div>
+                        <div className="col-span-3 justify-self-center w-full flex items-center gap-3">
+                            <div
+                                className="relative col-span-3 justify-self-center w-full h-2 bg-gray-300 rounded-full"
+                            >
+                                <div className="absolute w-1/2 h-full bg-brand-900 rounded-full" />
+                            </div>
+                            <text className="text-xs">95%</text>
+                        </div>
+                    </div>
+                ) : (
+                    <>
+                        <div
+                            htmlFor={name}
+                            className={`h-full py-3 grid grid-rows-3 grid-cols-1 gap-2 place-items-center items-center text-gray-600 text-center ${
+                                file && "hidden"
+                            } `}
+                        >
+                            <FontAwesomeIcon
+                                icon={faUpload}
+                                className={`size-7 ${errors[name] ? "text-pink-700" : "text-gray-300"}`}
+                            />
+
+                            <span className="text-sm">
+                                <span
+                                    className={`font-semibold ${errors[name] ? "text-pink-700" : "text-brand-700"}`}
+                                >
+                                    Upload a File{" "}
+                                </span>
+                                or drag and drop
+                            </span>
+                            <span className="text-xs text-gray-400">PNG, JPG, GIF up to 3MB</span>
+                        </div>
+                        <input
+                            type="file"
+                            name={name}
+                            accept="image/png, image/gif, image/jpeg"
+                            {...register(name, validationRules)}
+                            onInput={handleFileChange}
+                            className={`opacity-0 absolute top-0 left-0 w-full h-full cursor-pointer`}
                         />
                     </>
                 )}
-
-                <input
-                    type="file"
-                    name={name}
-                    accept="image/png, image/gif, image/jpeg"
-                    {...register(name, validationRules)}
-                    onInput={handleFileChange}
-                    className={`opacity-0 absolute top-0 left-0 w-full h-full cursor-pointer`}
-                />
             </div>
+            <FormFieldError name={name} errors={errors} />
         </div>
     );
 };

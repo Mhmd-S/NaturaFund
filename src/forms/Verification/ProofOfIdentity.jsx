@@ -25,7 +25,7 @@ const ProofOfIdentity = () => {
 
     return (
         <FormWrapper onSubmit={handleSubmit(onSubmit)}>
-            <div className="w-1/2 grid grid-flow-row gap-y-5">
+            <div className="w-3/4 grid grid-flow-row gap-y-5">
                 <h2 className="text-3xl font-semibold">Proof of Identity</h2>
                 <FileUploadField
                     type="file"
@@ -42,6 +42,18 @@ const ProofOfIdentity = () => {
                 <FileUploadField
                     type="file"
                     label={"Back of ID"}
+                    name="profilePicture1"
+                    register={register}
+                    errors={errors}
+                    resetField={resetField}
+                    setError={setError}
+                    validationRules={{
+                        required: "Profile Picture is required",
+                    }}
+                />
+                <FileUploadField
+                    type="file"
+                    label={"Selfie with ID"}
                     name="profilePicture1"
                     register={register}
                     errors={errors}

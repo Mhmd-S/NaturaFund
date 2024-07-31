@@ -25,11 +25,6 @@ const VERIFICATION_STEPS = [
             "Please upload a valid proof of identity document, such as your passport or driver's license. This document should clearly show your photo, full name, and other relevant details.",
     },
     {
-        title: "Liveness Test",
-        description:
-            "Please complete the facial recognition test to verify that you are a real person. Follow the instructions on the screen and make sure your face is well-lit and clearly visible.",
-    },
-    {
         title: "Proof of Address",
         description:
             "Please upload a valid proof of address document, such as a utility bill or bank statement. This document should clearly show your name and residential address, and it should be recent (within the last 3 months).",
@@ -38,7 +33,7 @@ const VERIFICATION_STEPS = [
 
 const Verification = () => {
     return (
-        <div className="w-full grid grid-cols-[30%_70%]">
+        <div className="w-full grid grid-cols-[20%_80%]">
             <VerificationProvider>
                 <StageIndicator steps={VERIFICATION_STEPS} />
                 {/* <PersonalDetails /> */}
