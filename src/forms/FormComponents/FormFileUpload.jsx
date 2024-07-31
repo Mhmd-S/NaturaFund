@@ -5,7 +5,7 @@ import FormFieldError from "@/forms/formComponents/FormFieldError";
 import { validateImage } from "@/utils/validateImage";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleNotch, faClose, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faCircleNotch, faClose, faFileUpload } from "@fortawesome/free-solid-svg-icons";
 
 const FileUploadField = ({
     name,
@@ -18,7 +18,7 @@ const FileUploadField = ({
     ...inputProps
 }) => {
     const [imageFile, setImageFile] = useState(usersPicture);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const handleFileChange = async (event) => {
         setLoading(true);
@@ -45,8 +45,8 @@ const FileUploadField = ({
 
     return (
         <div
-            className={`h-full w-full relative flex justify-center items-center border-2  rounded-md bg-white ${
-                errors[name] && "border-2 border-pink-600"
+            className={`relative h-full w-full border border-gray-900/25 border-dashed rounded-md ${
+                errors[name] && "border-pink-600"
             }`}
         >
             {loading && <FontAwesomeIcon icon={faCircleNotch} className="animate-spin" />}
@@ -54,11 +54,17 @@ const FileUploadField = ({
             {/* The icon for adding an image */}
             <label
                 htmlFor={name}
-                className={`h-full w-full flex flex-col p-2 text-center items-center justify-center absolute ${
+                className={`h-full grid grid-rows-[35%_25%_25%_minmax(5%,10%)] grid-cols-1 place-items-center items-center text-gray-600 ${
                     imageFile && "hidden"
                 } `}
             >
-                <FontAwesomeIcon icon={faPlus} className="w-5 h-5 text-brand-800" />
+                <FontAwesomeIcon icon={faFileUpload} className="size-8 text-gray-300" />
+
+                <span>
+                    <span className="text-brand-900 font-semibold">Upload a File </span>
+                    or drag and drop
+                </span>
+                <span>PNG, JPG, GIF up to 3MB</span>
 
                 <FormFieldError name={name} errors={errors} />
             </label>
@@ -76,14 +82,6 @@ const FileUploadField = ({
                                     inputProps?.handleDeleteImage();
                                 }}
                             />
-                            {/* <input
-								type="file"
-								name={name}
-								accept="image/png, image/jpeg"
-								{...register(name, validationRules)}
-								onInput={handleFileChange}
-								className={`opacity-0 w-full h-full absolute top-0 r-0`}
-							/> */}
                         </div>
                     </div>
 
@@ -105,7 +103,7 @@ const FileUploadField = ({
                 accept="image/png, image/gif, image/jpeg"
                 {...register(name, validationRules)}
                 onInput={handleFileChange}
-                className={`opacity-0 absolute w-full h-full cursor-pointer `}
+                className={`opacity-0 absolute top-0 left-0 w-full h-full cursor-pointer`}
             />
         </div>
     );

@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+
 import { VerificationProvider } from "@/modules/Verification/context/useVerificationContext";
+
 import StageIndicator from "@/modules/Verification/StageIndicator";
 import PersonalDetails from "@/forms/Verification/PersonalDetails";
+import ProofOfIdentity from "@/forms/Verification/ProofOfIdentity";
 
 // e-KYC
 // ToDo: Implement Verification component
@@ -38,7 +41,8 @@ const Verification = () => {
         <div className="w-full grid grid-cols-[30%_70%]">
             <VerificationProvider>
                 <StageIndicator steps={VERIFICATION_STEPS} />
-                <PersonalDetails />
+                {/* <PersonalDetails /> */}
+                <ProofOfIdentity />
             </VerificationProvider>
         </div>
     );
