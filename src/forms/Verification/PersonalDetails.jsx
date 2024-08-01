@@ -84,26 +84,40 @@ const PersonalDetails = () => {
                     errors={errors}
                     placeholder="ex. 1, Persiaran Kewajipan, Usj 1, 47600 Subang Jaya, Selangor"
                     validationRules={{
-                        required: "Phone number is required",
+                        required: "Address is required",
                         pattern: {
-                            value: /^[0-9]{10}$/,
+                            value: /\d{1,5}\s\w.\s(\b\w*\b\s){1,2}\w*\.?/,
                             message:
-                                "Phone number must not include extension and should be of 10 digits ",
+                                "The address should include: street number, street name, region, and town/city, state.",
                         },
                     }}
                 />
-                <FormSelect
-                    register={register}
-                    name="nationality"
-                    label="Nationality"
-                    errors={errors}
-                    options={COUNTRY_LIST}
-                    validationRules={{
-                        required: "Nationality is required",
-                        validate: (value) =>
-                            value !== "DEFAULT" ? true : "Nationality is required",
-                    }}
-                />
+                <div className="grid grid-cols-2 gap-4">
+                    <FormSelect
+                        register={register}
+                        name="nationality"
+                        label="Nationality"
+                        errors={errors}
+                        options={COUNTRY_LIST}
+                        validationRules={{
+                            required: "Nationality is required",
+                            validate: (value) =>
+                                value !== "DEFAULT" ? true : "Nationality is required",
+                        }}
+                    />
+                    <FormSelect
+                        register={register}
+                        name="residence"
+                        label="Place of Residence"
+                        errors={errors}
+                        options={COUNTRY_LIST}
+                        validationRules={{
+                            required: "Residence is required",
+                            validate: (value) =>
+                                value !== "DEFAULT" ? true : "Residence is required",
+                        }}
+                    />
+                </div>
                 <FormButton text="Next" disable={Object.keys(errors).length !== 0} />
             </div>
         </FormWrapper>
