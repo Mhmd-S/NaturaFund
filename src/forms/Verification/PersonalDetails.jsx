@@ -76,33 +76,21 @@ const PersonalDetails = () => {
                         },
                     }}
                 />
-                <FormField
-                    name="address"
-                    type="text"
-                    label="Address"
-                    register={register}
-                    errors={errors}
-                    placeholder="ex. 1, Persiaran Kewajipan, Usj 1, 47600 Subang Jaya, Selangor"
-                    validationRules={{
-                        required: "Address is required",
-                        pattern: {
-                            value: /\d{1,5}\s\w.\s(\b\w*\b\s){1,2}\w*\.?/,
-                            message:
-                                "The address should include: street number, street name, region, and town/city, state.",
-                        },
-                    }}
-                />
                 <div className="grid grid-cols-2 gap-4">
-                    <FormSelect
+                    <FormField
+                        name="address"
+                        type="text"
+                        label="Address"
                         register={register}
-                        name="nationality"
-                        label="Nationality"
                         errors={errors}
-                        options={COUNTRY_LIST}
+                        placeholder="ex. 1, Persiaran Kewajipan, Usj 1, 47600 Subang Jaya, Selangor"
                         validationRules={{
-                            required: "Nationality is required",
-                            validate: (value) =>
-                                value !== "DEFAULT" ? true : "Nationality is required",
+                            required: "Address is required",
+                            pattern: {
+                                value: /^\d+,\s?[A-Za-z\s]+(?:,\s?[A-Za-z\s]+)*,\s?\d{5}\s?[A-Za-z\s]+,\s?[A-Za-z\s]+$/,
+                                message:
+                                    "The address should include: street number, street name, region, and town/city, state.",
+                            },
                         }}
                     />
                     <FormSelect
@@ -118,6 +106,19 @@ const PersonalDetails = () => {
                         }}
                     />
                 </div>
+
+                <FormSelect
+                    register={register}
+                    name="nationality"
+                    label="Nationality"
+                    errors={errors}
+                    options={COUNTRY_LIST}
+                    validationRules={{
+                        required: "Nationality is required",
+                        validate: (value) =>
+                            value !== "DEFAULT" ? true : "Nationality is required",
+                    }}
+                />
                 <FormButton text="Next" disable={Object.keys(errors).length !== 0} />
             </div>
         </FormWrapper>
