@@ -31,10 +31,6 @@ const SECONDARY_ITEMS = [
         icon: faUser,
     },
     {
-        name: "Settings",
-        icon: faCog,
-    },
-    {
         name: "Help",
         icon: faQuestion,
     },
