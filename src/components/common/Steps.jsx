@@ -8,7 +8,6 @@ const Steps = ({ steps, currentStep }) => {
     };
 
     return (
-        <div>
             <ol className="h-full flex flex-col gap-2 text-md font-medium text-gray-500 sm:gap-4">
                 {steps.map((step, index) => (
                     <li key={step} className="relative mt-4 flex items-center">
@@ -36,7 +35,6 @@ const Steps = ({ steps, currentStep }) => {
                     </li>
                 ))}
             </ol>
-        </div>
     );
 };
 

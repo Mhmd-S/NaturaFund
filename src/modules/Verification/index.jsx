@@ -16,7 +16,7 @@ import VerificationForm from "@/modules/Verification/VerificationForm";
 
 const Verification = () => {
     return (
-        <div className="w-full grid grid-cols-[20%_80%]">
+        <div className="relative w-full grid grid-cols-[20%_80%]">
             <VerificationProvider>
                 <StageIndicator steps={VERIFICATION_STEPS} />
                 <VerificationForm />
