@@ -1,15 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import {
-    faHomeLg,
-    faCompass,
-    faCog,
-    faGauge,
-    faQuestion,
-    faUser,
-} from "@fortawesome/free-solid-svg-icons";
-import NavSection from "@/modules/Nav/NavSection";
 import NavItem from "./NavItem";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const MENU_ITEMS = [
     {
@@ -115,10 +107,6 @@ const Nav = () => {
     return (
         <div className="flex h-full flex-col justify-between border-e bg-white">
             <div className="px-4 py-6">
-                <span className="grid h-10 w-32 place-content-center rounded-lg bg-gray-100 text-xs text-gray-600">
-                    Logo
-                </span>
-
                 <ul className="mt-6 space-y-1">
                     {MENU_ITEMS.map((item) => {
                         return <NavItem item={item} location={location} />;
@@ -134,12 +122,13 @@ const Nav = () => {
                         className="size-10 rounded-full object-cover"
                     />
 
-                    <div>
+                    <div className="divide-y">
                         <p className="text-xs">
                             <strong className="block font-medium">Eric Frusciante</strong>
 
                             <span> eric@frusciante.com </span>
                         </p>
+                        <FontAwesomeIcon icon={faLo} />
                     </div>
                 </a>
             </div>
