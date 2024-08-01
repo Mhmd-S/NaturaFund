@@ -46,7 +46,8 @@ const Portfolio = lazy(() => import("@/pages/Portfolio"));
 const Home = lazy(() => import("@/pages/Home"));
 const Explore = lazy(() => import("@/pages/Explore"));
 const Project = lazy(() => import("@/pages/Project"));
-const Profile = lazy(()=> import("@/pages/Profile"));
+const Profile = lazy(() => import("@/pages/Profile"));
+const InvestorHelp = lazy(() => import("@/pages/Help/InvestorHelp"));
 
 let routes = {
     expense: [],
@@ -82,6 +83,10 @@ let routes = {
         {
             path: "/profile",
             element: <Profile />,
+        },
+        {
+            path: "/help",
+            element: <InvestorHelp />,
         },
         // {
         //   path: '/people',

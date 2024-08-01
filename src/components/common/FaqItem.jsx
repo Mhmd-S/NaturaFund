@@ -4,7 +4,7 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 const FaqItem = ({ question, answer }) => {
     return (
-        <details className="group [&_summary::-webkit-details-marker]:hidden" open>
+        <details className="group [&_summary::-webkit-details-marker]:hidden">
             <summary className="flex cursor-pointer items-center justify-between gap-1.5 rounded-lg bg-gray-50 p-4 text-gray-900">
                 <h2 className="font-medium">{question}</h2>
                 <FontAwesomeIcon
