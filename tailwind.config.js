@@ -8,21 +8,17 @@ export default {
 		extend: {
 			colors: {
 				brand: {
-					50: '#F7F8FD',
-					100: '#EBEDF9',
-					200: '#DBDFF5',
-					300: '#C8CDEF',
-					400: '#B4BBE9',
-					500: '#A4ADE5',
-					600: '#909BDF',
-					700: '#7D89D9',
-					800: '#6D7BD4',
-					900: '#5A6ACF',
-					950: '#212C73',
-				},
-				gray: {
-					light: '#C8CBD9',
-					med: '#7d7d7d',
+					50: '#F7F6FE',
+					100: '#EBE7FD',
+					200: '#DCD5FB',
+					300: '#C8BDFA',
+					400: '#B9AAF8',
+					500: '#A593F6',
+					600: '#9580F4',
+					700: '#8268F2',
+					800: '#7256F1',
+					900: '#603FEF',
+					950: '#240C8D',
 				},
 			},
 			gridTemplateRows: {
@@ -107,7 +103,5 @@ export default {
 			},
 		},
 	},
-	plugins: [
-		forms,
-	],
+	plugins: [forms],
 };

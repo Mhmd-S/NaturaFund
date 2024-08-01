@@ -106,8 +106,8 @@ const Nav = () => {
     const location = useLocation();
 
     return (
-        <div className="flex h-full flex-col justify-between border-e bg-white">
-            <div className="px-4 py-6">
+        <div className="flex flex-col justify-between border-e bg-white">
+            <div className="px-4">
                 <ul className="mt-6 space-y-1">
                     {MENU_ITEMS.map((item) => {
                         return <NavItem item={item} location={location} />;
@@ -116,7 +116,7 @@ const Nav = () => {
             </div>
 
             <div className="p-4 flex justify-between items-center seperate-x-4 inset-x-0 bottom-0 border-t border-gray-100">
-                <a href="#" className="flex items-center gap-2 bg-white hover:bg-gray-50">
+                <div href="#" className="flex items-center gap-2 bg-white">
                     <img
                         alt=""
                         src="https://images.unsplash.com/photo-1600486913747-55e5470d6f40?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
@@ -128,7 +128,7 @@ const Nav = () => {
 
                         <span> eric@frusciante.com </span>
                     </p>
-                </a>
+                </div>
                 <FontAwesomeIcon
                     icon={faArrowRightFromBracket}
                     className="text-brand-800 cursor-pointer p-2 rounded-lg transition-color hover:bg-brand-800 hover:text-white"

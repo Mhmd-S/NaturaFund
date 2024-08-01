@@ -6,9 +6,9 @@ import News from "@/modules/Home/News";
 
 const Home = () => {
     return (
-        <div className="w-full h-full overflow-hidden flex flex-col gap-[1px] bg-gray-100 [&>*]:bg-white">
-            <h2 className="text-3xl text-brand-800 font-bold">
-                Good Afternoon, User
+        <div className="w-full h-full p-6 flex flex-col gap-5">
+            <h2 className="text-3xl p-4 text-brand-900 font-bold rounded-lg">
+                Good morning, John
             </h2>
             <Revenue />
             <Portfolio />
