@@ -2,6 +2,7 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import NavItem from "./NavItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 const MENU_ITEMS = [
     {
@@ -114,23 +115,24 @@ const Nav = () => {
                 </ul>
             </div>
 
-            <div className="inset-x-0 bottom-0 border-t border-gray-100">
-                <a href="#" className="flex items-center gap-2 bg-white p-4 hover:bg-gray-50">
+            <div className="p-4 flex justify-between items-center seperate-x-4 inset-x-0 bottom-0 border-t border-gray-100">
+                <a href="#" className="flex items-center gap-2 bg-white hover:bg-gray-50">
                     <img
                         alt=""
                         src="https://images.unsplash.com/photo-1600486913747-55e5470d6f40?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
                         className="size-10 rounded-full object-cover"
                     />
 
-                    <div className="divide-y">
-                        <p className="text-xs">
-                            <strong className="block font-medium">Eric Frusciante</strong>
+                    <p className="text-xs">
+                        <strong className="block font-medium">Eric Frusciante</strong>
 
-                            <span> eric@frusciante.com </span>
-                        </p>
-                        <FontAwesomeIcon icon={faLo} />
-                    </div>
+                        <span> eric@frusciante.com </span>
+                    </p>
                 </a>
+                <FontAwesomeIcon
+                    icon={faArrowRightFromBracket}
+                    className="text-brand-800 cursor-pointer p-2 rounded-lg transition-color hover:bg-brand-800 hover:text-white"
+                />
             </div>
         </div>
     );
