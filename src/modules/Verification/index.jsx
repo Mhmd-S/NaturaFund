@@ -2,9 +2,14 @@ import React, { useState } from "react";
 
 import { VerificationProvider } from "@/modules/Verification/context/useVerificationContext";
 
+import ResultPage from "@/modules/Verification/ResultPage";
 import StageIndicator from "@/modules/Verification/StageIndicator";
+
 import PersonalDetails from "@/forms/Verification/PersonalDetails";
 import ProofOfIdentity from "@/forms/Verification/ProofOfIdentity";
+import ProofOfAddress from "@/forms/Verification/ProofOfAddress";
+
+import { faCheck, faPause, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 // e-KYC
 // ToDo: Implement Verification component
@@ -31,13 +36,53 @@ const VERIFICATION_STEPS = [
     },
 ];
 
+const RESULTS = {
+    pending: {
+        title: (
+            <h1 className="text-3xl font-semibold mt-4">
+                Verification <span className="text-orange-600 capitalize">Pending</span>
+            </h1>
+        ),
+        description:
+            "Your documents have been submitted successfully. Our team will review them shortly.",
+        icon: faPause,
+        buttonText: "Go To Dashboard",
+        onclick: () => alert("Go To Dashboard"),
+    },
+    approved: {
+        title: (
+            <h1 className="text-3xl font-semibold mt-4">
+                Verification <span className="text-brand-800 capitalize">Approved</span>
+            </h1>
+        ),
+        description: "Congratulations! Your identity has been successfully verified.",
+        icon: faCheck,
+        buttonText: "Go To Dashboard",
+        onclick: () => alert("Go To Dashboard"),
+    },
+    rejected: {
+        title: (
+            <h1 className="text-3xl font-semibold mt-4">
+                Verification <span className="text-pink-800 capitalize">Rejected</span>
+            </h1>
+        ),
+        description:
+            "We're sorry, but your identity verification has been rejected. Please review your documents and try again.",
+        icon: faTimes,
+        buttonText: "Try Again",
+        onclick: () => alert("Try Again"),
+    },
+};
+
 const Verification = () => {
     return (
         <div className="w-full grid grid-cols-[20%_80%]">
             <VerificationProvider>
                 <StageIndicator steps={VERIFICATION_STEPS} />
                 {/* <PersonalDetails /> */}
-                <ProofOfIdentity />
+                {/* <ProofOfIdentity /> */}
+                {/* <ProofOfAddress /> */}
+                <ResultPage {...RESULTS.pending} />
             </VerificationProvider>
         </div>
     );
