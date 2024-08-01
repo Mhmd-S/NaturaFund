@@ -1,9 +1,13 @@
 import { useContext, createContext, useState, useMemo } from "react";
 
+import VERIFICATION_STEPS from "@/modules/Verification/VerificationSteps";
+
+// ToDo: Add Fetcing to check the verification status, or maybe it is found in the user info
+
 const VerificationContext = createContext();
 
 export const VerificationProvider = ({ children }) => {
-    const [stage, setStage] = useState("Personal Details");
+    const [stage, setStage] = useState(0);
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState({
         firstName: "",
@@ -13,15 +17,15 @@ export const VerificationProvider = ({ children }) => {
         phoneNumber: "",
     });
 
-    const goNextStage = () => {
-        if (stage < 3) {
-            setStage(stage + 1);
+    const goNext = () => {
+        if (stage < VERIFICATION_STEPS.length - 1) {
+            setStage((stage) => stage + 1);
         }
     };
 
-    const goPrevStage = () => {
-        if (stage > 1) {
-            setStage(stage - 1);
+    const goPrev = () => {
+        if (stage > 0) {
+            setStage((stage) => stage - 1);
         }
     };
 
@@ -32,8 +36,8 @@ export const VerificationProvider = ({ children }) => {
             data,
             setLoading,
             setData,
-            goNextStage,
-            goPrevStage,
+            goNext,
+            goPrev,
         }),
         [stage, loading, data]
     );

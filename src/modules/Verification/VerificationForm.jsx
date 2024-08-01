@@ -49,18 +49,17 @@ const RESULTS = {
 };
 
 const VerficationForm = () => {
-
-  const { stage } = useVerificationContext();
+    const { stage } = useVerificationContext();
 
     const renderStep = () => {
         switch (stage) {
-            case "Personal Details":
+            case 0:
                 return <PersonalDetails />;
-            case "Proof of Identity":
+            case 1:
                 return <ProofOfIdentity />;
-            case "Proof of Address":
+            case 2:
                 return <ProofOfAddress />;
-            case "Result":
+            case 3:
                 return <ResultPage {...RESULTS.approved} />;
             default:
                 return <ResultPage {...RESULTS.pending} />;

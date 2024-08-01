@@ -43,7 +43,7 @@ const ProofOfAddress = () => {
                 <div className=" p-2 grid grid-cols-2 gap-10">
                     <button
                         className="bg-white text-brand-800 border-2 border-brand-800 rounded-md transition-colors hover:bg-brand-800 hover:text-white"
-                        onClick={goNextStage}
+                        onClick={goPrevStage}
                     >
                         Back
                     </button>

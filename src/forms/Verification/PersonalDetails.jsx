@@ -10,7 +10,7 @@ import FormButton from "@/forms/formComponents/FormButton";
 import COUNTRY_LIST from "@/utils/CountryList";
 
 const PersonalDetails = () => {
-    const { data, setData } = useVerificationContext();
+    const { data, setData, goNext } = useVerificationContext();
 
     const {
         register,
@@ -20,6 +20,7 @@ const PersonalDetails = () => {
 
     const onSubmit = (formData) => {
         setData({ ...data, ...formData });
+        goNext();
     };
 
     return (

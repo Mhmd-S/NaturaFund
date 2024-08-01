@@ -8,7 +8,7 @@ import FileUploadField from "@/forms/formComponents/FormFileUpload";
 import FormButton from "@/forms/formComponents/FormButton";
 
 const ProofOfIdentity = () => {
-    const { data, setData, goPrevStage, goNextStage } = useVerificationContext();
+    const { data, setData, goPrev, goNext } = useVerificationContext();
 
     const {
         register,
@@ -21,7 +21,7 @@ const ProofOfIdentity = () => {
     const onSubmit = (formData) => {
         // ToDo: Return the upload url to the data
         setData({ ...data, ...formData });
-        goNextStage();
+        goNext();
     };
 
     return (
@@ -67,7 +67,7 @@ const ProofOfIdentity = () => {
                 <div className=" p-2 grid grid-cols-2 gap-10">
                     <button
                         className="bg-white text-brand-800 border-2 border-brand-800 rounded-md transition-colors hover:bg-brand-800 hover:text-white"
-                        onClick={goNextStage}
+                        onClick={goPrev}
                     >
                         Back
                     </button>
