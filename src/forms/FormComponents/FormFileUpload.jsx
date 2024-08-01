@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 import FormFieldError from "@/forms/formComponents/FormFieldError";
 
@@ -6,6 +7,8 @@ import { validateImage } from "@/utils/validateImage";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPause, faTrashAlt, faUpload, faCheck } from "@fortawesome/free-solid-svg-icons";
+
+// ToDo: Refactore the component to upload directly to the server with the need for the user to submit the form
 
 const FileUploadField = ({
     name,
@@ -20,6 +23,7 @@ const FileUploadField = ({
 }) => {
     const [file, setFile] = useState(usersPicture);
     const [loading, setLoading] = useState(false);
+    const [percentage, setPercentage] = useState(0);
 
     const handleFileChange = async (event) => {
         setLoading(true);
@@ -35,6 +39,14 @@ const FileUploadField = ({
             }
 
             setFile(selectedFile);
+            // Upload file and update the percentage
+            const formData = new FormData();
+            formData.append("file", selectedFile);
+            const response = await axios.post("/api/upload", formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            });
         }
         setLoading(false);
     };
@@ -53,9 +65,9 @@ const FileUploadField = ({
                 {label}
             </label>
             <div
-                className={`relative h-full w-full px-4 pt-4 border  border-dashed rounded-md ${
+                className={`relative h-full w-full px-4 pt-4 border rounded-md ${
                     errors[name] ? "border-pink-600" : "border-gray-900/25"
-                }`}
+                } ${file ? "border-solid" : "border-dashed"}`}
             >
                 {file ? (
                     <div className="w-full grid grid-cols-[10%_80%_10%] grid-rows-2 items-center">
@@ -84,9 +96,7 @@ const FileUploadField = ({
                             />
                         </div>
                         <div className="col-span-3 justify-self-center w-full flex items-center gap-3">
-                            <div
-                                className="relative col-span-3 justify-self-center w-full h-2 bg-gray-300 rounded-full"
-                            >
+                            <div className="relative col-span-3 justify-self-center w-full h-2 bg-gray-300 rounded-full">
                                 <div className="absolute w-1/2 h-full bg-brand-900 rounded-full" />
                             </div>
                             <text className="text-xs">95%</text>
