@@ -1,6 +1,4 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { Chart } from "react-google-charts";
 
 const data = [
@@ -18,7 +16,7 @@ const options = {
     colors: ["#A593F6", "#7256F1"],
 };
 
-const RevenueChart = () => {
+const BarChart = () => {
     return (
         <div className="p-4 bg-white grid grid-flow-row grid-cols-1 rounded-lg">
             <Chart chartType="Bar" height="400px" data={data} options={options} />
@@ -26,4 +24,4 @@ const RevenueChart = () => {
     );
 };
 
-export default RevenueChart;
+export default BarChart;

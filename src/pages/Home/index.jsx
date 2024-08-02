@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-import Revenue from "@/modules/Home/RevenueCHart";
 import Portfolio from "@/modules/Home/PortfolioChart";
 import Projects from "@/modules/Home/Projects";
-import RevenueChart from "@/modules/Portfolio/RevenueChart";
+import LineChart from "@/modules/Home/RevenueChart/LineChart";
+import BarChart from "@/modules/Home/RevenueChart/BarChart";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp, faLineChart, faPieChart } from "@fortawesome/free-solid-svg-icons";
@@ -28,7 +28,7 @@ const Home = () => {
                     </p>
                 </div>
 
-                <RevenueChart />
+                <LineChart />
             </div>
 
             <div className="min-h-90 p-6 bg-white flex flex-col rounded-2xl">
@@ -48,7 +48,7 @@ const Home = () => {
                         Portfolio
                     </button>
                 </div>
-                {dataShow === "revenue" ? <Revenue /> : <Portfolio />}
+                {dataShow === "revenue" ? <BarChart /> : <Portfolio />}
             </div>
 
             <Projects />

@@ -19,7 +19,7 @@ const options = {
     tooltip: { trigger: "none" },
 };
 
-const RevenueChart = () => {
+const LineChart = () => {
     return (
         <div className="row-span-3 p-4 bg-white rounded-lg">
             <Chart chartType="Line" width="100%" height="150px" data={data} options={options} />
@@ -27,4 +27,4 @@ const RevenueChart = () => {
     );
 };
 
-export default RevenueChart;
+export default LineChart;
