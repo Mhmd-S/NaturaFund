@@ -31,7 +31,7 @@ const dummyProjects = [
 
 const Projects = ({ setProjectInfo }) => {
     return (
-        <div className="w-full h-full p-4 flex flex-col gap-y-3">
+        <div className="w-full h-full p-4 flex flex-col gap-y-3 bg-white rounded-lg">
             <div className="w-full flex justify-between items-center">
                 <p className="text-lg font-bold text-brand-900">New Projects</p>
                 <Link className="text-brand-900 hover:underline">Go To Explore</Link>

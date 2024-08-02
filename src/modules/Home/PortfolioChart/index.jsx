@@ -3,7 +3,7 @@ import { PieChart, pieArcLabelClasses } from "@mui/x-charts";
 
 const PortfolioChart = () => {
     return (
-        <div className="w-full h-full grid grid-cols-1 p-4 ">
+        <div className="w-full h-full grid grid-cols-1 p-4 bg-white rounded-lg">
             <div className="w-full h-full flex flex-col">
                 <p className="text-lg font-bold text-brand-900">Portfolio</p>
             </div>
