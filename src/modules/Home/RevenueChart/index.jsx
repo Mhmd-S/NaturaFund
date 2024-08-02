@@ -25,18 +25,6 @@ const options = {
 const RevenueChart = () => {
     return (
         <div className="p-4 bg-white grid grid-flow-row grid-cols-1 rounded-lg">
-            <div className="w-full h-full grid grid-cols-2 grid-rows-2 grid-flow-col">
-                <p className="text-lg font-bold text-brand-900">Revenue this month</p>
-                <p className="text-lg font-semibold">$0.00</p>
-                <p className="text-sm text-gray-med text-right">2024</p>
-                <p className="text-sm text-gray-med text-right">
-                    <span className="text-green-500">
-                        <FontAwesomeIcon icon={faArrowUp} className="pr-1" />
-                        0.00%
-                    </span>{" "}
-                    vs last month
-                </p>
-            </div>
             <Chart chartType="Bar" height="400px" data={data} options={options} />
         </div>
     );
