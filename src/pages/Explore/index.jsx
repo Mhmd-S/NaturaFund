@@ -120,14 +120,14 @@ const filterOptions = [
 
 const Explore = () => {
     return (
-        <div className="w-full h-full p-4 bg-white">
-            <div className="w-full flex justify-between items-center">
+        <div className="w-full h-full p-6 bg-gray-300/20 space-y-6">
+            <div className="w-full p-4 flex justify-between items-center bg-white rounded-2xl">
                 <h2 className="text-lg font-bold text-brand-900">Explore</h2>
                 <div className="w-1/3">
                     <SearchBar />
                 </div>
             </div>
-            <div className="w-full py-4 grid grid-cols-3 gap-y-2 gap-x-16">
+            <div className="w-full p-4 grid grid-cols-3 grid-flow-row place-items-center gap-8 bg-white rounded-2xl">
                 {dummyProjects.map((project, index) => (
                     <ProjectCard project={project} key={index} />
                 ))}
