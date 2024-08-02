@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
+
 import Revenue from "@/modules/Home/RevenueCHart";
 import Portfolio from "@/modules/Home/PortfolioChart";
 import Projects from "@/modules/Home/Projects";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import RevenueChart from "@/modules/Portfolio/RevenueChart";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUp, faLineChart, faPieChart } from "@fortawesome/free-solid-svg-icons";
 
 const Home = () => {
     const [dataShow, setDataShow] = useState("revenue"); // revenue or  portfolio
@@ -29,13 +31,26 @@ const Home = () => {
                 <RevenueChart />
             </div>
 
-            <div className="p-6 bg-white flex flex-col rounded-2xl">
-                <div className=" p-1 rounded-2xl">
-                    <button>Revenue</button>
-                    <button>Portfolio</button>
+            <div className="min-h-90 p-6 bg-white flex flex-col rounded-2xl">
+                <div className="w-fit p-2 rounded-3xl text-white bg-gray-300/25 space-x-1">
+                    <button
+                        className={`px-4 py-2 rounded-3xl ${dataShow === "revenue" ? "bg-white  text-black" : "text-gray-500"}`}
+                        onClick={() => setDataShow("revenue")}
+                    >
+                        <FontAwesomeIcon icon={faLineChart} className="pr-1" />
+                        Revenue
+                    </button>
+                    <button
+                        className={`px-4 py-2 rounded-3xl ${dataShow === "portfolio" ? "bg-white  text-black" : "text-gray-500"}`}
+                        onClick={() => setDataShow("portfolio")}
+                    >
+                        <FontAwesomeIcon icon={faPieChart} className="pr-1" />
+                        Portfolio
+                    </button>
                 </div>
                 {dataShow === "revenue" ? <Revenue /> : <Portfolio />}
             </div>
+
             <Projects />
         </div>
     );

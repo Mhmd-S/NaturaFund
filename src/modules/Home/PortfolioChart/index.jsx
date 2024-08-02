@@ -14,10 +14,7 @@ const options = {
 
 const PortfolioChart = () => {
     return (
-        <div className="w-full h-full grid grid-cols-1 p-4 bg-white rounded-lg">
-            <div className="w-full h-full flex flex-col">
-                <p className="text-lg font-bold text-brand-900">Portfolio</p>
-                <div className="w-full grid grid-cols-2">
+        <div className="w-full h-full grid grid-cols-2 p-4 bg-white rounded-lg">
                     <Chart
                         chartType="PieChart"
                         data={data}
@@ -32,8 +29,6 @@ const PortfolioChart = () => {
                         width={"100%"}
                         height={"400px"}
                     />
-                </div>
-            </div>
         </div>
     );
 };

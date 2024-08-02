@@ -16,10 +16,6 @@ const data = [
 
 const options = {
     colors: ["#A593F6", "#7256F1"],
-    chart: {
-        title: "Your Revenue",
-        subtitle: "Revenue for current and previous year",
-    },
 };
 
 const RevenueChart = () => {
