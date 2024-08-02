@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from "react";
+import React, { useState } from "react";
 
 import Revenue from "@/modules/Home/RevenueCHart";
 import Portfolio from "@/modules/Home/PortfolioChart";
@@ -12,7 +12,7 @@ const Home = () => {
     const [dataShow, setDataShow] = useState("revenue"); // revenue or  portfolio
 
     return (
-        <div className="w-full h-full p-6 flex flex-col gap-5 bg-gray-300/25 overflow-y-auto">
+        <div className="w-full p-6 flex flex-col gap-5 bg-gray-300/25 overflow-y-auto">
             <h2 className="text-3xl p-4 text-brand-900 font-bold rounded-lg">Good morning, John</h2>
             <div className="p-6 grid grid-cols-2 bg-white rounded-2xl">
                 <div className="grid grid-rows-3 gap-4">

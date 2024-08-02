@@ -4,7 +4,7 @@ import Header from "@/modules/Header";
 
 export default function App() {
     return (
-        <div className="w-screen h-screen grid grid-cols-[20%_80%] divide-x divide-y">
+        <div className="w-screen h-screen grid grid-cols-[20%_80%] grid-flow-row divide-x divide-y">
             <Header />
             <Nav />
             <AppRouter />

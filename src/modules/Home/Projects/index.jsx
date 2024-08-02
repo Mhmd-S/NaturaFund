@@ -31,16 +31,16 @@ const dummyProjects = [
 
 const Projects = ({ setProjectInfo }) => {
     return (
-        <div className="w-full h-full grid grid-cols-1 p-4 bg-white rounded-lg">
-            <div className="w-full flex justify-between items-center">
+        <div className="min-h-90 p-6 bg-white flex flex-col rounded-2xl">
+            <div className="flex justify-between items-center">
                 <p className="text-lg font-bold text-brand-900">New Projects</p>
                 <Link className="text-brand-900 hover:underline">Go To Explore</Link>
             </div>
-            {/* <div className="w-full flex justify-evenly items-center">
+            <div className="flex justify-evenly">
                 {dummyProjects.map((project, index) => (
                     <ProjectCard key={index} project={project} setProjectInfo={setProjectInfo} />
                 ))}
-            </div> */}
+            </div>
         </div>
     );
 };

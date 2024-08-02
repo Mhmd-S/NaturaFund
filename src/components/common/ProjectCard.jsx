@@ -1,65 +1,40 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faClock,
-    faHandHoldingDollar,
-    faMoneyBillTrendUp,
-} from "@fortawesome/free-solid-svg-icons";
+import { faRightLong, faStar } from "@fortawesome/free-solid-svg-icons";
 
 const ProjectCard = ({ project }) => {
     return (
-        <a href="#" className="block rounded-lg p-3 shadow-md shadow-brand-100 transition-shadow hover:shadow-lg">
-            <img
-                alt={project.name}
-                src={project.image}
-                className="h-20 w-full rounded-md object-cover"
-            />
+        <div className="w-64 h-68 p-4 flex flex-col justify-between items-center gap-2 bg-white rounded-lg border border-brand-400 ">
+            <img src={project.image} alt="project" className="size-12 rounded-full" />
+            <h4 className="text-gray-800 dark:text-gray-100 font-bold mb-3">{project.name}</h4>
+            <h5 className="text-xs text-gray-500 mb-3">{project.owner}</h5>
+            <div className="w-full px-3 flex flex-col divide-y divide-brand-400 text-xs">
+                <div className="py-3 flex justify-between items-center">
+                    <p className="text-gray-500">Duration</p>
+                    <p>4 Years</p>
+                </div>
 
-            <div className="mt-2">
-                <dl>
-                    <div>
-                        <dt className="sr-only">Name</dt>
+                <div className="py-3 flex justify-between items-center">
+                    <p className="text-gray-500">Invetment</p>
+                    <p>RESCO</p>
+                </div>
 
-                        <dd className="font-medium">{project.name}</dd>
-                    </div>
-
-                    <div>
-                        <dt className="sr-only">By</dt>
-
-                        <dd className="text-sm text-gray-500">{project.owner}</dd>
-                    </div>
-                </dl>
-
-                <div className="mt-6 flex items-center gap-8 text-xs">
-                    <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
-                        <FontAwesomeIcon icon={faClock} className="size-4 text-indigo-700" />
-                        <div className="mt-1.5 sm:mt-0">
-                            <p className="text-gray-500">Duration</p>
-
-                            <p className="font-medium">4 Years</p>
-                        </div>
-                    </div>
-
-                    <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
-                        <FontAwesomeIcon icon={faHandHoldingDollar} className="size-4 text-indigo-700" />
-                        <div className="mt-1.5 sm:mt-0">
-                            <p className="text-gray-500">Invetment</p>
-
-                            <p className="font-medium">RESCO</p>
-                        </div>
-                    </div>
-
-                    <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
-                        <FontAwesomeIcon icon={faMoneyBillTrendUp} className="size-4 text-indigo-700" />
-                        <div className="mt-1.5 sm:mt-0">
-                            <p className="text-gray-500">XIRR</p>
-
-                            <p className="font-medium">5%</p>
-                        </div>
-                    </div>
+                <div className="py-3 flex justify-between items-center">
+                    <p className="text-gray-500">XIRR</p>
+                    <p>5%</p>
                 </div>
             </div>
-        </a>
+            <div className="w-full flex items-center justify-end p-1">
+                {/* <FontAwesomeIcon
+                    icon={faStar}
+                    className="size-5 p-1 rounded-full border border-brand-800 text-brand-800 cursor-pointer"
+                /> */}
+                <FontAwesomeIcon
+                    icon={faRightLong}
+                    className="size-5 p-1 rounded-full border border-brand-800 bg-brand-800 text-white cursor-pointer"
+                />
+            </div>
+        </div>
     );
 };
 
