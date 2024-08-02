@@ -1,7 +1,26 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
-import { BarChart } from "@mui/x-charts";
+import { Chart } from "react-google-charts";
+
+const data = [
+    ["Month", "Prev. Year", "Current Year"],
+    ["Jan", 1000, 400],
+    ["Feb", 1170, 460],
+    ["Mar", 660, 1120],
+    ["Apr", 660, 1120],
+    ["May", 660, 1120],
+    ["June", 660, 112],
+    ["July", 660, 112],
+];
+
+const options = {
+    colors: ["#A593F6", "#7256F1"],
+    chart: {
+        title: "Your Revenue",
+        subtitle: "Revenue for current and previous year",
+    },
+};
 
 const RevenueChart = () => {
     return (
@@ -18,50 +37,7 @@ const RevenueChart = () => {
                     vs last month
                 </p>
             </div>
-            <BarChart
-                xAxis={[
-                    {
-                        scaleType: "band",
-                        data: [
-                            "Jan",
-                            "Feb",
-                            "March",
-                            "April",
-                            "May",
-                            "June",
-                            "July",
-                            "Aug",
-                            "Sep",
-                            "Oct",
-                            "Nov",
-                            "Dec",
-                        ],
-                        categoryGapRatio: 0.5,
-                        barGapRatio: 0.6,
-                    },
-                ]}
-                series={[
-                    { label: "This Year", data: [4, 3, 5, 6, 2, 5, 6, 2, 1, 7, 9, 11] },
-                    { label: "Last Year", data: [1, 6, 3, 6, 5, 2, 7, 4, 2, 7, 1, 2] },
-                ]}
-                colors={["#5A6ACF", "#E6E8EC"]}
-                slotProps={{
-                    legend: {
-                        direction: "row",
-                        position: { vertical: "bottom", horizontal: "left" },
-                        padding: 0,
-                        labelStyle: { fontSize: "0.7rem" },
-                        itemMarkWidth: 5,
-                        itemMarkHeight: 5,
-                    },
-                }}
-                grid={{ horizontal: true }}
-                margin={{
-                    top: 10,
-                    left: 25,
-                    bottom: 40,
-                }}
-            />
+            <Chart chartType="Bar" height="400px" data={data} options={options} />
         </div>
     );
 };

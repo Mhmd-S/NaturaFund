@@ -1,50 +1,39 @@
 import React from "react";
-import { PieChart, pieArcLabelClasses } from "@mui/x-charts";
+import { Chart } from "react-google-charts";
+
+const data = [
+    ["Type of Investment", "Percentage"],
+    ["ROSCA", 50],
+    ["Equity", 25],
+    ["Bonds", 25],
+];
+
+const options = {
+    colors: ["#C8BDFA", "#A593F6", "#7256F1"],
+};
 
 const PortfolioChart = () => {
     return (
         <div className="w-full h-full grid grid-cols-1 p-4 bg-white rounded-lg">
             <div className="w-full h-full flex flex-col">
                 <p className="text-lg font-bold text-brand-900">Portfolio</p>
+                <div className="w-full grid grid-cols-2">
+                    <Chart
+                        chartType="PieChart"
+                        data={data}
+                        options={{ ...options, title: "Portfolio Diversity" }}
+                        width={"100%"}
+                        height={"400px"}
+                    />
+                    <Chart
+                        chartType="PieChart"
+                        data={data}
+                        options={{ ...options, title: "Revenue by Investment" }}
+                        width={"100%"}
+                        height={"400px"}
+                    />
+                </div>
             </div>
-            <PieChart
-                colors={["#5A6ACF", "#8593ED", "#C7CEFF"]} // Use palette
-                series={[
-                    {
-                        data: [
-                            { id: 0, value: 45, label: "Lending" },
-                            { id: 1, value: 5, label: "Equity" },
-                            { id: 2, value: 50, label: "RESCO" },
-                        ],
-                        innerRadius: 30,
-                        outerRadius: 50,
-                        highlightScope: { highlighted: "item", faded: "global" },
-                    },
-                ]}
-                sx={{
-                    [`& .${pieArcLabelClasses.root}`]: {
-                        fill: "#37375C",
-                        fontSize: "0.75rem",
-                        color: "#FFFFFF",
-                        fontWeight: "bold",
-                    },
-                }}
-                slotProps={{
-                    legend: {
-                        direction: "row",
-                        position: { vertical: "bottom", horizontal: "middle" },
-                        padding: 0,
-                        labelStyle: { fontSize: "0.7rem" },
-                        itemMarkWidth: 5,
-                        itemMarkHeight: 5,
-                    },
-                }}
-                margin={{
-                    bottom: 20,
-                    right: 10,
-                    left: 10,
-                }}
-            />
         </div>
     );
 };

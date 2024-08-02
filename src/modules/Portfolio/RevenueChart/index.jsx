@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp, faChevronDown, faChevronRight, faChevronLeft} from "@fortawesome/free-solid-svg-icons";
-import { LineChart } from "@mui/x-charts";
 
 const RevenueChart = () => {
     const [minimized, setMinimized] = useState(false);
@@ -28,39 +27,6 @@ const RevenueChart = () => {
                     </span>
                 )}
             </div>
-            <LineChart
-                xAxis={[
-                    {
-                        scaleType: "band",
-                        data: [
-                            "Jan",
-                            "Feb",
-                            "March",
-                            "April",
-                            "May",
-                            "June",
-                            "July",
-                            "Aug",
-                            "Sep",
-                            "Oct",
-                            "Nov",
-                            "Dec",
-                        ],
-                        categoryGapRatio: 0.5,
-                        barGapRatio: 0.6,
-                    },
-                ]}
-                series={[
-                    { data: [4, 3, 5, 6, 2, 5, 6, 2, 1, 7, 9, 11] },
-                ]}
-                colors={["#5A6ACF", "#E6E8EC"]}
-                grid={{ horizontal: true }}
-                margin={{
-                    top: 10,
-                    left: 25,
-                    bottom: 40,
-                }}
-            />
             <button
                 className="absolute bottom-0 px-2 text-sm border-2 border-gray-200 border-b-0 rounded-t-md bg-white text-brand-500 cursor-pointer hover:text-brand-800"
                 onClick={() => setMinimized(!minimized)}
