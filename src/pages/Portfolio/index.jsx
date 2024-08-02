@@ -1,5 +1,5 @@
 import React from "react";
-import Projects from "@/modules/Portfolio/Projects";
+import Projects from "@/modules/Portfolio";
 
 const Portfolio = () => {
     return (

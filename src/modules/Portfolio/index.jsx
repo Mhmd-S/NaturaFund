@@ -2,6 +2,8 @@ import SearchBar from "@/components/common/SearchBar";
 import React from "react";
 import ProjectsTable from "./ProjectsTable";
 
+// ToDo: cahnge the component name from index to something else
+
 const index = () => {
     return (
         <>

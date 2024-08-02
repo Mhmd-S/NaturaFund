@@ -120,7 +120,7 @@ const filterOptions = [
 
 const Explore = () => {
     return (
-        <div className="w-full h-full p-6 bg-gray-300/20 space-y-6">
+        <div className="w-full h-full p-6 bg-gray-300/20 space-y-6 overflow-y-auto">
             <div className="w-full p-4 flex justify-between items-center bg-white rounded-2xl">
                 <h2 className="text-lg font-bold text-brand-900">Explore</h2>
                 <div className="w-1/3">
@@ -132,7 +132,6 @@ const Explore = () => {
                     <ProjectCard project={project} key={index} />
                 ))}
             </div>
-            <Pagination />
         </div>
     );
 };
