@@ -8,7 +8,7 @@ import Status from "@/components/ProjectDetails/Status";
 import RevenueGenerated from "@/components/ProjectDetails/RevenueGenerated";
 
 const tabs = [
-    "overview",
+    "Overview",
     "Investment Details",
     "Financial Details",
     "Status",
@@ -115,11 +115,11 @@ const project = {
 };
 
 const Project = () => {
-    const [currentTab, setCurrentTab] = useState("overview");
+    const [currentTab, setCurrentTab] = useState("Overview");
 
     const renderDetail = () => {
         switch (currentTab) {
-            case "overview":
+            case "Overview":
                 return <Overview project={project} />;
             case "Investment Details":
                 return <InvestmentDetails investment={project.investment} />;
@@ -137,13 +137,13 @@ const Project = () => {
     };
 
     return (
-        <div className="w-full overflow-y-auto flex flex-col items-center pt-4">
+        <div className="w-full overflow-y-auto flex flex-col p-8">
             <TabNav
                 tabs={project.status.current == "Electricity Generated" ? tabs : tabs.slice(0, 5)}
                 currentTab={currentTab}
                 setCurrentTab={setCurrentTab}
             />
-            <div className="w-full px-12 my-20 grid grid-cols-2 gap-16">{renderDetail()}</div>
+            <div className="w-full my-10 grid grid-cols-2 gap-16">{renderDetail()}</div>
         </div>
     );
 };

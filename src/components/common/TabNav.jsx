@@ -2,16 +2,16 @@ import React from "react";
 
 const TabNav = ({ tabs, currentTab, setCurrentTab }) => {
     return (
-        <ul className="fixed flex gap-6 bg-white p-2 rounded-md shadow-md z-10" aria-label="Tabs">
+        <ul className="w-fit flex gap-6 border-b" aria-label="Tabs">
             {tabs.map((tab) => {
                 return (
                     <li
                         key={tab}
                         href="#"
-                        className={`shrink-0 rounded-lg p-2 text-sm font-medium  cursor-pointer capitalize  ${
+                        className={`h-fulll shrink-0 border-b-2 px-1 pb-4 text-sm font-medium cursor-pointer ${
                             currentTab === tab
-                                ? "bg-brand-100 text-brand-800"
-                                : "text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+                                ? " text-brand-800 border-brand-800"
+                                : "border-b-transparent text-gray-500 hover:text-gray-700"
                         }`}
                         onClick={() => setCurrentTab(tab)}
                     >
