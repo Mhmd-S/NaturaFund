@@ -36,7 +36,7 @@ const Projects = ({ setProjectInfo }) => {
                 <p className="text-lg font-bold text-brand-900">New Projects</p>
                 <Link className="text-brand-900 hover:underline">Go To Explore</Link>
             </div>
-            <div className="flex justify-evenly">
+            <div className="w-full p-4 grid grid-cols-1 grid-flow-row place-items-center gap-8 bg-white rounded-2xl">
                 {dummyProjects.map((project, index) => (
                     <ProjectCard key={index} project={project} setProjectInfo={setProjectInfo} />
                 ))}

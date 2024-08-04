@@ -1,54 +1,65 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRightLong, faStar } from "@fortawesome/free-solid-svg-icons";
+import { faSolarPanel, faCalendarAlt, faDollar } from "@fortawesome/free-solid-svg-icons";
 
 const ProjectCard = ({ project }) => {
-        const [isHovered, setIsHovered] = React.useState(false);
+    const [isHovered, setIsHovered] = React.useState(false);
 
-        return (
-            <div
-                className={`relative w-64 h-68 p-4 flex flex-col justify-between items-center gap-2 shadow-[2px_2px_5px_5px] shadow-brand-100 rounded-lg ${
-                    isHovered ? "overlay" : ""
-                }`}
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-            >
-                <img src={project.image} alt="project" className="size-12 rounded-full" />
-                <h4 className="text-gray-800 dark:text-gray-100 font-bold mb-3">{project.name}</h4>
-                <h5 className="text-xs text-gray-500 mb-3">{project.owner}</h5>
-                <div className="w-full px-3 flex flex-col divide-y divide-brand-400 text-xs">
-                    <div className="py-3 flex justify-between items-center">
-                        <p className="text-gray-500">Duration</p>
-                        <p>4 Years</p>
-                    </div>
-
-                    <div className="py-3 flex justify-between items-center">
-                        <p className="text-gray-500">Investment</p>
-                        <p>RESCO</p>
-                    </div>
-
-                    <div className="py-3 flex justify-between items-center">
-                        <p className="text-gray-500">XIRR</p>
-                        <p>5%</p>
+    return (
+        <article className="rounded-xl bg-white p-4 ring ring-indigo-50 sm:p-6 lg:p-8 cursor-pointer hover:ring-indigo-500">
+            <div className="flex items-start sm:gap-8">
+                <div
+                    className="hidden sm:grid sm:size-20 sm:shrink-0 sm:place-content-center sm:rounded-full sm:border-2 sm:border-indigo-500 "
+                    aria-hidden="true"
+                >
+                    <div className="flex items-center gap-1">
+                        <FontAwesomeIcon icon={faSolarPanel} className="text-indigo-500" />
                     </div>
                 </div>
-                <div className="w-full flex items-center justify-end p-1">
-                    {/* <FontAwesomeIcon
-                        icon={faStar}
-                        className="size-5 p-1 rounded-full border border-brand-800 text-brand-800 cursor-pointer"
-                    /> */}
-                    <FontAwesomeIcon
-                        icon={faRightLong}
-                        className="size-5 p-1 rounded-full border border-brand-800 bg-brand-800 text-white cursor-pointer"
-                    />
-                </div>
-                {isHovered && (
-                    <div className="absolute w-full h-full top-0 left-0 bg-brand-400 rounded-lg">
-                        <p>Extra details</p>
+
+                <div>
+                    <strong className="rounded border border-indigo-500 bg-indigo-500 px-3 py-1.5 mr-2 text-[10px] font-medium text-white">
+                        Solar
+                    </strong>
+                    <strong className="rounded border border-indigo-500 bg-indigo-500 px-3 py-1.5 mr-2 text-[10px] font-medium text-white">
+                        Equity
+                    </strong>
+
+                    <div className="mt-4 text-lg font-medium sm:text-xl">
+                        <h3 href="#" className="hover:underline">
+                            Penang Solar Farm Inc.
+                        </h3>
+                        <p className="mt-2 text-xs font-medium text-gray-500 sm:mt-0">
+                            By UNESCO Solar Farms
+                        </p>
                     </div>
-                )}
+
+                    <p className="mt-1 text-sm text-gray-700">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam nulla amet
+                        voluptatum sit rerum, atque, quo culpa ut necessitatibus eius suscipit eum
+                        accusamus, aperiam voluptas exercitationem facere aliquid fuga. Sint.
+                    </p>
+
+                    <div className="mt-4 sm:flex sm:items-center sm:gap-2">
+                        <div className="flex items-center gap-2 text-gray-500">
+                            <FontAwesomeIcon icon={faCalendarAlt} className="text-indigo-500" />
+                            <p className="text-xs font-medium">15/12/2019 Closing Date</p>
+                        </div>
+
+                        <span className="hidden sm:block" aria-hidden="true">
+                            &middot;
+                        </span>
+
+                        <div className="flex items-center gap-2 text-gray-500">
+                            <FontAwesomeIcon icon={faDollar} className="text-indigo-500" />
+                            <p className="text-xs font-medium">$150,000 Investment Target</p>
+                        </div>
+
+                    </div>
+                </div>
             </div>
-        );
-    };
+        </article>
+    );
+};
 
 export default ProjectCard;

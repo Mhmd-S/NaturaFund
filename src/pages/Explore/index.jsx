@@ -127,7 +127,7 @@ const Explore = () => {
                     <SearchBar />
                 </div>
             </div>
-            <div className="w-full p-4 grid grid-cols-3 grid-flow-row place-items-center gap-8 bg-white rounded-2xl">
+            <div className="w-full p-4 grid grid-cols-1 grid-flow-row place-items-center gap-8 bg-white rounded-2xl">
                 {dummyProjects.map((project, index) => (
                     <ProjectCard project={project} key={index} />
                 ))}
