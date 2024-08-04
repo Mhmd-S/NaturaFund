@@ -143,7 +143,7 @@ const Project = () => {
                 currentTab={currentTab}
                 setCurrentTab={setCurrentTab}
             />
-            <div className="w-full my-10 grid grid-cols-2 gap-16">{renderDetail()}</div>
+            <div className="min-h-96 my-10 grid grid-cols-2 gap-16">{renderDetail()}</div>
         </div>
     );
 };
