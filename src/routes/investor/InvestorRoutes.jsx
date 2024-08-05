@@ -49,7 +49,7 @@ const Project = lazy(() => import("@/pages/Project"));
 const Profile = lazy(() => import("@/pages/Profile"));
 const InvestorHelp = lazy(() => import("@/pages/Help/InvestorHelp"));
 
-let routes = {
+let InvestorRoutes = {
     expense: [],
     default: [
         {
@@ -214,4 +214,4 @@ let routes = {
     ],
 };
 
-export default routes;
+export default InvestorRoutes;

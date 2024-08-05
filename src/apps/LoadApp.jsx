@@ -5,15 +5,28 @@ import { useAuthContext } from "@/context/AuthContext";
 import PageLoader from "@/components/PageLoader";
 import AuthRouter from "@/routes/AuthRouter";
 
-const App = lazy(() => import("@/apps/App"));
+const InvestorApp = lazy(() => import("@/apps/InvestorApp"));
+const SponsorApp = lazy(() => import("@/apps/SponsorApp"));
 
-const DefaultApp = () => (
+const renderInvestorApp = () => (
     // <AppContextProvider>
-    <Suspense fallback={<PageLoader />}>
-        <App />
-    </Suspense>
+    <InvestorApp />
     // </AppContextProvider>
 );
+
+const renderSponsorApp = () => (
+    // <AppContextProvider>
+    <SponsorApp />
+    // </AppContextProvider>
+);
+
+// const AdminApp = () => {
+//     // <AppContextProvider>
+//     <Suspense fallback={<PageLoader />}>
+//         <SponsorApp />
+//     </Suspense>;
+//     // </AppContextProvider>
+// };
 
 export default function LoadApp() {
     // const { current } = useAuthContext();
@@ -53,8 +66,14 @@ export default function LoadApp() {
     //   };
     // }, [navigator.onLine]);
 
-    if (!isLoggedIn) return <AuthRouter />;
-    else {
-        return <DefaultApp />;
-    }
+    const renderApp = () => {
+        if (!isLoggedIn) return <AuthRouter />;
+        else if (isLoggedIn == 2) {
+            return renderInvestorApp();
+        } else {
+            return renderSponsorApp();
+        }
+    };
+
+    return <Suspense fallback={<PageLoader />}>{renderApp()}</Suspense>;
 }
