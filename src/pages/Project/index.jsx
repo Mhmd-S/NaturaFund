@@ -137,13 +137,17 @@ const Project = () => {
     };
 
     return (
-        <div className="w-full overflow-y-auto flex flex-col p-8">
-            <TabNav
-                tabs={project.status.current == "Electricity Generated" ? tabs : tabs.slice(0, 5)}
-                currentTab={currentTab}
-                setCurrentTab={setCurrentTab}
-            />
-            <div className="min-h-96 my-10 grid grid-cols-2 gap-16">{renderDetail()}</div>
+        <div className="w-full overflow-y-auto p-6 bg-gray-300/20">
+            <div className="flex flex-col bg-white p-6 rounded-3xl">
+                <TabNav
+                    tabs={
+                        project.status.current == "Electricity Generated" ? tabs : tabs.slice(0, 5)
+                    }
+                    currentTab={currentTab}
+                    setCurrentTab={setCurrentTab}
+                />
+                <div className="min-h-96 my-10 grid grid-cols-2 gap-16">{renderDetail()}</div>
+            </div>
         </div>
     );
 };
