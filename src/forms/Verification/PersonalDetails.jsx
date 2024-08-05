@@ -26,7 +26,7 @@ const PersonalDetails = () => {
     return (
         <FormWrapper onSubmit={handleSubmit(onSubmit)}>
             <div className="w-3/4 flex flex-col">
-                <h2 className="text-3xl py-4 font-semibold capatalize">Personal Details</h2>
+                <h2 className="text-3xl pb-4 font-semibold capatalize">Personal Details</h2>
                 <div className="grid grid-cols-2 gap-4">
                     <FormField
                         name="firstName"

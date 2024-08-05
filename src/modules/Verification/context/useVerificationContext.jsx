@@ -7,7 +7,7 @@ import VERIFICATION_STEPS from "@/modules/Verification/VerificationSteps";
 const VerificationContext = createContext();
 
 export const VerificationProvider = ({ children }) => {
-    const [stage, setStage] = useState(0);
+    const [stage, setStage] = useState(3);
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState({
         firstName: "",
