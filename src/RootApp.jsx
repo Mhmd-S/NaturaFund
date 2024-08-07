@@ -6,7 +6,7 @@ import PageLoader from "@/components/PageLoader";
 
 const LoadApp = lazy(() => import("@/apps/LoadApp"));
 
-export default function RoutApp() {
+export default function RouteApp() {
     return (
         <BrowserRouter>
             {/* <AuthContextProvider> */}

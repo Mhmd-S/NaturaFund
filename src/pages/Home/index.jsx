@@ -5,15 +5,19 @@ import Projects from "@/modules/Home/Projects";
 import LineChart from "@/modules/Home/RevenueChart/LineChart";
 import BarChart from "@/modules/Home/RevenueChart/BarChart";
 
+import ToggleButton from "@/components/common/ToggleButton";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp, faLineChart, faPieChart } from "@fortawesome/free-solid-svg-icons";
 
 const Home = () => {
-    const [dataShow, setDataShow] = useState("revenue"); // revenue or  portfolio
+    const [dataToggleChart, setToggleChart] = useState(1); // 0 - revenue or 1 - portfolio
 
     return (
         <div className="w-full p-6 flex flex-col gap-5 bg-gray-300/25 overflow-y-auto">
-            <h2 className="text-3xl p-4 text-brand-900 font-bold rounded-lg">Good morning, John</h2>
+            <h2 className="text-3xl p-4 text-brand-900 font-bold rounded-alg">
+                Good morning, John
+            </h2>
             <div className="p-6 grid grid-cols-2 bg-white rounded-2xl">
                 <div className="grid grid-rows-3 gap-4">
                     <h3>Total Revenue this Month</h3>
@@ -32,23 +36,13 @@ const Home = () => {
             </div>
 
             <div className="min-h-90 p-6 bg-white flex flex-col rounded-2xl">
-                <div className="w-fit p-2 rounded-3xl text-white bg-gray-300/25 space-x-1">
-                    <button
-                        className={`px-4 py-2 rounded-3xl ${dataShow === "revenue" ? "bg-white  text-black" : "text-gray-500"}`}
-                        onClick={() => setDataShow("revenue")}
-                    >
-                        <FontAwesomeIcon icon={faLineChart} className="pr-1" />
-                        Revenue
-                    </button>
-                    <button
-                        className={`px-4 py-2 rounded-3xl ${dataShow === "portfolio" ? "bg-white  text-black" : "text-gray-500"}`}
-                        onClick={() => setDataShow("portfolio")}
-                    >
-                        <FontAwesomeIcon icon={faPieChart} className="pr-1" />
-                        Portfolio
-                    </button>
-                </div>
-                {dataShow === "revenue" ? <BarChart /> : <Portfolio />}
+                <ToggleButton
+                    current={dataToggleChart}
+                    onClick={() => setToggleChart(!dataToggleChart)}
+                    labels={["Revenue", "Portofolio"]}
+                    icons={[faLineChart, faPieChart]}
+                />
+                {dataToggleChart === 0 ? <BarChart /> : <Portfolio />}
             </div>
 
             <Projects />
