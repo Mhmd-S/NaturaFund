@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp, faLineChart, faPieChart } from "@fortawesome/free-solid-svg-icons";
 
 const Home = () => {
-    const [dataToggleChart, setToggleChart] = useState(1); // 0 - revenue or 1 - portfolio
+    const [toggleChart, setToggleChart] = useState(true); // true - revenue or false - portfolio
 
     return (
         <div className="w-full p-6 flex flex-col gap-5 bg-gray-300/25 overflow-y-auto">
@@ -37,12 +37,12 @@ const Home = () => {
 
             <div className="min-h-90 p-6 bg-white flex flex-col rounded-2xl">
                 <ToggleButton
-                    current={dataToggleChart}
-                    onClick={() => setToggleChart(!dataToggleChart)}
+                    current={toggleChart}
+                    handleOnClick={() => setToggleChart(!toggleChart)}
                     labels={["Revenue", "Portofolio"]}
                     icons={[faLineChart, faPieChart]}
                 />
-                {dataToggleChart === 0 ? <BarChart /> : <Portfolio />}
+                {toggleChart ? <BarChart /> : <Portfolio />}
             </div>
 
             <Projects />

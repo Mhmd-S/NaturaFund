@@ -65,6 +65,10 @@ let routes = {
             element: <Navigate to="/" />,
         },
         {
+            path: "/",
+            element: <Home />,
+        },
+        {
             path: "/home",
             element: <Home />,
         },
