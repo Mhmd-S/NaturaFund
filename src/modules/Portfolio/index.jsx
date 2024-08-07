@@ -1,8 +1,35 @@
 import SearchBar from "@/components/common/SearchBar";
 import React from "react";
-import ProjectsTable from "./ProjectsTable";
+import ProjectsTable from "../../components/common/ProjectsTable";
 
 // ToDo: cahnge the component name from index to something else
+
+const dummyData = [
+    {
+        id: 1,
+        name: "Project 1",
+        amount: 100000,
+        status: "Pending",
+    },
+    {
+        id: 2,
+        name: "Project 2",
+        amount: 200000,
+        status: "Approved",
+    },
+    {
+        id: 3,
+        name: "Project 3",
+        amount: 300000,
+        status: "Pending",
+    },
+    {
+        id: 4,
+        name: "Project 4",
+        amount: 400000,
+        status: "Approved",
+    },
+];
 
 const index = () => {
     return (
@@ -13,7 +40,7 @@ const index = () => {
                     <SearchBar />
                 </div>
             </div>
-            <ProjectsTable />
+            <ProjectsTable data={dummyData} handleOnClick={() => console.log(1)} />
         </>
     );
 };
