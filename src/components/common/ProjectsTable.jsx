@@ -6,7 +6,7 @@ import extractHeader from "@/utils/extractHeader";
 
 const ProjectsTable = ({ data, handleOnClick }) => {
     return (
-        <div className="h-full p-4 bg-white rounded-2xl">
+        <div className="p-4 bg-white rounded-2xl">
             <table className="h-full w-full divide-y-2 divide-gray-200 text-sm">
                 <thead>
                     <tr>

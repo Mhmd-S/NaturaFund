@@ -1,6 +1,6 @@
 import AppRouter from "@/routes/AppRouter";
 import Nav from "@/modules/Nav";
-import Header from "@/modules/Header";
+import Header from "@/modules/HeaderModule";
 
 const App = () => {
     return (

@@ -1,6 +1,6 @@
 import { useContext, createContext, useState, useMemo } from "react";
 
-import VERIFICATION_STEPS from "@/modules/Verification/VerificationSteps";
+import VERIFICATION_STEPS from "@/modules/VerificationModule/VerificationSteps";
 
 // ToDo: Add Fetcing to check the verification status, or maybe it is found in the user info
 

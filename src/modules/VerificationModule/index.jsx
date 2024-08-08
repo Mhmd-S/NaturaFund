@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
-import VERIFICATION_STEPS from "@/modules/Verification/VerificationSteps";
+import VERIFICATION_STEPS from "@/modules/VerificationModule/VerificationSteps";
 
-import { VerificationProvider } from "@/modules/Verification/context/useVerificationContext";
+import { VerificationProvider } from "@/modules/VerificationModule/context/useVerificationContext";
 
-import StageIndicator from "@/modules/Verification/StageIndicator";
-import VerificationForm from "@/modules/Verification/VerificationForm";
+import StageIndicator from "@/modules/VerificationModule/StageIndicator";
+import VerificationForm from "@/modules/VerificationModule/VerificationForm";
 
 // e-KYC
 // ToDo: Implement Verification component

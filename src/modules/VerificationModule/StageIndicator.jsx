@@ -1,7 +1,7 @@
 import React from "react";
-import useVerificationContext from "@/modules/Verification/context/useVerificationContext";
+import useVerificationContext from "@/modules/VerificationModule/context/useVerificationContext";
 import Steps from "@/components/common/Steps";
-import VERIFICATION_STEPS from "@/modules/Verification/VerificationSteps";
+import VERIFICATION_STEPS from "@/modules/VerificationModule/VerificationSteps";
 
 const StageIndicator = ({ steps }) => {
     const { stage } = useVerificationContext();

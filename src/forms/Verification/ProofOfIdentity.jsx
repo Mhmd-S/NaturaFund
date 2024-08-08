@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
-import useVerificationContext from "@/modules/Verification/context/useVerificationContext";
+import useVerificationContext from "@/modules/VerificationModule/context/useVerificationContext";
 
 import FormWrapper from "@/forms/formComponents/FormWrapper";
 import FileUploadField from "@/forms/formComponents/FormFileUpload";

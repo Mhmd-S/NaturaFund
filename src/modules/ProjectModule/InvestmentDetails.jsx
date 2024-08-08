@@ -1,5 +1,5 @@
 import React from "react";
-import DetailsTable from "../common/DetailsTable";
+import DetailsTable from "../../components/common/DetailsTable";
 
 const InvestmentDetails = ({ investment }) => {
     return (

@@ -1,5 +1,5 @@
 import React from "react";
-import useVerificationContext from "@/modules/Verification/context/useVerificationContext";
+import useVerificationContext from "@/modules/VerificationModule/context/useVerificationContext";
 import { useForm } from "react-hook-form";
 
 import FormWrapper from "@/forms/formComponents/FormWrapper";

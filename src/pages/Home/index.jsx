@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-import Portfolio from "@/modules/Home/PortfolioChart";
-import Projects from "@/modules/Home/Projects";
-import LineChart from "@/modules/Home/RevenueChart/LineChart";
-import BarChart from "@/modules/Home/RevenueChart/BarChart";
+import Portfolio from "@/modules/HomeModule/PortfolioChart";
+import Projects from "@/modules/HomeModule/Projects";
+import LineChart from "@/modules/HomeModule/RevenueChart/LineChart";
+import BarChart from "@/modules/HomeModule/RevenueChart/BarChart";
 
 import ToggleButton from "@/components/common/ToggleButton";
 

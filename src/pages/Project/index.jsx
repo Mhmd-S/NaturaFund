@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import TabNav from "@/components/common/TabNav";
-import Documents from "@/components/ProjectDetails/Documents";
-import Overview from "@/components/ProjectDetails/Overview";
-import InvestmentDetails from "@/components/ProjectDetails/InvestmentDetails";
-import FinancialDetails from "@/components/ProjectDetails/FinancialDetails";
-import Status from "@/components/ProjectDetails/Status";
-import RevenueGenerated from "@/components/ProjectDetails/RevenueGenerated";
+import Documents from "@/modules/ProjectModule/Documents";
+import Overview from "@/modules/ProjectModule/Overview";
+import InvestmentDetails from "@/modules/ProjectModule/InvestmentDetails";
+import FinancialDetails from "@/modules/ProjectModule/FinancialDetails";
+import Status from "@/modules/ProjectModule/Status";
+import RevenueGenerated from "@/modules/ProjectModule/RevenueGenerated";
+import TabbedWindow from "@/components/common/TabbedWindow";
 
 const tabs = [
     "Overview",
@@ -117,7 +118,26 @@ const project = {
 const Project = () => {
     const [currentTab, setCurrentTab] = useState("Overview");
 
-    const renderDetail = () => {
+    const renderInfoForInvestor = () => {
+        switch (currentTab) {
+            case "Overview":
+                return <Overview project={project} />;
+            case "Investment Details":
+                return <InvestmentDetails investment={project.investment} />;
+            case "Financial Details":
+                return <FinancialDetails finance={project.finance} />;
+            case "Documents":
+                return <Documents legal={project.legal} />;
+            case "Status":
+                return <Status status={project.status} />;
+            case "Revenue Generated":
+                return <RevenueGenerated />;
+            default:
+                return <Overview project={project} />;
+        }
+    };
+
+    const renderInfoForInvestee = () => {
         switch (currentTab) {
             case "Overview":
                 return <Overview project={project} />;
@@ -137,14 +157,13 @@ const Project = () => {
     };
 
     return (
-        <div className="w-full overflow-y-auto flex flex-col p-8">
-            <TabNav
-                tabs={project.status.current == "Electricity Generated" ? tabs : tabs.slice(0, 5)}
-                currentTab={currentTab}
-                setCurrentTab={setCurrentTab}
-            />
-            <div className="min-h-96 my-10 grid grid-cols-2 gap-16">{renderDetail()}</div>
-        </div>
+        <TabbedWindow
+            currentTab={currentTab}
+            setCurrentTab={setCurrentTab}
+            tabs={project.status.current == "Electricity Generated" ? tabs : tabs.slice(0, 5)}
+        >
+            {renderInfoForInvestee()}
+        </TabbedWindow>
     );
 };
 

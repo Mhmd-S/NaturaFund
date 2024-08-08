@@ -44,11 +44,11 @@ import { Navigate } from "react-router-dom";
 
 const Portfolio = lazy(() => import("@/pages/Portfolio"));
 const Home = lazy(() => import("@/pages/Home"));
-const Explore = lazy(() => import("@/modules/Explore"));
+const Explore = lazy(() => import("@/pages/Explore"));
 const Project = lazy(() => import("@/pages/Project"));
 const Profile = lazy(() => import("@/pages/Profile"));
 const InvestorHelp = lazy(() => import("@/pages/Help/InvestorHelp"));
-const Sponsor = lazy(()=> import("@/pages/Sponsor"));
+const Investee = lazy(()=> import("@/pages/Investee"));
 
 let routes = {
     expense: [],
@@ -94,8 +94,8 @@ let routes = {
             element: <InvestorHelp />,
         },
         {
-            path: "/sponsor",
-            element: <Sponsor/>
+            path: "/investee",
+            element: <Investee/>
         },
         // {
         //   path: '/people',
