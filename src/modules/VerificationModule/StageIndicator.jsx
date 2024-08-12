@@ -1,12 +1,11 @@
 import React from "react";
 import useVerificationContext from "@/modules/VerificationModule/context/useVerificationContext";
 import Steps from "@/components/common/Steps";
-import VERIFICATION_STEPS from "@/modules/VerificationModule/VerificationSteps";
 
 const StageIndicator = ({ steps }) => {
     const { stage } = useVerificationContext();
 
-    const currentStep = VERIFICATION_STEPS[stage]?.title;
+    const currentStep = steps[stage]?.title;
 
     const stepsTitles = steps.map((step) => step?.title);
 

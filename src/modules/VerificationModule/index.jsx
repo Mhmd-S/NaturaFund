@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 
-import VERIFICATION_STEPS from "@/modules/VerificationModule/VerificationSteps";
+import {
+    VERIFICATION_STEPS_INDIVIDUAL,
+    VERIFICATION_STEPS_COMPANY,
+} from "@/modules/VerificationModule/VerificationSteps";
 
 import { VerificationProvider } from "@/modules/VerificationModule/context/useVerificationContext";
 
@@ -19,7 +22,7 @@ const Verification = () => {
     return (
         <div className="relative w-full py-4 grid grid-cols-[20%_80%]">
             <VerificationProvider>
-                <StageIndicator steps={VERIFICATION_STEPS} />
+                <StageIndicator steps={VERIFICATION_STEPS_COMPANY} />
                 <VerificationFormCompany />
                 {/* <VerificationFormIndividual /> */}
             </VerificationProvider>
