@@ -1,21 +1,15 @@
 import React, { useState } from "react";
-import TabNav from "@/components/common/TabNav";
+
+import Status from "@/modules/ProjectModule/Status";
+import RevenueGenerated from "@/modules/ProjectModule/RevenueGenerated";
 import Documents from "@/modules/ProjectModule/Documents";
 import Overview from "@/modules/ProjectModule/Overview";
 import InvestmentDetails from "@/modules/ProjectModule/InvestmentDetails";
 import FinancialDetails from "@/modules/ProjectModule/FinancialDetails";
-import Status from "@/modules/ProjectModule/Status";
-import RevenueGenerated from "@/modules/ProjectModule/RevenueGenerated";
+import InvestmentsReceived from "@/modules/ProjectModule/InvestmentsReceived";
+
 import TabbedWindow from "@/components/common/TabbedWindow";
 
-const tabs = [
-    "Overview",
-    "Investment Details",
-    "Financial Details",
-    "Status",
-    "Documents",
-    "Revenue Generated",
-];
 const project = {
     name: "Aventura Solar Farms @ Penang",
     description:
@@ -118,7 +112,7 @@ const project = {
 const Project = () => {
     const [currentTab, setCurrentTab] = useState("Overview");
 
-    const renderInfoForInvestor = () => {
+    const renderTab = () => {
         switch (currentTab) {
             case "Overview":
                 return <Overview project={project} />;
@@ -132,37 +126,38 @@ const Project = () => {
                 return <Status status={project.status} />;
             case "Revenue Generated":
                 return <RevenueGenerated />;
+            case "Investments Received": // Only displayed to the orgainsers
+                return <InvestmentsReceived />;
             default:
                 return <Overview project={project} />;
         }
     };
 
-    const renderInfoForInvestee = () => {
-        switch (currentTab) {
-            case "Overview":
-                return <Overview project={project} />;
-            case "Investment Details":
-                return <InvestmentDetails investment={project.investment} />;
-            case "Financial Details":
-                return <FinancialDetails finance={project.finance} />;
-            case "Documents":
-                return <Documents legal={project.legal} />;
-            case "Status":
-                return <Status status={project.status} />;
-            case "Revenue Generated":
-                return <RevenueGenerated />;
-            default:
-                return <Overview project={project} />;
+    const tabsToDisplay = () => {
+        const tabs = [
+            "Overview",
+            "Investment Details",
+            "Financial Details",
+            "Status",
+            "Documents",
+            "Revenue Generated",
+        ];
+
+        if (1) {
+            const newTabs = tabs.slice(0, 5).concat(["Investments Received"]);
+            return newTabs;
+        }
+
+        if (project.status.current == "Electricity Generated") {
+            return tabs;
+        } else {
+            return tabs.slice(0, 5);
         }
     };
 
     return (
-        <TabbedWindow
-            currentTab={currentTab}
-            setCurrentTab={setCurrentTab}
-            tabs={project.status.current == "Electricity Generated" ? tabs : tabs.slice(0, 5)}
-        >
-            {renderInfoForInvestee()}
+        <TabbedWindow currentTab={currentTab} setCurrentTab={setCurrentTab} tabs={tabsToDisplay()}>
+            {renderTab()}
         </TabbedWindow>
     );
 };
