@@ -51,26 +51,6 @@ const InvestmentsReceived = () => {
                         12/12/2021
                     </p>
                 </li>
-                <li className="relative w-full grid grid-cols-[10%_50%_30%] items-center">
-                    <FontAwesomeIcon
-                        icon={faCheck}
-                        className="rounded-full bg-green-100 p-3 text-green-600"
-                    />
-                    <p className="text-md  justify-self-center">RM 240.94</p>
-                    <p className="text-gray-light text-sm justify-self-end text-right">
-                        12/12/2021
-                    </p>
-                </li>
-                <li className="relative w-full grid grid-cols-[10%_50%_30%] items-center">
-                    <FontAwesomeIcon
-                        icon={faCheck}
-                        className="rounded-full bg-green-100 p-3 text-green-600"
-                    />
-                    <p className="text-md  justify-self-center">RM 240.94</p>
-                    <p className="text-gray-light text-sm justify-self-end text-right">
-                        12/12/2021
-                    </p>
-                </li>
             </ol>
         </>
     );

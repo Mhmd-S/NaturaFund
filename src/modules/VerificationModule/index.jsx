@@ -5,7 +5,8 @@ import VERIFICATION_STEPS from "@/modules/VerificationModule/VerificationSteps";
 import { VerificationProvider } from "@/modules/VerificationModule/context/useVerificationContext";
 
 import StageIndicator from "@/modules/VerificationModule/StageIndicator";
-import VerificationForm from "@/modules/VerificationModule/VerificationForm";
+import VerificationFormIndividual from "@/modules/VerificationModule/VerificationFormIndividual";
+import VerificationFormCompany from "@/modules/VerificationModule/VerificationFormCompany";
 
 // e-KYC
 // ToDo: Implement Verification component
@@ -19,7 +20,8 @@ const Verification = () => {
         <div className="relative w-full py-4 grid grid-cols-[20%_80%]">
             <VerificationProvider>
                 <StageIndicator steps={VERIFICATION_STEPS} />
-                <VerificationForm />
+                <VerificationFormCompany />
+                {/* <VerificationFormIndividual /> */}
             </VerificationProvider>
         </div>
     );

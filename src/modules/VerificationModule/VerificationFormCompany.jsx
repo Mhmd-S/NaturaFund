@@ -2,7 +2,7 @@ import React from "react";
 
 import useVerificationContext from "@/modules/VerificationModule/context/useVerificationContext";
 
-import PersonalDetails from "@/forms/Verification/PersonalDetails";
+import CompanyInformationForm from "@/forms/Verification/company/CompanyInformationForm";
 import ProofOfIdentity from "@/forms/Verification/ProofOfIdentity";
 import ProofOfAddress from "@/forms/Verification/ProofOfAddress";
 
@@ -48,13 +48,13 @@ const RESULTS = {
     },
 };
 
-const VerficationForm = () => {
+const VerficationFormCompany = () => {
     const { stage } = useVerificationContext();
 
     const renderStep = () => {
         switch (stage) {
             case 0:
-                return <PersonalDetails />;
+                return <CompanyInformationForm />;
             case 1:
                 return <ProofOfIdentity />;
             case 2:
@@ -68,4 +68,4 @@ const VerficationForm = () => {
     return renderStep();
 };
 
-export default VerficationForm;
+export default VerficationFormCompany;
