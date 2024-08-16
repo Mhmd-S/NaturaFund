@@ -6,9 +6,9 @@ import FormWrapper from "@/forms/formComponents/FormWrapper";
 import FormField from "@/forms/formComponents/FormField";
 import FormSelect from "@/forms/formComponents/FormSelect";
 import FormButton from "@/forms/formComponents/FormButton";
+import FormFieldTextArea from "@/forms/formComponents/FormTextArea";
 
 import COUNTRY_LIST from "@/utils/CountryList";
-import FormFieldTextArea from "@/forms/formComponents/FormTextArea";
 
 const CompanyInformationForm = () => {
     const { data, setData, goNext } = useVerificationContext();

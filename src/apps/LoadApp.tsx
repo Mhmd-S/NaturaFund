@@ -1,5 +1,4 @@
 import { lazy, Suspense } from "react";
-import PageLoader from "@/components/PageLoader";
 import AuthRouter from "@/routes/AuthRouter";
 
 const DefaultApp = lazy(() => import("@/apps/App"));

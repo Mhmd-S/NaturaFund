@@ -3,14 +3,11 @@ import React from "react";
 import useVerificationContext from "@/modules/VerificationModule/context/useVerificationContext";
 
 import CompanyInformationForm from "@/forms/Verification/company/CompanyInformationForm";
-import ProofOfIdentity from "@/forms/Verification/ProofOfIdentity";
-import ProofOfAddress from "@/forms/Verification/ProofOfAddress";
+import RepresentativeForm from "@/forms/Verification/company/RepresentativeForm";
 
 import ResultPage from "@/modules/VerificationModule/ResultPage";
 
 import { faCheck, faPause, faTimes } from "@fortawesome/free-solid-svg-icons";
-import RepresentativeForm from "@/forms/Verification/company/RepresentativeForm";
-import RepresentativeProofForm from "@/forms/Verification/company/RepresentativeProofForm";
 
 const RESULTS = {
     pending: {
@@ -60,8 +57,6 @@ const VerficationFormCompany = () => {
             case 1:
                 return <RepresentativeForm />;
             case 2:
-                return <RepresentativeProofForm />;
-            case 3:
                 return <ResultPage {...RESULTS.approved} />;
             default:
                 return <ResultPage {...RESULTS.pending} />;

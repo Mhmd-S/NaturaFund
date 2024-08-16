@@ -8,7 +8,7 @@ import FormField from "@/forms/formComponents/FormField";
 import FormButton from "@/forms/formComponents/FormButton";
 
 const RepresentativeForm = () => {
-    const { data, setData, goNext } = useVerificationContext();
+    const { data, setData, goNext, goPrev } = useVerificationContext();
 
     const {
         register,
@@ -122,7 +122,15 @@ const RepresentativeForm = () => {
                         required: "Profile Picture is required",
                     }}
                 />
-                <FormButton text="Next" disable={Object.keys(errors).length !== 0} />
+                <div className=" p-2 grid grid-cols-2 gap-10">
+                    <button
+                        className="bg-white text-brand-800 border-2 border-brand-800 rounded-md transition-colors hover:bg-brand-800 hover:text-white"
+                        onClick={goPrev}
+                    >
+                        Back
+                    </button>
+                    <FormButton text="Next" disable={Object.keys(errors).length !== 0} />
+                </div>
             </div>
         </FormWrapper>
     );
