@@ -49,6 +49,8 @@ const Project = lazy(() => import("@/pages/Project"));
 const Profile = lazy(() => import("@/pages/Profile"));
 const InvestorHelp = lazy(() => import("@/pages/Help/InvestorHelp"));
 const Investee = lazy(()=> import("@/pages/Investee"));
+const ProjectApply = lazy(() => import("@/pages/Project/ProjectApply"));
+const NotFound = lazy(()=>import("@/pages/NotFound"));
 
 let routes = {
     expense: [],
@@ -86,6 +88,10 @@ let routes = {
             element: <Project />,
         },
         {
+            path: "/project/apply",
+            element: <ProjectApply />,
+        },
+        {
             path: "/profile",
             element: <Profile />,
         },
@@ -97,6 +103,10 @@ let routes = {
             path: "/investee",
             element: <Investee/>
         },
+        {
+            path: '*',
+            element: <NotFound />,
+          },
         // {
         //   path: '/people',
         //   element: <People />,
@@ -215,10 +225,6 @@ let routes = {
         // {
         //   path: 'category/expenses',
         //   element: <ExpenseCategory />,
-        // },
-        // {
-        //   path: '*',
-        //   element: <NotFound />,
         // },
     ],
 };
