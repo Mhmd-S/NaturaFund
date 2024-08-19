@@ -2,11 +2,20 @@ import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
-const Dropdown = ({ options }) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState(null);
+type Option = {
+    label: string;
+    value: string;
+};
 
-    const handleOptionClick = (option) => {
+type DropdownProps = {
+    options: Option[];
+};
+
+const Dropdown = ({ options }:DropdownProps) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [selectedOption, setSelectedOption] = useState<Option|null>(null);
+
+    const handleOptionClick = (option: Option) => {
         setSelectedOption(option);
         setIsOpen(false);
     };
@@ -16,7 +25,7 @@ const Dropdown = ({ options }) => {
     useEffect(() => {
         const modalContainer = dropdownRef.current;
 
-        const handleClickOutside = (event) => {
+        const handleClickOutside = (event: MouseEvent) => {
             if (modalContainer && !modalContainer.contains(event.target)) {
                 setIsOpen(false);
             }

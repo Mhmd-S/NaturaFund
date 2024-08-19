@@ -2,6 +2,11 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
+type FaqItemProps = {
+    question: string;
+    answer: string;
+};
+
 const FaqItem = ({ question, answer }) => {
     return (
         <details className="group [&_summary::-webkit-details-marker]:hidden">

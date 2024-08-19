@@ -1,6 +1,11 @@
 import React from "react";
 
-const DetailsTable = ({ title, items }) => {
+type DetailsTableProps = {
+    title?: string;
+    items: { [key: string]: string };
+};
+
+const DetailsTable = ({ title, items }: DetailsTableProps) => {
     return (
         <div className="flow-root rounded-lg border border-gray-100 py-3 shadow-sm">
             {title && (

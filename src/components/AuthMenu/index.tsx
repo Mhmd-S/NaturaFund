@@ -2,7 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const AuthMenu = ({ items, setAuthType, alternative, title, subTitle }) => {
+type AuthMenuProps = {
+    items: { id: string; name: string; icon: any }[];
+    setAuthType: (id: string) => void;
+    alternative: { text: string; link: string; linkText: string };
+    title: string;
+    subTitle: string;
+};
+
+const AuthMenu = ({ items, setAuthType, alternative, title, subTitle }: AuthMenuProps) => {
     
     const renderItems = () => {
         return items.map((item, index) => (

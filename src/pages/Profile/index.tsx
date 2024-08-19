@@ -3,6 +3,7 @@ import TabNav from "@/components/common/TabNav";
 import Verification from "@/modules/VerificationModule";
 import PersonalDetails from "@/modules/ProfileModule/PersonalDetails";
 import PaymentDetails from "@/modules/ProfileModule/PaymentDetails";
+import TabbedWindow from "@/components/common/TabbedWindow";
 
 const tabs = ["Personal Info", "Payment Details", "Verification"];
 
@@ -23,14 +24,9 @@ const Profile = () => {
     };
 
     return (
-        <div className="w-full overflow-y-auto p-6 bg-gray-300/20">
-            <div className="flex flex-col bg-white p-6 rounded-3xl">
-                <TabNav tabs={tabs} currentTab={currentTab} setCurrentTab={setCurrentTab} />
-                <div className="min-h-[26rem] p-4 grid grid-cols-1 gap-16 bg-white rounded-3xl">
-                    {renderDetail()}
-                </div>
-            </div>
-        </div>
+        <TabbedWindow currentTab={currentTab} setCurrentTab={setCurrentTab} tabs={tabs}>
+            {renderDetail()}
+        </TabbedWindow>
     );
 };
 

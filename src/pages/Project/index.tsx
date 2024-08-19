@@ -157,7 +157,7 @@ const Project = () => {
 
     return (
         <TabbedWindow currentTab={currentTab} setCurrentTab={setCurrentTab} tabs={tabsToDisplay()}>
-            {renderTab()}
+            <div className="grid grid-cols-2 gap-10">{renderTab()}</div>
         </TabbedWindow>
     );
 };

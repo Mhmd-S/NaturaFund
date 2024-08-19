@@ -1,6 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 
-const useModal = (setShowModal) => {
+type UseModalProps = {
+	setShowModal: (value: boolean) => void;
+};
+
+const useModal = (setShowModal: UseModalProps) => {
 	const modalRef = useRef(null);
 
 	useEffect(() => {
