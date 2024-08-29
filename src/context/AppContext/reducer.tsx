@@ -10,7 +10,7 @@ export const initialState = {
 export const contextReducer = (state, action) => {
     switch (action.type) {
         case actionTypes.CONFIG: {
-            return {
+            return { 
                 ...state,
                 duration: action.payload.duration,
                 maxCount: action.payload.maxCount,

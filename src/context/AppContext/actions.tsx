@@ -1,4 +1,3 @@
-import { config } from "process";
 import * as actionTypes from "./types";
 
 const contextActions = (dispatch) => {
