@@ -1,6 +1,7 @@
 import React from "react";
+import { FormButtonProps } from "@/types/FormComponentsTypes";
 
-const FormButton = ({ onClick, text, loading, disable }) => {
+const FormButton = ({ onClick, text, loading, disable }: FormButtonProps) => {
     return (
         <button
             onClick={onClick}

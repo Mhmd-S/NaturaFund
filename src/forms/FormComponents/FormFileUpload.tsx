@@ -1,144 +1,156 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState } from 'react';
 
-import FormFieldError from "@/forms/formComponents/FormFieldError";
+import convertStorageSize from '@/utils/convertStorageSize';
 
-import { validateImage } from "@/utils/validateImage";
+import FormFieldError from '@/forms/FormComponents/FormFieldError';
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPause, faTrashAlt, faUpload, faCheck } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faTrashAlt,
+  faUpload,
+  faCloudDownloadAlt,
+  faFileWord,
+  faFilePdf,
+  faFileExcel,
+  faFile,
+} from '@fortawesome/free-solid-svg-icons';
 
-// ToDo: Refactore the component to upload directly to the server with the need for the user to submit the form
+import { FormFileUploadProps } from '@/types/FormComponentsTypes';
 
 const FileUploadField = ({
-    name,
-    label,
-    register,
-    errors,
-    setError,
-    validationRules,
-    usersPicture,
-    resetField,
-    ...inputProps
-}) => {
-    const [file, setFile] = useState(usersPicture);
-    const [loading, setLoading] = useState(false);
-    const [percentage, setPercentage] = useState(0);
+  name,
+  label,
+  accept,
+  register,
+  errors,
+  setError,
+  validationRules,
+  defaultFile,
+  inputGuidelines,
+  acceptSize,
+  resetField,
+}: FormFileUploadProps) => {
+  const [file, setFile] = useState<string | null>(defaultFile || null);
 
-    const handleFileChange = async (event) => {
-        setLoading(true);
-        const selectedFile = event.target.files[0];
+  const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = event.target.files;
 
-        if (selectedFile) {
-            const result = await validateImage(selectedFile, 3000000); // 3MB
+    if (selectedFile) {
+      setFile(selectedFile[0]);
+    }
+  };
+  const handleRemoveFile = () => {
+    resetField(`${name}`, { defaultValue: '' }); // Not optimal, but it works
+    setFile(null);
+  };
 
-            if (!result.valid) {
-                setError(`${name}`, { type: "manual", message: result.message });
-                setLoading(false);
-                return;
-            }
+  const renderIcon = (file: File | string) => {
+    if (!file) {
+      return null;
+    }
 
-            setFile(selectedFile);
-            // Upload file and update the percentage
-            const formData = new FormData();
-            formData.append("file", selectedFile);
-            const response = await axios.post("/api/upload", formData, {
-                headers: {
-                    "Content-Type": "multipart/form-data",
-                },
-            });
-        }
-        setLoading(false);
-    };
+    const fileType = typeof file === 'string' ? file.split('.').pop() : file.type;
 
-    const handleRemoveFile = () => {
-        resetField(`${name}`, { defaultValue: "" }); // Not optimal, but it works
-        setFile(null);
-    };
+    if (
+      fileType &&
+      (fileType.includes('jpeg') || fileType.includes('png') || fileType.includes('jpg'))
+    ) {
+      return (
+        <img
+          className="size-full object-cover rounded-md"
+          src={typeof file === 'string' ? file : URL.createObjectURL(file)}
+          alt="Preview"
+        />
+      );
+    }
 
-    return (
-        <div className="h-fit">
-            <label
-                htmlFor={name}
-                className="block mb-2 text-sm font-medium leading-6 text-gray-900"
-            >
-                {label}
-            </label>
-            <div
-                className={`relative h-full w-full px-4 pt-4 border rounded-md ${
-                    errors[name] ? "border-pink-600" : "border-gray-900/25"
-                } ${file ? "border-solid" : "border-dashed"}`}
-            >
-                {file ? (
-                    <div className="w-full grid grid-cols-[10%_80%_10%] grid-rows-2 items-center">
-                        <img
-                            className="size-10 object-cover rounded-md"
-                            src={typeof file == "string" ? file : URL.createObjectURL(file)}
-                            alt="Preview"
-                        />
-                        <div className="flex flex-col">
-                            <text className="text-sm">File_Name</text>
-                            <text className="text-xs text-gray-400">6 MB</text>
-                        </div>
-                        <div className="flex justify-center items-center gap-2 text-gray-300">
-                            <FontAwesomeIcon
-                                icon={file ? faCheck : faPause}
-                                className={`p-1 size-3 cursor-pointer rounded-full ${file && "text-white bg-green-500"}`}
-                            />
+    if (fileType && fileType.includes('pdf')) {
+      return <FontAwesomeIcon icon={faFilePdf} className="text-red-500" />;
+    }
 
-                            <FontAwesomeIcon
-                                icon={faTrashAlt}
-                                className="p-1 size-4 cursor-pointer"
-                                onClick={() => {
-                                    handleRemoveFile();
-                                    inputProps?.handleDeleteImage();
-                                }}
-                            />
-                        </div>
-                        <div className="col-span-3 justify-self-center w-full flex items-center gap-3">
-                            <div className="relative col-span-3 justify-self-center w-full h-2 bg-gray-300 rounded-full">
-                                <div className="absolute w-1/2 h-full bg-brand-900 rounded-full" />
-                            </div>
-                            <text className="text-xs">95%</text>
-                        </div>
-                    </div>
-                ) : (
-                    <>
-                        <div
-                            htmlFor={name}
-                            className={`h-full py-3 grid grid-rows-3 grid-cols-1 gap-2 place-items-center items-center text-gray-600 text-center ${
-                                file && "hidden"
-                            } `}
-                        >
-                            <FontAwesomeIcon
-                                icon={faUpload}
-                                className={`size-7 ${errors[name] ? "text-pink-700" : "text-gray-300"}`}
-                            />
+    if (fileType && fileType.includes('word')) {
+      return <FontAwesomeIcon icon={faFileWord} className="text-blue-500" />;
+    }
 
-                            <span className="text-sm">
-                                <span
-                                    className={`font-semibold ${errors[name] ? "text-pink-700" : "text-brand-700"}`}
-                                >
-                                    Upload a File{" "}
-                                </span>
-                                or drag and drop
-                            </span>
-                            <span className="text-xs text-gray-400">PNG, JPG, GIF up to 3MB</span>
-                        </div>
-                        <input
-                            type="file"
-                            name={name}
-                            accept="image/png, image/gif, image/jpeg"
-                            {...register(name, validationRules)}
-                            onInput={handleFileChange}
-                            className={`opacity-0 absolute top-0 left-0 w-full h-full cursor-pointer`}
-                        />
-                    </>
-                )}
+    if (fileType && fileType.includes('excel')) {
+      return <FontAwesomeIcon icon={faFileExcel} className="text-green-500" />;
+    }
+
+    if (fileType && fileType.includes('powerpoint')) {
+      return <FontAwesomeIcon icon={faFile} className="text-orange-500" />;
+    }
+
+    return <FontAwesomeIcon icon={faFile} className="size-12 text-gray-300" />;
+  };
+
+
+  return (
+    <div className="h-fit w-1/2">
+      <label htmlFor={name} className="block mb-2 text-sm font-medium leading-6 text-gray-900">
+        {label}
+      </label>
+      <div
+        className={`relative h-fit w-full p-4 border rounded-md ${
+          errors[name] ? 'border-pink-600' : 'border-gray-900/25'
+        } ${file ? 'border-solid' : 'border-dashed'}`}
+      >
+        {file ? (
+          <div className="w-full grid grid-cols-2 grid-rows-1 gap-x-2">
+            <div className="size-full row-span-2 items-center">{renderIcon()}</div>
+            <div className="h-full grid grid-cols-1">
+              <FontAwesomeIcon
+                icon={faTrashAlt}
+                className="justify-self-end p-1 size-5 cursor-pointer text-brand-200 rounded-full"
+                onClick={() => handleRemoveFile()}
+              />
+              <div className='flex flex-col items-center'>
+                <p className="text-md">{file.name}</p>
+                <button className="flex items-center">
+                  <p className="text-sm text-gray-400">{convertStorageSize(file.size)}</p>
+                  <FontAwesomeIcon
+                    icon={faCloudDownloadAlt}
+                    className="p-1 size-5 cursor-pointer rounded-ful text-brand-600"
+                  />
+                </button>
+              </div>
             </div>
-            <FormFieldError name={name} errors={errors} />
-        </div>
-    );
+          </div>
+        ) : (
+          <>
+            <div
+              className={`h-full py-3 grid grid-rows-3 grid-cols-1 gap-2 place-items-center items-center text-gray-600 text-center ${
+                file && 'hidden'
+              } `}
+            >
+              <FontAwesomeIcon
+                icon={faUpload}
+                className={`size-7 ${errors[name] ? 'text-pink-700' : 'text-gray-300'}`}
+              />
+
+              <span className="text-sm">
+                <span
+                  className={`font-semibold ${errors[name] ? 'text-pink-700' : 'text-brand-700'}`}
+                >
+                  Upload a File{' '}
+                </span>
+                or drag and drop
+              </span>
+              <span className="text-xs text-gray-400">{inputGuidelines}</span>
+            </div>
+            <input
+              type="file"
+              accept={accept}
+              size={acceptSize}
+              {...register(name, validationRules)}
+              onInput={handleFileChange}
+              className={`opacity-0 absolute top-0 left-0 w-full h-full cursor-pointer`}
+            />
+          </>
+        )}
+      </div>
+      <FormFieldError name={name} errors={errors} />
+    </div>
+  );
 };
 
 export default FileUploadField;

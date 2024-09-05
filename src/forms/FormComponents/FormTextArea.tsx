@@ -1,5 +1,6 @@
-import React from "react";
-import FormFieldError from "./FormFieldError";
+import FormFieldError from "@/forms/FormComponents/FormFieldError";
+
+import { FormTextAreaProps } from "@/types/FormComponentsTypes";
 
 const FormFieldTextArea = ({
     errors,
@@ -9,20 +10,20 @@ const FormFieldTextArea = ({
     validationRules,
     defaultValue,
     placeholder,
-    ...inputProps
-}) => {
+}: FormTextAreaProps) => {
     return (
         <div className="w-full flex flex-col">
-            <label htmlFor={name} className="block mb-2 text-sm font-medium leading-6 text-gray-900">
+            <label
+                htmlFor={name}
+                className="block mb-2 text-sm font-medium leading-6 text-gray-900"
+            >
                 {label}
             </label>
 
             <textarea
-                name={name}
                 defaultValue={defaultValue}
                 placeholder={placeholder}
                 {...register(name, validationRules)}
-                {...inputProps}
                 className={`block w-full h-24 rounded-sm p-2 py-3 text-gray-900 outline-none border-[1px] border-gray-300 placeholder:text-gray-400  focus:border-brand-800  sm:text-sm sm:leading-6' ${errors[name] && " border-pink-800 active:border-3"}`}
             />
 

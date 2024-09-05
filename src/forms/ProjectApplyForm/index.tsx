@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import FormField from "@/forms/FormComponents/FormField";
 import FormWrapper from "@/forms/FormComponents/FormWrapper";
 import FormButton from "@/forms/FormComponents/FormButton";
-import FromTextArea from "@/forms/FormComponents/FormTextArea";
+import FormTextArea from "@/forms/FormComponents/FormTextArea";
 import FormFileUpload from "@/forms/FormFileUpload";
 import FormSelect from "@/forms/FormComponents/FormSelect";
 
@@ -61,7 +61,7 @@ const ProjectApplyForm = () => {
                                 value !== "DEFAULT" ? true : "Country is required",
                         }}
                     />
-                    <FromTextArea
+                    <FormTextArea
                         name="address"
                         type="text"
                         label="Project Address"
@@ -78,7 +78,7 @@ const ProjectApplyForm = () => {
                         }}
                     />
                 </div>
-                <FromTextArea
+                <FormTextArea
                     name="description"
                     type="text"
                     label="Project Description"

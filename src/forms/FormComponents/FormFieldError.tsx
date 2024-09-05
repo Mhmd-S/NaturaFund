@@ -1,4 +1,3 @@
-import React from "react";
 
 const FormFieldError = ({ errors, name }) => {
     const errorMessage = errors[name]?.message || " ";

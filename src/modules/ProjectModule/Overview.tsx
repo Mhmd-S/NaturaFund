@@ -1,9 +1,9 @@
-import React from "react";
-import DetailsTable from "../../components/common/DetailsTable";
+import DetailsTable from "@/components/common/DetailsTable";
 
 const Overview = ({ project }) => {
     const getCompanyDetails = () => {
         const companyDetails = project.owner;
+        // Remove unwanted fields
         const { description, ...rest } = companyDetails;
         return rest;
     };

@@ -8,7 +8,7 @@ const TabNav = ({ tabs, currentTab, setCurrentTab }) => {
                     <li
                         key={tab}
                         href="#"
-                        className={`h-fulll shrink-0 border-b-2 px-1 pb-4 text-sm font-medium cursor-pointer ${
+                        className={`h-fulll shrink-0 border-b-2 px-1 pb-4 text-sm cursor-pointer ${
                             currentTab === tab
                                 ? " text-brand-800 border-brand-800"
                                 : "border-b-transparent text-gray-500 hover:text-gray-700"

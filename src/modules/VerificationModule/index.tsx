@@ -22,9 +22,9 @@ const Verification = () => {
     return (
         <div className="relative w-full py-4 grid grid-cols-[20%_80%]">
             <VerificationProvider>
-                <StageIndicator steps={VERIFICATION_STEPS_COMPANY} />
-                <VerificationFormCompany />
-                {/* <VerificationFormIndividual /> */}
+                <StageIndicator steps={VERIFICATION_STEPS_INDIVIDUAL} />
+                {/* <VerificationFormCompany /> */}
+                <VerificationFormIndividual />
             </VerificationProvider>
         </div>
     );

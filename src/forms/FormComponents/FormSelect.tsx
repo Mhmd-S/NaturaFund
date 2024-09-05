@@ -1,12 +1,22 @@
 import React from "react";
-import FormFieldError from "@/forms/formComponents/FormFieldError";
+import FormFieldError from "@/forms/FormComponents/FormFieldError";
+import { FormSelectProps } from "@/types/FormComponentsTypes";
 
-function FormSelect({ register, options, name, label, errors, validationRules }) {
+function FormSelect({
+    register,
+    options,
+    name,
+    label,
+    labelShow = true,
+    errors,
+    validationRules,
+    defaultValue,
+}: FormSelectProps) {
     return (
         <div className="w-full flex flex-col">
             <label
                 htmlFor={name}
-                className="block mb-2 text-sm font-medium leading-6 text-gray-900"
+                className={`block mb-2 text-sm font-medium leading-6 text-gray-900 ${!labelShow && "sr-only"}`}
             >
                 {label}
             </label>
@@ -15,6 +25,7 @@ function FormSelect({ register, options, name, label, errors, validationRules })
                 {...register(name, validationRules)}
                 name={name}
                 id={name}
+                defaultValue={defaultValue}
                 placeholder={`Select ${label}`}
             >
                 <option key="default" value="DEFAULT">
