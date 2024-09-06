@@ -9,7 +9,7 @@ type AuthLayoutProps = {
 
 const AuthLayout = ({ children }: AuthLayoutProps) => {
     return (
-        <div className="w-full h-screen py-4 flex flex-col items-center gap-y-16 md:grid md:grid-cols-[35%_65%] md:grid-rows-1 md:py-0">
+        <div className="w-full h-screen flex flex-col items-center gap-y-16 md:grid md:grid-cols-[35%_65%] md:grid-rows-1 md:py-0">
             <div className="w-full px-8 flex flex-col justify-center md:h-full md:bg-brand-900 md:text-white md:gap-y-16">
                 <Link
                     to="/"
@@ -55,7 +55,7 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
                     </div>
                 </div>
             </div>
-            <div className="w-full pt-12 flex flex-col items-center gap-y-8 md:h-full">
+            <div className="w-full flex flex-col items-center justify-evenly md:h-full">
                 {children}
             </div>
         </div>

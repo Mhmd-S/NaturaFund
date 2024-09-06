@@ -15,7 +15,7 @@ const EmailForm = ({ setCurrentStep, setEmail }) => {
         useEmailForm({ setCurrentStep, setEmail });
 
     return (
-        <div className="w-full flex flex-col items-center gap-y-8">
+        <div className="w-full flex flex-col items-center gap-y-4">
             <FormWrapper loading={isLoading} onSubmit={handleSubmit(onSubmit)}>
                 {generalError && <FormGeneralError message={generalError} />}
 
@@ -53,6 +53,7 @@ const EmailForm = ({ setCurrentStep, setEmail }) => {
                         label="Confirm Password"
                         name="confirmPassword"
                         type="password"
+                        placeholder="********"
                         register={register}
                         errors={errors}
                         validationRules={{
@@ -84,7 +85,6 @@ const EmailForm = ({ setCurrentStep, setEmail }) => {
                     validationRules={{
                         required: "Account Type is required",
                     }}
-                    
                 />
 
                 <FormButton
@@ -94,7 +94,7 @@ const EmailForm = ({ setCurrentStep, setEmail }) => {
                     disable={Object.keys(errors).length !== 0}
                 />
             </FormWrapper>
-            <div className="w-full text-center text-sm pt-2 flex flex-col">
+            <div className="w-full text-center text-sm flex flex-col">
                 <span>Already have an account? </span>
                 <Link to="/login" className="text-center text-brand-700 hover:underline">
                     Login Here!
