@@ -8,7 +8,7 @@ export default function LoadApp() {
 
     // const { isLoggedIn } = useAuth
 
-    const isLoggedIn = true;
+    const isLoggedIn = false;
     if (!isLoggedIn) return <AuthRouter />;
     else {
         return <DefaultApp />;

@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLeaf, faMapLocationDot, faSackDollar, faSun } from "@fortawesome/free-solid-svg-icons";
 
-type AuthPageProps = {
+type AuthLayoutProps = {
     children: React.ReactNode;
 };
 
-const AuthPage = ({ children }: AuthPageProps) => {
+const AuthLayout = ({ children }: AuthLayoutProps) => {
     return (
         <div className="w-full h-screen py-4 flex flex-col items-center gap-y-16 md:grid md:grid-cols-[35%_65%] md:grid-rows-1 md:py-0">
             <div className="w-full px-8 flex flex-col justify-center md:h-full md:bg-brand-900 md:text-white md:gap-y-16">
@@ -62,4 +62,4 @@ const AuthPage = ({ children }: AuthPageProps) => {
     );
 };
 
-export default AuthPage;
+export default AuthLayout;

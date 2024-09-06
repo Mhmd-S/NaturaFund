@@ -6,17 +6,14 @@ import SuccessMessage from "@/forms/RegistrationForm/SuccessMessage";
 
 import useRegistrationForm from "./hooks/useRegistartionForm";
 
-const Registration = ({ setRegistrationType }) => {
-    const { currentStep, email, setEmail, setCurrentStep } = useRegistrationForm({
-        setRegistrationType,
-    });
+const Registration = () => {
+    const { currentStep, email, setEmail, setCurrentStep } = useRegistrationForm();
 
     const renderStage = () => {
         switch (currentStep) {
             case 0:
                 return (
                     <EmailForm
-                        setRegistrationType={setRegistrationType}
                         setCurrentStep={setCurrentStep}
                         setEmail={setEmail}
                     />
@@ -28,7 +25,6 @@ const Registration = ({ setRegistrationType }) => {
             default:
                 return (
                     <EmailForm
-                        setRegistrationType={setRegistrationType}
                         setCurrentStep={setCurrentStep}
                         setEmail={setEmail}
                     />

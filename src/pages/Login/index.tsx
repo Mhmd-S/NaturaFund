@@ -1,13 +1,13 @@
 import React from "react";
 import LoginModule from "@/modules/LoginModule";
-import AuthPage from "@/components/AuthPage";
+import AuthLayout from "@/components/common/AuthLayout";
 
 const Login = () => {
     return (
-        <AuthPage>
+        <AuthLayout>
             <h2 className="text-lg font-semibold text-brand-900 md:text-2xl">Welcome back!</h2>
             <LoginModule />
-        </AuthPage>
+        </AuthLayout>
     );
 };
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const useRegistration = () => {
-    const [registrationType, setRegistrationType] = useState(0);
+    const [registrationType, setRegistrationType] = useState(1);
 
     // Email, Google
     

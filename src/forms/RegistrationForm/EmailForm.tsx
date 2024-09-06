@@ -5,26 +5,18 @@ import FormWrapper from "@/forms/formComponents/FormWrapper";
 import FormField from "@/forms/formComponents/FormField";
 import { validatePasswords } from "./utils/Step1Validation";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-
 import { Link } from "react-router-dom";
+import { FormSelect } from "../FormComponents";
+import FormRadio from "../FormComponents/FormRadio";
+import { faInstitution, faUser } from "@fortawesome/free-solid-svg-icons";
 
-const EmailForm = ({ setRegistrationType, setCurrentStep, setEmail }) => {
+const EmailForm = ({ setCurrentStep, setEmail }) => {
     const { register, onSubmit, handleSubmit, isLoading, generalError, watchPassword, errors } =
         useEmailForm({ setCurrentStep, setEmail });
 
     return (
         <div className="w-full flex flex-col items-center gap-y-8">
-            <h3 className="w-full text-xl">
-                <FontAwesomeIcon
-                    icon={faChevronLeft}
-                    className="mr-4 cursor-pointer"
-                    onClick={() => setRegistrationType(0)}
-                />
-                Sign Up with Email
-            </h3>
-            <FormWrapper onSubmit={handleSubmit(onSubmit)}>
+            <FormWrapper loading={isLoading} onSubmit={handleSubmit(onSubmit)}>
                 {generalError && <FormGeneralError message={generalError} />}
 
                 <FormField
@@ -40,38 +32,64 @@ const EmailForm = ({ setRegistrationType, setCurrentStep, setEmail }) => {
                     }}
                 />
 
-                <FormField
-                    label="Password"
-                    name="password"
-                    type="password"
-                    placeholder="********"
-                    register={register}
-                    errors={errors}
-                    validationRules={{
-                        required: "Password is required",
-                        pattern: {
-                            value: /^[A-Za-z\d@$!%*?&]{8,15}$/,
-                            message: "Password must be 8-15 characters long",
-                        },
-                    }}
-                />
+                <div className="w-full grid grid-cols-2 gap-2">
+                    <FormField
+                        label="Password"
+                        name="password"
+                        type="password"
+                        placeholder="********"
+                        register={register}
+                        errors={errors}
+                        validationRules={{
+                            required: "Password is required",
+                            pattern: {
+                                value: /^[A-Za-z\d@$!%*?&]{8,15}$/,
+                                message: "Password must be 8-15 characters long",
+                            },
+                        }}
+                    />
 
-                {/* <FormField
-                    label="Confirm Password"
-                    name="confirmPassword"
-                    type="password"
+                    <FormField
+                        label="Confirm Password"
+                        name="confirmPassword"
+                        type="password"
+                        register={register}
+                        errors={errors}
+                        validationRules={{
+                            required: "Confirm Password is required",
+                            validate: (value) => {
+                                return validatePasswords(value, watchPassword);
+                            },
+                        }}
+                    />
+                </div>
+
+                <FormRadio
                     register={register}
+                    options={[
+                        {
+                            name: "Invididual",
+                            value: "individual",
+                            icon: faUser,
+                        },
+                        {
+                            name: "Corporation",
+                            value: "corportaion",
+                            icon: faInstitution,
+                        },
+                    ]}
+                    name="accountType"
+                    label="Account Type"
                     errors={errors}
                     validationRules={{
-                        required: "Confirm Password is required",
-                        validate: (value) => {
-                            return validatePasswords(value, watchPassword);
-                        },
+                        required: "Account Type is required",
                     }}
-                /> */}
+                    
+                />
 
                 <FormButton
                     text="Create Account"
+                    type="submit"
                     loading={isLoading}
                     disable={Object.keys(errors).length !== 0}
                 />

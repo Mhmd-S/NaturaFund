@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const useRegistrationForm = ({ setRegistrationType }) => {
+const useRegistrationForm = () => {
     const [currentStep, setCurrentStep] = useState(0);
     const [email, setEmail] = useState("");
 
@@ -14,7 +14,6 @@ const useRegistrationForm = ({ setRegistrationType }) => {
         setCurrentStep,
         goToNextStep,
         goToPreviousStep,
-        setRegistrationType,
     };
 };
 
