@@ -6,21 +6,12 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
-const LoginForm = ({ setLoginType }) => {
+const LoginForm = () => {
     const { register, handleSubmit, onSubmit, loading, errors } = useLoginForm();
     console.log(errors);
     return (
         <div className="w-full flex flex-col items-center gap-y-8">
-            <h3 className="w-full text-xl">
-                <FontAwesomeIcon
-                    icon={faChevronLeft}
-                    className="mr-4 cursor-pointer"
-                    onClick={() => setLoginType(0)}
-                />
-                Login with Email
-            </h3>
-
-            <FormWrapper onSubmit={handleSubmit(onSubmit)}>
+            <FormWrapper loading={loading} onSubmit={handleSubmit(onSubmit)}>
                 <FormField
                     name="email"
                     type="email"
@@ -47,6 +38,7 @@ const LoginForm = ({ setLoginType }) => {
                 />
 
                 <FormButton
+                    type="submit"
                     text="Log In"
                     loading={loading}
                     disable={Object.keys(errors).length !== 0}
