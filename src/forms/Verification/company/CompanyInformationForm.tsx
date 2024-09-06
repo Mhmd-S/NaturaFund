@@ -9,6 +9,7 @@ import FormButton from "@/forms/formComponents/FormButton";
 import FormFieldTextArea from "@/forms/formComponents/FormTextArea";
 
 import COUNTRY_LIST from "@/utils/CountryList";
+import { FormFileUpload, FormTextArea } from "@/forms/FormComponents";
 
 const CompanyInformationForm = () => {
     const { data, setData, goNext } = useVerificationContext();
@@ -25,7 +26,7 @@ const CompanyInformationForm = () => {
     };
 
     return (
-        <FormWrapper onSubmit={handleSubmit(onSubmit)}>
+        <FormWrapper loading={false} onSubmit={handleSubmit(onSubmit)}>
             <div className="w-3/4 flex flex-col">
                 <h2 className="text-3xl pb-4 font-semibold capatalize">Company Information</h2>
                 <div className="grid grid-cols-2 gap-4">
@@ -50,6 +51,7 @@ const CompanyInformationForm = () => {
                         label="Registration Type"
                         errors={errors}
                         options={["Sdn Bhd", "Bhd", "LLP", "PLC"]}
+                        defaultValue="DEFAULT"
                         validationRules={{
                             required: "Industry is required",
                             validate: (value) =>
@@ -64,7 +66,7 @@ const CompanyInformationForm = () => {
                         errors={errors}
                         placeholder="Use the new format, e.g. 2020XXXXXXXX"
                         validationRules={{
-                            required: "Last name is required",
+                            required: "Registration is required",
                             pattern: {
                                 value: /^[0-9]{4}0[123456][0-9]{6}$/,
                                 message:
@@ -80,27 +82,12 @@ const CompanyInformationForm = () => {
                         errors={errors}
                         validationRules={{
                             required: "Incorporation Date is required",
-                            pattern: {
-                                value: /^\d+,\s?[A-Za-z\s]+(?:,\s?[A-Za-z\s]+)*,\s?\d{5}\s?[A-Za-z\s]+,\s?[A-Za-z\s]+$/,
-                                message: "Invalid incorporation date.",
-                            },
                         }}
                     />
                 </div>
-                <FormSelect
-                    register={register}
-                    name="country"
-                    label="Country"
-                    errors={errors}
-                    options={COUNTRY_LIST}
-                    validationRules={{
-                        required: "Country is required",
-                        validate: (value) => (value !== "DEFAULT" ? true : "Residence is required"),
-                    }}
-                />
                 <FormFieldTextArea
+                    rows={4}
                     name="address"
-                    type="text"
                     label="Address"
                     register={register}
                     errors={errors}
@@ -114,7 +101,45 @@ const CompanyInformationForm = () => {
                         },
                     }}
                 />
-                <FormButton text="Next" disable={Object.keys(errors).length !== 0} />
+                <FormTextArea
+                    rows={4}
+                    name="description"
+                    label="Description"
+                    register={register}
+                    errors={errors}
+                    placeholder="ex. NaturaFund is a financial services company that provides investment and wealth management services."
+                    validationRules={{
+                        required: "Description is required",
+                        maxLength: {
+                            value: 200,
+                            message: "Description should not exceed 200 characters",
+                        },
+                    }}
+                />
+                <FormFileUpload
+                    name="business_license"
+                    label="Business License"
+                    register={register}
+                    errors={errors}
+                    validationRules={{
+                        required: "Business license is required",
+                    }}
+                />
+                <FormFileUpload
+                    name="company_logo"
+                    label="Company Logo"
+                    register={register}
+                    errors={errors}
+                    validationRules={{
+                        required: "Company logo is required",
+                    }}
+                />
+                <FormButton
+                    loading={false}
+                    type="submit"
+                    text="Next"
+                    disable={Object.keys(errors).length !== 0}
+                />
             </div>
         </FormWrapper>
     );

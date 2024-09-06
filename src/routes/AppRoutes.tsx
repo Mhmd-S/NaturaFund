@@ -48,9 +48,10 @@ const Explore = lazy(() => import("@/pages/Explore"));
 const Project = lazy(() => import("@/pages/Project"));
 const Profile = lazy(() => import("@/pages/Profile"));
 const InvestorHelp = lazy(() => import("@/pages/Help/InvestorHelp"));
-const Investee = lazy(()=> import("@/pages/Investee"));
+const Investee = lazy(() => import("@/pages/Investee"));
 const ProjectApply = lazy(() => import("@/pages/Project/ProjectApply"));
-const NotFound = lazy(()=>import("@/pages/NotFound"));
+const NotFound = lazy(() => import("@/pages/NotFound"));
+const Onboarding = lazy(() => import("@/pages/Onboarding"));
 
 let routes = {
     expense: [],
@@ -101,12 +102,12 @@ let routes = {
         },
         {
             path: "/investee",
-            element: <Investee/>
+            element: <Investee />,
         },
         {
-            path: '*',
+            path: "*",
             element: <NotFound />,
-          },
+        },
         // {
         //   path: '/people',
         //   element: <People />,

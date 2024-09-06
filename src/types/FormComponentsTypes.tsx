@@ -15,6 +15,7 @@ interface FormComponentProps {
     register: UseFormRegister<FieldValues>;
     errors: FieldErrors;
     validationRules: any;
+    defaultValue?: string;
 }
 
 export interface FormFieldProps extends FormComponentProps {
@@ -30,19 +31,16 @@ export interface FormFieldProps extends FormComponentProps {
         | "month"
         | "week"
         | "color";
-    defaultValue?: string;
     placeholder?: string;
 }
 
 export interface FormSelectProps extends FormComponentProps {
-    defaultValue: string;
     labelShow?: Boolean;
     options: string[];
 }
 
 export interface FormTextAreaProps extends FormComponentProps {
     rows: number;
-    defaultValue: string;
     placeholder: string;
 }
 

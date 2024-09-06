@@ -26,7 +26,13 @@ const Registration = ({ setRegistrationType }) => {
             case 2:
                 return <SuccessMessage />;
             default:
-                return <EmailForm setCurrentStep={setCurrentStep} setEmail={setEmail} />;
+                return (
+                    <EmailForm
+                        setRegistrationType={setRegistrationType}
+                        setCurrentStep={setCurrentStep}
+                        setEmail={setEmail}
+                    />
+                );
         }
     };
 

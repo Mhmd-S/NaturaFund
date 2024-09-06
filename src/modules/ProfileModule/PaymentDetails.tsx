@@ -12,7 +12,7 @@ const PaymentDetails = () => {
         <div className="w-full">
             <h2 className="text-3xl py-4 font-semibold">Payment Details</h2>
             {/* ToDo: Render if no state found */}
-            <div className="mt-16"> 
+            {/* <div className="mt-16"> 
                 <EmptyState
                     title={"No Bank Accounts"}
                     description="Please add a bank account to receive payments."
@@ -20,8 +20,8 @@ const PaymentDetails = () => {
                     buttonLabel="Add Bank Account"
                     handleClick={() => console.log("Add Bank Account")}
                 />
-            </div>
-            {/* <ol className="w-full h-80 p-3 grid grid-cols-3 gap-3 border border-gray-200 rounded-lg">
+            </div> */}
+            <ol className="w-full h-80 p-3 grid grid-cols-3 gap-3 border border-gray-200 rounded-lg">
                 <li className="w-full bg-[rgb(249,250,251)] grid grid-rows-[30%_45%_25%] grid-cols-1 rounded-md border-[1px] shadow-sm divide-y divide-gray-300">
                     <div className="relative px-4 flex flex-col justify-center">
                         <dt className="text-sm font-semibold">Account Number</dt>
@@ -82,7 +82,7 @@ const PaymentDetails = () => {
                         Add
                     </button>
                 </li>
-            </ol> */}
+            </ol>
         </div>
     );
 };

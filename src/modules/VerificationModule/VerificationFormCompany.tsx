@@ -8,6 +8,7 @@ import RepresentativeForm from "@/forms/Verification/company/RepresentativeForm"
 import ResultPage from "@/modules/VerificationModule/ResultPage";
 
 import { faCheck, faPause, faTimes } from "@fortawesome/free-solid-svg-icons";
+import ProofOfAddress from "@/forms/Verification/ProofOfAddress";
 
 const RESULTS = {
     pending: {
@@ -57,6 +58,8 @@ const VerficationFormCompany = () => {
             case 1:
                 return <RepresentativeForm />;
             case 2:
+                return <ProofOfAddress />;
+            case 3:
                 return <ResultPage {...RESULTS.approved} />;
             default:
                 return <ResultPage {...RESULTS.pending} />;

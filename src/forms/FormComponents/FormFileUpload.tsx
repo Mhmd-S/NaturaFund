@@ -85,7 +85,7 @@ const FileUploadField = ({
 
 
   return (
-    <div className="h-fit w-1/2">
+    <div className="h-fit w-full">
       <label htmlFor={name} className="block mb-2 text-sm font-medium leading-6 text-gray-900">
         {label}
       </label>

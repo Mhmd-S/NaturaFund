@@ -5,7 +5,7 @@ import { useContext, createContext, useState, useMemo } from "react";
 const VerificationContext = createContext();
 
 export const VerificationProvider = ({ children }) => {
-    const [stage, setStage] = useState(1);
+    const [stage, setStage] = useState(2);
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState({
         firstName: "",
