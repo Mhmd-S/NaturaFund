@@ -6,9 +6,10 @@ const DefaultApp = lazy(() => import("@/apps/App"));
 
 export default function LoadApp() {
 
-    // const { isLoggedIn } = useAuth
+    const { state } = useAuthContext();
 
-    const isLoggedIn = false;
+    const { isLoggedIn } = state;
+
     if (!isLoggedIn) return <AuthRouter />;
     else {
         return <DefaultApp />;

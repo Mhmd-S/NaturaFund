@@ -32,7 +32,7 @@ const Registration = () => {
         }
     };
 
-    return <AuthContextProvider>{renderStage()}</AuthContextProvider>;
+    return renderStage();
 };
 
 export default Registration;

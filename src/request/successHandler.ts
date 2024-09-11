@@ -8,9 +8,10 @@ const successHandler = (response, options = { notifyOnSuccess: false, notifyOnFa
         const successText = message || codeMessage[response.status];
 
         if (options.notifyOnSuccess) {
-            toast.success({
-                message: `Request success`,
-                description: successText,
+            toast.success(`Request success`, {
+                data: {
+                    description: successText,
+                },
             });
         }
     } else {
@@ -18,9 +19,10 @@ const successHandler = (response, options = { notifyOnSuccess: false, notifyOnFa
         const errorText = message || codeMessage[response.status];
         const { status } = response;
         if (options.notifyOnFailed) {
-            toast.error({
-                message: `Request error ${status}`,
-                description: errorText,
+            toast.error(`Request error ${status}`, {
+                data: {
+                    description: errorText,
+                },
             });
         }
     }

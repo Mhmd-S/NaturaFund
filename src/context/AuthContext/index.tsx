@@ -18,7 +18,6 @@ function useAuthContext() {
   }
   const [state, dispatch] = context;
   const authContextAction = contextActions(dispatch);
-  // const appContextSelector = contextSelectors(state);
   return { state, authContextAction };
 }
 

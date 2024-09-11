@@ -13,7 +13,6 @@ import NotFound from "@/pages/NotFound";
 
 export default function AuthRouter() {
     return (
-        <AuthContextProvider>
             <Routes>
                 <Route element={<Landing />} path="/" />
                 <Route element={<Login />} path="/login" />
@@ -24,6 +23,5 @@ export default function AuthRouter() {
             <Route element={<ResetPassword />} path="/resetpassword/:userId/:resetToken" /> */}
                 <Route path="*" element={<NotFound />} />
             </Routes>
-        </AuthContextProvider>
     );
 }

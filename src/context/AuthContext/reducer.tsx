@@ -9,8 +9,9 @@ export const initialState = {
 };
 
 export const contextReducer = (state = initialState, action) => {
+  console.log(action);
   switch (action.type) {
-    case actionTypes.REQUEST_LOADING:
+    case actionTypes.LOADING_REQUEST:
       return {
         ...state,
         isLoggedIn: false,
@@ -18,13 +19,14 @@ export const contextReducer = (state = initialState, action) => {
         error:null,
       };
 
-    case actionTypes.REQUEST_FAILED:
+    case actionTypes.FAILED_REQUEST:
       return {
         ...state,
+        isLoading: false,
         error: action.payload,
       };
 
-    case actionTypes.REQUEST_SUCCESS:
+    case actionTypes.LOGIN_SUCCESS:
       return {
         current: action.payload,
         isLoggedIn: true,
