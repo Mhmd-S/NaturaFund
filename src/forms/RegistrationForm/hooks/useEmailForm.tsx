@@ -2,10 +2,16 @@ import react, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useAuthContext } from "@/context/AuthContext";
 
+type formDataType = {
+    email: string;
+    password: string;
+    userType: "investor" | "corporation";
+};
+
 export const useEmailForm = ({ setCurrentStep, setEmail }) => {
     const { state, authContextAction } = useAuthContext();
 
-    const { isLoading, isSuccess } = state;
+    const { isLoading, isSuccess, error } = state;
 
     const {
         register,
@@ -15,14 +21,13 @@ export const useEmailForm = ({ setCurrentStep, setEmail }) => {
     } = useForm();
 
     const watchPassword = watch("password");
-
-    const [generalError, setGeneralError] = useState("");
-
+    
     useEffect(() => {
         if (isSuccess) setCurrentStep(1);
     }, [isSuccess, isLoading]);
 
-    const onSubmit = (data) => {
+    const onSubmit = (data: formDataType) => {
+        setEmail(data.email);
         authContextAction.register(data);
     };
 
@@ -31,7 +36,7 @@ export const useEmailForm = ({ setCurrentStep, setEmail }) => {
         onSubmit,
         handleSubmit,
         isLoading,
-        generalError,
+        authError: error,
         watchPassword,
         errors,
     };

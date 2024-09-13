@@ -16,6 +16,7 @@ export const contextReducer = (state = initialState, action) => {
         ...state,
         isLoggedIn: false,
         isLoading: true,
+        isSuccess: false,
         error:null,
       };
 
@@ -33,6 +34,13 @@ export const contextReducer = (state = initialState, action) => {
         isLoading: false,
         isSuccess: true,
       };
+
+      case actionTypes.VERIFY_SUCCESS:
+        return {
+          ...state,
+          isLoading: false,
+          isSuccess: true,
+        };
 
     case actionTypes.REGISTER_SUCCESS:
       return {

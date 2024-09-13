@@ -1,34 +1,35 @@
 import * as actionTypes from "./types";
 import * as authService from "@/auth";
-import request from "@/request";
+
+import { registerDataType, loginDataType, verifyDataType } from "@/auth";
 
 // actions.js
 
 const contextActions = (dispatch) => {
     return {
-        login: async (email, password, userType) => {
+        login: async (loginData: loginDataType) => {
             dispatch({ type: actionTypes.LOADING_REQUEST });
-            const data = await authService.login({ email, password }, userType);
+            const data = await authService.login(loginData);
             if (data.status == "success") {
                 dispatch({ type: actionTypes.LOGIN_SUCCESS, payload: data.data });
             } else {
                 dispatch({ type: actionTypes.FAILED_REQUEST, payload: data.message });
             }
         },
-        register: async ({ registerData }) => {
+        register: async (registerData: registerDataType) => {
             dispatch({ type: actionTypes.LOADING_REQUEST });
-            const data = await authService.register({ registerData });
+            const data = await authService.register(registerData);
             if (data.status == "success") {
                 dispatch({ type: actionTypes.REGISTER_SUCCESS });
             } else {
                 dispatch({ type: actionTypes.FAILED_REQUEST, payload: data.message });
             }
         },
-        verify: async ({ email, emailToken }) => {
+        verify: async (verifyData: verifyDataType) => {
             dispatch({ type: actionTypes.LOADING_REQUEST });
-            const data = await authService.verify({ email, emailToken });
+            const data = await authService.verify(verifyData);
             if (data.status == "success") {
-                dispatch({ type: actionTypes.REQUEST_SUCCESS, payload: data.data });
+                dispatch({ type: actionTypes.VERIFY_SUCCESS });
             } else {
                 dispatch({ type: actionTypes.FAILED_REQUEST, payload: data.message });
             }

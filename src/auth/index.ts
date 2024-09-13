@@ -6,25 +6,25 @@ import successHandler from "@/request/successHandler";
 
 type userType = "corporation" | "investor";
 
-type loginDataType = {
+export interface loginDataType {
     email: string;
     password: string;
-};
+}
 
-type registerDataType = {
+export interface registerDataType {
     email: string;
     password: string;
     userType: userType;
-};
+}
 
-type verifyDataType = {
+export interface verifyDataType {
     email: string;
-    token: string;
-};
+    code: string;
+}
 
-export const login = async (loginData: loginDataType, userType: userType) => {
+export const login = async (loginData: loginDataType) => {
     try {
-        const response = await axios.post(API_BASE_URL + `${userType}/login`, loginData);
+        const response = await axios.post(API_BASE_URL + `auth/login`, loginData);
 
         const { status, data } = response;
 
@@ -43,7 +43,7 @@ export const login = async (loginData: loginDataType, userType: userType) => {
 
 export const register = async (registerData: registerDataType) => {
     try {
-        const response = await axios.post(API_BASE_URL + `registration/register`, registerData);
+        const response = await axios.post(API_BASE_URL + `auth/register`, registerData);
 
         const { status, data } = response;
 
@@ -62,7 +62,12 @@ export const register = async (registerData: registerDataType) => {
 
 export const verify = async (verifyData: verifyDataType) => {
     try {
-        const response = await axios.get(API_BASE_URL + `registration/verify`, verifyData);
+        const response = await axios.get(API_BASE_URL + `auth/verify`, {
+            params: verifyData,
+            paramsSerializer: (params) => {
+                return new URLSearchParams(params).toString();
+            },
+        });
 
         const { status, data } = response;
 
@@ -79,30 +84,31 @@ export const verify = async (verifyData: verifyDataType) => {
     }
 };
 
-export const resetPassword = async ({ resetPasswordData }) => {
-    try {
-        const response = await axios.post(API_BASE_URL + `resetpassword`, resetPasswordData);
+// export const resetPassword = async ({ resetPasswordData }) => {
+//     try {
+//         const response = await axios.post(API_BASE_URL + `auth/resetpassword`, resetPasswordData);
 
-        const { status, data } = response;
+//         const { status, data } = response;
 
-        successHandler(
-            { data, status },
-            {
-                notifyOnSuccess: true,
-                notifyOnFailed: true,
-            }
-        );
-        return data;
-    } catch (error) {
-        return errorHandler(error);
-    }
-};
+//         successHandler(
+//             { data, status },
+//             {
+//                 notifyOnSuccess: true,
+//                 notifyOnFailed: true,
+//             }
+//         );
+//         return data;
+//     } catch (error) {
+//         return errorHandler(error);
+//     }
+// };
+
 export const logout = async (userType: userType) => {
     axios.defaults.withCredentials = true;
     try {
         // window.localStorage.clear();
         const response = await axios.post(
-            API_BASE_URL + `${userType}/logout?timestamp=${new Date().getTime()}`
+            API_BASE_URL + `auth/logout?timestamp=${new Date().getTime()}`
         );
         const { status, data } = response;
 

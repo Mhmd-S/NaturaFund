@@ -5,9 +5,9 @@ import { useAuthContext } from "@/context/AuthContext";
 import Verification from "@/modules/VerificationModule";
 
 const App = () => {
-    // const { isVerified } = useAuthContext();
+    const { state } = useAuthContext();
+    const { isVerified } = state;
 
-    const isVerified = false;
     return (
         <div className="w-screen h-screen grid grid-cols-[20%_80%] grid-flow-row divide-x divide-y">
             {isVerified ? (

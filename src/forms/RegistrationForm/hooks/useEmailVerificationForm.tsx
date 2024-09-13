@@ -3,12 +3,12 @@ import { useForm } from "react-hook-form";
 
 import { useAuthContext } from "@/context/AuthContext";
 
-const useVerifyEmail = ({ setCurrentStep, email }) => {
-    const [generalError, setGeneralError] = useState("");
+import { verifyDataType } from "@/auth";
 
+const useVerifyEmail = ({ setCurrentStep, email }) => {
     const { state, authContextAction } = useAuthContext();
 
-    const { isLoading, isSuccess } = state;
+    const { isLoading, isSuccess, error } = state;
 
     const {
         register,
@@ -16,13 +16,11 @@ const useVerifyEmail = ({ setCurrentStep, email }) => {
         formState: { errors },
     } = useForm();
 
-    useEffect(() => {
-        if (isSuccess) setCurrentStep(1);
-    }, [isSuccess, isLoading]);
+    const onSubmit = (data: verifyDataType) => {
+        data.email = email;
+        authContextAction.verify(data);
 
-    const onSubmit = (data) => {
-        // Todo
-        authContextAction.verifyEmail(data);
+        if (isSuccess) setCurrentStep(2);
     };
 
     return {
@@ -30,7 +28,7 @@ const useVerifyEmail = ({ setCurrentStep, email }) => {
         handleSubmit,
         register,
         isLoading,
-        generalError,
+        authError: error,
         errors,
     };
 };

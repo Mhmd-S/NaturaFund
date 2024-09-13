@@ -1,9 +1,11 @@
 import { useEmailForm } from "./hooks/useEmailForm";
-import FormButton from "@/forms/formComponents/FormButton";
-import FormGeneralError from "@/forms/formComponents/FormGeneralError";
-import FormWrapper from "@/forms/formComponents/FormWrapper";
-import FormField from "@/forms/formComponents/FormField";
+import FormButton from "@/forms/FormComponents/FormButton";
+import FormGeneralError from "@/forms/FormComponents/FormGeneralError";
+import FormWrapper from "@/forms/FormComponents/FormWrapper";
+import FormField from "@/forms/FormComponents/FormField";
 import { validatePasswords } from "./utils/Step1Validation";
+
+// WAS TESTING REGISTRATION
 
 import { Link } from "react-router-dom";
 import { FormSelect } from "../FormComponents";
@@ -11,13 +13,13 @@ import FormRadio from "../FormComponents/FormRadio";
 import { faInstitution, faUser } from "@fortawesome/free-solid-svg-icons";
 
 const EmailForm = ({ setCurrentStep, setEmail }) => {
-    const { register, onSubmit, handleSubmit, isLoading, generalError, watchPassword, errors } =
+    const { register, onSubmit, handleSubmit, isLoading, authError, watchPassword, errors } =
         useEmailForm({ setCurrentStep, setEmail });
 
     return (
-        <div className="w-full flex flex-col items-center gap-y-4">
+        <div className="w-full min-h-full flex flex-col items-center gap-y-4">
             <FormWrapper loading={isLoading} onSubmit={handleSubmit(onSubmit)}>
-                {generalError && <FormGeneralError message={generalError} />}
+                {authError && <FormGeneralError message={authError} />}
 
                 <FormField
                     label="Email"
@@ -67,10 +69,11 @@ const EmailForm = ({ setCurrentStep, setEmail }) => {
 
                 <FormRadio
                     register={register}
+                    defaultValue="individual"
                     options={[
                         {
-                            name: "Invididual",
-                            value: "individual",
+                            name: "Individual",
+                            value: "investor",
                             icon: faUser,
                         },
                         {
@@ -79,7 +82,7 @@ const EmailForm = ({ setCurrentStep, setEmail }) => {
                             icon: faInstitution,
                         },
                     ]}
-                    name="accountType"
+                    name="userType"
                     label="Account Type"
                     errors={errors}
                     validationRules={{

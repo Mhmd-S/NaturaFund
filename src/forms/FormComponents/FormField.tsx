@@ -15,7 +15,10 @@ const FormField = ({
 }: FormFieldProps) => {
     return (
         <div className="w-full flex flex-col">
-            <label htmlFor={name} className="block mb-2 text-sm font-medium leading-6 text-gray-900">
+            <label
+                htmlFor={name}
+                className="block mb-2 text-sm font-medium leading-6 text-gray-900"
+            >
                 {label}
             </label>
 

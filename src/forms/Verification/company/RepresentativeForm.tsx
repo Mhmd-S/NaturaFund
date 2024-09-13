@@ -2,10 +2,10 @@ import React from "react";
 import useVerificationContext from "@/modules/VerificationModule/context/useVerificationContext";
 import { useForm } from "react-hook-form";
 
-import FormWrapper from "@/forms/formComponents/FormWrapper";
-import FileUploadField from "@/forms/formComponents/FormFileUpload";
-import FormField from "@/forms/formComponents/FormField";
-import FormButton from "@/forms/formComponents/FormButton";
+import FormWrapper from "@/forms/FormComponents/FormWrapper";
+import FileUploadField from "@/forms/FormComponents/FormFileUpload";
+import FormField from "@/forms/FormComponents/FormField";
+import FormButton from "@/forms/FormComponents/FormButton";
 
 const RepresentativeForm = () => {
     const { data, setData, goNext, goPrev } = useVerificationContext();

@@ -2,10 +2,10 @@ import React from "react";
 import useVerificationContext from "@/modules/VerificationModule/context/useVerificationContext";
 import { useForm } from "react-hook-form";
 
-import FormWrapper from "@/forms/formComponents/FormWrapper";
-import FormField from "@/forms/formComponents/FormField";
-import FormSelect from "@/forms/formComponents/FormSelect";
-import FormButton from "@/forms/formComponents/FormButton";
+import FormWrapper from "@/forms/FormComponents/FormWrapper";
+import FormField from "@/forms/FormComponents/FormField";
+import FormSelect from "@/forms/FormComponents/FormSelect";
+import FormButton from "@/forms/FormComponents/FormButton";
 
 import COUNTRY_LIST from "@/utils/CountryList";
 

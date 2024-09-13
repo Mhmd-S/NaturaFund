@@ -3,9 +3,9 @@ import { useForm } from "react-hook-form";
 
 import useVerificationContext from "@/modules/VerificationModule/context/useVerificationContext";
 
-import FormWrapper from "@/forms/formComponents/FormWrapper";
-import FileUploadField from "@/forms/formComponents/FormFileUpload";
-import FormButton from "@/forms/formComponents/FormButton";
+import FormWrapper from "@/forms/FormComponents/FormWrapper";
+import FileUploadField from "@/forms/FormComponents/FormFileUpload";
+import FormButton from "@/forms/FormComponents/FormButton";
 
 const ProofOfAddress = () => {
     const { data, setData, goPrevStage, goNextStage } = useVerificationContext();
