@@ -13,6 +13,7 @@ import { useAuthContext } from "@/context/AuthContext";
 const Verification = () => {
     const { state } = useAuthContext();
     const { current } = state;
+    console.log(current)
 
     return (
         <div className="relative w-full py-4 grid grid-cols-[20%_80%]">
