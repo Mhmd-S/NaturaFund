@@ -1,9 +1,9 @@
 import React from "react";
-import useVerificationContext from "@modules/VerificationModule/context/useVerificationContext";
+import useOnboardContext from "@modules/OnboardModule/context/useOnboardContext";
 import Steps from "@components/common/Steps";
 
 const StageIndicator = ({ steps }) => {
-    const { stage } = useVerificationContext();
+    const { stage } = useOnboardContext();
 
     const currentStep = steps[stage]?.title;
 

@@ -1,5 +1,5 @@
 import React from "react";
-import useVerificationContext from "@modules/VerificationModule/context/useVerificationContext";
+import useOnboardContext from "@modules/OnboardModule/context/useOnboardContext";
 import { useForm } from "react-hook-form";
 
 import FormWrapper from "@forms/FormComponents/FormWrapper";
@@ -12,7 +12,7 @@ import COUNTRY_LIST from "@utils/CountryList";
 import { FormFileUpload, FormTextArea } from "@forms/FormComponents";
 
 const CompanyInformationForm = () => {
-    const { data, setData, goNext } = useVerificationContext();
+    const { data, setData, goNext } = useOnboardContext();
 
     const {
         register,

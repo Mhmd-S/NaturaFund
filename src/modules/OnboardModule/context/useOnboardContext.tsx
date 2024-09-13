@@ -2,18 +2,12 @@ import { useContext, createContext, useState, useMemo } from "react";
 
 // ToDo: Add Fetcing to check the verification status, or maybe it is found in the user info
 
-const VerificationContext = createContext();
+const OnboardContext = createContext();
 
-export const VerificationProvider = ({ children }) => {
+export const OnboardProvider = ({ children }) => {
     const [stage, setStage] = useState(0);
     const [loading, setLoading] = useState(false);
-    const [data, setData] = useState({
-        firstName: "",
-        lastName: "",
-        dob: "",
-        address: "",
-        phoneNumber: "",
-    });
+    const [data, setData] = useState({});
 
     const goNext = () => {
         if (stage < 3) {
@@ -41,11 +35,11 @@ export const VerificationProvider = ({ children }) => {
     );
 
     return (
-        <VerificationContext.Provider value={memoValue}>{children}</VerificationContext.Provider>
+        <OnboardContext.Provider value={memoValue}>{children}</OnboardContext.Provider>
     );
 };
 
 // Expor the hook instead of the context iteself
-export default function useVerificationContext() {
-    return useContext(VerificationContext);
+export default function useOnboardContext() {
+    return useContext(OnboardContext);
 }

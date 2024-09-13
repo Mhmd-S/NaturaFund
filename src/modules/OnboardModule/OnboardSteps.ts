@@ -1,4 +1,4 @@
-const VERIFICATION_STEPS_INDIVIDUAL = [
+const ONBOARD_STEPS_INDIVIDUAL = [
   {
       title: "Personal Details",
       description:
@@ -16,7 +16,7 @@ const VERIFICATION_STEPS_INDIVIDUAL = [
   },
 ];
 
-const VERIFICATION_STEPS_COMPANY = [
+const ONBOARD_STEPS_COMPANY = [
   {
       title: "Company Information",
       description:
@@ -34,4 +34,4 @@ const VERIFICATION_STEPS_COMPANY = [
   },
 ];
 
-export { VERIFICATION_STEPS_INDIVIDUAL, VERIFICATION_STEPS_COMPANY };
+export { ONBOARD_STEPS_INDIVIDUAL, ONBOARD_STEPS_COMPANY };

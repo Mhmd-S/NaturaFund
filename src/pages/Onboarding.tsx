@@ -1,4 +1,4 @@
-import Verification from "@modules/VerificationModule";
+import OnboardModule from "@modules/OnboardModule";
 
 const Onboarding = () => {
     return (
@@ -11,7 +11,7 @@ const Onboarding = () => {
                 </h2>
             </div>
             <div className="w-full flex flex-col items-center justify-center gap-4 bg-white p-4 rounded-lg">
-                <Verification />
+                <OnboardModule />
             </div>
         </div>
     );

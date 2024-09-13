@@ -1,5 +1,5 @@
 import React from "react";
-import useVerificationContext from "@modules/VerificationModule/context/useVerificationContext";
+import useOnboardContext from "@modules/OnboardModule/context/useOnboardContext";
 import { useForm } from "react-hook-form";
 
 import FormWrapper from "@forms/FormComponents/FormWrapper";
@@ -10,7 +10,7 @@ import FormButton from "@forms/FormComponents/FormButton";
 import COUNTRY_LIST from "@utils/CountryList";
 
 const PersonalDetails = () => {
-    const { data, setData, goNext } = useVerificationContext();
+    const { data, setData, goNext } = useOnboardContext();
 
     const {
         register,
@@ -120,7 +120,7 @@ const PersonalDetails = () => {
                             value !== "DEFAULT" ? true : "Nationality is required",
                     }}
                 />
-                <FormButton text="Next" disable={Object.keys(errors).length !== 0} />
+                <FormButton type="button" text="Next" disable={Object.keys(errors).length !== 0} />
             </div>
         </FormWrapper>
     );

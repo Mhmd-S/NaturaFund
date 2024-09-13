@@ -1,20 +1,20 @@
 import React from "react";
 
-import useVerificationContext from "@modules/VerificationModule/context/useVerificationContext";
+import useOnboardContext from "@modules/OnboardModule/context/useOnboardContext";
 
-import PersonalDetails from "@forms/Verification/PersonalDetails";
-import ProofOfIdentity from "@forms/Verification/ProofOfIdentity";
-import ProofOfAddress from "@forms/Verification/ProofOfAddress";
+import CompanyInformationForm from "@forms/Onboard/company/CompanyInformationForm";
+import RepresentativeForm from "@forms/Onboard/company/RepresentativeForm";
 
-import ResultPage from "@modules/VerificationModule/ResultPage";
+import ResultPage from "@modules/OnboardModule/ResultPage";
 
 import { faCheck, faPause, faTimes } from "@fortawesome/free-solid-svg-icons";
+import ProofOfAddress from "@forms/Onboard/ProofOfAddress";
 
 const RESULTS = {
     pending: {
         title: (
             <h1 className="text-3xl font-semibold mt-4">
-                Verification <span className="text-orange-600 capitalize">Pending</span>
+                Onboard <span className="text-orange-600 capitalize">Pending</span>
             </h1>
         ),
         description:
@@ -26,7 +26,7 @@ const RESULTS = {
     approved: {
         title: (
             <h1 className="text-3xl font-semibold mt-4">
-                Verification <span className="text-brand-800 capitalize">Approved</span>
+                Onboard <span className="text-brand-800 capitalize">Approved</span>
             </h1>
         ),
         description: "Congratulations! Your identity has been successfully verified.",
@@ -37,26 +37,26 @@ const RESULTS = {
     rejected: {
         title: (
             <h1 className="text-3xl font-semibold mt-4">
-                Verification <span className="text-pink-800 capitalize">Rejected</span>
+                Onboard <span className="text-pink-800 capitalize">Rejected</span>
             </h1>
         ),
         description:
-            "We're sorry, but your identity verification has been rejected. Please review your documents and try again.",
+            "We're sorry, but your identity Onboard has been rejected. Please review your documents and try again.",
         icon: faTimes,
         buttonText: "Try Again",
         onclick: () => alert("Try Again"),
     },
 };
 
-const VerficationFormIndividual = () => {
-    const { stage } = useVerificationContext();
+const VerficationFormCompany = () => {
+    const { stage } = useOnboardContext();
 
     const renderStep = () => {
         switch (stage) {
             case 0:
-                return <PersonalDetails />;
+                return <CompanyInformationForm />;
             case 1:
-                return <ProofOfIdentity />;
+                return <RepresentativeForm />;
             case 2:
                 return <ProofOfAddress />;
             case 3:
@@ -68,4 +68,4 @@ const VerficationFormIndividual = () => {
     return renderStep();
 };
 
-export default VerficationFormIndividual;
+export default VerficationFormCompany;

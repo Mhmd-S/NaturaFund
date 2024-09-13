@@ -1,5 +1,5 @@
 import React from "react";
-import useVerificationContext from "@modules/VerificationModule/context/useVerificationContext";
+import useOnboardContext from "@modules/OnboardModule/context/useOnboardContext";
 import { useForm } from "react-hook-form";
 
 import FormWrapper from "@forms/FormComponents/FormWrapper";
@@ -11,7 +11,7 @@ import COUNTRY_LIST from "@utils/CountryList";
 import FormFieldTextArea from "@forms/FormComponents/FormTextArea";
 
 const OwnershipForm = () => {
-    const { data, setData, goNext, goPrev } = useVerificationContext();
+    const { data, setData, goNext, goPrev } = useOnboardContext();
 
     const {
         register,

@@ -1,5 +1,5 @@
 import React from "react";
-import useVerificationContext from "@modules/VerificationModule/context/useVerificationContext";
+import useOnboardContext from "@modules/OnboardModule/context/useOnboardContext";
 import { useForm } from "react-hook-form";
 
 import FormWrapper from "@forms/FormComponents/FormWrapper";
@@ -8,7 +8,7 @@ import FormField from "@forms/FormComponents/FormField";
 import FormButton from "@forms/FormComponents/FormButton";
 
 const RepresentativeForm = () => {
-    const { data, setData, goNext, goPrev } = useVerificationContext();
+    const { data, setData, goNext, goPrev } = useOnboardContext();
 
     const {
         register,
