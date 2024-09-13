@@ -32,6 +32,7 @@ const PersonalDetails = () => {
                         name="firstName"
                         type="text"
                         label="First Name"
+                        defaultValue={data.firstName}
                         register={register}
                         errors={errors}
                         placeholder="ex. John"
@@ -48,6 +49,7 @@ const PersonalDetails = () => {
                         name="lastName"
                         type="text"
                         label="Last Name"
+                        defaultValue={data.lastName}
                         register={register}
                         errors={errors}
                         placeholder="ex. Doe"
@@ -65,6 +67,7 @@ const PersonalDetails = () => {
                     name="phoneNumber"
                     type="text"
                     label="Phone Number"
+                    defaultValue={data.phoneNumber}
                     register={register}
                     errors={errors}
                     placeholder="ex. 123123123"
@@ -82,13 +85,14 @@ const PersonalDetails = () => {
                         name="address"
                         type="text"
                         label="Address"
+                        defaultValue={data.address}
                         register={register}
                         errors={errors}
                         placeholder="ex. 1, Persiaran Kewajipan, Usj 1, 47600 Subang Jaya, Selangor"
                         validationRules={{
                             required: "Address is required",
                             pattern: {
-                                value: /^\d+,\s?[A-Za-z\s]+(?:,\s?[A-Za-z\s]+)*,\s?\d{5}\s?[A-Za-z\s]+,\s?[A-Za-z\s]+$/,
+                                value: /^\d+\s?,\s?[a-zA-Z\s]+\s?,\s[a-zA-Z0-9\s]+\s?,\s?[0-9]{5}\s?[a-zA-z\s]+\s?,\s?[a-zA-z]+$/,
                                 message:
                                     "The address should include: street number, street name, region, and town/city, state.",
                             },
@@ -98,6 +102,7 @@ const PersonalDetails = () => {
                         register={register}
                         name="residence"
                         label="Place of Residence"
+                        defaultValue={data.residence}
                         errors={errors}
                         options={COUNTRY_LIST}
                         validationRules={{
@@ -112,6 +117,7 @@ const PersonalDetails = () => {
                     register={register}
                     name="nationality"
                     label="Nationality"
+                    defaultValue={data.nationality}
                     errors={errors}
                     options={COUNTRY_LIST}
                     validationRules={{

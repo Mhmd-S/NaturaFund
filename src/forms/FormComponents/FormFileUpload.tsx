@@ -15,7 +15,10 @@ import {
     faFile,
 } from "@fortawesome/free-solid-svg-icons";
 
+import { ArrowDownTrayIcon, TrashIcon } from "@heroicons/react/20/solid";
+
 import { FormFileUploadProps } from "@types/FormComponentsTypes";
+import LoadingIcon from "@components/common/LoadingIcon";
 
 const FileUploadField = ({
     name,
@@ -23,20 +26,21 @@ const FileUploadField = ({
     accept,
     register,
     errors,
-    setError,
+    clearErrors,
     validationRules,
-    defaultFile,
+    currentFile,
     inputGuidelines,
     acceptSize,
     resetField,
 }: FormFileUploadProps) => {
-    const [file, setFile] = useState<string | null>(defaultFile || null);
+    const [file, setFile] = useState<string | File | null>(currentFile || null);
 
-    const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
-        const selectedFile = event.target.files;
+    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        clearErrors(name); // Reset error message
+        const selectedFile = event.target.files[0];
 
         if (selectedFile) {
-            setFile(selectedFile[0]);
+            setFile(selectedFile);
         }
     };
     const handleRemoveFile = () => {
@@ -82,6 +86,7 @@ const FileUploadField = ({
 
         return <FontAwesomeIcon icon={faFile} className="size-12 text-gray-300" />;
     };
+    console.log(currentFile)
 
     return (
         <div className="h-fit w-full">
@@ -94,30 +99,38 @@ const FileUploadField = ({
             <div
                 className={`relative h-fit w-full p-4 border rounded-md ${
                     errors[name] ? "border-pink-600" : "border-gray-900/25"
-                } ${file ? "border-solid" : "border-dashed"}`}
+                } ${file ? "border-none" : "border-dashed"}`}
             >
                 {file ? (
-                    <div className="w-full grid grid-cols-2 grid-rows-1 gap-x-2">
-                        <div className="size-full row-span-2 items-center">{renderIcon()}</div>
-                        <div className="h-full grid grid-cols-1">
-                            <FontAwesomeIcon
-                                icon={faTrashAlt}
-                                className="justify-self-end p-1 size-5 cursor-pointer text-brand-200 rounded-full"
-                                onClick={() => handleRemoveFile()}
+                    <div className="w-full p-2 grid grid-cols-[25%_45%_12.5%_12.5%] grid-rows-1 gap-1 place-items-center rounded-md bg-white shadow-md">
+                        <span className="flex items-center justify-center p-2 w-12 h-12 bg-white rounded-md">
+                            {renderIcon(file)}
+                        </span>
+                        <span className="w-full flex flex-col">
+                            <p className="w-full text-md overflow-hidden overflow-ellipsis whitespace-nowrap">
+                                {typeof file === "string" ? file.split("/").pop() : file.name}
+                            </p>
+                            <p className="text-sm text-gray-400">
+                                {typeof file === "string" ? "URL" : convertStorageSize(file.size)}
+                            </p>
+                        </span>
+                        <a
+                            className="flex items-center"
+                            href={typeof file === "string" ? file : URL.createObjectURL(file)}
+                            download={typeof file === "string" ? file.split("/").pop() : file.name}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <ArrowDownTrayIcon
+                                stroke="currentColor"
+                                className="p-1 size-7 cursor-pointer rounded-ful text-gray-600"
                             />
-                            <div className="flex flex-col items-center">
-                                <p className="text-md">{file.name}</p>
-                                <button className="flex items-center">
-                                    <p className="text-sm text-gray-400">
-                                        {convertStorageSize(file.size)}
-                                    </p>
-                                    <FontAwesomeIcon
-                                        icon={faCloudDownloadAlt}
-                                        className="p-1 size-5 cursor-pointer rounded-ful text-brand-600"
-                                    />
-                                </button>
-                            </div>
-                        </div>
+                        </a>
+                        <TrashIcon
+                            stroke="currentColor"
+                            className="justify-self-end p-1 size-7 cursor-pointer text-gray-600 rounded-full"
+                            onClick={() => handleRemoveFile()}
+                        />
                     </div>
                 ) : (
                     <>
@@ -145,8 +158,7 @@ const FileUploadField = ({
                             type="file"
                             accept={accept}
                             size={acceptSize}
-                            {...register(name, validationRules)}
-                            onInput={handleFileChange}
+                            {...register(name, {...validationRules, onChange: handleFileChange})}
                             className={`opacity-0 absolute top-0 left-0 w-full h-full cursor-pointer`}
                         />
                     </>

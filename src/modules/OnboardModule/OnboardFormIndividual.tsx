@@ -2,9 +2,9 @@ import React from "react";
 
 import useOnboardContext from "@modules/OnboardModule/context/useOnboardContext";
 
-import PersonalDetails from "@forms/Onboard/PersonalDetails";
-import ProofOfIdentity from "@forms/Onboard/ProofOfIdentity";
-import ProofOfAddress from "@forms/Onboard/ProofOfAddress";
+import PersonalDetails from "@forms/Onboard/investor/PersonalDetails";
+import ProofOfIdentity from "@forms/Onboard/investor/ProofOfIdentity";
+import ProofOfAddress from "@forms/Onboard/investor/ProofOfAddress";
 
 import ResultPage from "@modules/OnboardModule/ResultPage";
 

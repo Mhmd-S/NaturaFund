@@ -1,84 +1,74 @@
-import { FontAwesomeIconProps } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
 import {
-    UseFormRegister,
-    FieldValues,
-    FieldErrors,
-    UseFormResetField,
-    UseFormSetError,
-    Control,
-    UseFieldArrayRemove,
-} from "react-hook-form";
+  UseFormRegister,
+  FieldValues,
+  FieldErrors,
+  UseFormResetField,
+  UseFormSetError,
+  Control,
+  UseFieldArrayRemove,
+  UseFormClearErrors,
+} from 'react-hook-form';
 
 interface FormComponentProps {
-    label: string;
-    name: string;
-    register: UseFormRegister<FieldValues>;
-    errors: FieldErrors;
-    validationRules: any;
-    defaultValue?: string;
+  label: string;
+  name: string;
+  register: UseFormRegister<FieldValues>;
+  errors: FieldErrors;
+  validationRules: any;
 }
 
 export interface FormFieldProps extends FormComponentProps {
-    type:
-        | "text"
-        | "email"
-        | "password"
-        | "number"
-        | "date"
-        | "time"
-        | "datetime"
-        | "datetime-local"
-        | "month"
-        | "week"
-        | "color";
-    placeholder?: string;
+  type: 'text' | 'email' | 'password' | 'number' | 'date' | 'time' | 'datetime' | 'datetime-local' | 'month' | 'week' | 'color';
+  defaultValue?: string;
+  placeholder?: string;
 }
 
 export interface FormSelectProps extends FormComponentProps {
-    labelShow?: Boolean;
-    options: string[];
+  options: string[];
 }
 
 export interface FormTextAreaProps extends FormComponentProps {
-    rows: number;
-    placeholder: string;
+  rows: number;
+  defaultValue: string;
+  placeholder: string;
 }
 
 export interface FormFileUploadProps extends FormComponentProps {
-    currentFile: string;
-    accept: string;
-    acceptSize: number;
-    inputGuidelines: string;
-    resetField: UseFormResetField<FieldValues>;
-    setError: UseFormSetError<FieldValues>;
+  currentFile?: string;
+  accept: string;
+  acceptSize: number;
+  inputGuidelines: string;
+  clearErrors: UseFormClearErrors<FieldValues>;
+  resetField: UseFormResetField<FieldValues>;
 }
 
 export interface FormFileUploadFieldProps extends FormComponentProps {
-    accept: string;
-    acceptSize: number;
-    inputGuidelines: string;
-    defaultFiles: string[];
-    resetField: UseFormResetField<FieldValues>;
+  accept: string;
+  acceptSize: number;
+  inputGuidelines: string;
+  defaultFiles: string[];
+  resetField: UseFormResetField<FieldValues>;
 }
 
 export interface TableFormProps {
-    name: string;
-    defaultValues?: Object;
+  name: string;
+  defaultValues?: Object;
 }
 
 export interface TableFieldProps {
-    item: Record<"id", string>;
-    fieldArrayName: string;
-    errors: FieldErrors;
-    register: UseFormRegister<Record<string, string>[]>;
-    removeField: UseFieldArrayRemove;
+  item: Record<'id', string>;
+  fieldArrayName: string;
+  errors: FieldErrors;
+  register: UseFormRegister<Record<string, string>[]>;
+  removeField: UseFieldArrayRemove;
 }
 
 export interface FormButtonProps {
-    text: string;
-    loading?: boolean;
-    disable?: boolean;
-    type: "button" | "submit";
-    icon?: FontAwesomeIconProps["icon"];
-    onClick?: () => void;
+  text: string;
+  loading?: boolean;
+  disable?: boolean;
+  type: 'button' | 'submit';
+  icon?: FontAwesomeIconProps['icon'];
+  onClick?: () => void;
 }

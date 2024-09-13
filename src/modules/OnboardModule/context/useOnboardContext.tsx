@@ -1,13 +1,15 @@
 import { useContext, createContext, useState, useMemo } from "react";
+import { updateUser } from "@api/user";
 
 // ToDo: Add Fetcing to check the verification status, or maybe it is found in the user info
 
 const OnboardContext = createContext();
 
 export const OnboardProvider = ({ children }) => {
-    const [stage, setStage] = useState(0);
+    const [stage, setStage] = useState(1);
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState({});
+    const [error, setError] = useState(null);
 
     const goNext = () => {
         if (stage < 3) {
@@ -21,12 +23,19 @@ export const OnboardProvider = ({ children }) => {
         }
     };
 
+    const submitData = async () => {
+        updateUser(data);
+    };
+
     const memoValue = useMemo(
         () => ({
             stage,
             loading,
             data,
+            error,
+            setError,
             setLoading,
+            submitData,
             setData,
             goNext,
             goPrev,
@@ -34,9 +43,7 @@ export const OnboardProvider = ({ children }) => {
         [stage, loading, data]
     );
 
-    return (
-        <OnboardContext.Provider value={memoValue}>{children}</OnboardContext.Provider>
-    );
+    return <OnboardContext.Provider value={memoValue}>{children}</OnboardContext.Provider>;
 };
 
 // Expor the hook instead of the context iteself

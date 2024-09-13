@@ -14,58 +14,71 @@ const ProofOfIdentity = () => {
         register,
         handleSubmit,
         resetField,
-        setError,
+        clearErrors,
         formState: { errors },
     } = useForm();
 
     const onSubmit = (formData) => {
         // ToDo: Return the upload url to the data
+        // transfrom the files to URL
+        console.log(formData);
+
         setData({ ...data, ...formData });
         goNext();
     };
 
     return (
-        <FormWrapper onSubmit={handleSubmit(onSubmit)}>
-            <div className="w-3/4 grid grid-flow-row gap-y-5">
-                <h2 className="text-3xl font-semibold">Proof of Identity</h2>
+        <FormWrapper loading={false} onSubmit={handleSubmit(onSubmit)}>
+            <div className="w-3/4 grid grid-cols-2 gap-4">
+                <h2 className="col-span-2 text-3xl font-semibold">Proof of Identity</h2>
                 <FileUploadField
-                    type="file"
+                    inputGuidelines="Please upload a selfie with your ID"
+                    accept="image/*"
+                    acceptSize={30000}
                     label="Front of ID"
-                    name="profilePicture1"
+                    name="frontID"
                     register={register}
+                    currentFile={data.frontID && data.frontID[0]}
                     errors={errors}
+                    clearErrors={clearErrors}
                     resetField={resetField}
-                    setError={setError}
                     validationRules={{
-                        required: "Profile Picture is required",
+                        required: "File is required",
                     }}
                 />
                 <FileUploadField
-                    type="file"
+                    inputGuidelines="Please upload a selfie with your ID"
+                    accept="image/*"
+                    acceptSize={30000}
                     label={"Back of ID"}
-                    name="profilePicture1"
+                    currentFile={data.backID && data.backID[0]}
+                    name="backID"
                     register={register}
                     errors={errors}
                     resetField={resetField}
-                    setError={setError}
+                    clearErrors={clearErrors}
                     validationRules={{
-                        required: "Profile Picture is required",
+                        required: "File is required",
                     }}
                 />
                 <FileUploadField
-                    type="file"
+                    inputGuidelines="Please upload a selfie with your ID"
+                    accept="image/*"
+                    acceptSize={30000}
                     label={"Selfie with ID"}
-                    name="profilePicture1"
+                    currentFile={data.selfieID && data.selfieID[0]}
+                    name="selfieID"
                     register={register}
                     errors={errors}
+                    clearErrors={clearErrors}
                     resetField={resetField}
-                    setError={setError}
                     validationRules={{
-                        required: "Profile Picture is required",
+                        required: "File is required",
                     }}
                 />
-                <div className=" p-2 grid grid-cols-2 gap-10">
+                <div className="col-span-2 p-2 grid grid-cols-2 gap-10">
                     <button
+                        type="button"
                         className="bg-white text-brand-800 border-2 border-brand-800 rounded-md transition-colors hover:bg-brand-800 hover:text-white"
                         onClick={goPrev}
                     >
