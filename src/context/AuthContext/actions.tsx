@@ -1,7 +1,7 @@
 import * as actionTypes from "./types";
-import * as authService from "@/auth";
+import * as authService from "@/api/auth";
 
-import { registerDataType, loginDataType, verifyDataType } from "@/auth";
+import { registerDataType, loginDataType, verifyDataType } from "@/api/auth";
 
 // actions.js
 
@@ -51,12 +51,15 @@ const contextActions = (dispatch) => {
                 dispatch({ type: actionTypes.LOGOUT_SUCCESS });
             }
         },
-        // updateProfile: async ({ entity, jsonData }) => {
-        //     const data = await request.updateAndUpload({ entity, id: "", jsonData });
-        //     if (data.status == "success") {
-        //         dispatch({ type: actionTypes.REQUEST_SUCCESS, payload: data.data });
-        //     }
-        // },
+        getUser: async () => {
+            dispatch({ type: actionTypes.LOADING_REQUEST });
+            const data = await authService.getUser();
+            if (data.status == "success") {
+                dispatch({ type: actionTypes.LOGIN_SUCCESS, payload: data.data });
+            } else {
+                dispatch({ type: actionTypes.FAILED_REQUEST, payload: data.message });
+            }
+        },
     };
 };
 

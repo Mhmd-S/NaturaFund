@@ -11,16 +11,24 @@ import VerificationFormCompany from "@/modules/VerificationModule/VerificationFo
 import { useAuthContext } from "@/context/AuthContext";
 
 const Verification = () => {
-
     const { state } = useAuthContext();
-    const { user } = state;
+    const { current } = state;
 
     return (
         <div className="relative w-full py-4 grid grid-cols-[20%_80%]">
             <VerificationProvider>
-                <StageIndicator steps={VERIFICATION_STEPS_COMPANY} />
-                <VerificationFormCompany />
-                {/* <VerificationFormIndividual /> */}
+                <StageIndicator
+                    steps={
+                        current.userType === "investor"
+                            ? VERIFICATION_STEPS_INDIVIDUAL
+                            : VERIFICATION_STEPS_COMPANY
+                    }
+                />
+                {current.userType === "investor" ? (
+                    <VerificationFormIndividual />
+                ) : (
+                    <VerificationFormCompany />
+                )}
             </VerificationProvider>
         </div>
     );

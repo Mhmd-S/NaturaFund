@@ -12,3 +12,5 @@ export const RESET_STATE = "AUTH_RESET_STATE";
 
 export const REQUEST_SUCCESS = "AUTH_REQUEST_SUCCESS";
 export const VERIFY_SUCCESS = "AUTH_VERIFY_SUCCESS";
+
+export const GET_USER = "AUTH_GET_USER";

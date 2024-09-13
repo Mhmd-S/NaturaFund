@@ -1,5 +1,4 @@
-import { API_BASE_URL } from "@/config/serverApiConfig";
-
+import { api } from "@/config/axiosConfig";
 import axios from "axios";
 import errorHandler from "@/request/errorHandler";
 import successHandler from "@/request/successHandler";
@@ -24,8 +23,33 @@ export interface verifyDataType {
 
 export const login = async (loginData: loginDataType) => {
     try {
-        const response = await axios.post(API_BASE_URL + `auth/login`, loginData);
+        const response = await api.request({
+            method: "POST",
+            url: `auth/login`,
+            data: loginData,
+        });
 
+        const { status, data } = response;
+
+        successHandler(
+            { data, status },
+            {
+                notifyOnSuccess: false,
+                notifyOnFailed: true,
+            }
+        );
+        return data;
+    } catch (error) {
+        return errorHandler(error);
+    }
+};
+
+export const getUser = async () => {
+    try {
+        const response = await api.request({
+            method: "GET",
+            url: `auth/user`,
+        });
         const { status, data } = response;
 
         successHandler(
@@ -62,7 +86,9 @@ export const register = async (registerData: registerDataType) => {
 
 export const verify = async (verifyData: verifyDataType) => {
     try {
-        const response = await axios.get(API_BASE_URL + `auth/verify`, {
+        const response = await api.request({
+            method: "GET",
+            url: `auth/verify`,
             params: verifyData,
             paramsSerializer: (params) => {
                 return new URLSearchParams(params).toString();
@@ -103,10 +129,9 @@ export const verify = async (verifyData: verifyDataType) => {
 //     }
 // };
 
-export const logout = async (userType: userType) => {
+export const logout = async () => {
     axios.defaults.withCredentials = true;
     try {
-        // window.localStorage.clear();
         const response = await axios.post(
             API_BASE_URL + `auth/logout?timestamp=${new Date().getTime()}`
         );

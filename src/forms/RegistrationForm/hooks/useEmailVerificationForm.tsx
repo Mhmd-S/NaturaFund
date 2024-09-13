@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 
 import { useAuthContext } from "@/context/AuthContext";
 
-import { verifyDataType } from "@/auth";
+import { verifyDataType } from "@/api/auth";
 
 const useVerifyEmail = ({ setCurrentStep, email }) => {
     const { state, authContextAction } = useAuthContext();

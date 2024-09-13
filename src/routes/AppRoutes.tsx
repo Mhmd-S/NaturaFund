@@ -1,3 +1,4 @@
+import Onboarding from "@/pages/Onboarding";
 import { lazy } from "react";
 
 import { Navigate } from "react-router-dom";
@@ -102,6 +103,10 @@ let routes = {
         {
             path: "/investee",
             element: <Investee />,
+        },
+        {
+            path: "/onboarding",
+            element: <Onboarding />,
         },
         {
             path: "*",
