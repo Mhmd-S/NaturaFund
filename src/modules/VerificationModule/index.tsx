@@ -1,14 +1,14 @@
 import {
     VERIFICATION_STEPS_INDIVIDUAL,
     VERIFICATION_STEPS_COMPANY,
-} from "@/modules/VerificationModule/VerificationSteps";
+} from "@modules/VerificationModule/VerificationSteps";
 
-import { VerificationProvider } from "@/modules/VerificationModule/context/useVerificationContext";
+import { VerificationProvider } from "@modules/VerificationModule/context/useVerificationContext";
 
-import StageIndicator from "@/modules/VerificationModule/StageIndicator";
-import VerificationFormIndividual from "@/modules/VerificationModule/VerificationFormIndividual";
-import VerificationFormCompany from "@/modules/VerificationModule/VerificationFormCompany";
-import { useAuthContext } from "@/context/AuthContext";
+import StageIndicator from "@modules/VerificationModule/StageIndicator";
+import VerificationFormIndividual from "@modules/VerificationModule/VerificationFormIndividual";
+import VerificationFormCompany from "@modules/VerificationModule/VerificationFormCompany";
+import { useAuthContext } from "@context/AuthContext";
 
 const Verification = () => {
     const { state } = useAuthContext();

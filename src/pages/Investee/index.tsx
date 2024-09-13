@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import ProjectsTable from "@/components/common/ProjectsTable";
-import SearchBar from "@/components/common/SearchBar";
+import ProjectsTable from "@components/common/ProjectsTable";
+import SearchBar from "@components/common/SearchBar";
 
 const dummyData = [
     {

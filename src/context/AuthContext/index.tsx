@@ -1,7 +1,7 @@
 import { useMemo, useReducer, createContext, useContext, useEffect } from "react";
 import { initialState, contextReducer } from "./reducer";
 import contextActions from "./actions";
-import * as authService from "@/api/auth";
+import * as authService from "@api/auth";
 import * as actionTypes from "./types";
 
 const AuthContext = createContext();

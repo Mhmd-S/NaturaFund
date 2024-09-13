@@ -1,6 +1,6 @@
-import FormFieldError from "@/forms/FormComponents/FormFieldError";
+import FormFieldError from "@forms/FormComponents/FormFieldError";
 
-import { FormTextAreaProps } from "@/types/FormComponentsTypes";
+import { FormTextAreaProps } from "@types/FormComponentsTypes";
 
 const FormFieldTextArea = ({
     errors,

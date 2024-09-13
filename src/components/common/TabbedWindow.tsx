@@ -1,6 +1,6 @@
 import React, { Children } from "react";
 
-import TabNav from "@/components/common/TabNav";
+import TabNav from "@components/common/TabNav";
 
 const TabbedWindow = ({ currentTab, setCurrentTab, tabs, children }) => {
     return (

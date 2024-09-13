@@ -1,8 +1,8 @@
 import React from "react";
 
-import RegistrationForm from "@/forms/RegistrationForm";
+import RegistrationForm from "@forms/RegistrationForm";
 
-import AuthLayout from "@/components/common/AuthLayout";
+import AuthLayout from "@components/common/AuthLayout";
 
 const Registration = () => {
     return (

@@ -1,13 +1,13 @@
 import React from "react";
-import useVerificationContext from "@/modules/VerificationModule/context/useVerificationContext";
+import useVerificationContext from "@modules/VerificationModule/context/useVerificationContext";
 import { useForm } from "react-hook-form";
 
-import FormWrapper from "@/forms/FormComponents/FormWrapper";
-import FormField from "@/forms/FormComponents/FormField";
-import FormSelect from "@/forms/FormComponents/FormSelect";
-import FormButton from "@/forms/FormComponents/FormButton";
+import FormWrapper from "@forms/FormComponents/FormWrapper";
+import FormField from "@forms/FormComponents/FormField";
+import FormSelect from "@forms/FormComponents/FormSelect";
+import FormButton from "@forms/FormComponents/FormButton";
 
-import COUNTRY_LIST from "@/utils/CountryList";
+import COUNTRY_LIST from "@utils/CountryList";
 
 const PersonalDetails = () => {
     const { data, setData, goNext } = useVerificationContext();

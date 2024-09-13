@@ -1,7 +1,7 @@
 import React from "react";
-import MultiTabGuideMobile from "@/components/MultiTabGuide/mobile";
-import MultiTabGuideDesktop from "@/components/MultiTabGuide/desktop";
-import useResponsive from "@/hooks/useResponsive";
+import MultiTabGuideMobile from "@components/MultiTabGuide/mobile";
+import MultiTabGuideDesktop from "@components/MultiTabGuide/desktop";
+import useResponsive from "@hooks/useResponsive";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faListCheck,

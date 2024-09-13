@@ -1,5 +1,5 @@
 import React from "react";
-import { FormButtonProps } from "@/types/FormComponentsTypes";
+import { FormButtonProps } from "@types/FormComponentsTypes";
 
 const FormButton = ({ onClick, text, loading, disable }: FormButtonProps) => {
     return (

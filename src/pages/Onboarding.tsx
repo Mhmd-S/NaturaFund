@@ -1,4 +1,4 @@
-import Verification from "@/modules/VerificationModule";
+import Verification from "@modules/VerificationModule";
 
 const Onboarding = () => {
     return (

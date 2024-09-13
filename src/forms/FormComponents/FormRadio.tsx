@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import FormFieldError from "@/forms/FormComponents/FormFieldError";
+import FormFieldError from "@forms/FormComponents/FormFieldError";
 
 const FormRadio = ({
     register,

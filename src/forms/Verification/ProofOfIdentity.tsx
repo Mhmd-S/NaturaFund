@@ -1,11 +1,11 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
-import useVerificationContext from "@/modules/VerificationModule/context/useVerificationContext";
+import useVerificationContext from "@modules/VerificationModule/context/useVerificationContext";
 
-import FormWrapper from "@/forms/FormComponents/FormWrapper";
-import FileUploadField from "@/forms/FormComponents/FormFileUpload";
-import FormButton from "@/forms/FormComponents/FormButton";
+import FormWrapper from "@forms/FormComponents/FormWrapper";
+import FileUploadField from "@forms/FormComponents/FormFileUpload";
+import FormButton from "@forms/FormComponents/FormButton";
 
 const ProofOfIdentity = () => {
     const { data, setData, goPrev, goNext } = useVerificationContext();

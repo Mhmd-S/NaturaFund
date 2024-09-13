@@ -1,4 +1,4 @@
-import FaqItem from "@/components/common/FaqItem";
+import FaqItem from "@components/common/FaqItem";
 import React from "react";
 
 const HELP_QUESTION_ANSWERS = [

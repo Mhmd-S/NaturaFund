@@ -1,5 +1,5 @@
 import React from "react";
-import Steps from "@/components/common/Steps";
+import Steps from "@components/common/Steps";
 
 const STATUSES = [
     {

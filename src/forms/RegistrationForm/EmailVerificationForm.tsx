@@ -1,8 +1,8 @@
-import useEmailVerificationForm from "@/forms/RegistrationForm/hooks/useEmailVerificationForm";
-import FormField from "@/forms/FormComponents/FormField";
-import FormButton from "@/forms/FormComponents/FormButton";
-import FormWrapper from "@/forms/FormComponents/FormWrapper";
-import FormGeneralError from "@/forms/FormComponents/FormGeneralError";
+import useEmailVerificationForm from "@forms/RegistrationForm/hooks/useEmailVerificationForm";
+import FormField from "@forms/FormComponents/FormField";
+import FormButton from "@forms/FormComponents/FormButton";
+import FormWrapper from "@forms/FormComponents/FormWrapper";
+import FormGeneralError from "@forms/FormComponents/FormGeneralError";
 
 const EmailVerificationForm = ({ setCurrentStep, email }) => {
     const { onSubmit, handleSubmit, register, isLoading, authError, errors } =

@@ -1,7 +1,7 @@
 import React from "react";
-import FormFieldError from "@/forms/FormComponents/FormFieldError";
+import FormFieldError from "@forms/FormComponents/FormFieldError";
 
-import { FormFieldProps } from "@/types/FormComponentsTypes";
+import { FormFieldProps } from "@types/FormComponentsTypes";
 
 const FormField = ({
     label,

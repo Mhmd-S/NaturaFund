@@ -1,12 +1,12 @@
 import React from "react";
 
-import useVerificationContext from "@/modules/VerificationModule/context/useVerificationContext";
+import useVerificationContext from "@modules/VerificationModule/context/useVerificationContext";
 
-import PersonalDetails from "@/forms/Verification/PersonalDetails";
-import ProofOfIdentity from "@/forms/Verification/ProofOfIdentity";
-import ProofOfAddress from "@/forms/Verification/ProofOfAddress";
+import PersonalDetails from "@forms/Verification/PersonalDetails";
+import ProofOfIdentity from "@forms/Verification/ProofOfIdentity";
+import ProofOfAddress from "@forms/Verification/ProofOfAddress";
 
-import ResultPage from "@/modules/VerificationModule/ResultPage";
+import ResultPage from "@modules/VerificationModule/ResultPage";
 
 import { faCheck, faPause, faTimes } from "@fortawesome/free-solid-svg-icons";
 

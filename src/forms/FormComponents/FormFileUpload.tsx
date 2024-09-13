@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-import convertStorageSize from "@/utils/convertStorageSize";
+import convertStorageSize from "@utils/convertStorageSize";
 
-import FormFieldError from "@/forms/FormComponents/FormFieldError";
+import FormFieldError from "@forms/FormComponents/FormFieldError";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -15,7 +15,7 @@ import {
     faFile,
 } from "@fortawesome/free-solid-svg-icons";
 
-import { FormFileUploadProps } from "@/types/FormComponentsTypes";
+import { FormFileUploadProps } from "@types/FormComponentsTypes";
 
 const FileUploadField = ({
     name,

@@ -1,6 +1,6 @@
 import React from "react";
-import ProjectsTable from "@/components/common/ProjectsTable";
-import SearchBar from "@/components/common/SearchBar";
+import ProjectsTable from "@components/common/ProjectsTable";
+import SearchBar from "@components/common/SearchBar";
 
 // ToDo: cahnge the component name from index to something else
 

@@ -1,7 +1,7 @@
 import * as actionTypes from "./types";
-import * as authService from "@/api/auth";
+import * as authService from "@api/auth";
 
-import { registerDataType, loginDataType, verifyDataType } from "@/api/auth";
+import { registerDataType, loginDataType, verifyDataType } from "@api/auth";
 
 // actions.js
 

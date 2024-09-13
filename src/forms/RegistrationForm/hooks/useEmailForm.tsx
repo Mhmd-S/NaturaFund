@@ -1,6 +1,6 @@
 import react, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useAuthContext } from "@/context/AuthContext";
+import { useAuthContext } from "@context/AuthContext";
 
 type formDataType = {
     email: string;

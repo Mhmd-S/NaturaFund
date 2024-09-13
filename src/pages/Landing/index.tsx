@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import NavBar from "@/components/common/NavBar";
-import useResponsive from "@/hooks/useResponsive";
-import CarouselMobile from "@/components/SlidingCarousel/CarouselMobile";
-import CarouselDesktop from "@/components/SlidingCarousel/CarouselDesktop";
-import StepByStepGuide from "@/modules/LandingModule/StepByStepGuide";
-import WhyInvest from "@/modules/LandingModule/WhyInvest";
-import CarouselInvMobile from "@/components/SlidingCarouselInv/mobile";
-import CarouselInvDesktop from "@/components/SlidingCarouselInv/Desktop";
-import Footer from "@/components/common/Footer";
+import NavBar from "@components/common/NavBar";
+import useResponsive from "@hooks/useResponsive";
+import CarouselMobile from "@components/SlidingCarousel/CarouselMobile";
+import CarouselDesktop from "@components/SlidingCarousel/CarouselDesktop";
+import StepByStepGuide from "@modules/LandingModule/StepByStepGuide";
+import WhyInvest from "@modules/LandingModule/WhyInvest";
+import CarouselInvMobile from "@components/SlidingCarouselInv/mobile";
+import CarouselInvDesktop from "@components/SlidingCarouselInv/desktop";
+import Footer from "@components/common/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 

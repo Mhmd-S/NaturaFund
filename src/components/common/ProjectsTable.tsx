@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
-import extractHeader from "@/utils/extractHeader";
+import extractHeader from "@utils/extractHeader";
 
 const ProjectsTable = ({ data, handleOnClick }) => {
     return (

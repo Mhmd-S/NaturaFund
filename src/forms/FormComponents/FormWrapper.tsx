@@ -1,5 +1,5 @@
 import React from "react";
-import LoadingIcon from "@/components/common/LoadingIcon";
+import LoadingIcon from "@components/common/LoadingIcon";
 
 const FormWrapper = ({ children, onSubmit, loading }) => {
     return (

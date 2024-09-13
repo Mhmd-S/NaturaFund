@@ -1,6 +1,6 @@
 import React from "react";
-import FormFieldError from "@/forms/FormComponents/FormFieldError";
-import { FormSelectProps } from "@/types/FormComponentsTypes";
+import FormFieldError from "@forms/FormComponents/FormFieldError";
+import { FormSelectProps } from "@types/FormComponentsTypes";
 
 function FormSelect({
     register,

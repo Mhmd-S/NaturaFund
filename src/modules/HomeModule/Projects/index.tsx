@@ -1,5 +1,5 @@
 import React from "react";
-import ProjectCard from "@/components/common/ProjectCard";
+import ProjectCard from "@components/common/ProjectCard";
 import { Link } from "react-router-dom";
 
 const dummyProjects = [

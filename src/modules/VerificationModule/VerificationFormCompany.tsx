@@ -1,14 +1,14 @@
 import React from "react";
 
-import useVerificationContext from "@/modules/VerificationModule/context/useVerificationContext";
+import useVerificationContext from "@modules/VerificationModule/context/useVerificationContext";
 
-import CompanyInformationForm from "@/forms/Verification/company/CompanyInformationForm";
-import RepresentativeForm from "@/forms/Verification/company/RepresentativeForm";
+import CompanyInformationForm from "@forms/Verification/company/CompanyInformationForm";
+import RepresentativeForm from "@forms/Verification/company/RepresentativeForm";
 
-import ResultPage from "@/modules/VerificationModule/ResultPage";
+import ResultPage from "@modules/VerificationModule/ResultPage";
 
 import { faCheck, faPause, faTimes } from "@fortawesome/free-solid-svg-icons";
-import ProofOfAddress from "@/forms/Verification/ProofOfAddress";
+import ProofOfAddress from "@forms/Verification/ProofOfAddress";
 
 const RESULTS = {
     pending: {

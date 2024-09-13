@@ -1,5 +1,5 @@
 import React from "react";
-import ProjectApplyForm from "@/forms/ProjectApplyForm";
+import ProjectApplyForm from "@forms/ProjectApplyForm";
 
 const ProjectApplyModule = () => {
     return (

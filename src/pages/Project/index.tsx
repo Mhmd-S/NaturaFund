@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 
-import Status from "@/modules/ProjectModule/Status";
-import RevenueGenerated from "@/modules/ProjectModule/RevenueGenerated";
-import Documents from "@/modules/ProjectModule/Documents";
-import Overview from "@/modules/ProjectModule/Overview";
-import InvestmentDetails from "@/modules/ProjectModule/InvestmentDetails";
-import FinancialDetails from "@/modules/ProjectModule/FinancialDetails";
-import InvestmentsReceived from "@/modules/ProjectModule/InvestmentsReceived";
+import Status from "@modules/ProjectModule/Status";
+import RevenueGenerated from "@modules/ProjectModule/RevenueGenerated";
+import Documents from "@modules/ProjectModule/Documents";
+import Overview from "@modules/ProjectModule/Overview";
+import InvestmentDetails from "@modules/ProjectModule/InvestmentDetails";
+import FinancialDetails from "@modules/ProjectModule/FinancialDetails";
+import InvestmentsReceived from "@modules/ProjectModule/InvestmentsReceived";
 
-import TabbedWindow from "@/components/common/TabbedWindow";
+import TabbedWindow from "@components/common/TabbedWindow";
 
 const project = {
     name: "Aventura Solar Farms @ Penang",

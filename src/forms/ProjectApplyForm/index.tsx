@@ -2,14 +2,13 @@ import React from "react";
 
 import { useForm } from "react-hook-form";
 
-import FormField from "@/forms/FormComponents/FormField";
-import FormWrapper from "@/forms/FormComponents/FormWrapper";
-import FormButton from "@/forms/FormComponents/FormButton";
-import FormTextArea from "@/forms/FormComponents/FormTextArea";
-import FormFileUpload from "@/forms/FormFileUpload";
-import FormSelect from "@/forms/FormComponents/FormSelect";
+import FormField from "@forms/FormComponents/FormField";
+import FormWrapper from "@forms/FormComponents/FormWrapper";
+import FormButton from "@forms/FormComponents/FormButton";
+import FormTextArea from "@forms/FormComponents/FormTextArea";
+import FormSelect from "@forms/FormComponents/FormSelect";
 
-import COUNTRY_LIST from "@/utils/CountryList";
+import COUNTRY_LIST from "@utils/CountryList";
 import FileUploadField from "../FormComponents/FormFileUpload";
 
 const ProjectApplyForm = () => {

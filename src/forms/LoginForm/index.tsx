@@ -1,8 +1,8 @@
-import FormField from "@/forms/FormComponents/FormField";
-import FormButton from "@/forms/FormComponents/FormButton";
-import FormWrapper from "@/forms/FormComponents/FormWrapper";
-import useLoginForm from "@/forms/LoginForm/useLoginForm";
-import FormGeneralError from "@/forms/FormComponents/FormGeneralError";
+import FormField from "@forms/FormComponents/FormField";
+import FormButton from "@forms/FormComponents/FormButton";
+import FormWrapper from "@forms/FormComponents/FormWrapper";
+import useLoginForm from "@forms/LoginForm/useLoginForm";
+import FormGeneralError from "@forms/FormComponents/FormGeneralError";
 
 import { Link } from "react-router-dom";
 

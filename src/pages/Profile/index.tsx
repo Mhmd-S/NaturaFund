@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import TabNav from "@/components/common/TabNav";
-import Verification from "@/modules/VerificationModule";
-import PersonalDetails from "@/modules/ProfileModule/PersonalDetails";
-import PaymentDetails from "@/modules/ProfileModule/PaymentDetails";
-import TabbedWindow from "@/components/common/TabbedWindow";
+import TabNav from "@components/common/TabNav";
+import Verification from "@modules/VerificationModule";
+import PersonalDetails from "@modules/ProfileModule/PersonalDetails";
+import PaymentDetails from "@modules/ProfileModule/PaymentDetails";
+import TabbedWindow from "@components/common/TabbedWindow";
 
 const tabs = ["Personal Info", "Payment Details", "Verification"];
 

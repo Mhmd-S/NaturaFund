@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
-import useResponsive from "@/hooks/useResponsive";
-import { stopScrolling, allowScrolling } from "@/utils/scrollingControl";
+import useResponsive from "@hooks/useResponsive";
+import { stopScrolling, allowScrolling } from "@utils/scrollingControl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLeaf, faChevronDown, faBars, faClose } from "@fortawesome/free-solid-svg-icons";
 

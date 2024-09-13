@@ -1,7 +1,7 @@
-import AppRouter from "@/routes/AppRouter";
-import Nav from "@/modules/Nav";
-import Header from "@/modules/HeaderModule";
-import { useAuthContext } from "@/context/AuthContext";
+import AppRouter from "@routes/AppRouter";
+import Nav from "@modules/Nav";
+import Header from "@modules/HeaderModule";
+import { useAuthContext } from "@context/AuthContext";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 

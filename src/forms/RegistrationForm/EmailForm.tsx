@@ -1,8 +1,8 @@
 import { useEmailForm } from "./hooks/useEmailForm";
-import FormButton from "@/forms/FormComponents/FormButton";
-import FormGeneralError from "@/forms/FormComponents/FormGeneralError";
-import FormWrapper from "@/forms/FormComponents/FormWrapper";
-import FormField from "@/forms/FormComponents/FormField";
+import FormButton from "@forms/FormComponents/FormButton";
+import FormGeneralError from "@forms/FormComponents/FormGeneralError";
+import FormWrapper from "@forms/FormComponents/FormWrapper";
+import FormField from "@forms/FormComponents/FormField";
 import { validatePasswords } from "./utils/Step1Validation";
 
 // WAS TESTING REGISTRATION

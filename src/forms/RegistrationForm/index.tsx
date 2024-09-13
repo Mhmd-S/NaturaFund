@@ -1,8 +1,8 @@
-import { AuthContextProvider } from "@/context/AuthContext";
+import { AuthContextProvider } from "@context/AuthContext";
 
-import EmailForm from "@/forms/RegistrationForm/EmailForm";
-import EmailVerificationForm from "@/forms/RegistrationForm/EmailVerificationForm";
-import SuccessMessage from "@/forms/RegistrationForm/SuccessMessage";
+import EmailForm from "@forms/RegistrationForm/EmailForm";
+import EmailVerificationForm from "@forms/RegistrationForm/EmailVerificationForm";
+import SuccessMessage from "@forms/RegistrationForm/SuccessMessage";
 
 import useRegistrationForm from "./hooks/useRegistartionForm";
 

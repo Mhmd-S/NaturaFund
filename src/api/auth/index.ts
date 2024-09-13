@@ -1,7 +1,7 @@
-import { api } from "@/config/axiosConfig";
+import { api } from "@config/axiosConfig";
 import axios from "axios";
-import errorHandler from "@/request/errorHandler";
-import successHandler from "@/request/successHandler";
+import errorHandler from "@request/errorHandler";
+import successHandler from "@request/successHandler";
 
 type userType = "corporation" | "investor";
 

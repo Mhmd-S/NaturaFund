@@ -1,5 +1,5 @@
 import React from "react";
-import EmptyState from "@/components/common/EmptyState";
+import EmptyState from "@components/common/EmptyState";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBank, faUser, faCheck, faRemove } from "@fortawesome/free-solid-svg-icons";
 

@@ -1,4 +1,4 @@
-import DetailsTable from "@/components/common/DetailsTable";
+import DetailsTable from "@components/common/DetailsTable";
 
 const Overview = ({ project }) => {
     const getCompanyDetails = () => {
