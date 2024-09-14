@@ -5,7 +5,7 @@ import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 import TabNav from "@components/common/TabNav";
 
-const TabbedWindow = ({ currentTab, setCurrentTab, tabs, children }) => {
+const TabbedWindow = ({ currentTab, setCurrentTab, tabs, showGoBack = true ,children }) => {
     const navigate = useNavigate();
 
     const handleGoBack = () => {
@@ -18,7 +18,7 @@ const TabbedWindow = ({ currentTab, setCurrentTab, tabs, children }) => {
                 <div className="w-full grid grid-rows-1 grid-flow-col">
                     <button
                         onClick={handleGoBack}
-                        className="mb-4 justify-self-start place-self-start text-gray-600 hover:text-gray-800"
+                        className={`${!showGoBack && "sr-only"} mb-4 justify-self-start place-self-start text-gray-600 hover:text-gray-800`}
                     >
                         <FontAwesomeIcon icon={faChevronLeft} /> Back
                     </button>

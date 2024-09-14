@@ -22,7 +22,7 @@ const Profile = () => {
     };
 
     return (
-        <TabbedWindow currentTab={currentTab} setCurrentTab={setCurrentTab} tabs={tabs}>
+        <TabbedWindow showGoBack={false} currentTab={currentTab} setCurrentTab={setCurrentTab} tabs={tabs}>
             {renderDetail()}
         </TabbedWindow>
     );
