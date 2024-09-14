@@ -26,7 +26,7 @@ const Project = () => {
         projectApi
             .getProject(id)
             .then((data) => {
-                setProject(data);
+                setProject(data.data);
                 setLoading(false);
             })
             .catch((error) => {
@@ -40,7 +40,7 @@ const Project = () => {
             case "Overview":
                 return <Overview project={project} />;
             case "Investment Details":
-                return <InvestmentDetails investment={project.investment} />;
+                return <InvestmentDetails investment={project.investmentDetails} />;
             case "Financial Details":
                 return <FinancialDetails finance={project.finance} />;
             case "Documents":
