@@ -15,11 +15,17 @@ import TabbedWindow from "@components/common/TabbedWindow";
 import * as projectApi from "@api/project";
 import LoadingIcon from "@components/common/LoadingIcon";
 
+import { useAuthContext } from "@context/AuthContext";
+
 const Project = () => {
     const { id } = useParams();
     const [project, setProject] = useState(null);
     const [loading, setLoading] = useState(true);
     const [currentTab, setCurrentTab] = useState("Overview");
+
+    const { state } = useAuthContext();
+
+    const { current } = state;
 
     useEffect(() => {
         // Get the project data from the API
@@ -42,9 +48,9 @@ const Project = () => {
             case "Investment Details":
                 return <InvestmentDetails investment={project.investmentDetails} />;
             case "Financial Details":
-                return <FinancialDetails finance={project.finance} />;
+                return <FinancialDetails finance={project.financialDetails} />;
             case "Documents":
-                return <Documents legal={project.legal} />;
+                return <Documents legal={project.documents} />;
             case "Status":
                 return <Status status={project.status} />;
             case "Revenue Generated":
@@ -66,12 +72,10 @@ const Project = () => {
             "Revenue Generated",
         ];
 
-        if (1) {
+        if (project.ownedBy._id == current._id) {
             const newTabs = tabs.slice(0, 5).concat(["Investments Received"]);
             return newTabs;
-        }
-
-        if (project.status.current == "Electricity Generated") {
+        } else if (project.status.current == "Electricity Generated" && current.investments.includes(project._id)) {
             return tabs;
         } else {
             return tabs.slice(0, 5);

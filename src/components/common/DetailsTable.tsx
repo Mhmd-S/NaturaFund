@@ -1,4 +1,5 @@
 import React from "react";
+import { normalizeCamelCase } from "@utils/extractHeader";
 
 type DetailsTableProps = {
     title?: string;
@@ -14,13 +15,13 @@ const DetailsTable = ({ title, items }: DetailsTableProps) => {
                 </h4>
             )}
             <dl className="-my-3 divide-y divide-gray-100 text-sm">
-                {Object.entries(items).map(([key, value], index) => (
+                {Object.keys(items).map((key, index) => (
                     <div
                         key={index}
                         className="grid grid-cols-1 gap-1 p-3 even:bg-gray-50 sm:grid-cols-3 sm:gap-4"
                     >
-                        <dt className="font-medium text-gray-900 capitalize">{key}</dt>
-                        <dd className="text-gray-700 sm:col-span-2">{value}</dd>
+                        <dt className="font-medium text-gray-900 capitalize">{normalizeCamelCase(key)}</dt>
+                        <dd className="text-gray-700 sm:col-span-2">{items[key]}</dd>
                     </div>
                 ))}
             </dl>

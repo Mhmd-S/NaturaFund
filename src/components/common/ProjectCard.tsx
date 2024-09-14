@@ -34,13 +34,13 @@ const ProjectCard = ({ project }) => {
                             {project.name}
                         </h3>
                         <p className="mt-2 text-xs font-medium text-gray-500 sm:mt-0">
-                            by {project.ownedBy}
+                            by {project.ownedBy.registeredName}
                         </p>
                     </div>
 
                     <p className="mt-1 text-sm text-gray-700">{project.description}</p>
 
-                    <div className="mt-4 sm:flex sm:items-center sm:gap-2">
+                    {/* <div className="mt-4 sm:flex sm:items-center sm:gap-2">
                         <div className="flex items-center gap-2 text-gray-500">
                             <FontAwesomeIcon icon={faCalendarAlt} className="text-indigo-500" />
                             <p className="text-xs font-medium">
@@ -55,15 +55,10 @@ const ProjectCard = ({ project }) => {
                         <div className="flex items-center gap-2 text-gray-500">
                             <FontAwesomeIcon icon={faDollar} className="text-indigo-500" />
                             <p className="text-xs font-medium">
-                                {
-                                    project.financialDetails.projections.profitabilityMetrics.IRR[
-                                        "Base Case"
-                                    ]
-                                }{" "}
-                                IRR
+                                {project.financialDetails.IRR["Base Case"]} IRR
                             </p>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </article>

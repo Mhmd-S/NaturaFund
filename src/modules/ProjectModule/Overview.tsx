@@ -1,12 +1,12 @@
 import DetailsTable from "@components/common/DetailsTable";
 
 const Overview = ({ project }) => {
-    // const getCompanyDetails = () => {
-    //     const companyDetails = project.ownedBy;
-    //     // Remove unwanted fields
-    //     const { description, ...rest } = companyDetails;
-    //     return rest;
-    // };
+    const getCompanyDetails = () => {
+        const companyDetails = project.ownedBy;
+        // Remove unwanted fields
+        const { introduction, registeredName, _id, ...rest } = companyDetails;
+        return rest;
+    };
 
     return (
         <>
@@ -14,7 +14,7 @@ const Overview = ({ project }) => {
             <img
                 alt=""
                 src={project.image}
-                className="inset-0 h-full w-full object-cover rounded-lg image-rendering:pixelated"
+                className="inset-0 size-96 object-cover rounded-lg image-rendering:pixelated"
             />
             {/* Description */}
             <div className="lg:py-8">
@@ -22,7 +22,7 @@ const Overview = ({ project }) => {
                 <h3>{project.type}</h3>
                 <article className="space-y-4 text-gray-600">
                     <p>
-                        By: <strong>{project.ownedBy}</strong>
+                        By: <strong>{project.ownedBy.registeredName}</strong>
                     </p>
                     <p>{project.description}</p>
                 </article>
@@ -31,12 +31,12 @@ const Overview = ({ project }) => {
             <div>
                 <h2 className="text-3xl py-4 font-semibold">Company Profile</h2>
                 <article className="space-y-4 text-gray-600">
-                    {/* <p>{project.ownedBy.description}</p> */}
+                    <p>{project.ownedBy.introduction}</p>
                 </article>
             </div>
             <div>
                 <h2 className="text-3xl py-4 font-semibold">Company Info</h2>
-                {/* <DetailsTable items={getCompanyDetails()} /> */}
+                <DetailsTable items={getCompanyDetails()} />
             </div>
         </>
     );

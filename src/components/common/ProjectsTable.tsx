@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
-import extractHeader from "@utils/extractHeader";
+import {normalizeCamelCase} from "@utils/extractHeader";
 
 const ProjectsTable = ({ data, handleOnClick }) => {
     return (
@@ -16,7 +16,7 @@ const ProjectsTable = ({ data, handleOnClick }) => {
                                     key={index}
                                     className="text-left whitespace-nowrap px-4 py-2 font-medium text-gray-900 cursor-pointer"
                                 >
-                                    {extractHeader(header)}
+                                    {normalizeCamelCase(header)}
                                     <FontAwesomeIcon icon={faChevronDown} className="ml-1" />
                                 </th>
                             );
