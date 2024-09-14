@@ -135,6 +135,7 @@ const Nav = () => {
             <div className="px-4">
                 <ul className="mt-6 space-y-1">
                     {MENU_ITEMS.map((item) => {
+                        if (current.userType === "investor" && item.name === "Investee") return null;
                         return <NavItem item={item} location={location} />;
                     })}
                 </ul>
