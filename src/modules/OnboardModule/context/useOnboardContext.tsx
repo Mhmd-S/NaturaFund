@@ -1,15 +1,25 @@
-import { useContext, createContext, useState, useMemo } from "react";
+import { useContext, createContext, useState, useMemo, useEffect } from "react";
 import { updateUser } from "@api/user";
+import { useAuthContext } from "@context/AuthContext";
 
 // ToDo: Add Fetcing to check the verification status, or maybe it is found in the user info
 
 const OnboardContext = createContext();
 
 export const OnboardProvider = ({ children }) => {
-    const [stage, setStage] = useState(1);
+    const [stage, setStage] = useState(0);
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState({});
     const [error, setError] = useState(null);
+
+    const { state } = useAuthContext();
+
+    useEffect(() => {
+        console.log(state.current)
+        if (state.current.verified == "pending") {
+            setStage(3);
+        }
+    }, [state.current]);
 
     const goNext = () => {
         if (stage < 3) {

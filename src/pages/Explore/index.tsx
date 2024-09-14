@@ -1,82 +1,7 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ProjectCard from "@components/common/ProjectCard";
 import SearchBar from "@components/common/SearchBar";
-import Pagination from "@components/common/Pagination";
-
-const dummyProjects = [
-    {
-        name: "Regina Solar Project",
-        type: "Solar",
-        investment: {
-            type: "Equity",
-            return: "10%",
-        },
-        owner: "Owner 1",
-        description:
-            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde recusandae repellendus nihil inventore, temporibus dolor sapiente magni exercitationem? Reiciendis eaque maxime magni aspernatur amet. Atque sit odit a cum velit!",
-        image: "https://picsum.photos/400/294",
-    },
-    {
-        name: "Asia Pacific University",
-        type: "Wind",
-        investment: {
-            type: "Lending",
-            return: "5%",
-        },
-        owner: "Owner 2",
-        description:
-            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde recusandae repellendus nihil inventore, temporibus dolor sapiente magni exercitationem? Reiciendis eaque maxime magni aspernatur amet. Atque sit odit a cum velit!",
-        image: "https://picsum.photos/400/295",
-    },
-    {
-        name: "The Solar Project",
-        type: "Solar",
-        investment: {
-            type: "Equity",
-            return: "15%",
-        },
-        owner: "Owner 3",
-        description:
-            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde recusandae repellendus nihil inventore, temporibus dolor sapiente magni exercitationem? Reiciendis eaque maxime magni aspernatur amet. Atque sit odit a cum velit!",
-        image: "https://picsum.photos/400/296",
-    },
-    {
-        name: "The Solar Project",
-        type: "Solar",
-        investment: {
-            type: "Equity",
-            return: "15%",
-        },
-        owner: "Owner 3",
-        description:
-            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde recusandae repellendus nihil inventore, temporibus dolor sapiente magni exercitationem? Reiciendis eaque maxime magni aspernatur amet. Atque sit odit a cum velit!",
-        image: "https://picsum.photos/400/297",
-    },
-    {
-        name: "The Solar Project",
-        type: "Solar",
-        investment: {
-            type: "Equity",
-            return: "15%",
-        },
-        owner: "Owner 3",
-        description:
-            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde recusandae repellendus nihil inventore, temporibus dolor sapiente magni exercitationem? Reiciendis eaque maxime magni aspernatur amet. Atque sit odit a cum velit!",
-        image: "https://picsum.photos/400/298",
-    },
-    {
-        name: "The Solar Project",
-        type: "Solar",
-        investment: {
-            type: "Equity",
-            return: "15%",
-        },
-        owner: "Owner 3",
-        description:
-            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde recusandae repellendus nihil inventore, temporibus dolor sapiente magni exercitationem? Reiciendis eaque maxime magni aspernatur amet. Atque sit odit a cum velit!",
-        image: "https://picsum.photos/400/299",
-    },
-];
+import * as projectApi from "@api/project";
 
 const filterOptions = [
     {
@@ -118,7 +43,82 @@ const filterOptions = [
     },
 ];
 
+// type Project = {
+//     ownedBy: Record<string, any>;
+//     name: string;
+//     type: "Solar" | "Hydro" | "Wind";
+//     description?: string;
+//     image?: string;
+//     investmentDetails?: Record<string, any>;
+//     financialDetails?: Record<string, any>;
+//     status: "Planning" | "Funding" | "Execution" | "Electricity Generated";
+//     documents?: string[];
+//     payments?: Record<string, any>[];
+//     investments?: Record<string, any>[];
+// };
+
 const Explore = () => {
+    const [page, setPage] = useState(1);
+    const [isLoading, setIsLoading] = useState(false);
+    const [projects, setProjects] = useState([]);
+    const [errors, setErrors] = useState<String | null>(null);
+    const [stopFetching, setStopFetching] = useState(false);
+    const containerRef = useRef(null);
+
+    useEffect(() => {
+        fetchProjects();
+    }, []);
+
+    useEffect(() => {
+        const container = containerRef.current;
+
+        const options = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.1,
+        };
+
+        const observer = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) {
+                if (!stopFetching) {
+                    // <-- Check if stopFetching is false before fetching more projects
+                    fetchProjects();
+                }
+            }
+        }, options);
+
+        if (container) {
+            observer.observe(container);
+        }
+
+        return () => {
+            observer.disconnect();
+        };
+    }, [stopFetching, page]);
+
+    const fetchProjects = async () => {
+        if (stopFetching) {
+            return;
+        }
+
+        setIsLoading(true);
+        const res = await projectApi.getProjects(page);
+        if (res.status === "success") {
+            if (res.data.length === 0) {
+                setStopFetching(true);
+                setIsLoading(false);
+                return;
+            }
+
+            setProjects((prevProjects) => prevProjects.concat(res.data));
+            setPage((prevPage) => prevPage + 1);
+            setIsLoading(false);
+            return;
+        }
+
+        setErrors("Could not fetch projects");
+        setIsLoading(false);
+    };
     return (
         <div className="w-full h-full p-6 bg-gray-300/20 space-y-6 overflow-y-auto">
             <div className="w-full p-4 flex justify-between items-center bg-white rounded-2xl">
@@ -127,8 +127,11 @@ const Explore = () => {
                     <SearchBar />
                 </div>
             </div>
-            <div className="w-full p-4 grid grid-cols-1 grid-flow-row place-items-center gap-8 bg-white rounded-2xl">
-                {dummyProjects.map((project, index) => (
+            <div
+                className="w-full p-4 grid grid-cols-1 grid-flow-row place-items-center gap-8 bg-white rounded-2xl"
+                ref={containerRef}
+            >
+                {projects.map((project, index) => (
                     <ProjectCard project={project} key={index} />
                 ))}
             </div>

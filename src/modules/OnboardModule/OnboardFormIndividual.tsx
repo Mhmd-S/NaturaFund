@@ -60,7 +60,7 @@ const VerficationFormIndividual = () => {
             case 2:
                 return <ProofOfAddress />;
             case 3:
-                return <ResultPage {...RESULTS.approved} />;
+                return <ResultPage {...RESULTS.pending} />;
             default:
                 return <ResultPage {...RESULTS.pending} />;
         }

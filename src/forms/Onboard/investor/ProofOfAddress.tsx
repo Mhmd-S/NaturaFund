@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 import useOnboardContext from "@modules/OnboardModule/context/useOnboardContext";
 
@@ -38,9 +37,10 @@ const ProofOfAddress = () => {
             verified: "pending",
             _id: state.current._id,
         });
+
         const { status } = response;
 
-        if (status === 200) {
+        if (status === "success") {
             goNext();
         } else {
             setError("An error occurred, please try again.");

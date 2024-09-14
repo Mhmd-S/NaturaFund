@@ -17,6 +17,8 @@ const CompanyInformationForm = () => {
     const {
         register,
         handleSubmit,
+        clearErrors,
+        resetField,
         formState: { errors },
     } = useForm();
 
@@ -31,9 +33,10 @@ const CompanyInformationForm = () => {
                 <h2 className="text-3xl pb-4 font-semibold capatalize">Company Information</h2>
                 <div className="grid grid-cols-2 gap-4">
                     <FormField
-                        name="registered_name"
+                        name="registeredName"
                         type="text"
                         label="Registered Name"
+                        defaultValue={data.registered_name}
                         register={register}
                         errors={errors}
                         placeholder="ex. NaturaFund Sdn Bhd"
@@ -47,11 +50,11 @@ const CompanyInformationForm = () => {
                     />
                     <FormSelect
                         register={register}
-                        name="regitrations_type"
+                        name="regitrationsType"
                         label="Registration Type"
                         errors={errors}
                         options={["Sdn Bhd", "Bhd", "LLP", "PLC"]}
-                        defaultValue="DEFAULT"
+                        defaultValue={data.regitrations_type}
                         validationRules={{
                             required: "Industry is required",
                             validate: (value) =>
@@ -59,9 +62,10 @@ const CompanyInformationForm = () => {
                         }}
                     />
                     <FormField
-                        name="registration_number"
+                        name="registrationNumber"
                         type="text"
                         label="Registration Number"
+                        defaultValue={data.registration_number}
                         register={register}
                         errors={errors}
                         placeholder="Use the new format, e.g. 2020XXXXXXXX"
@@ -75,8 +79,9 @@ const CompanyInformationForm = () => {
                         }}
                     />
                     <FormField
-                        name="incorporation_date"
+                        name="incorporationDate"
                         type="date"
+                        defaultValue={data.incorporation_date}
                         label="Incorporation Date"
                         register={register}
                         errors={errors}
@@ -90,6 +95,7 @@ const CompanyInformationForm = () => {
                     name="address"
                     label="Address"
                     register={register}
+                    defaultValue={data.address}
                     errors={errors}
                     placeholder="ex. 1, Persiaran Kewajipan, Usj 1, 47600 Subang Jaya, Selangor"
                     validationRules={{
@@ -106,6 +112,7 @@ const CompanyInformationForm = () => {
                     name="description"
                     label="Description"
                     register={register}
+                    defaultValue={data.description}
                     errors={errors}
                     placeholder="ex. NaturaFund is a financial services company that provides investment and wealth management services."
                     validationRules={{
@@ -117,21 +124,18 @@ const CompanyInformationForm = () => {
                     }}
                 />
                 <FormFileUpload
-                    name="business_license"
+                    name="businessLicense"
                     label="Business License"
+                    currentFile={data.business_license}
+                    accept="image/*"
+                    acceptSize={30000}
+                    inputGuidelines="Please upload a business license"
+                    clearErrors={clearErrors}
                     register={register}
                     errors={errors}
+                    resetField={resetField}
                     validationRules={{
                         required: "Business license is required",
-                    }}
-                />
-                <FormFileUpload
-                    name="company_logo"
-                    label="Company Logo"
-                    register={register}
-                    errors={errors}
-                    validationRules={{
-                        required: "Company logo is required",
                     }}
                 />
                 <FormButton

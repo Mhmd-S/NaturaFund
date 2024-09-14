@@ -6,13 +6,12 @@ export const updateUser = async (updateData) => {
     try {
         const response = await api.request({
             method: "PUT",
-            url: `user`,
-            params: updateData._id,
+            url: `user/${updateData._id}`,
             data: updateData,
         });
 
         const { status, data } = response;
-
+        console.log(response);
         successHandler(
             { data, status },
             {

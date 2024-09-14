@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const ResultPage = ({ title, description, icon, buttonText, onClick }) => {
     return (
-        <div className="col-span-2 place-self-center w-max flex flex-col justify-center items-center gap-5">
+        <div className="h-full col-span-2 place-self-center w-max flex flex-col justify-center items-center gap-5">
             <div className="flex items-center justify-center size-24 rounded-full bg-brand-100">
                 <FontAwesomeIcon icon={icon} className="text-brand-800 text-3xl" />
             </div>

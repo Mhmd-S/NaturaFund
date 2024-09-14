@@ -7,24 +7,46 @@ import FileUploadField from "@forms/FormComponents/FormFileUpload";
 import FormField from "@forms/FormComponents/FormField";
 import FormButton from "@forms/FormComponents/FormButton";
 
+import { updateUser } from "@api/user";
+import FormGeneralError from "@forms/FormComponents/FormGeneralError";
+
 const RepresentativeForm = () => {
-    const { data, setData, goNext, goPrev } = useOnboardContext();
+    const { data, goPrev, goNext, loading, setLoading, error, setError } = useOnboardContext();
 
     const {
         register,
         handleSubmit,
         resetField,
-        setError,
+        clearErrors,
         formState: { errors },
     } = useForm();
 
-    const onSubmit = (formData) => {
-        setData({ ...data, ...formData });
-        goNext();
+    const onSubmit = async (formData) => {
+        setLoading(true);
+        setError(null);
+
+        formData.addressProof = URL.createObjectURL(formData.addressProof[0]);
+
+        const response = await updateUser({
+            ...data,
+            ...formData,
+            verified: "pending",
+            _id: state.current._id,
+        });
+
+        const { status } = response;
+
+        if (status === "success") {
+            goNext();
+        } else {
+            setError("An error occurred, please try again.");
+        }
+
+        setLoading(false);
     };
 
     return (
-        <FormWrapper onSubmit={handleSubmit(onSubmit)}>
+        <FormWrapper loading={loading} onSubmit={handleSubmit(onSubmit)}>
             <div className="w-3/4 grid grid-flow-row gap-y-5">
                 <h2 className="text-3xl font-semibold capatalize">Personal Details</h2>
                 <p className="text-sm text-gray-light">
@@ -32,6 +54,7 @@ const RepresentativeForm = () => {
                     managing the account. The repesentative must have the authority to act on behalf
                     of the company.
                 </p>
+                <FormGeneralError message={error} />
                 <div className="grid grid-cols-2 gap-4">
                     <FormField
                         name="firstName"
@@ -82,7 +105,7 @@ const RepresentativeForm = () => {
                         }}
                     />
                     <FormField
-                        name="work_email"
+                        name="workEmail"
                         type="email"
                         label="Work Email"
                         register={register}
@@ -99,27 +122,48 @@ const RepresentativeForm = () => {
                     />
                 </div>
                 <FileUploadField
-                    type="file"
+                    inputGuidelines="Please upload a selfie with your ID"
+                    accept="image/*"
+                    acceptSize={30000}
                     label="Front of ID"
-                    name="profilePicture1"
+                    name="frontID"
                     register={register}
+                    currentFile={data.frontID && data.frontID[0]}
                     errors={errors}
+                    clearErrors={clearErrors}
                     resetField={resetField}
-                    setError={setError}
                     validationRules={{
-                        required: "Profile Picture is required",
+                        required: "File is required",
                     }}
                 />
                 <FileUploadField
-                    type="file"
-                    label={"Selfie with ID"}
-                    name="profilePicture1"
+                    inputGuidelines="Please upload a selfie with your ID"
+                    accept="image/*"
+                    acceptSize={30000}
+                    label={"Back of ID"}
+                    currentFile={data.backID && data.backID[0]}
+                    name="backID"
                     register={register}
                     errors={errors}
                     resetField={resetField}
-                    setError={setError}
+                    clearErrors={clearErrors}
                     validationRules={{
-                        required: "Profile Picture is required",
+                        required: "File is required",
+                    }}
+                />
+                <FileUploadField
+                    inputGuidelines="Please upload a selfie with your ID"
+                    accept="image/*"
+                    acceptSize={30000}
+                    label={"Selfie with ID"}
+                    currentFile={data.selfieID && data.selfieID[0]}
+                    name="selfieID"
+                    register={register}
+                    errors={errors}
+                    clearErrors={clearErrors}
+                    resetField={resetField}
+                    validationRules={{
+                        required: "File is required",
                     }}
                 />
                 <div className=" p-2 grid grid-cols-2 gap-10">

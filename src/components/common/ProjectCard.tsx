@@ -1,12 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSolarPanel, faCalendarAlt, faDollar } from "@fortawesome/free-solid-svg-icons";
+import { faSolarPanel, faCalendarAlt, faDollar, faUp } from "@fortawesome/free-solid-svg-icons";
 
 const ProjectCard = ({ project }) => {
-    const [isHovered, setIsHovered] = React.useState(false);
+    const navigate = useNavigate();
 
     return (
-        <article className="rounded-xl bg-white p-4 ring-1 ring-indigo-50 sm:p-6 lg:p-8 cursor-pointer hover:ring-indigo-500">
+        <article
+            onClick={() => navigate(`/project/${project._id}`)}
+            className="rounded-xl bg-white p-4 ring-1 ring-indigo-50 sm:p-6 lg:p-8 cursor-pointer hover:ring-indigo-500"
+        >
             <div className="flex items-start sm:gap-8">
                 <div
                     className="hidden sm:grid sm:size-20 sm:shrink-0 sm:place-content-center sm:rounded-full sm:border-2 sm:border-indigo-500 "
@@ -19,31 +23,29 @@ const ProjectCard = ({ project }) => {
 
                 <div>
                     <strong className="rounded border border-indigo-500 bg-indigo-500 px-3 py-1.5 mr-2 text-[10px] font-medium text-white">
-                        Solar
+                        {project.type}
                     </strong>
                     <strong className="rounded border border-indigo-500 bg-indigo-500 px-3 py-1.5 mr-2 text-[10px] font-medium text-white">
-                        Equity
+                        {project.investmentDetails.type}
                     </strong>
 
                     <div className="mt-4 text-lg font-medium sm:text-xl">
                         <h3 href="#" className="hover:underline">
-                            Penang Solar Farm Inc.
+                            {project.name}
                         </h3>
                         <p className="mt-2 text-xs font-medium text-gray-500 sm:mt-0">
-                            By UNESCO Solar Farms
+                            by {project.ownedBy}
                         </p>
                     </div>
 
-                    <p className="mt-1 text-sm text-gray-700">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam nulla amet
-                        voluptatum sit rerum, atque, quo culpa ut necessitatibus eius suscipit eum
-                        accusamus, aperiam voluptas exercitationem facere aliquid fuga. Sint.
-                    </p>
+                    <p className="mt-1 text-sm text-gray-700">{project.description}</p>
 
                     <div className="mt-4 sm:flex sm:items-center sm:gap-2">
                         <div className="flex items-center gap-2 text-gray-500">
                             <FontAwesomeIcon icon={faCalendarAlt} className="text-indigo-500" />
-                            <p className="text-xs font-medium">15/12/2019 Closing Date</p>
+                            <p className="text-xs font-medium">
+                                {project.investmentDetails.features["End Date"]} Closing Date
+                            </p>
                         </div>
 
                         <span className="hidden sm:block" aria-hidden="true">
@@ -52,9 +54,15 @@ const ProjectCard = ({ project }) => {
 
                         <div className="flex items-center gap-2 text-gray-500">
                             <FontAwesomeIcon icon={faDollar} className="text-indigo-500" />
-                            <p className="text-xs font-medium">$150,000 Investment Target</p>
+                            <p className="text-xs font-medium">
+                                {
+                                    project.financialDetails.projections.profitabilityMetrics.IRR[
+                                        "Base Case"
+                                    ]
+                                }{" "}
+                                IRR
+                            </p>
                         </div>
-
                     </div>
                 </div>
             </div>
