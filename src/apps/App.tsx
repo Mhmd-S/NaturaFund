@@ -11,15 +11,15 @@ const App = () => {
     const { state } = useAuthContext();
     const { current } = state;
 
-    // useEffect(() => {
-    //     if (current.verified !== "verified") {
-    //         navigate("/onboarding");
-    //     }
-    // }, [current]);
+    useEffect(() => {
+        if (current.verified !== "verified") {
+            navigate("/onboarding");
+        }
+    }, [current]);
 
     return (
         <div className="w-screen h-screen grid grid-cols-[20%_80%] grid-flow-row divide-x divide-y">
-            {current.verified !== "verified" && (
+            {current.verified == "verified" && (
                 <>
                     <Header />
                     <Nav />

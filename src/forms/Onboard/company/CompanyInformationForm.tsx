@@ -36,7 +36,7 @@ const CompanyInformationForm = () => {
                         name="registeredName"
                         type="text"
                         label="Registered Name"
-                        defaultValue={data.registered_name}
+                        defaultValue={data.registeredName}
                         register={register}
                         errors={errors}
                         placeholder="ex. NaturaFund Sdn Bhd"
@@ -54,7 +54,7 @@ const CompanyInformationForm = () => {
                         label="Registration Type"
                         errors={errors}
                         options={["Sdn Bhd", "Bhd", "LLP", "PLC"]}
-                        defaultValue={data.regitrations_type}
+                        defaultValue={data.regitrationsType}
                         validationRules={{
                             required: "Industry is required",
                             validate: (value) =>
@@ -65,7 +65,7 @@ const CompanyInformationForm = () => {
                         name="registrationNumber"
                         type="text"
                         label="Registration Number"
-                        defaultValue={data.registration_number}
+                        defaultValue={data.registrationNumber}
                         register={register}
                         errors={errors}
                         placeholder="Use the new format, e.g. 2020XXXXXXXX"
@@ -81,7 +81,7 @@ const CompanyInformationForm = () => {
                     <FormField
                         name="incorporationDate"
                         type="date"
-                        defaultValue={data.incorporation_date}
+                        defaultValue={data.incorporationDate}
                         label="Incorporation Date"
                         register={register}
                         errors={errors}
@@ -101,7 +101,7 @@ const CompanyInformationForm = () => {
                     validationRules={{
                         required: "Address is required",
                         pattern: {
-                            value: /^\d+,\s?[A-Za-z\s]+(?:,\s?[A-Za-z\s]+)*,\s?\d{5}\s?[A-Za-z\s]+,\s?[A-Za-z\s]+$/,
+                            value: /^\d+\s?,\s?[a-zA-Z\s]+\s?,\s[a-zA-Z0-9\s]+\s?,\s?[0-9]{5}\s?[a-zA-z\s]+\s?,\s?[a-zA-z]+$/,
                             message:
                                 "The address should include: street number, street name, region, and town/city, state.",
                         },
@@ -126,7 +126,7 @@ const CompanyInformationForm = () => {
                 <FormFileUpload
                     name="businessLicense"
                     label="Business License"
-                    currentFile={data.business_license}
+                    currentFile={data.businessLicense && data.businessLicense[0]}
                     accept="image/*"
                     acceptSize={30000}
                     inputGuidelines="Please upload a business license"

@@ -78,7 +78,7 @@ const EmailForm = ({ setCurrentStep, setEmail }) => {
                         },
                         {
                             name: "Corporation",
-                            value: "corportaion",
+                            value: "corporation",
                             icon: faInstitution,
                         },
                     ]}

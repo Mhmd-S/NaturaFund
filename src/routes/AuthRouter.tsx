@@ -13,15 +13,15 @@ import NotFound from "@pages/NotFound";
 
 export default function AuthRouter() {
     return (
-            <Routes>
-                <Route element={<Landing />} path="/" />
-                <Route element={<Login />} path="/login" />
-                <Route element={<About />} path="/about" />
-                <Route element={<Navigate to="/login" replace />} path="/logout" />
-                <Route element={<Registeration />} path="/registration" />
-                {/* <Route element={<ForgetPassword />} path="/forgetpassword" />
+        <Routes>
+            <Route element={<Landing />} path="/" />
+            <Route element={<Login />} path="/login" />
+            <Route element={<About />} path="/about" />
+            <Route element={<Navigate to="/login" replace />} path="/logout" />
+            <Route element={<Registeration />} path="/registration" />
+            {/* <Route element={<ForgetPassword />} path="/forgetpassword" />
             <Route element={<ResetPassword />} path="/resetpassword/:userId/:resetToken" /> */}
-                <Route path="*" element={<NotFound />} />
-            </Routes>
+            <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
     );
 }

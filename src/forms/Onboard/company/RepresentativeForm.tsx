@@ -7,11 +7,8 @@ import FileUploadField from "@forms/FormComponents/FormFileUpload";
 import FormField from "@forms/FormComponents/FormField";
 import FormButton from "@forms/FormComponents/FormButton";
 
-import { updateUser } from "@api/user";
-import FormGeneralError from "@forms/FormComponents/FormGeneralError";
-
 const RepresentativeForm = () => {
-    const { data, goPrev, goNext, loading, setLoading, error, setError } = useOnboardContext();
+    const { data, goPrev, goNext, loading, setData } = useOnboardContext();
 
     const {
         register,
@@ -22,27 +19,8 @@ const RepresentativeForm = () => {
     } = useForm();
 
     const onSubmit = async (formData) => {
-        setLoading(true);
-        setError(null);
-
-        formData.addressProof = URL.createObjectURL(formData.addressProof[0]);
-
-        const response = await updateUser({
-            ...data,
-            ...formData,
-            verified: "pending",
-            _id: state.current._id,
-        });
-
-        const { status } = response;
-
-        if (status === "success") {
-            goNext();
-        } else {
-            setError("An error occurred, please try again.");
-        }
-
-        setLoading(false);
+        setData({ ...data, representative: { ...formData } });
+        goNext()
     };
 
     return (
@@ -54,11 +32,11 @@ const RepresentativeForm = () => {
                     managing the account. The repesentative must have the authority to act on behalf
                     of the company.
                 </p>
-                <FormGeneralError message={error} />
                 <div className="grid grid-cols-2 gap-4">
                     <FormField
                         name="firstName"
                         type="text"
+                        defaultValue={data.representative && data.representative.firstName}
                         label="First Name"
                         register={register}
                         errors={errors}
@@ -76,6 +54,7 @@ const RepresentativeForm = () => {
                         name="lastName"
                         type="text"
                         label="Last Name"
+                        defaultValue={data.representative && data.representative.lastName}
                         register={register}
                         errors={errors}
                         placeholder="ex. Doe"
@@ -93,6 +72,7 @@ const RepresentativeForm = () => {
                         type="text"
                         label="Phone Number"
                         register={register}
+                        defaultValue={data.representative && data.representative.phoneNumber}
                         errors={errors}
                         placeholder="ex. 123123123"
                         validationRules={{
@@ -110,6 +90,7 @@ const RepresentativeForm = () => {
                         label="Work Email"
                         register={register}
                         errors={errors}
+                        defaultValue={data.representative && data.representative.workEmail}
                         placeholder="ex. johndoe123@email.com"
                         validationRules={{
                             required: "Email is required",
@@ -128,7 +109,7 @@ const RepresentativeForm = () => {
                     label="Front of ID"
                     name="frontID"
                     register={register}
-                    currentFile={data.frontID && data.frontID[0]}
+                    currentFile={data.representative && data.representative.frontID[0]}
                     errors={errors}
                     clearErrors={clearErrors}
                     resetField={resetField}
@@ -141,7 +122,7 @@ const RepresentativeForm = () => {
                     accept="image/*"
                     acceptSize={30000}
                     label={"Back of ID"}
-                    currentFile={data.backID && data.backID[0]}
+                    currentFile={data.representative && data.representative.backID[0]}
                     name="backID"
                     register={register}
                     errors={errors}
@@ -156,7 +137,7 @@ const RepresentativeForm = () => {
                     accept="image/*"
                     acceptSize={30000}
                     label={"Selfie with ID"}
-                    currentFile={data.selfieID && data.selfieID[0]}
+                    currentFile={data.representative && data.representative.selfieID[0]}
                     name="selfieID"
                     register={register}
                     errors={errors}
@@ -173,7 +154,11 @@ const RepresentativeForm = () => {
                     >
                         Back
                     </button>
-                    <FormButton text="Next" disable={Object.keys(errors).length !== 0} />
+                    <FormButton
+                        type="submit"
+                        text="Next"
+                        disable={Object.keys(errors).length !== 0}
+                    />
                 </div>
             </div>
         </FormWrapper>

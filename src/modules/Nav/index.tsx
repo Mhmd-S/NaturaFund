@@ -126,7 +126,7 @@ const MENU_ITEMS = [
 const Nav = () => {
     const location = useLocation();
 
-    const { state } = useAuthContext();
+    const { state, authContextAction } = useAuthContext();
 
     const { current } = state;
 
@@ -152,6 +152,7 @@ const Nav = () => {
                     </p>
                 </div>
                 <FontAwesomeIcon
+                    onClick={()=>{authContextAction.logout(); window.location.reload();}}
                     icon={faArrowRightFromBracket}
                     className="text-brand-800 cursor-pointer p-2 rounded-lg transition-color hover:bg-brand-800 hover:text-white"
                 />
