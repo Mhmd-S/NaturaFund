@@ -1,46 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProjectCard from "@components/common/ProjectCard";
+import * as projectAPI from "@api/project";
 import { Link } from "react-router-dom";
+import LoadingIcon from "@components/common/LoadingIcon";
 
-const dummyProjects = [
-    {
-        name: "Regina Solar Project",
-        type: "Solar",
-        investment: {
-            type: "Equity",
-            return: "10%",
-        },
-        owner: "Owner 1",
-        description:
-            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde recusandae repellendus nihil inventore, temporibus dolor sapiente magni exercitationem? Reiciendis eaque maxime magni aspernatur amet. Atque sit odit a cum velit!",
-        image: "https://via.placeholder.com/150",
-    },
-    {
-        name: "Asia Pacific University",
-        type: "Wind",
-        investment: {
-            type: "Lending",
-            return: "5%",
-        },
-        owner: "Owner 2",
-        description:
-            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde recusandae repellendus nihil inventore, temporibus dolor sapiente magni exercitationem? Reiciendis eaque maxime magni aspernatur amet. Atque sit odit a cum velit!",
-        image: "https://via.placeholder.com/150",
-    },
-];
+const Projects = () => {
+    const [projects, setProjects] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-const Projects = ({ setProjectInfo }) => {
+    useEffect(() => {
+        projectAPI.getProjects(1).then((response) => {
+            setProjects(response.data);
+            setLoading(false);
+        });
+    }, []);
+
     return (
         <div className="min-h-90 p-6 bg-white flex flex-col rounded-2xl">
-            <div className="flex justify-between items-center">
-                <p className="text-lg font-bold text-brand-900">New Projects</p>
-                <Link className="text-brand-900 hover:underline">Go To Explore</Link>
-            </div>
-            <div className="w-full p-4 grid grid-cols-1 grid-flow-row place-items-center gap-8 bg-white rounded-2xl">
-                {dummyProjects.map((project, index) => (
-                    <ProjectCard key={index} project={project} setProjectInfo={setProjectInfo} />
-                ))}
-            </div>
+            {loading ? (
+                <LoadingIcon />
+            ) : (
+                <>
+                    <div className="flex justify-between items-center">
+                        <p className="text-lg font-bold text-brand-900">New Projects</p>
+                        <Link to="/explore" className="text-brand-900 hover:underline">
+                            Go To Explore
+                        </Link>
+                    </div>
+                    <div className="w-full p-4 grid grid-cols-1 grid-flow-row place-items-center gap-8 bg-white rounded-2xl">
+                        {projects.slice(0, 2).map((project, index) => (
+                            <ProjectCard key={index} project={project} />
+                        ))}
+                    </div>
+                </>
+            )}
         </div>
     );
 };
