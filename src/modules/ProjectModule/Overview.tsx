@@ -4,7 +4,7 @@ const Overview = ({ project }) => {
     const getCompanyDetails = () => {
         const companyDetails = project.ownedBy;
         // Remove unwanted fields
-        const { introduction, registeredName, _id, ...rest } = companyDetails;
+        const { userType, introduction, registeredName, _id, ...rest } = companyDetails;
         return rest;
     };
 

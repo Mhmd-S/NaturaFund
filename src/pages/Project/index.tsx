@@ -75,7 +75,7 @@ const Project = () => {
         if (project.ownedBy._id == current._id) {
             const newTabs = tabs.slice(0, 5).concat(["Investments Received"]);
             return newTabs;
-        } else if (project.status.current == "Electricity Generated" && current.investments.includes(project._id)) {
+        } else if (project.status.current == "Electricity Generated" && current?.investments.includes(project._id)) {
             return tabs;
         } else {
             return tabs.slice(0, 5);
