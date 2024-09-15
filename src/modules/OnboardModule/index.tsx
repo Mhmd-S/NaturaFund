@@ -20,12 +20,12 @@ const Onboard = () => {
             <OnboardProvider>
                 <StageIndicator
                     steps={
-                        current.userType === "investor"
+                        current.userType === "Investor"
                             ? ONBOARD_STEPS_INDIVIDUAL
                             : ONBOARD_STEPS_COMPANY
                     }
                 />
-                {current.userType === "investor" ? (
+                {current.userType === "Investor" ? (
                     <OnboardFormIndividual />
                 ) : (
                     <OnboardFormCompany />

@@ -2,7 +2,7 @@ import { api } from "@config/axiosConfig";
 import errorHandler from "@request/errorHandler";
 import successHandler from "@request/successHandler";
 
-type userType = "corporation" | "investor";
+type userType = "Corporation" | "Investor";
 
 export interface loginDataType {
     email: string;

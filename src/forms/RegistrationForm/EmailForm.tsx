@@ -73,12 +73,12 @@ const EmailForm = ({ setCurrentStep, setEmail }) => {
                     options={[
                         {
                             name: "Individual",
-                            value: "investor",
+                            value: "Investor",
                             icon: faUser,
                         },
                         {
                             name: "Corporation",
-                            value: "corporation",
+                            value: "Corporation",
                             icon: faInstitution,
                         },
                     ]}

@@ -5,7 +5,7 @@ import { useAuthContext } from "@context/AuthContext";
 type formDataType = {
     email: string;
     password: string;
-    userType: "investor" | "corporation";
+    userType: "Investor" | "Corporation";
 };
 
 export const useEmailForm = ({ setCurrentStep, setEmail }) => {
