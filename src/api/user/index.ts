@@ -24,3 +24,4 @@ export const updateUser = async (updateData) => {
         return errorHandler(error);
     }
 };
+
