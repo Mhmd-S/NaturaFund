@@ -3,14 +3,11 @@ import { useAuthContext } from "@context/AuthContext";
 import ProjectsTable from "@components/common/ProjectsTable";
 import SearchBar from "@components/common/SearchBar";
 import * as investmentApi from "@api/investment";
-import { useNavigate } from "react-router-dom";
 import LoadingIcon from "@components/common/LoadingIcon";
 
 // ToDo: cahnge the component name from index to something else
 
 const Portfolio = () => {
-    const navigate = useNavigate();
-
     const { state } = useAuthContext();
     const { current } = state;
 
@@ -28,6 +25,7 @@ const Portfolio = () => {
                     name: investment.projectId.name,
                     ...investment,
                     ...investment.projectId,
+                    status: investment.projectId.status.current,
                     projectId: investment.projectId._id,
                 }));
 

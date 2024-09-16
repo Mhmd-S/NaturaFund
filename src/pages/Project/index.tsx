@@ -13,6 +13,8 @@ import InvestmentsReceived from "@modules/ProjectModule/InvestmentsReceived";
 import TabbedWindow from "@components/common/TabbedWindow";
 
 import * as projectApi from "@api/project";
+import * as investmentApi from "@api/investment";
+
 import LoadingIcon from "@components/common/LoadingIcon";
 
 import { useAuthContext } from "@context/AuthContext";
@@ -20,6 +22,7 @@ import { useAuthContext } from "@context/AuthContext";
 const Project = () => {
     const { id } = useParams();
     const [project, setProject] = useState(null);
+    const [investedIn, setInvestedIn] = useState(false);
     const [loading, setLoading] = useState(true);
     const [currentTab, setCurrentTab] = useState("Overview");
 
@@ -39,6 +42,13 @@ const Project = () => {
                 console.error("Error fetching project data:", error);
                 setLoading(false);
             });
+
+        investmentApi.getInvestmentsByInvestor(current._id).then((data) => {
+            const investments = data.data.map((investment) => investment.projectId);
+            if (investments.includes(id)) {
+                setInvestedIn(true);
+            }
+        });
     }, [id]);
 
     const renderTab = () => {
@@ -75,7 +85,9 @@ const Project = () => {
         if (project.ownedBy._id == current._id) {
             const newTabs = tabs.slice(0, 5).concat(["Investments Received"]);
             return newTabs;
-        } else if (project.status.current == "Electricity Generated" && current?.investments.includes(project._id)) {
+        } else if (
+            project.status.current == "Electricity Generated" &&investedIn // If the user has invested in the project
+        ) {
             return tabs;
         } else {
             return tabs.slice(0, 5);

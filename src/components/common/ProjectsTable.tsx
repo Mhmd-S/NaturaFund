@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
@@ -11,10 +11,24 @@ type ProjectsTableProps = {
 };
 
 const ProjectsTable = ({ data, ignoreData }: ProjectsTableProps) => {
+    const [sortedData, setSortedData] = useState(data);
+    const [sortOrder, setSortOrder] = useState("asc");
+
     const navigate = useNavigate();
 
     const handleOnClick = (projectId: string) => {
         navigate(`/project/${projectId}`);
+    };
+
+    const handleSort = (header) => {
+        const newSortOrder = sortOrder === "asc" ? "desc" : "asc";
+        const sorted = [...sortedData].sort((a, b) => {
+            if (a[header] < b[header]) return newSortOrder === "asc" ? -1 : 1;
+            if (a[header] > b[header]) return newSortOrder === "asc" ? 1 : -1;
+            return 0;
+        });
+        setSortedData(sorted);
+        setSortOrder(newSortOrder);
     };
 
     return (
@@ -28,6 +42,7 @@ const ProjectsTable = ({ data, ignoreData }: ProjectsTableProps) => {
                                 return (
                                     <th
                                         key={header}
+                                        onClick={() => handleSort(header)}
                                         className="text-left whitespace-nowrap px-4 py-2 font-medium text-gray-900 cursor-pointer"
                                     >
                                         {normalizeCamelCase(header)}
@@ -40,7 +55,7 @@ const ProjectsTable = ({ data, ignoreData }: ProjectsTableProps) => {
 
                 <tbody className="divide-y divide-gray-200 cursor-default">
                     {data[0] &&
-                        data.map((dataEntry, index) => (
+                        sortedData.map((dataEntry, index) => (
                             <tr key={dataEntry._id}>
                                 {Object.entries(dataEntry).map(([key, value], index) => {
                                     if (ignoreData?.includes(key)) return null;
