@@ -1,18 +1,25 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+
+import { useNavigate } from "react-router-dom";
+
 import FormField from "@forms/FormComponents/FormField";
 import FormWrapper from "@forms/FormComponents/FormWrapper";
 import FormButton from "@forms/FormComponents/FormButton";
 import FormTextArea from "@forms/FormComponents/FormTextArea";
 import FormSelect from "@forms/FormComponents/FormSelect";
-import FormMultiFileUpload from "@forms/FormComponents/FormMultiFileUpload";
 import FormGeneralError from "@forms/FormComponents/FormGeneralError";
 import MultiFileInput from "@forms/FormComponents/MultiFileInput";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 import * as applicationApi from "@api/application";
 import COUNTRY_LIST from "@utils/CountryList";
 
 const ProjectApplyForm = () => {
+    const navigate = useNavigate();
+
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [success, setSucces] = useState(false);
@@ -141,7 +148,7 @@ const ProjectApplyForm = () => {
                     }}
                 />
                 <h3 className="col-span-2 text-2xl pb-4 font-semibold capatalize">
-                   Supporting Documents
+                    Supporting Documents
                 </h3>
                 <MultiFileInput
                     label="Documents"

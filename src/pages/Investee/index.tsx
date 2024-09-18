@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import LoadingIcon from "@components/common/LoadingIcon";
 import EmptyState from "@components/common/EmptyState";
 import { faMeh } from "@fortawesome/free-solid-svg-icons";
+import { FormButton } from "@forms/FormComponents";
 
 const Investee = () => {
     const { state } = useAuthContext();
@@ -36,15 +37,22 @@ const Investee = () => {
             <div className="h-screen flex flex-col gap-6">
                 <div className="flex justify-between items-center p-4 bg-white rounded-2xl">
                     <p className="text-lg font-bold text-brand-900">Your Fundraisers</p>
-                    <Link to={"/project/apply"}>Fund your project</Link>
                     <div className="w-1/3">
                         <SearchBar searchText={searchText} setSearchText={setSearchText} />
                     </div>
+                    <Link to={"/project/apply"}>
+                        <FormButton text="Fund your project" type="button" />
+                    </Link>
                 </div>
                 {loading ? (
                     <LoadingIcon />
                 ) : projects.length > 0 ? (
-                    <ProjectsTable data={projects} ignoreData={["_id", "projectId"]} projectIdField="_id" searchText={searchText} />
+                    <ProjectsTable
+                        data={projects}
+                        ignoreData={["_id", "projectId"]}
+                        projectIdField="_id"
+                        searchText={searchText}
+                    />
                 ) : (
                     <EmptyState title="Nothing to display" icon={faMeh} />
                 )}
