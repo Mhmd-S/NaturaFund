@@ -7,15 +7,17 @@ import LoadingIcon from "@components/common/LoadingIcon";
 import EmptyState from "@components/common/EmptyState";
 import { faMeh } from "@fortawesome/free-solid-svg-icons";
 
-// ToDo: cahnge the component name from index to something else
+// ToDo: change the component name from index to something else
 
 const Portfolio = () => {
     const { state } = useAuthContext();
     const { current } = state;
 
     const [projects, setProjects] = useState([]);
+    const [filteredProjects, setFilteredProjects] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [searchText, setSearchText] = useState("");
 
     useEffect(() => {
         const fetchProjects = async () => {
@@ -43,19 +45,28 @@ const Portfolio = () => {
         fetchProjects();
     }, []);
 
+    useEffect(() => {
+        const filtered = projects.filter((project) =>
+            Object.values(project).some((value) =>
+                value.toString().toLowerCase().includes(searchText.toLowerCase())
+            )
+        );
+        setFilteredProjects(filtered);
+    }, [searchText, projects]);
+
     return (
         <div className="w-full p-6 bg-gray-300/25 overflow-y-auto">
             <div className="h-screen flex flex-col gap-6">
                 <div className="flex justify-between items-center p-4 bg-white rounded-2xl">
-                    <p className="text-lg font-bold text-brand-900">Your Portofolio</p>
+                    <p className="text-lg font-bold text-brand-900">Your Portfolio</p>
                     <div className="w-1/3">
-                        <SearchBar />
+                        <SearchBar searchText={searchText} setSearchText={setSearchText} />
                     </div>
                 </div>
                 {loading ? (
                     <LoadingIcon />
-                ) : projects.length > 0 ? (
-                    <ProjectsTable data={projects} ignoreData={["_id", "projectId"]} projectIdField="projectId" />
+                ) : filteredProjects.length > 0 ? (
+                    <ProjectsTable data={filteredProjects} ignoreData={["_id", "projectId"]} projectIdField="projectId" searchText={searchText} />
                 ) : (
                     <EmptyState title="Nothing to display" icon={faMeh} />
                 )}

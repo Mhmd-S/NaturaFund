@@ -12,6 +12,7 @@ const Investee = () => {
     const { state } = useAuthContext();
     const { current } = state;
 
+    const [searchText, setSearchText] = useState("");
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -37,13 +38,13 @@ const Investee = () => {
                     <p className="text-lg font-bold text-brand-900">Your Fundraisers</p>
                     <Link to={"project/apply"}>Fund your project</Link>
                     <div className="w-1/3">
-                        <SearchBar />
+                        <SearchBar searchText={searchText} setSearchText={setSearchText} />
                     </div>
                 </div>
                 {loading ? (
                     <LoadingIcon />
                 ) : projects.length > 0 ? (
-                    <ProjectsTable data={projects} ignoreData={["_id", "projectId"]} projectIdField="_id" />
+                    <ProjectsTable data={projects} ignoreData={["_id", "projectId"]} projectIdField="_id" searchText={searchText} />
                 ) : (
                     <EmptyState title="Nothing to display" icon={faMeh} />
                 )}

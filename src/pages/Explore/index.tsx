@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import ProjectCard from "@components/common/ProjectCard";
 import SearchBar from "@components/common/SearchBar";
 import * as projectApi from "@api/project";
+import EmptyState from "@components/common/EmptyState";
+import { faMeh } from "@fortawesome/free-solid-svg-icons";
 
 const filterOptions = [
     {
@@ -43,24 +45,12 @@ const filterOptions = [
     },
 ];
 
-// type Project = {
-//     ownedBy: Record<string, any>;
-//     name: string;
-//     type: "Solar" | "Hydro" | "Wind";
-//     description?: string;
-//     image?: string;
-//     investmentDetails?: Record<string, any>;
-//     financialDetails?: Record<string, any>;
-//     status: "Planning" | "Funding" | "Execution" | "Electricity Generated";
-//     documents?: string[];
-//     payments?: Record<string, any>[];
-//     investments?: Record<string, any>[];
-// };
-
 const Explore = () => {
     const [page, setPage] = useState(1);
+    const [searchText, setSearchText] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [projects, setProjects] = useState([]);
+    const [filteredProjects, setFilteredProjects] = useState([]);
     const [errors, setErrors] = useState<String | null>(null);
     const [stopFetching, setStopFetching] = useState(false);
     const containerRef = useRef(null);
@@ -81,7 +71,6 @@ const Explore = () => {
         const observer = new IntersectionObserver(([entry]) => {
             if (entry.isIntersecting) {
                 if (!stopFetching) {
-                    // <-- Check if stopFetching is false before fetching more projects
                     fetchProjects();
                 }
             }
@@ -95,6 +84,15 @@ const Explore = () => {
             observer.disconnect();
         };
     }, [stopFetching, page]);
+
+    useEffect(() => {
+        const filtered = projects.filter((project) =>
+            Object.values(project).some((value) =>
+                value.toString().toLowerCase().includes(searchText.toLowerCase())
+            )
+        );
+        setFilteredProjects(filtered);
+    }, [searchText, projects]);
 
     const fetchProjects = async () => {
         if (stopFetching) {
@@ -119,21 +117,26 @@ const Explore = () => {
         setErrors("Could not fetch projects");
         setIsLoading(false);
     };
+
     return (
         <div className="w-full h-full p-6 bg-gray-300/20 space-y-6 overflow-y-auto">
             <div className="w-full p-4 flex justify-between items-center bg-white rounded-2xl">
                 <h2 className="text-lg font-bold text-brand-900">Explore</h2>
                 <div className="w-1/3">
-                    <SearchBar />
+                    <SearchBar searchText={searchText} setSearchText={setSearchText} />
                 </div>
             </div>
             <div
-                className="w-full p-4 grid grid-cols-1 grid-flow-row place-items-center gap-8 bg-white rounded-2xl"
+                className="w-full min-h-screen p-4 grid grid-cols-1 grid-flow-row place-items-center gap-8 bg-white rounded-2xl"
                 ref={containerRef}
             >
-                {projects.map((project, index) => (
-                    <ProjectCard project={project} key={index} />
-                ))}
+                {filteredProjects.length > 0 ? (
+                    filteredProjects.map((project, index) => (
+                        <ProjectCard project={project} key={index} />
+                    ))
+                ) : (
+                    <EmptyState title="Nothing to display" icon={faMeh} />
+                )}
             </div>
         </div>
     );

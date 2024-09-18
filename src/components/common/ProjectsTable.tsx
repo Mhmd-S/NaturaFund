@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
@@ -9,13 +9,23 @@ type ProjectsTableProps = {
     data: any[];
     ignoreData?: string[];
     projectIdField: string;
+    searchText: string;
 };
 
-const ProjectsTable = ({ data, ignoreData, projectIdField }: ProjectsTableProps) => {
+const ProjectsTable = ({ data, ignoreData, projectIdField, searchText }: ProjectsTableProps) => {
     const [sortedData, setSortedData] = useState(data);
     const [sortOrder, setSortOrder] = useState("asc");
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const filteredData = data.filter((item) =>
+            Object.values(item).some((value) =>
+                value.toString().toLowerCase().includes(searchText.toLowerCase())
+            )
+        );
+        setSortedData(filteredData);
+    }, [searchText, data]);
 
     const handleOnClick = (projectId: string) => {
         navigate(`/project/${projectId}`);
