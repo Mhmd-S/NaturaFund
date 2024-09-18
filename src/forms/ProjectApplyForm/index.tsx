@@ -1,32 +1,75 @@
-import React from "react";
-
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-
 import FormField from "@forms/FormComponents/FormField";
 import FormWrapper from "@forms/FormComponents/FormWrapper";
 import FormButton from "@forms/FormComponents/FormButton";
 import FormTextArea from "@forms/FormComponents/FormTextArea";
 import FormSelect from "@forms/FormComponents/FormSelect";
+import FormMultiFileUpload from "@forms/FormComponents/FormMultiFileUpload";
+import FormGeneralError from "@forms/FormComponents/FormGeneralError";
+import MultiFileInput from "@forms/FormComponents/MultiFileInput";
 
+import * as applicationApi from "@api/application";
 import COUNTRY_LIST from "@utils/CountryList";
-import FileUploadField from "../FormComponents/FormFileUpload";
 
 const ProjectApplyForm = () => {
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+    const [success, setSucces] = useState(false);
+
     const {
         register,
         handleSubmit,
-        resetField,
-        setError,
+        control,
         formState: { errors },
     } = useForm();
 
-    const onSubmit = (formData) => {
-        // ToDo: Return the upload url to the data
+    const onSubmit = async (formData) => {
+        setLoading(true);
+        setError(null);
+
+        // Create a FormData object
+        const formDataToSend = new FormData();
+
+        // Append each field from formData to the FormData object
+        for (const key in formData) {
+            if (key === "documents") {
+                // Append each file in the documents array
+                formData[key].forEach((file) => {
+                    console.log(file);
+                    formDataToSend.append("documents", file.file);
+                });
+            } else {
+                formDataToSend.append(key, formData[key]);
+            }
+        }
+
+        try {
+            const response = await applicationApi.createApplication(formDataToSend);
+
+            const { status } = response;
+
+            if (status === "success") {
+                setSucces(true);
+            } else {
+                setError("An error occurred, please try again.");
+            }
+        } catch (error) {
+            setError("An error occurred, please try again.");
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
-        <FormWrapper onSubmit={handleSubmit(onSubmit)}>
+        <FormWrapper loading={loading} onSubmit={handleSubmit(onSubmit)}>
             <div className="w-3/4 flex flex-col">
+                {success && (
+                    <div className="bg-green-200 border-green-400 border-l-4 p-4 mb-4">
+                        <p className="text-green-700">Application submitted successfully!</p>
+                    </div>
+                )}
+                <FormGeneralError message={error} />
                 <h2 className="text-3xl pb-4 font-semibold capatalize">Project Application Form</h2>
                 <FormField
                     name="projectName"
@@ -38,9 +81,9 @@ const ProjectApplyForm = () => {
                     validationRules={{
                         required: "Project name is required",
                         pattern: {
-                            value: /^[a-zA-Z]{1,24}$/,
+                            value: /^[a-zA-Z\0-9]{1,50}$/,
                             message:
-                                "Project name must only contain letters and must be less than 24 characters long",
+                                "Project name must only contain letters, numbers and space. Must also be less than 50 characters long",
                         },
                     }}
                 />
@@ -62,7 +105,8 @@ const ProjectApplyForm = () => {
                     />
                     <FormTextArea
                         name="address"
-                        type="text"
+                        rows={3}
+                        defaultValue=""
                         label="Project Address"
                         register={register}
                         errors={errors}
@@ -70,39 +114,46 @@ const ProjectApplyForm = () => {
                         validationRules={{
                             required: "Address is required",
                             pattern: {
-                                value: /^\d+,\s?[A-Za-z\s]+(?:,\s?[A-Za-z\s]+)*,\s?\d{5}\s?[A-Za-z\s]+,\s?[A-Za-z\s]+$/,
-                                message:
-                                    "The address should include: street number, street name, region, and town/city, state.",
+                                value: /^[\d\s\w,.-]*$/,
+                                message: "Please enter a valid address.",
                             },
                         }}
                     />
                 </div>
                 <FormTextArea
+                    rows={5}
+                    defaultValue=""
                     name="description"
-                    type="text"
                     label="Project Description"
                     register={register}
                     errors={errors}
                     placeholder="ex. This project aims to..."
                     validationRules={{
-                        required: "Address is required",
-                        pattern: {
-                            value: /^\d+,\s?[A-Za-z\s]+(?:,\s?[A-Za-z\s]+)*,\s?\d{5}\s?[A-Za-z\s]+,\s?[A-Za-z\s]+$/,
-                            message:
-                                "The address should include: street number, street name, region, and town/city, state.",
+                        required: "Description is required",
+                        minLength: {
+                            value: 50,
+                            message: "Description must be at least 50 characters long",
+                        },
+                        maxLength: {
+                            value: 500,
+                            message: "Description must be less than 500 characters long",
                         },
                     }}
                 />
-                <FileUploadField
-                    name="projectProposal"
-                    label="Project Proposal Document"
-                    register={register}
-                    errors={errors}
-                    validationRules={{
-                        required: "Project document is required",
-                    }}
+                <h3 className="col-span-2 text-2xl pb-4 font-semibold capatalize">
+                   Supporting Documents
+                </h3>
+                <MultiFileInput
+                    label="Documents"
+                    description="Upload files related to the project. Ex. Project Proposal, Agreements, Propects, etc."
+                    name={"documents"}
+                    control={control}
                 />
-                <FormButton text="Submit" disable={Object.keys(errors).length !== 0} />
+                <FormButton
+                    type="submit"
+                    text="Submit"
+                    disable={Object.keys(errors).length !== 0}
+                />
             </div>
         </FormWrapper>
     );

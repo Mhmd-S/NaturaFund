@@ -36,7 +36,7 @@ const Investee = () => {
             <div className="h-screen flex flex-col gap-6">
                 <div className="flex justify-between items-center p-4 bg-white rounded-2xl">
                     <p className="text-lg font-bold text-brand-900">Your Fundraisers</p>
-                    <Link to={"project/apply"}>Fund your project</Link>
+                    <Link to={"/project/apply"}>Fund your project</Link>
                     <div className="w-1/3">
                         <SearchBar searchText={searchText} setSearchText={setSearchText} />
                     </div>
