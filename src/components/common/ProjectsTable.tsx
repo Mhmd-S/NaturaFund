@@ -8,9 +8,10 @@ import { normalizeCamelCase } from "@utils/extractHeader";
 type ProjectsTableProps = {
     data: any[];
     ignoreData?: string[];
+    projectIdField: string;
 };
 
-const ProjectsTable = ({ data, ignoreData }: ProjectsTableProps) => {
+const ProjectsTable = ({ data, ignoreData, projectIdField }: ProjectsTableProps) => {
     const [sortedData, setSortedData] = useState(data);
     const [sortOrder, setSortOrder] = useState("asc");
 
@@ -70,7 +71,7 @@ const ProjectsTable = ({ data, ignoreData }: ProjectsTableProps) => {
                                 })}
                                 <td className="px-4 py-2 whitespace-nowrap text-gray-900">
                                     <button
-                                        onClick={() => handleOnClick(dataEntry.projectId)}
+                                        onClick={() => handleOnClick(dataEntry[projectIdField])}
                                         className="px-4 py-2 border-[1px] border-brand-900 rounded-lg text-white bg-brand-900 transition-all hover:bg-white hover:text-brand-900"
                                     >
                                         View

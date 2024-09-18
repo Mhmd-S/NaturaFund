@@ -17,13 +17,15 @@ const EmptyState = ({ title, description, icon, buttonLabel, handleClick }: Empt
             <FontAwesomeIcon icon={icon} className="text-5xl text-gray-300" />
             <h3>{title}</h3>
             <p className="text-gray-400">{description}</p>
-            <button
-                className="flex items-center gap-4 bg-brand-900 px-4 py-2 rounded-md text-white hover:bg-brand-600"
-                onClick={handleClick}
-            >
-                <FontAwesomeIcon icon={faPlus} />
-                <span>{buttonLabel}</span>
-            </button>
+            {buttonLabel && (
+                <button
+                    className="flex items-center gap-4 bg-brand-900 px-4 py-2 rounded-md text-white hover:bg-brand-600"
+                    onClick={handleClick}
+                >
+                    <FontAwesomeIcon icon={faPlus} />
+                    <span>{buttonLabel}</span>
+                </button>
+            )}
         </div>
     );
 };

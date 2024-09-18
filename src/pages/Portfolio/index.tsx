@@ -4,6 +4,8 @@ import ProjectsTable from "@components/common/ProjectsTable";
 import SearchBar from "@components/common/SearchBar";
 import * as investmentApi from "@api/investment";
 import LoadingIcon from "@components/common/LoadingIcon";
+import EmptyState from "@components/common/EmptyState";
+import { faMeh } from "@fortawesome/free-solid-svg-icons";
 
 // ToDo: cahnge the component name from index to something else
 
@@ -52,8 +54,10 @@ const Portfolio = () => {
                 </div>
                 {loading ? (
                     <LoadingIcon />
+                ) : projects.length > 0 ? (
+                    <ProjectsTable data={projects} ignoreData={["_id", "projectId"]} projectIdField="projectId" />
                 ) : (
-                    <ProjectsTable data={projects} ignoreData={["_id", "projectId"]} />
+                    <EmptyState title="Nothing to display" icon={faMeh} />
                 )}
             </div>
         </div>

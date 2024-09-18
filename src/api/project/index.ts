@@ -46,3 +46,26 @@ export const getProject = async (id: string) => {
         return errorHandler(error);
     }
 };
+
+
+export const getProjecstByCorporation = async(corporationId) => {
+    try {
+        const response = await api.request({
+            method: "GET",
+            url: `project/corporation/${corporationId}`,
+        });
+
+        const { status, data } = response;
+
+        successHandler(
+            { data, status },
+            {
+                notifyOnSuccess: false,
+                notifyOnFailed: true,
+            }
+        );
+        return data;
+    } catch (error) {
+        return errorHandler(error);
+    }
+}

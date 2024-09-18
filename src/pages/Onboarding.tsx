@@ -9,7 +9,7 @@ const Onboarding = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (current?.isVerified) {
+        if (current?.verified == "verified") {
             navigate("/home");
         }
     }, [current, navigate]);
