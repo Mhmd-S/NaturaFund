@@ -2,11 +2,11 @@ import { api } from "@config/axiosConfig";
 import errorHandler from "@request/errorHandler";
 import successHandler from "@request/successHandler";
 
-export const updateUser = async (updateData) => {
+export const updateUser = async (id: string, updateData) => {
     try {
         const response = await api.request({
             method: "PUT",
-            url: `user/${updateData._id}`,
+            url: `user/${id}`,
             data: updateData,
         });
 

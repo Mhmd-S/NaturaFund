@@ -8,11 +8,18 @@ import { normalizeCamelCase } from "@utils/extractHeader";
 type ProjectsTableProps = {
     data: any[];
     ignoreData?: string[];
+    acceptData?: string[];
     projectIdField: string;
     searchText: string;
 };
 
-const ProjectsTable = ({ data, ignoreData, projectIdField, searchText }: ProjectsTableProps) => {
+const ProjectsTable = ({
+    data,
+    ignoreData,
+    acceptData,
+    projectIdField,
+    searchText,
+}: ProjectsTableProps) => {
     const [sortedData, setSortedData] = useState(data);
     const [sortOrder, setSortOrder] = useState("asc");
 
@@ -50,6 +57,7 @@ const ProjectsTable = ({ data, ignoreData, projectIdField, searchText }: Project
                         {data[0] &&
                             Object.keys(data[0]).map((header, index) => {
                                 if (ignoreData?.includes(header)) return null;
+                                if (acceptData && !acceptData.includes(header)) return null;
                                 return (
                                     <th
                                         key={header}
@@ -70,6 +78,7 @@ const ProjectsTable = ({ data, ignoreData, projectIdField, searchText }: Project
                             <tr key={dataEntry._id}>
                                 {Object.entries(dataEntry).map(([key, value], index) => {
                                     if (ignoreData?.includes(key)) return null;
+                                    if (acceptData && !acceptData.includes(key)) return null;
                                     return (
                                         <td
                                             key={index}

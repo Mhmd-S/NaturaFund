@@ -29,14 +29,12 @@ const ProofOfAddress = () => {
         setLoading(true);
         setError(null);
 
-        formData.addressProof = URL.createObjectURL(formData.addressProof[0]);
+        const formDataTemp = data;
 
-        const response = await updateUser({
-            ...data,
-            ...formData,
-            verified: "pending",
-            _id: state.current._id,
-        });
+        formDataTemp.append("addressProof", formData.addressProof[0]);
+        formDataTemp.append("verified", "pending");
+
+        const response = await updateUser(state.current._id, data);
 
         const { status } = response;
 
@@ -56,7 +54,7 @@ const ProofOfAddress = () => {
                 <h2 className="col-span-2 text-3xl font-semibold">Proof of Address</h2>
                 <FileUploadField
                     accept="image/*"
-                    currentFile={data.addressProof && data.addressProof[0]}
+                    currentFile={data.get("addressProof")}
                     acceptSize={30000}
                     inputGuidelines="Please upload a proof of address"
                     resetField={resetField}

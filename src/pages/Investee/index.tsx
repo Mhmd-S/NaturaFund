@@ -11,7 +11,6 @@ import { FormButton } from "@forms/FormComponents";
 
 const Investee = () => {
     const { state } = useAuthContext();
-    const { current } = state;
 
     const [searchText, setSearchText] = useState("");
     const [projects, setProjects] = useState([]);
@@ -44,6 +43,11 @@ const Investee = () => {
                         <FormButton text="Fund your project" type="button" />
                     </Link>
                 </div>
+                {error && (
+                    <div className="bg-red-200 border-red-400 border-l-4 p-4 mb-4">
+                        <p className="text-red-700">{error}</p>
+                    </div>
+                )}
                 {loading ? (
                     <LoadingIcon />
                 ) : projects.length > 0 ? (

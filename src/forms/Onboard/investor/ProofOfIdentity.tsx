@@ -19,11 +19,11 @@ const ProofOfIdentity = () => {
     } = useForm();
 
     const onSubmit = (formData) => {
-        // ToDo: Return the upload url to the data
-        // transfrom the files to URL
-        console.log(formData);
-
-        setData({ ...data, ...formData });
+        const formDataTemp = data;
+        formDataTemp.append("frontId", formData.frontId[0]);
+        formDataTemp.append("backId", formData.backId[0]);
+        formDataTemp.append("selfieId", formData.selfieId[0]);;
+        setData(formDataTemp);
         goNext();
     };
 
@@ -36,9 +36,9 @@ const ProofOfIdentity = () => {
                     accept="image/*"
                     acceptSize={30000}
                     label="Front of ID"
-                    name="frontID"
+                    name="frontId"
                     register={register}
-                    currentFile={data.frontID && data.frontID[0]}
+                    currentFile={data.get("frontId")}
                     errors={errors}
                     clearErrors={clearErrors}
                     resetField={resetField}
@@ -51,8 +51,8 @@ const ProofOfIdentity = () => {
                     accept="image/*"
                     acceptSize={30000}
                     label={"Back of ID"}
-                    currentFile={data.backID && data.backID[0]}
-                    name="backID"
+                    currentFile={data.get("backId")}
+                    name="backId"
                     register={register}
                     errors={errors}
                     resetField={resetField}
@@ -66,8 +66,8 @@ const ProofOfIdentity = () => {
                     accept="image/*"
                     acceptSize={30000}
                     label={"Selfie with ID"}
-                    currentFile={data.selfieID && data.selfieID[0]}
-                    name="selfieID"
+                    currentFile={data.get("selfieId")}
+                    name="selfieId"
                     register={register}
                     errors={errors}
                     clearErrors={clearErrors}
@@ -78,13 +78,17 @@ const ProofOfIdentity = () => {
                 />
                 <div className="col-span-2 p-2 grid grid-cols-2 gap-10">
                     <button
-                        type="button"
+                        type="submit"
                         className="bg-white text-brand-800 border-2 border-brand-800 rounded-md transition-colors hover:bg-brand-800 hover:text-white"
                         onClick={goPrev}
                     >
                         Back
                     </button>
-                    <FormButton text="Next" disable={Object.keys(errors).length !== 0} />
+                    <FormButton
+                        type="submit"
+                        text="Next"
+                        disable={Object.keys(errors).length !== 0}
+                    />
                 </div>
             </div>
         </FormWrapper>

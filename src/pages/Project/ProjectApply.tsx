@@ -1,5 +1,5 @@
 import React from "react";
-import ProjectApplyModule from "../../modules/ProjectApplyModule";
+import ProjectApplyModule from "@modules/ProjectApplyModule";
 
 const Apply = () => {
     return (

@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const LoginForm = () => {
     const { register, handleSubmit, onSubmit, isLoading, errors, authError } = useLoginForm();
-    console.log(errors);
+
     return (
         <div className="w-full min-h-full flex flex-col items-center gap-y-4">
             <FormWrapper loading={isLoading} onSubmit={handleSubmit(onSubmit)}>

@@ -19,7 +19,17 @@ const PersonalDetails = () => {
     } = useForm();
 
     const onSubmit = (formData) => {
-        setData({ ...data, ...formData });
+
+        const formDataTemp = data;
+
+        formDataTemp.append("firstName", formData.firstName);
+        formDataTemp.append("lastName", formData.lastName);
+        formDataTemp.append("phoneNumber", formData.phoneNumber);
+        formDataTemp.append("address", formData.address);
+        formDataTemp.append("residence", formData.residence);
+        formDataTemp.append("nationality", formData.nationality);
+
+        setData(formDataTemp);
         goNext();
     };
 
@@ -32,7 +42,7 @@ const PersonalDetails = () => {
                         name="firstName"
                         type="text"
                         label="First Name"
-                        defaultValue={data.firstName}
+                        defaultValue={data.get("firstName")}
                         register={register}
                         errors={errors}
                         placeholder="ex. John"
@@ -49,7 +59,7 @@ const PersonalDetails = () => {
                         name="lastName"
                         type="text"
                         label="Last Name"
-                        defaultValue={data.lastName}
+                        defaultValue={data.get("lastName")}
                         register={register}
                         errors={errors}
                         placeholder="ex. Doe"
@@ -67,7 +77,7 @@ const PersonalDetails = () => {
                     name="phoneNumber"
                     type="text"
                     label="Phone Number"
-                    defaultValue={data.phoneNumber}
+                    defaultValue={data.get("phoneNumber")}
                     register={register}
                     errors={errors}
                     placeholder="ex. 123123123"
@@ -85,7 +95,7 @@ const PersonalDetails = () => {
                         name="address"
                         type="text"
                         label="Address"
-                        defaultValue={data.address}
+                        defaultValue={data.get("address")}
                         register={register}
                         errors={errors}
                         placeholder="ex. 1, Persiaran Kewajipan, Usj 1, 47600 Subang Jaya, Selangor"
@@ -102,7 +112,7 @@ const PersonalDetails = () => {
                         register={register}
                         name="residence"
                         label="Place of Residence"
-                        defaultValue={data.residence}
+                        defaultValue={data.get("residence")}
                         errors={errors}
                         options={COUNTRY_LIST}
                         validationRules={{
@@ -117,7 +127,7 @@ const PersonalDetails = () => {
                     register={register}
                     name="nationality"
                     label="Nationality"
-                    defaultValue={data.nationality}
+                    defaultValue={data.get("nationality")}
                     errors={errors}
                     options={COUNTRY_LIST}
                     validationRules={{

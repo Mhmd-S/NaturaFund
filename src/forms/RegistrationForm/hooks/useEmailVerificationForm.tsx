@@ -10,17 +10,19 @@ const useVerifyEmail = ({ setCurrentStep, email }) => {
 
     const { isLoading, isSuccess, error } = state;
 
+    useEffect(() => {
+        if (isSuccess && !isLoading && isDirty) setCurrentStep(2);
+    }, [isSuccess, isLoading]);
+
     const {
         register,
         handleSubmit,
-        formState: { errors },
+        formState: { errors, isDirty },
     } = useForm();
 
-    const onSubmit = (data: verifyDataType) => {
+    const onSubmit = async(data: verifyDataType) => {
         data.email = email;
-        authContextAction.verify(data);
-
-        if (isSuccess) setCurrentStep(2);
+        await authContextAction.verify(data);
     };
 
     return {

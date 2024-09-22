@@ -9,7 +9,7 @@ const OnboardContext = createContext();
 export const OnboardProvider = ({ children }) => {
     const [stage, setStage] = useState(0);
     const [loading, setLoading] = useState(false);
-    const [data, setData] = useState({});
+    const [data, setData] = useState(new FormData());
     const [error, setError] = useState(null);
 
     const { state } = useAuthContext();
