@@ -19,8 +19,21 @@ const RepresentativeForm = () => {
     } = useForm();
 
     const onSubmit = async (formData) => {
-        setData({ ...data, representative: { ...formData } });
-        goNext()
+        const formDataTemp = data;
+
+        formDataTemp.representative = {
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            phoneNumber: formData.phoneNumber,
+            email: formData.workEmail,
+        };
+
+        formDataTemp.append("frontId", formData.frontId[0]);
+        formDataTemp.append("backId", formData.backId[0]);
+        formDataTemp.append("selfieId", formData.selfieId[0]);
+
+        setData(formDataTemp);
+        goNext();
     };
 
     return (
@@ -29,14 +42,14 @@ const RepresentativeForm = () => {
                 <h2 className="text-3xl font-semibold capatalize">Personal Details</h2>
                 <p className="text-sm text-gray-light">
                     Please provide the details of the representative who will be responsible for
-                    managing the account. The repesentative must have the authority to act on behalf
-                    of the company.
+                    managing the account. The representative must have the authority to act on
+                    behalf of the company.
                 </p>
                 <div className="grid grid-cols-2 gap-4">
                     <FormField
                         name="firstName"
                         type="text"
-                        defaultValue={data.representative && data.representative.firstName}
+                        defaultValue={data.get("firstName") || ""}
                         label="First Name"
                         register={register}
                         errors={errors}
@@ -54,7 +67,7 @@ const RepresentativeForm = () => {
                         name="lastName"
                         type="text"
                         label="Last Name"
-                        defaultValue={data.representative && data.representative.lastName}
+                        defaultValue={data.get("lastName") || ""}
                         register={register}
                         errors={errors}
                         placeholder="ex. Doe"
@@ -72,7 +85,7 @@ const RepresentativeForm = () => {
                         type="text"
                         label="Phone Number"
                         register={register}
-                        defaultValue={data.representative && data.representative.phoneNumber}
+                        defaultValue={data.get("phoneNumber") || ""}
                         errors={errors}
                         placeholder="ex. 123123123"
                         validationRules={{
@@ -90,14 +103,13 @@ const RepresentativeForm = () => {
                         label="Work Email"
                         register={register}
                         errors={errors}
-                        defaultValue={data.representative && data.representative.workEmail}
+                        defaultValue={data.get("workEmail") || ""}
                         placeholder="ex. johndoe123@email.com"
                         validationRules={{
                             required: "Email is required",
                             pattern: {
                                 value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
-                                message:
-                                    "Phone number must not include extension and should be of 10 digits ",
+                                message: "Email must be a valid email address",
                             },
                         }}
                     />
@@ -107,9 +119,9 @@ const RepresentativeForm = () => {
                     accept="image/*"
                     acceptSize={30000}
                     label="Front of ID"
-                    name="frontID"
+                    name="frontId"
                     register={register}
-                    currentFile={data.representative && data.representative.frontID[0]}
+                    currentFile={data.get("frontId") ? data.get("frontId")[0] : null}
                     errors={errors}
                     clearErrors={clearErrors}
                     resetField={resetField}
@@ -122,8 +134,8 @@ const RepresentativeForm = () => {
                     accept="image/*"
                     acceptSize={30000}
                     label={"Back of ID"}
-                    currentFile={data.representative && data.representative.backID[0]}
-                    name="backID"
+                    currentFile={data.get("backId") ? data.get("backId")[0] : null}
+                    name="backId"
                     register={register}
                     errors={errors}
                     resetField={resetField}
@@ -137,8 +149,8 @@ const RepresentativeForm = () => {
                     accept="image/*"
                     acceptSize={30000}
                     label={"Selfie with ID"}
-                    currentFile={data.representative && data.representative.selfieID[0]}
-                    name="selfieID"
+                    currentFile={data.get("selfieId") ? data.get("selfieId")[0] : null}
+                    name="selfieId"
                     register={register}
                     errors={errors}
                     clearErrors={clearErrors}

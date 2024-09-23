@@ -16,7 +16,7 @@ export const OnboardProvider = ({ children }) => {
 
     useEffect(() => {
         console.log(state.current)
-        if (state.current.verified == "pending") {
+        if (state.current.verified == "pending" || state.current.verified == "rejected") {
             setStage(3);
         }
     }, [state.current]);
@@ -44,6 +44,7 @@ export const OnboardProvider = ({ children }) => {
             data,
             error,
             setError,
+            setStage,
             setLoading,
             submitData,
             setData,
