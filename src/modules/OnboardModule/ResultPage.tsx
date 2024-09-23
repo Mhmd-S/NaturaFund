@@ -43,7 +43,7 @@ const ResultPage = () => {
     const { setStage } = useOnboardContext();
     const { verified } = state.current;
 
-    const { title, description, icon, buttonText, onclick } = RESULTS[verified];
+    const { title, description, icon, buttonText } = RESULTS[verified];
 
     return (
         <div className="min-h-screen col-span-2 place-self-center w-max flex flex-col justify-center items-center gap-5">
