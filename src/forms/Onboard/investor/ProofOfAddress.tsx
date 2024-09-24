@@ -15,7 +15,9 @@ const ProofOfAddress = () => {
     const { data, setData, goPrev, goNext, loading, setLoading, error, setError } =
         useOnboardContext();
 
-    const { state } = useAuthContext();
+    const { state, authContextAction } = useAuthContext();
+
+    const { getUser } = authContextAction;
 
     const {
         register,
@@ -43,6 +45,8 @@ const ProofOfAddress = () => {
         } else {
             setError("An error occurred, please try again.");
         }
+
+        getUser();
 
         setLoading(false);
     };

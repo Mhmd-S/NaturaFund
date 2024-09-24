@@ -5,10 +5,10 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 type EmptyStateProps = {
     title: string;
-    description: string;
+    description?: string;
     icon: IconProp;
-    buttonLabel: string;
-    handleClick: () => void;
+    buttonLabel?: string;
+    handleClick?: () => void;
 };
 
 const EmptyState = ({ title, description, icon, buttonLabel, handleClick }: EmptyStateProps) => {

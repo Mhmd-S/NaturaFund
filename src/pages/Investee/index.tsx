@@ -4,12 +4,12 @@ import SearchBar from "@components/common/SearchBar";
 import { useAuthContext } from "@context/AuthContext";
 import * as projectApi from "@api/project";
 import { Link } from "react-router-dom";
-import LoadingIcon from "@components/common/LoadingIcon";
-import EmptyState from "@components/common/EmptyState";
-import { faMeh } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 import { FormButton } from "@forms/FormComponents";
 
 const Investee = () => {
+    const navigate = useNavigate();
+
     const { state } = useAuthContext();
 
     const [searchText, setSearchText] = useState("");
@@ -31,6 +31,10 @@ const Investee = () => {
         fetchProjects();
     }, []);
 
+    const handleOnClick = (projectId: string) => {
+        navigate(`/project/${projectId}`);
+    };
+
     return (
         <div className="w-full p-6 bg-gray-300/25 overflow-y-auto">
             <div className="h-screen flex flex-col gap-6">
@@ -43,23 +47,16 @@ const Investee = () => {
                         <FormButton text="Fund your project" type="button" />
                     </Link>
                 </div>
-                {error && (
-                    <div className="bg-red-200 border-red-400 border-l-4 p-4 mb-4">
-                        <p className="text-red-700">{error}</p>
-                    </div>
-                )}
-                {loading ? (
-                    <LoadingIcon />
-                ) : projects.length > 0 ? (
-                    <ProjectsTable
-                        data={projects}
-                        ignoreData={["_id", "projectId"]}
-                        projectIdField="_id"
-                        searchText={searchText}
-                    />
-                ) : (
-                    <EmptyState title="Nothing to display" icon={faMeh} />
-                )}
+
+                <ProjectsTable
+                    data={projects}
+                    ignoreData={["_id", "projectId"]}
+                    projectIdField="_id"
+                    searchText={searchText}
+                    loading={loading}
+                    error={error}
+                    handleOnClick={handleOnClick}
+                />
             </div>
         </div>
     );

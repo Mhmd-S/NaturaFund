@@ -3,13 +3,14 @@ import { useAuthContext } from "@context/AuthContext";
 import ProjectsTable from "@components/common/ProjectsTable";
 import SearchBar from "@components/common/SearchBar";
 import * as investmentApi from "@api/investment";
-import LoadingIcon from "@components/common/LoadingIcon";
-import EmptyState from "@components/common/EmptyState";
-import { faMeh } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 // ToDo: change the component name from index to something else
 
 const Portfolio = () => {
+
+    const navigate = useNavigate();
+
     const { state } = useAuthContext();
     const { current } = state;
 
@@ -45,14 +46,9 @@ const Portfolio = () => {
         fetchProjects();
     }, []);
 
-    useEffect(() => {
-        const filtered = projects.filter((project) =>
-            Object.values(project).some((value) =>
-                value.toString().toLowerCase().includes(searchText.toLowerCase())
-            )
-        );
-        setFilteredProjects(filtered);
-    }, [searchText, projects]);
+    const handleOnClick = (projectId: string) => {
+        navigate(`/project/${projectId}`);
+    }
 
     return (
         <div className="w-full p-6 bg-gray-300/25 overflow-y-auto">
@@ -63,13 +59,16 @@ const Portfolio = () => {
                         <SearchBar searchText={searchText} setSearchText={setSearchText} />
                     </div>
                 </div>
-                {loading ? (
-                    <LoadingIcon />
-                ) : filteredProjects.length > 0 ? (
-                    <ProjectsTable data={filteredProjects} ignoreData={["_id", "projectId"]} projectIdField="projectId" searchText={searchText} />
-                ) : (
-                    <EmptyState title="Nothing to display" icon={faMeh} />
-                )}
+
+                <ProjectsTable
+                    data={filteredProjects}
+                    loading={loading}
+                    error={error}
+                    ignoreData={["_id", "projectId"]}
+                    projectIdField="projectId"
+                    searchText={searchText}
+                    handleOnClick={handleOnClick}
+                />
             </div>
         </div>
     );

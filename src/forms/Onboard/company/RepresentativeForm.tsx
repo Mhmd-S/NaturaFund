@@ -28,6 +28,7 @@ const RepresentativeForm = () => {
             email: formData.workEmail,
         };
 
+        formDataTemp.append("representative", JSON.stringify(formDataTemp.representative));
         formDataTemp.append("frontId", formData.frontId[0]);
         formDataTemp.append("backId", formData.backId[0]);
         formDataTemp.append("selfieId", formData.selfieId[0]);
