@@ -3,7 +3,7 @@ import ProjectApplyModule from "@modules/ProjectApplyModule";
 
 const Apply = () => {
     return (
-        <div className="w-full p-6 bg-gray-300/25 overflow-y-auto">
+        <div className="w-full h-full p-6 bg-gray-300/25 overflow-y-auto">
             <ProjectApplyModule />
         </div>
     );

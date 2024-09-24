@@ -10,6 +10,9 @@ const Projects = () => {
 
     useEffect(() => {
         projectAPI.getProjects(1).then((response) => {
+            response.data = response.data.filter((project) => {
+                return project.status.current !== "Planning";
+            });
             setProjects(response.data);
             setLoading(false);
         });

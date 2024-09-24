@@ -29,7 +29,9 @@ const ProjectApplyModule = () => {
             >
                 <FontAwesomeIcon icon={faChevronLeft} /> Back
             </button>
-            <ProjectApplyForm />
+            <div className="min-h-full w-full ">
+                <ProjectApplyForm />
+            </div>
         </div>
     );
 };

@@ -34,6 +34,8 @@ const MultiFileInput = ({ name, label, description, control }) => {
             <input
                 ref={hiddenFileInput}
                 type="file"
+                accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png"
+                size={3000}
                 multiple
                 onChange={handleAddDocuments}
                 className="hidden"

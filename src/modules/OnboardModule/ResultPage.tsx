@@ -12,7 +12,7 @@ const RESULTS = {
     pending: {
         title: (
             <h1 className="text-3xl font-semibold mt-4">
-                Onboard <span className="text-orange-600 capitalize">Pending</span>
+                Verification <span className="text-orange-600 capitalize">Pending</span>
             </h1>
         ),
         description:
@@ -22,7 +22,7 @@ const RESULTS = {
     verified: {
         title: (
             <h1 className="text-3xl font-semibold mt-4">
-                Onboard <span className="text-brand-800 capitalize">Approved</span>
+                Verification <span className="text-brand-800 capitalize">Approved</span>
             </h1>
         ),
         description: "Congratulations! Your identity has been successfully verified.",
@@ -31,7 +31,7 @@ const RESULTS = {
     rejected: {
         title: (
             <h1 className="text-3xl font-semibold mt-4">
-                Onboard <span className="text-pink-800 capitalize">Rejected</span>
+                Verification <span className="text-pink-800 capitalize">Rejected</span>
             </h1>
         ),
         description:
@@ -72,7 +72,9 @@ const ResultPage = () => {
                         <FontAwesomeIcon icon={icon} className="text-brand-800 text-3xl" />
                     </div>
                     <h2>{title}</h2>
-                    <p className="text-lg text-center text-gray-800">{message ? message : description}</p>
+                    <p className="text-lg text-center text-gray-800">
+                        {message ? message : description}
+                    </p>
                     {buttonText && (
                         <button
                             onClick={() => setStage(0)}

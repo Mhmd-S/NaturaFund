@@ -79,7 +79,7 @@ const ProjectApplyForm = () => {
                 <FormGeneralError message={error} />
                 <h2 className="text-3xl pb-4 font-semibold capatalize">Project Application Form</h2>
                 <FormField
-                    name="projectName"
+                    name="name"
                     type="text"
                     label="Project Name"
                     register={register}

@@ -107,7 +107,9 @@ const Explore = () => {
                 setIsLoading(false);
                 return;
             }
-
+            res.data = res.data.filter((project) => {
+                return project.status.current !== "Planning";
+            });
             setProjects((prevProjects) => prevProjects.concat(res.data));
             setPage((prevPage) => prevPage + 1);
             setIsLoading(false);

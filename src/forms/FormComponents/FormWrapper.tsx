@@ -5,7 +5,7 @@ const FormWrapper = ({ children, onSubmit, loading }) => {
     return (
         <>
             {loading ? (
-                <div className="w-full h-full flex flex-col items-center justify-evenly">
+                <div className="w-full h-screen flex flex-col items-center justify-evenly">
                     <LoadingIcon />
                 </div>
             ) : (
