@@ -9,7 +9,7 @@ import Overview from "@modules/ProjectModule/Overview";
 import InvestmentDetails from "@modules/ProjectModule/InvestmentDetails";
 import FinancialDetails from "@modules/ProjectModule/FinancialDetails";
 import InvestmentsReceived from "@modules/ProjectModule/InvestmentsReceived";
-import BuyInvestments from "@modules/ProjectModule/BuyInvestments";
+import BuyInvestment from "@modules/ProjectModule/BuyInvestment";
 
 import TabbedWindow from "@components/common/TabbedWindow";
 
@@ -67,9 +67,9 @@ const Project = () => {
             case "Revenue Generated":
                 return <RevenueGenerated />;
             case "Investments Received": // Only displayed to the orgainsers
-                return <InvestmentsReceived />;
+                return <InvestmentsReceived project={project} />;
             case "Buy Investments":
-                return <BuyInvestments project={project} />;
+                return <BuyInvestment project={project} />;
             default:
                 return <Overview project={project} />;
         }

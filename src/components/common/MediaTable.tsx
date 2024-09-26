@@ -1,5 +1,4 @@
 import React from "react";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperclip } from "@fortawesome/free-solid-svg-icons";
 
@@ -19,12 +18,12 @@ const MediaTable = ({ items }) => {
                         />
                         <div className="ml-4 flex min-w-0 flex-1 gap-2">
                             <span className="truncate font-medium capitalize">{key}</span>
-                            <span className="flex-shrink-0 text-gray-400">1.9 mb</span>
                         </div>
                         <div className="ml-4 flex-shrink-0">
                             <a
-                                href="#"
+                                href={value.s3Url} // Use the S3 URL for the download link
                                 className="font-medium text-indigo-600 hover:text-indigo-500"
+                                download // Add the download attribute
                             >
                                 Download
                             </a>

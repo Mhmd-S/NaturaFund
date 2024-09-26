@@ -4,58 +4,86 @@ import { useAuthContext } from "@context/AuthContext";
 
 import { useForm } from "react-hook-form";
 import { FormWrapper, FormField, FormButton } from "@forms/FormComponents";
+import { get } from "lodash";
 
 const BuyInvestments = ({ project }) => {
+    const type = get(project, "investmentDetails.type", " ");
+    const price = get(project, `investmentDetails.features[${type} Price]`, " ");
+
+    const [isSuccess, setIsSuccess] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    const { current } = state;
     const {
         register,
         handleSubmit,
+        watch,
         formState: { errors },
     } = useForm();
 
     const { state } = useAuthContext();
+    const { current } = state;
+
+    const amount = watch("amount", "1");
 
     const onSubmit = (formData) => {
+        setLoading(true);
+        setIsSuccess(false);
         const investment = {
-            amount,
-            type,
+            amount: formData.amount,
+            type: project.investmentDetails.type,
             projectId: project._id,
         };
 
         investmentApi
             .createInvestment(investment)
             .then(() => {
+                setIsSuccess(true);
                 alert("Investment successful!");
             })
             .catch((error) => {
                 console.error("Error creating investment:", error);
                 alert("Investment failed.");
+            })
+            .finally(() => {
+                setLoading(false);
             });
     };
 
     return (
-        <FormWrapper loading={loading} onSubmit={handleSubmit(onSubmit)}>
-            <h2>Buy Investments</h2>
-            <FormField
-                label="Amount"
-                type="number"
-                name="amount"
-                register={register}
-                errors={errors}
-                validationRules={{ required: "Amount is required" }}
-            />
-
-            <div>
-                <h3>Summary</h3>
-                <p>
-                    Amount of {project.investmentDetails.type}: {amount}
-                </p>
-                <p>Total: {amount * project.investmentDetails.feauters.price}</p>
-                <FormButton text="Invest now" disable={error} type="submit" />
-            </div>
-        </FormWrapper>
+        <div className="col-span-2 w-full min-h-full flex items-center justify-center">
+            <FormWrapper loading={loading} onSubmit={handleSubmit(onSubmit)}>
+                <div className="relative flex flex-col items-center justify-evenly gap-4 w-screen max-w-sm border border-gray-600 bg-gray-100 px-4 py-8 rounded-lg sm:px-6 lg:px-8">
+                    <h3 className="w-full text-lg font-semibold text-gray-800">Buy Investments</h3>
+                    <FormField
+                        label="Amount"
+                        type="number"
+                        name="amount"
+                        defaultValue="1"
+                        min="1"
+                        register={register}
+                        errors={errors}
+                        validationRules={{ required: "Amount is required" }}
+                    />
+                    <dl className="w-full grid grid-cols-2 gap-4">
+                        <h3 className="text-lg font-semibold text-gray-800 col-span-2">Summary</h3>
+                        <dt className="text-sm text-gray-900">
+                            Amount of {project.investmentDetails.type}:
+                        </dt>
+                        <dd>{amount}</dd>
+                        <dt className="text-sm text-gray-900">Price per {type}:</dt>
+                        <dd>{price}</dd>
+                        <dd className="text-smd text-gray-900">Total:</dd>
+                        <dt>{amount * price}</dt>
+                    </dl>
+                    <FormButton
+                        text="Invest now"
+                        disable={errors}
+                        type="submit"
+                        style="block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600"
+                    />
+                </div>
+            </FormWrapper>
+        </div>
     );
 };
 
