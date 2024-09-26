@@ -46,44 +46,16 @@ const filterOptions = [
 ];
 
 const Explore = () => {
-    const [page, setPage] = useState(1);
     const [searchText, setSearchText] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [projects, setProjects] = useState([]);
     const [filteredProjects, setFilteredProjects] = useState([]);
     const [errors, setErrors] = useState<String | null>(null);
-    const [stopFetching, setStopFetching] = useState(false);
     const containerRef = useRef(null);
 
     useEffect(() => {
         fetchProjects();
     }, []);
-
-    useEffect(() => {
-        const container = containerRef.current;
-
-        const options = {
-            root: null,
-            rootMargin: "0px",
-            threshold: 0.1,
-        };
-
-        const observer = new IntersectionObserver(([entry]) => {
-            if (entry.isIntersecting) {
-                if (!stopFetching) {
-                    fetchProjects();
-                }
-            }
-        }, options);
-
-        if (container) {
-            observer.observe(container);
-        }
-
-        return () => {
-            observer.disconnect();
-        };
-    }, [stopFetching, page]);
 
     useEffect(() => {
         const filtered = projects.filter((project) =>
@@ -95,23 +67,13 @@ const Explore = () => {
     }, [searchText, projects]);
 
     const fetchProjects = async () => {
-        if (stopFetching) {
-            return;
-        }
-
         setIsLoading(true);
-        const res = await projectApi.getProjects(page);
+        const res = await projectApi.getProjects();
         if (res.status === "success") {
-            if (res.data.length === 0) {
-                setStopFetching(true);
-                setIsLoading(false);
-                return;
-            }
             res.data = res.data.filter((project) => {
                 return project.status.current !== "Planning";
             });
-            setProjects((prevProjects) => prevProjects.concat(res.data));
-            setPage((prevPage) => prevPage + 1);
+            setProjects(res.data);
             setIsLoading(false);
             return;
         }

@@ -23,10 +23,13 @@ const ProjectCard = ({ project }) => {
 
                 <div>
                     <strong className="rounded border border-indigo-500 bg-indigo-500 px-3 py-1.5 mr-2 text-[10px] font-medium text-white">
-                        {project.type}
+                        {project.investmentDetails.energyType}
                     </strong>
                     <strong className="rounded border border-indigo-500 bg-indigo-500 px-3 py-1.5 mr-2 text-[10px] font-medium text-white">
                         {project.investmentDetails.type}
+                    </strong>
+                    <strong className="rounded border border-indigo-500 bg-indigo-500 px-3 py-1.5 mr-2 text-[10px] font-medium text-white">
+                        {project.status.current} Phase
                     </strong>
 
                     <div className="mt-4 text-lg font-medium sm:text-xl">

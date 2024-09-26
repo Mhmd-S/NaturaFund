@@ -9,6 +9,7 @@ import Overview from "@modules/ProjectModule/Overview";
 import InvestmentDetails from "@modules/ProjectModule/InvestmentDetails";
 import FinancialDetails from "@modules/ProjectModule/FinancialDetails";
 import InvestmentsReceived from "@modules/ProjectModule/InvestmentsReceived";
+import BuyInvestments from "@modules/ProjectModule/BuyInvestments";
 
 import TabbedWindow from "@components/common/TabbedWindow";
 
@@ -67,6 +68,8 @@ const Project = () => {
                 return <RevenueGenerated />;
             case "Investments Received": // Only displayed to the orgainsers
                 return <InvestmentsReceived />;
+            case "Buy Investments":
+                return <BuyInvestments project={project} />;
             default:
                 return <Overview project={project} />;
         }
@@ -80,17 +83,22 @@ const Project = () => {
             "Status",
             "Documents",
             "Revenue Generated",
+            "Buy Investments",
         ];
 
+        // If user is owner of the project
         if (project.ownedBy._id == current._id) {
             const newTabs = tabs.slice(0, 5).concat(["Investments Received"]);
             return newTabs;
         } else if (
-            project.status.current == "Electricity Generated" &&investedIn // If the user has invested in the project
+            project.status.current == "Electricity Generated" &&
+            investedIn // If the user has invested in the project
         ) {
             return tabs;
+        } else if (project.status.current == "Funding") {
+            return tabs.slice(0, 5).concat(["Buy Investments"]);
         } else {
-            return tabs.slice(0, 5);
+            return tabs.slice(0, 6);
         }
     };
 

@@ -4,7 +4,7 @@ const Overview = ({ project }) => {
     const getCompanyDetails = () => {
         const companyDetails = project.ownedBy;
         // Remove unwanted fields
-        const { userType, introduction, registeredName, _id, ...rest } = companyDetails;
+        const { userType, introduction, registeredName, _id, description, ...rest } = companyDetails;
         return rest;
     };
 
@@ -27,11 +27,11 @@ const Overview = ({ project }) => {
                     <p>{project.description}</p>
                 </article>
             </div>
-            {/* Company Introduction */}
+            {/* Company description */}
             <div>
                 <h2 className="text-3xl py-4 font-semibold">Company Profile</h2>
                 <article className="space-y-4 text-gray-600">
-                    <p>{project.ownedBy.introduction}</p>
+                    <p>{project.ownedBy.description}</p>
                 </article>
             </div>
             <div>
