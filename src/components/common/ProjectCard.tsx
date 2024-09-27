@@ -9,7 +9,7 @@ const ProjectCard = ({ project }) => {
     return (
         <article
             onClick={() => navigate(`/project/${project._id}`)}
-            className="rounded-xl bg-white p-4 ring-1 ring-indigo-50 sm:p-6 lg:p-8 cursor-pointer hover:ring-indigo-500"
+            className="h-48 rounded-xl bg-white p-4 ring-1 ring-indigo-50 sm:p-6 lg:p-8 cursor-pointer hover:ring-indigo-500"
         >
             <div className="flex items-start sm:gap-8">
                 <div

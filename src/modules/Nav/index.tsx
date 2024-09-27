@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { useAuthContext } from "@context/AuthContext";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import Cookies from "js-cookie";
 
 const MENU_ITEMS = [
     {
@@ -135,7 +136,8 @@ const Nav = () => {
             <div className="px-4">
                 <ul className="mt-6 space-y-1">
                     {MENU_ITEMS.map((item) => {
-                        if (current.userType === "Investor" && item.name === "Investee") return null;
+                        if (current.userType === "Investor" && item.name === "Investee")
+                            return null;
                         return <NavItem item={item} location={location} />;
                     })}
                 </ul>
@@ -152,7 +154,11 @@ const Nav = () => {
                     </p>
                 </div>
                 <FontAwesomeIcon
-                    onClick={()=>{authContextAction.logout(); window.location.reload();}}
+                    onClick={() => {
+                        authContextAction.logout();
+                        Cookies.remove("connect.sid");
+                        window.location.reload();
+                    }}
                     icon={faArrowRightFromBracket}
                     className="text-brand-800 cursor-pointer p-2 rounded-lg transition-color hover:bg-brand-800 hover:text-white"
                 />

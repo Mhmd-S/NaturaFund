@@ -61,7 +61,7 @@ const ResultPage = () => {
     }, []);
 
     return (
-        <div className="min-h-screen col-span-2 place-self-center w-max flex flex-col justify-center items-center gap-5">
+        <div className="min-h-screen col-span-2 place-self-center w-full flex flex-col justify-center items-center gap-5">
             {loading ? (
                 <div className="w-full h-full flex items-center justify-center">
                     <LoadingIcon />
@@ -72,7 +72,7 @@ const ResultPage = () => {
                         <FontAwesomeIcon icon={icon} className="text-brand-800 text-3xl" />
                     </div>
                     <h2>{title}</h2>
-                    <p className="text-lg text-center text-gray-800">
+                    <p className="text-lg w-3/4 text-center text-gray-800">
                         {message ? message : description}
                     </p>
                     {buttonText && (

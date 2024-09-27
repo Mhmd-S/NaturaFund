@@ -73,7 +73,7 @@ const Portfolio = () => {
                     data={projects}
                     loading={loading}
                     error={error}
-                    ignoreData={["_id", "project"]}
+                    ignoreData={["_id", "project", "user", "userType", "__v", "type", "investmentDetails"]}
                     projectField="project"
                     projectIdField="_id"
                     searchText={searchText}

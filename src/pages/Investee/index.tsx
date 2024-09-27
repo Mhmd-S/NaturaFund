@@ -11,6 +11,7 @@ const Investee = () => {
     const navigate = useNavigate();
 
     const { state } = useAuthContext();
+    const { current } = state;
 
     const [searchText, setSearchText] = useState("");
     const [projects, setProjects] = useState([]);
@@ -21,7 +22,14 @@ const Investee = () => {
         const fetchProjects = async () => {
             try {
                 const response = await projectApi.getProjecstByCorporation(current._id);
-                setProjects(response.data);
+                const flattenedProjects = response.data.map(project => ({
+                    _id: project._id,
+                    name: project.name,
+                    status: project.status.current,
+                    investmentType: project.investmentDetails.type,
+    
+                }));
+                setProjects(flattenedProjects);
                 setLoading(false);
             } catch (error) {
                 setError(error);
@@ -29,7 +37,7 @@ const Investee = () => {
             }
         };
         fetchProjects();
-    }, []);
+    }, [current._id]);
 
     const handleOnClick = (projectId: string) => {
         navigate(`/project/${projectId}`);
@@ -50,8 +58,9 @@ const Investee = () => {
 
                 <ProjectsTable
                     data={projects}
-                    ignoreData={["_id", "projectId"]}
+                    ignoreData={["_id"]}
                     projectIdField="_id"
+                    projectField="projectId"
                     searchText={searchText}
                     loading={loading}
                     error={error}

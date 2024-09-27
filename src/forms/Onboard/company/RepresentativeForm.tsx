@@ -40,7 +40,7 @@ const RepresentativeForm = () => {
     return (
         <FormWrapper loading={loading} onSubmit={handleSubmit(onSubmit)}>
             <div className="w-3/4 grid grid-flow-row gap-y-5">
-                <h2 className="text-3xl font-semibold capatalize">Personal Details</h2>
+                <h2 className="text-3xl font-semibold capatalize">Represantive Details</h2>
                 <p className="text-sm text-gray-light">
                     Please provide the details of the representative who will be responsible for
                     managing the account. The representative must have the authority to act on
@@ -115,6 +115,7 @@ const RepresentativeForm = () => {
                         }}
                     />
                 </div>
+                <div className="grid grid-cols-2 gap-4">
                 <FileUploadField
                     inputGuidelines="Please upload a selfie with your ID"
                     accept="image/*"
@@ -160,6 +161,7 @@ const RepresentativeForm = () => {
                         required: "File is required",
                     }}
                 />
+                </div>
                 <div className=" p-2 grid grid-cols-2 gap-10">
                     <button
                         className="bg-white text-brand-800 border-2 border-brand-800 rounded-md transition-colors hover:bg-brand-800 hover:text-white"

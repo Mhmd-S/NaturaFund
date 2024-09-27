@@ -138,12 +138,12 @@ const ProjectApplyForm = () => {
                     validationRules={{
                         required: "Description is required",
                         minLength: {
-                            value: 50,
-                            message: "Description must be at least 50 characters long",
+                            value: 200,
+                            message: "Description must be at least 200 characters long",
                         },
                         maxLength: {
-                            value: 500,
-                            message: "Description must be less than 500 characters long",
+                            value: 1000,
+                            message: "Description must be less than 750 characters long",
                         },
                     }}
                 />

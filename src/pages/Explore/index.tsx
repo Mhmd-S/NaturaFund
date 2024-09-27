@@ -91,7 +91,7 @@ const Explore = () => {
                 </div>
             </div>
             <div
-                className="w-full min-h-screen p-4 grid grid-cols-1 grid-flow-row place-items-center gap-8 bg-white rounded-2xl"
+                className="w-full min-h-screen p-4 grid grid-cols-1 grid-flow-row gap-8 bg-white rounded-2xl"
                 ref={containerRef}
             >
                 {filteredProjects.length > 0 ? (

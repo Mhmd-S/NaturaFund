@@ -127,9 +127,13 @@ const CompanyInformationForm = () => {
                     placeholder="ex. NaturaFund is a financial services company that provides investment and wealth management services."
                     validationRules={{
                         required: "Description is required",
-                        maxLength: {
+                        minLength: {
                             value: 200,
-                            message: "Description should not exceed 200 characters",
+                            message: "Description should be at least 200 characters",
+                        },
+                        maxLength: {
+                            value: 500,
+                            message: "Description should not exceed 500 characters",
                         },
                     }}
                 />
