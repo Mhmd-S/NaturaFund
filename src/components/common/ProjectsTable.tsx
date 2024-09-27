@@ -14,6 +14,7 @@ type ProjectsTableProps = {
     ignoreData?: string[];
     acceptData?: string[];
     projectIdField: string;
+    projectField: string;
     searchText: string;
     loading: boolean;
     error?: string | null;
@@ -63,7 +64,7 @@ const ProjectsTable = ({
                     <EmptyState title="Nothing to display" icon={faMeh} />
                 </div>
             ) : (
-                <table className="h-full w-full divide-y-2 divide-gray-200 text-sm">
+                <table className="w-full divide-y-2 divide-gray-200 text-sm">
                     <thead>
                         <tr>
                             {data[0] &&
@@ -98,7 +99,7 @@ const ProjectsTable = ({
                                         return (
                                             <td
                                                 key={index}
-                                                className="px-4 py-2 whitespace-nowrap text-gray-900"
+                                                className="h-[1px] px-4 py-2 whitespace-nowrap text-gray-900"
                                             >
                                                 {value}
                                             </td>

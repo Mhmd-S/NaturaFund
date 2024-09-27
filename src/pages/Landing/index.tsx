@@ -33,15 +33,15 @@ const items = [
 
 const PortfolioItems = [
     {
-        title: "Select A Solar Project",
+        title: "Select A Project",
         content:
-            "Select a solar project, go through the details of the project and decide if it suits your investment goals.",
+            "Select a project, go through the details of the project and decide if it suits your investment goals.",
         img: "landing_carousel_1.svg",
     },
     {
-        title: "Buy Solar Panels",
+        title: "Invest in the Project",
         content:
-            "Buy the amount of solar panels you want to invest in the project. The more solar panels you buy, the more electricity you genera",
+            "Buy the amount of equity/bonds/solar panels you want to invest in the project. The more units you buy, the more returns you get.",
         img: "landing_carousel_2.svg",
     },
     {
@@ -68,11 +68,11 @@ const Landing = () => {
                     </p>
                     <p className="pt-3 text-brand-800 text-md md:row-start-3">
                         <FontAwesomeIcon icon={faCheck} className="mr-4 text-sm" />
-                        Earn 10-13% returns from electricity your panels generate
+                        Invest in renewable energy projects while owning equity in the solar panels
                     </p>
                     <p className="pt-3 text-brand-800 text-md md:row-start-4">
                         <FontAwesomeIcon icon={faCheck} className="mr-4 text-sm" />
-                        Vested takes care of the installation and maintenance of your panels
+                        Buy stable and secure investments with attractive returns
                     </p>
                 </div>
                 <Link

@@ -3,13 +3,14 @@ import * as investmentApi from "@api/investment";
 import { useAuthContext } from "@context/AuthContext";
 
 import { useForm } from "react-hook-form";
-import { FormWrapper, FormField, FormButton } from "@forms/FormComponents";
+import { FormWrapper, FormField, FormButton, FormGeneralError } from "@forms/FormComponents";
 import { get } from "lodash";
 
 const BuyInvestments = ({ project }) => {
     const type = get(project, "investmentDetails.type", " ");
     const price = get(project, `investmentDetails.features[${type} Price]`, " ");
 
+    const [error, setError] = useState("");
     const [isSuccess, setIsSuccess] = useState(false);
     const [loading, setLoading] = useState(false);
 
@@ -25,33 +26,39 @@ const BuyInvestments = ({ project }) => {
 
     const amount = watch("amount", "1");
 
-    const onSubmit = (formData) => {
+    const onSubmit = async (formData) => {
         setLoading(true);
         setIsSuccess(false);
         const investment = {
             amount: formData.amount,
-            type: project.investmentDetails.type,
-            projectId: project._id,
+            user: current._id,
+            userType: current.userType,
+            project: project._id,
         };
 
-        investmentApi
-            .createInvestment(investment)
-            .then(() => {
+        try {
+            const response = await investmentApi.createInvestment(investment);
+            const { status, data } = response;
+
+            if (status === "success") {
                 setIsSuccess(true);
-                alert("Investment successful!");
-            })
-            .catch((error) => {
-                console.error("Error creating investment:", error);
-                alert("Investment failed.");
-            })
-            .finally(() => {
-                setLoading(false);
-            });
+            }
+        } catch (error) {
+            setError(err);
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
         <div className="col-span-2 w-full min-h-full flex items-center justify-center">
             <FormWrapper loading={loading} onSubmit={handleSubmit(onSubmit)}>
+                {isSuccess && (
+                    <div className="bg-green-200 border-green-400 border-l-4 p-4 mb-4">
+                        <p className="text-green-700">Investment purchased successfully!</p>
+                    </div>
+                )}
+                <FormGeneralError message={error} />
                 <div className="relative flex flex-col items-center justify-evenly gap-4 w-screen max-w-sm border border-gray-600 bg-gray-100 px-4 py-8 rounded-lg sm:px-6 lg:px-8">
                     <h3 className="w-full text-lg font-semibold text-gray-800">Buy Investments</h3>
                     <FormField
@@ -77,7 +84,6 @@ const BuyInvestments = ({ project }) => {
                     </dl>
                     <FormButton
                         text="Invest now"
-                        disable={errors}
                         type="submit"
                         style="block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600"
                     />

@@ -8,47 +8,56 @@ import { useNavigate } from "react-router-dom";
 // ToDo: change the component name from index to something else
 
 const Portfolio = () => {
-
     const navigate = useNavigate();
 
     const { state } = useAuthContext();
     const { current } = state;
 
     const [projects, setProjects] = useState([]);
-    const [filteredProjects, setFilteredProjects] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [searchText, setSearchText] = useState("");
 
     useEffect(() => {
         const fetchProjects = async () => {
+            setLoading(true);
             try {
                 const response = await investmentApi.getInvestmentsByInvestor(current._id);
 
-                // Making all fields the same level
-                const mergedResult = response.data.map((investment) => ({
-                    name: investment.projectId.name,
-                    ...investment,
-                    ...investment.projectId,
-                    status: investment.projectId.status.current,
-                    projectId: investment.projectId._id,
-                }));
+                const reducedResponse = response.data.reduce((acc, investment) => {
+                    const project = investment.project;
 
-                console.log(mergedResult);
+                    const itemFound = acc.find((accItem) => accItem._id === project._id);
 
-                setProjects(mergedResult);
-                setLoading(false);
+                    if (itemFound) {
+                        return acc;
+                    }
+
+                    const formatedInvestment = {
+                        name: investment.project.name,
+                        ...investment,
+                        ...investment.project,
+                        status: investment.project.status.current,
+                        project: investment.project._id,
+                    };
+
+                    acc.push(formatedInvestment);
+                    return acc;
+                }, []);
+
+                setProjects(reducedResponse);
             } catch (error) {
                 setError(error);
+            } finally {
                 setLoading(false);
             }
         };
         fetchProjects();
     }, []);
 
-    const handleOnClick = (projectId: string) => {
-        navigate(`/project/${projectId}`);
-    }
+    const handleOnClick = (project: string) => {
+        navigate(`/project/${project}`);
+    };
 
     return (
         <div className="w-full p-6 bg-gray-300/25 overflow-y-auto">
@@ -61,11 +70,12 @@ const Portfolio = () => {
                 </div>
 
                 <ProjectsTable
-                    data={filteredProjects}
+                    data={projects}
                     loading={loading}
                     error={error}
-                    ignoreData={["_id", "projectId"]}
-                    projectIdField="projectId"
+                    ignoreData={["_id", "project"]}
+                    projectField="project"
+                    projectIdField="_id"
                     searchText={searchText}
                     handleOnClick={handleOnClick}
                 />

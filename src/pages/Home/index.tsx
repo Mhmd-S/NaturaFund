@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { useAuthContext } from "@context/AuthContext";
+
 import Portfolio from "@modules/HomeModule/PortfolioChart";
 import Projects from "@modules/HomeModule/Projects";
 import LineChart from "@modules/HomeModule/RevenueChart/LineChart";
@@ -13,10 +15,27 @@ import { faArrowUp, faLineChart, faPieChart } from "@fortawesome/free-solid-svg-
 const Home = () => {
     const [toggleChart, setToggleChart] = useState(true); // true - revenue or false - portfolio
 
+    const { state } = useAuthContext();
+
+    const { current } = state;
+
+    const renderGreeting = () => {
+        const date = new Date();
+        const hours = date.getHours();
+
+        if (hours < 12) {
+            return "Good morning,";
+        } else if (hours < 18) {
+            return "Good afternoon,";
+        } else {
+            return "Good evening,";
+        }
+    };
+
     return (
         <div className="w-full p-6 flex flex-col gap-5 bg-gray-300/25 overflow-y-auto">
             <h2 className="text-3xl p-4 text-brand-900 font-bold rounded-alg">
-                Good morning, John
+                {renderGreeting()} {current.firstName}
             </h2>
             <div className="p-6 grid grid-cols-2 bg-white rounded-2xl">
                 <div className="grid grid-rows-3 gap-4">
@@ -39,7 +58,7 @@ const Home = () => {
                 <ToggleButton
                     current={toggleChart}
                     handleOnClick={() => setToggleChart(!toggleChart)}
-                    labels={["Revenue", "Portofolio"]}
+                    labels={["Revenue", "Portfolio"]}
                     icons={[faLineChart, faPieChart]}
                 />
                 {toggleChart ? <BarChart /> : <Portfolio />}

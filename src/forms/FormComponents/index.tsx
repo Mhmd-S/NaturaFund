@@ -5,3 +5,4 @@ export { default as FormMultiFileUpload } from './FormMultiFileUpload';
 export { default as FormSelect } from './FormSelect';
 export { default as FormTextArea } from './FormTextArea';
 export { default as FormWrapper } from './FormWrapper';
+export { default as FormGeneralError } from './FormGeneralError';
