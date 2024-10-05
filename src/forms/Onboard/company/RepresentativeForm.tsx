@@ -15,23 +15,37 @@ const RepresentativeForm = () => {
         handleSubmit,
         resetField,
         clearErrors,
+        getValues,
         formState: { errors },
-    } = useForm();
+    } = useForm({
+        defaultValues: {
+            firstName: data?.representative ? data?.representative.firstName : "",
+            lastName: data?.representative ? data?.representative.lastName : "",
+            phoneNumber: data?.representative ? data?.representative.phoneNumber : "",
+            workEmail: data?.workEmail ? data?.representative.workEmail : "",
+            frontId: data.get("frontId") || null,
+            backId: data.get("backId") || null,
+            selfieId: data.get("selfieId") || null,
+        },
+    });
 
     const onSubmit = async (formData) => {
         const formDataTemp = data;
 
         formDataTemp.representative = {
+            ...formData.representative,
             firstName: formData.firstName,
             lastName: formData.lastName,
             phoneNumber: formData.phoneNumber,
-            email: formData.workEmail,
+            workEmail: formData.workEmail,
         };
 
-        formDataTemp.append("representative", JSON.stringify(formDataTemp.representative));
-        formDataTemp.append("frontId", formData.frontId[0]);
-        formDataTemp.append("backId", formData.backId[0]);
-        formDataTemp.append("selfieId", formData.selfieId[0]);
+        console.log(repre);
+
+        formDataTemp.set("representative", JSON.stringify(formDataTemp.representative));
+        formDataTemp.set("frontId", formData.frontId[0] || formData.frontId);
+        formDataTemp.set("backId", formData.backId[0] || formData.backId);
+        formDataTemp.set("selfieId", formData.selfieId[0] || formData.selfieId);
 
         setData(formDataTemp);
         goNext();
@@ -50,7 +64,6 @@ const RepresentativeForm = () => {
                     <FormField
                         name="firstName"
                         type="text"
-                        defaultValue={data.get("firstName") || ""}
                         label="First Name"
                         register={register}
                         errors={errors}
@@ -68,7 +81,6 @@ const RepresentativeForm = () => {
                         name="lastName"
                         type="text"
                         label="Last Name"
-                        defaultValue={data.get("lastName") || ""}
                         register={register}
                         errors={errors}
                         placeholder="ex. Doe"
@@ -86,7 +98,6 @@ const RepresentativeForm = () => {
                         type="text"
                         label="Phone Number"
                         register={register}
-                        defaultValue={data.get("phoneNumber") || ""}
                         errors={errors}
                         placeholder="ex. 123123123"
                         validationRules={{
@@ -104,7 +115,6 @@ const RepresentativeForm = () => {
                         label="Work Email"
                         register={register}
                         errors={errors}
-                        defaultValue={data.get("workEmail") || ""}
                         placeholder="ex. johndoe123@email.com"
                         validationRules={{
                             required: "Email is required",
@@ -116,54 +126,55 @@ const RepresentativeForm = () => {
                     />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
-                <FileUploadField
-                    inputGuidelines="Please upload a selfie with your ID"
-                    accept="image/*"
-                    acceptSize={30000}
-                    label="Front of ID"
-                    name="frontId"
-                    register={register}
-                    currentFile={data.get("frontId") ? data.get("frontId")[0] : null}
-                    errors={errors}
-                    clearErrors={clearErrors}
-                    resetField={resetField}
-                    validationRules={{
-                        required: "File is required",
-                    }}
-                />
-                <FileUploadField
-                    inputGuidelines="Please upload a selfie with your ID"
-                    accept="image/*"
-                    acceptSize={30000}
-                    label={"Back of ID"}
-                    currentFile={data.get("backId") ? data.get("backId")[0] : null}
-                    name="backId"
-                    register={register}
-                    errors={errors}
-                    resetField={resetField}
-                    clearErrors={clearErrors}
-                    validationRules={{
-                        required: "File is required",
-                    }}
-                />
-                <FileUploadField
-                    inputGuidelines="Please upload a selfie with your ID"
-                    accept="image/*"
-                    acceptSize={30000}
-                    label={"Selfie with ID"}
-                    currentFile={data.get("selfieId") ? data.get("selfieId")[0] : null}
-                    name="selfieId"
-                    register={register}
-                    errors={errors}
-                    clearErrors={clearErrors}
-                    resetField={resetField}
-                    validationRules={{
-                        required: "File is required",
-                    }}
-                />
+                    <FileUploadField
+                        inputGuidelines="Please upload a selfie with your ID"
+                        accept="image/*"
+                        acceptSize={30000}
+                        label="Front of ID"
+                        name="frontId"
+                        register={register}
+                        currentFile={data.get("frontId")}
+                        errors={errors}
+                        clearErrors={clearErrors}
+                        resetField={resetField}
+                        validationRules={{
+                            required: "File is required",
+                        }}
+                    />
+                    <FileUploadField
+                        inputGuidelines="Please upload a selfie with your ID"
+                        accept="image/*"
+                        acceptSize={30000}
+                        label={"Back of ID"}
+                        currentFile={data.get("backId")}
+                        name="backId"
+                        register={register}
+                        errors={errors}
+                        resetField={resetField}
+                        clearErrors={clearErrors}
+                        validationRules={{
+                            required: "File is required",
+                        }}
+                    />
+                    <FileUploadField
+                        inputGuidelines="Please upload a selfie with your ID"
+                        accept="image/*"
+                        acceptSize={30000}
+                        label={"Selfie with ID"}
+                        currentFile={data.get("selfieId")}
+                        name="selfieId"
+                        register={register}
+                        errors={errors}
+                        clearErrors={clearErrors}
+                        resetField={resetField}
+                        validationRules={{
+                            required: "File is required",
+                        }}
+                    />
                 </div>
                 <div className=" p-2 grid grid-cols-2 gap-10">
                     <button
+                        type="submit"
                         className="bg-white text-brand-800 border-2 border-brand-800 rounded-md transition-colors hover:bg-brand-800 hover:text-white"
                         onClick={goPrev}
                     >

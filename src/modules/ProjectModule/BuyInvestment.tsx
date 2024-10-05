@@ -4,6 +4,8 @@ import { useAuthContext } from "@context/AuthContext";
 
 import { useForm } from "react-hook-form";
 import { FormWrapper, FormField, FormButton, FormGeneralError } from "@forms/FormComponents";
+import SuccessMessage from "@components/common/SuccessMessage";
+
 import { get } from "lodash";
 
 const BuyInvestments = ({ project }) => {
@@ -53,11 +55,7 @@ const BuyInvestments = ({ project }) => {
     return (
         <div className="col-span-2 w-full min-h-full flex items-center justify-center">
             <FormWrapper loading={loading} onSubmit={handleSubmit(onSubmit)}>
-                {isSuccess && (
-                    <div className="bg-green-200 border-green-400 border-l-4 p-4 mb-4">
-                        <p className="text-green-700">Investment purchased successfully!</p>
-                    </div>
-                )}
+                {isSuccess && <SuccessMessage message="Investment successful" />}
                 <FormGeneralError message={error} />
                 <div className="relative flex flex-col items-center justify-evenly gap-4 w-screen max-w-sm border border-gray-600 bg-gray-100 px-4 py-8 rounded-lg sm:px-6 lg:px-8">
                     <h3 className="w-full text-lg font-semibold text-gray-800">Buy Investments</h3>

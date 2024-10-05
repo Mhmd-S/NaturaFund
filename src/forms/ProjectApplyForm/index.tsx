@@ -16,6 +16,7 @@ import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 import * as applicationApi from "@api/application";
 import COUNTRY_LIST from "@utils/CountryList";
+import SuccessMessage from "@forms/RegistrationForm/SuccessMessage";
 
 const ProjectApplyForm = () => {
     const navigate = useNavigate();
@@ -38,16 +39,16 @@ const ProjectApplyForm = () => {
         // Create a FormData object
         const formDataToSend = new FormData();
 
-        // Append each field from formData to the FormData object
+        // set each field from formData to the FormData object
         for (const key in formData) {
             if (key === "documents") {
-                // Append each file in the documents array
+                // set each file in the documents array
                 formData[key].forEach((file) => {
                     console.log(file);
-                    formDataToSend.append("documents", file.file);
+                    formDataToSend.set("documents", file.file);
                 });
             } else {
-                formDataToSend.append(key, formData[key]);
+                formDataToSend.set(key, formData[key]);
             }
         }
 
@@ -71,11 +72,7 @@ const ProjectApplyForm = () => {
     return (
         <FormWrapper loading={loading} onSubmit={handleSubmit(onSubmit)}>
             <div className="w-3/4 flex flex-col">
-                {success && (
-                    <div className="bg-green-200 border-green-400 border-l-4 p-4 mb-4">
-                        <p className="text-green-700">Application submitted successfully!</p>
-                    </div>
-                )}
+                {success && <SuccessMessage message="Application submitted successfully" />}
                 <FormGeneralError message={error} />
                 <h2 className="text-3xl pb-4 font-semibold capatalize">Project Application Form</h2>
                 <FormField

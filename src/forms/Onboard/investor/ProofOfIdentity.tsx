@@ -16,14 +16,26 @@ const ProofOfIdentity = () => {
         resetField,
         clearErrors,
         formState: { errors },
-    } = useForm();
+    } = useForm({
+        defaultValues: {
+            frontId: data.get("frontId") || null,
+            backId: data.get("backId") || null,
+            selfieId: data.get("selfieId") || null,
+        },
+    });
 
     const onSubmit = (formData) => {
         const formDataTemp = data;
-        formDataTemp.append("frontId", formData.frontId[0]);
-        formDataTemp.append("backId", formData.backId[0]);
-        formDataTemp.append("selfieId", formData.selfieId[0]);;
+
+        console.log("formData", formData);
+        console.log(data);
+
+        formDataTemp.set("frontId", formData.frontId[0] || formData.frontId);
+        formDataTemp.set("backId", formData.backId[0] || formData.frontId);
+        formDataTemp.set("selfieId", formData.selfieId[0] || formData.frontId);
+
         setData(formDataTemp);
+
         goNext();
     };
 

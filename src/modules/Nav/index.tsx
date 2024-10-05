@@ -131,6 +131,13 @@ const Nav = () => {
 
     const { current } = state;
 
+    const handleLogout = async() => {
+        await authContextAction.logout();
+        await Cookies.remove("connect.sid");
+        await authContextAction.getUser();
+        window.location.reload();
+    }
+
     return (
         <div className="flex flex-col justify-between border-e bg-white">
             <div className="px-4">
@@ -154,11 +161,7 @@ const Nav = () => {
                     </p>
                 </div>
                 <FontAwesomeIcon
-                    onClick={() => {
-                        authContextAction.logout();
-                        Cookies.remove("connect.sid");
-                        window.location.reload();
-                    }}
+                    onClick={handleLogout}
                     icon={faArrowRightFromBracket}
                     className="text-brand-800 cursor-pointer p-2 rounded-lg transition-color hover:bg-brand-800 hover:text-white"
                 />

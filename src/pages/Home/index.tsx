@@ -36,9 +36,9 @@ const Home = () => {
         <div className="w-full p-6 flex flex-col gap-5 bg-gray-300/25 overflow-y-auto">
             <h2 className="text-3xl p-4 text-brand-900 font-bold rounded-alg">
                 {renderGreeting()}{" "}
-                {current.userType == "Investor"
+                {current?.userType == "Investor" && current.firstName
                     ? current.firstName
-                    : JSON.parse(current.representative).firstName}
+                    : current.representative && JSON.parse(current.representative).firstName}
             </h2>
             <div className="p-6 grid grid-cols-2 bg-white rounded-2xl">
                 <div className="grid grid-rows-3 gap-4">

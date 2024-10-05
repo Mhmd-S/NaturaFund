@@ -20,18 +20,31 @@ const CompanyInformationForm = () => {
         clearErrors,
         resetField,
         formState: { errors },
-    } = useForm();
+    } = useForm({
+        defaultValues: {
+            registeredName: data.get("registeredName") || "",
+            regitrationsType: data.get("regitrationsType") || "DEFAULT",
+            registrationNumber: data.get("registrationNumber") || "",
+            incorporationDate: data.get("incorporationDate") || "",
+            address: data.get("address") || "",
+            description: data.get("description") || "",
+            businessLicense: data.get("businessLicense") || null,
+        },
+    });
 
     const onSubmit = (formData) => {
         const formDataTemp = data;
 
-        formDataTemp.append("registeredName", formData.registeredName);
-        formDataTemp.append("regitrationsType", formData.regitrationsType);
-        formDataTemp.append("registrationNumber", formData.registrationNumber);
-        formDataTemp.append("incorporationDate", formData.incorporationDate);
-        formDataTemp.append("address", formData.address);
-        formDataTemp.append("description", formData.description);
-        formDataTemp.append("businessLicense", formData.businessLicense[0]);
+        formDataTemp.set("registeredName", formData.registeredName);
+        formDataTemp.set("regitrationsType", formData.regitrationsType);
+        formDataTemp.set("registrationNumber", formData.registrationNumber);
+        formDataTemp.set("incorporationDate", formData.incorporationDate);
+        formDataTemp.set("address", formData.address);
+        formDataTemp.set("description", formData.description);
+        formDataTemp.set(
+            "businessLicense",
+            formData.businessLicense[0] || formData.businessLicense
+        );
 
         setData(formDataTemp);
         goNext();
@@ -46,7 +59,6 @@ const CompanyInformationForm = () => {
                         name="registeredName"
                         type="text"
                         label="Registered Name"
-                        defaultValue={data.get("registeredName") || ""}
                         register={register}
                         errors={errors}
                         placeholder="ex. NaturaFund Sdn Bhd"
@@ -64,7 +76,6 @@ const CompanyInformationForm = () => {
                         label="Registration Type"
                         errors={errors}
                         options={["Sdn Bhd", "Bhd", "LLP", "PLC"]}
-                        defaultValue={data.get("regitrationsType") || ""}
                         validationRules={{
                             required: "Industry is required",
                             validate: (value) =>
@@ -75,7 +86,6 @@ const CompanyInformationForm = () => {
                         name="registrationNumber"
                         type="text"
                         label="Registration Number"
-                        defaultValue={data.get("registrationNumber") || ""}
                         register={register}
                         errors={errors}
                         placeholder="Use the new format, e.g. 2020XXXXXXXX"
@@ -91,7 +101,6 @@ const CompanyInformationForm = () => {
                     <FormField
                         name="incorporationDate"
                         type="date"
-                        defaultValue={data.get("incorporationDate") || ""}
                         label="Incorporation Date"
                         register={register}
                         errors={errors}
@@ -105,15 +114,13 @@ const CompanyInformationForm = () => {
                     name="address"
                     label="Address"
                     register={register}
-                    defaultValue={data.get("address") || ""}
                     errors={errors}
                     placeholder="ex. 1, Persiaran Kewajipan, Usj 1, 47600 Subang Jaya, Selangor"
                     validationRules={{
                         required: "Address is required",
                         pattern: {
-                            value: /^\d+\s?,\s?[a-zA-Z\s]+\s?,\s[a-zA-Z0-9\s]+\s?,\s?[0-9]{5}\s?[a-zA-z\s]+\s?,\s?[a-zA-z]+$/,
-                            message:
-                                "The address should include: street number, street name, region, and town/city, state.",
+                            value: /^[\d\s\w,.-]*$/,
+                            message: "Please enter a valid address.",
                         },
                     }}
                 />
@@ -122,7 +129,6 @@ const CompanyInformationForm = () => {
                     name="description"
                     label="Description"
                     register={register}
-                    defaultValue={data.get("description") || ""}
                     errors={errors}
                     placeholder="ex. NaturaFund is a financial services company that provides investment and wealth management services."
                     validationRules={{
@@ -140,7 +146,7 @@ const CompanyInformationForm = () => {
                 <FormFileUpload
                     name="businessLicense"
                     label="Business License"
-                    currentFile={data.get("businessLicense") ? data.get("businessLicense")[0] : null}
+                    currentFile={data.get("businessLicense")}
                     accept="image/*"
                     acceptSize={30000}
                     inputGuidelines="Please upload a business license"

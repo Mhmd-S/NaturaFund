@@ -52,7 +52,7 @@ const Investee = () => {
                         <SearchBar searchText={searchText} setSearchText={setSearchText} />
                     </div>
                     <Link to={"/project/apply"}>
-                        <FormButton text="Fund your project" type="button" />
+                        <FormButton text="Apply for Funding" type="button" />
                     </Link>
                 </div>
 

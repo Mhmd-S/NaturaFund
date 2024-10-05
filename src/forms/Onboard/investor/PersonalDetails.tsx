@@ -16,25 +16,33 @@ const PersonalDetails = () => {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm();
+    } = useForm({
+        defaultValues: {
+            firstName: data.get("firstName") || "",
+            lastName: data.get("lastName") || "",
+            phoneNumber: data.get("phoneNumber") || "",
+            address: data.get("address") || "",
+            residence: data.get("residence") || "DEFAULT",
+            nationality: data.get("nationality") || "DEFAULT",
+        },
+    });
 
     const onSubmit = (formData) => {
-
         const formDataTemp = data;
 
-        formDataTemp.append("firstName", formData.firstName);
-        formDataTemp.append("lastName", formData.lastName);
-        formDataTemp.append("phoneNumber", formData.phoneNumber);
-        formDataTemp.append("address", formData.address);
-        formDataTemp.append("residence", formData.residence);
-        formDataTemp.append("nationality", formData.nationality);
+        formDataTemp.set("firstName", formData.firstName);
+        formDataTemp.set("lastName", formData.lastName);
+        formDataTemp.set("phoneNumber", formData.phoneNumber);
+        formDataTemp.set("address", formData.address);
+        formDataTemp.set("residence", formData.residence);
+        formDataTemp.set("nationality", formData.nationality);
 
         setData(formDataTemp);
         goNext();
     };
 
     return (
-        <FormWrapper onSubmit={handleSubmit(onSubmit)}>
+        <FormWrapper loading={false} onSubmit={handleSubmit(onSubmit)}>
             <div className="w-3/4 flex flex-col">
                 <h2 className="text-3xl pb-4 font-semibold capatalize">Personal Details</h2>
                 <div className="grid grid-cols-2 gap-4">
@@ -42,7 +50,6 @@ const PersonalDetails = () => {
                         name="firstName"
                         type="text"
                         label="First Name"
-                        defaultValue={data.get("firstName")}
                         register={register}
                         errors={errors}
                         placeholder="ex. John"
@@ -59,7 +66,6 @@ const PersonalDetails = () => {
                         name="lastName"
                         type="text"
                         label="Last Name"
-                        defaultValue={data.get("lastName")}
                         register={register}
                         errors={errors}
                         placeholder="ex. Doe"
@@ -77,7 +83,6 @@ const PersonalDetails = () => {
                     name="phoneNumber"
                     type="text"
                     label="Phone Number"
-                    defaultValue={data.get("phoneNumber")}
                     register={register}
                     errors={errors}
                     placeholder="ex. 123123123"
@@ -95,14 +100,13 @@ const PersonalDetails = () => {
                         name="address"
                         type="text"
                         label="Address"
-                        defaultValue={data.get("address")}
                         register={register}
                         errors={errors}
                         placeholder="ex. 1, Persiaran Kewajipan, Usj 1, 47600 Subang Jaya, Selangor"
                         validationRules={{
                             required: "Address is required",
                             pattern: {
-                                value: /^\d+\s?,\s?[a-zA-Z\s]+\s?,\s[a-zA-Z0-9\s]+\s?,\s?[0-9]{5}\s?[a-zA-z\s]+\s?,\s?[a-zA-z]+$/,
+                                value: /^[\d\s\w,.-]*$/,
                                 message:
                                     "The address should include: street number, street name, region, and town/city, state.",
                             },
@@ -112,7 +116,6 @@ const PersonalDetails = () => {
                         register={register}
                         name="residence"
                         label="Place of Residence"
-                        defaultValue={data.get("residence")}
                         errors={errors}
                         options={COUNTRY_LIST}
                         validationRules={{
@@ -127,7 +130,6 @@ const PersonalDetails = () => {
                     register={register}
                     name="nationality"
                     label="Nationality"
-                    defaultValue={data.get("nationality")}
                     errors={errors}
                     options={COUNTRY_LIST}
                     validationRules={{

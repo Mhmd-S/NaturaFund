@@ -13,14 +13,6 @@ const contextActions = (dispatch) => {
                 dispatch({ type: actionTypes.SET_MESSAGE, payload: { message, description } });
             },
         },
-        // app: {
-        //     open: (appName) => {
-        //         dispatch({ type: actionTypes.CHANGE_APP, playload: appName });
-        //     },
-        //     default: () => {
-        //         dispatch({ type: actionTypes.DEFAULT_APP });
-        //     },
-        // },
     };
 };
 

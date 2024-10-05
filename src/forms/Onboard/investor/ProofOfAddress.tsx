@@ -24,8 +24,30 @@ const ProofOfAddress = () => {
         handleSubmit,
         resetField,
         clearErrors,
+        getValues,
         formState: { errors },
-    } = useForm();
+    } = useForm({
+        defaultValues: {
+            addressProof: data.get("addressProof") || null,
+        },
+    });
+
+    const handleGoPrev = () => {
+        const formDataTemp = data;
+
+        const addressProof = getValues("addressProof");
+
+        if (!addressProof) {
+            goPrev()
+            return;
+        };
+
+        formDataTemp.set("addressProof", addressProof[0] || addressProof);
+        
+        setData(data);
+
+        goPrev();
+    };
 
     const onSubmit = async (formData) => {
         setLoading(true);
@@ -33,22 +55,26 @@ const ProofOfAddress = () => {
 
         const formDataTemp = data;
 
-        formDataTemp.append("addressProof", formData.addressProof[0]);
-        formDataTemp.append("verified", "pending");
+        formDataTemp.set("addressProof", formData.addressProof[0] || formData.addressProof);
+        formDataTemp.set("verified", "pending");
+        try {
+            const response = await updateUser(state.current._id, data);
 
-        const response = await updateUser(state.current._id, data);
+            const { status } = response;
 
-        const { status } = response;
+            if (status === "success") {
+                goNext();
+            } else {
+                setError("An error occurred, please try again.");
+            }
 
-        if (status === "success") {
-            goNext();
-        } else {
+            getUser();
+
+            setLoading(false);
+        } catch (error) {
             setError("An error occurred, please try again.");
+            setLoading(false);
         }
-
-        getUser();
-
-        setLoading(false);
     };
 
     return (
@@ -75,7 +101,7 @@ const ProofOfAddress = () => {
                     <button
                         type="button"
                         className="bg-white text-brand-800 border-2 border-brand-800 rounded-md transition-colors hover:bg-brand-800 hover:text-white"
-                        onClick={goPrev}
+                        onClick={handleGoPrev}
                     >
                         Back
                     </button>

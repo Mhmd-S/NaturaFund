@@ -1,5 +1,3 @@
-import React from "react";
-
 import useOnboardContext from "@modules/OnboardModule/context/useOnboardContext";
 
 import PersonalDetails from "@forms/Onboard/investor/PersonalDetails";
