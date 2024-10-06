@@ -22,7 +22,7 @@ const RepresentativeForm = () => {
             firstName: data?.representative ? data?.representative.firstName : "",
             lastName: data?.representative ? data?.representative.lastName : "",
             phoneNumber: data?.representative ? data?.representative.phoneNumber : "",
-            workEmail: data?.workEmail ? data?.representative.workEmail : "",
+            workEmail: data?.representative ? data?.representative.workEmail : "",
             frontId: data.get("frontId") || null,
             backId: data.get("backId") || null,
             selfieId: data.get("selfieId") || null,
@@ -40,7 +40,7 @@ const RepresentativeForm = () => {
             workEmail: formData.workEmail,
         };
 
-        console.log(repre);
+        console.log(formDataTemp);
 
         formDataTemp.set("representative", JSON.stringify(formDataTemp.representative));
         formDataTemp.set("frontId", formData.frontId[0] || formData.frontId);
