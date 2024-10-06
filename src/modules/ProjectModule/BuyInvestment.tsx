@@ -6,14 +6,14 @@ import { useForm } from "react-hook-form";
 import { FormWrapper, FormField, FormButton, FormGeneralError } from "@forms/FormComponents";
 import SuccessMessage from "@components/common/SuccessMessage";
 
+import { toast } from "react-toastify";
+
 import { get } from "lodash";
 
 const BuyInvestments = ({ project }) => {
     const type = get(project, "investmentDetails.type", " ");
     const price = get(project, `investmentDetails.features[${type} Price]`, " ");
 
-    const [error, setError] = useState("");
-    const [isSuccess, setIsSuccess] = useState(false);
     const [loading, setLoading] = useState(false);
 
     const {
@@ -30,7 +30,6 @@ const BuyInvestments = ({ project }) => {
 
     const onSubmit = async (formData) => {
         setLoading(true);
-        setIsSuccess(false);
         const investment = {
             amount: formData.amount,
             user: current._id,
@@ -43,10 +42,10 @@ const BuyInvestments = ({ project }) => {
             const { status, data } = response;
 
             if (status === "success") {
-                setIsSuccess(true);
+                toast.success("Investment successful");
             }
         } catch (error) {
-            setError(err);
+            toast.error("Failed to invest", { data: { description: error.message } });
         } finally {
             setLoading(false);
         }
@@ -55,8 +54,6 @@ const BuyInvestments = ({ project }) => {
     return (
         <div className="col-span-2 w-full min-h-full flex items-center justify-center">
             <FormWrapper loading={loading} onSubmit={handleSubmit(onSubmit)}>
-                {isSuccess && <SuccessMessage message="Investment successful" />}
-                <FormGeneralError message={error} />
                 <div className="relative flex flex-col items-center justify-evenly gap-4 w-screen max-w-sm border border-gray-600 bg-gray-100 px-4 py-8 rounded-lg sm:px-6 lg:px-8">
                     <h3 className="w-full text-lg font-semibold text-gray-800">Buy Investments</h3>
                     <FormField

@@ -19,7 +19,22 @@ const PersonalDetails = () => {
             delete userInfo.representative;
         }
 
-        const {_id, password, userType, verified, createdAt, updatedAt, __v, addressProof, businessLicense, frontId, backId, selfieId, ...rest} = userInfo;
+        const {
+            _id,
+            password,
+            userType,
+            verified,
+            createdAt,
+            updatedAt,
+            __v,
+            addressProof,
+            bankAccount,
+            businessLicense,
+            frontId,
+            backId,
+            selfieId,
+            ...rest
+        } = userInfo;
 
         let userEntries = Object.entries(rest);
 

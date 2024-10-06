@@ -2,8 +2,8 @@ import codeMessage from "./codeMessage";
 import { toast } from "react-toastify";
 
 const successHandler = (response, options = { notifyOnSuccess: false, notifyOnFailed: true }) => {
-    const { data } = response;
-    if (data && data.success === true) {
+    const { status, data } = response;
+    if (status === "success" || status === 200) {
         const message = response.data && data.message;
         const successText = message || codeMessage[response.status];
 
