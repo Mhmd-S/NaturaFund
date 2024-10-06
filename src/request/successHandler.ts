@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 
 const successHandler = (response, options = { notifyOnSuccess: false, notifyOnFailed: true }) => {
     const { status, data } = response;
-    if (status === "success" || status === 200) {
+    if (status === "success" || status === 200 || status === 201) {
         const message = response.data && data.message;
         const successText = message || codeMessage[response.status];
 

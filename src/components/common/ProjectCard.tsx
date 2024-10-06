@@ -1,10 +1,23 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSolarPanel, faCalendarAlt, faDollar, faUp } from "@fortawesome/free-solid-svg-icons";
+import { faSolarPanel, faWind, faWater } from "@fortawesome/free-solid-svg-icons";
 
 const ProjectCard = ({ project }) => {
     const navigate = useNavigate();
+
+    const renderIcon = () => {
+        switch (project.investmentDetails.energyType) {
+            case "Solar":
+                return <FontAwesomeIcon icon={faSolarPanel} className="text-indigo-500" />;
+            case "Wind":
+                return <FontAwesomeIcon icon={faWind} className="text-indigo-500" />;
+            case "Hydro":
+                return <FontAwesomeIcon icon={faWater} className="text-indigo-500" />;
+            default:
+                return <FontAwesomeIcon icon={faSolarPanel} className="text-indigo-500" />;
+        }
+    }
 
     return (
         <article
@@ -17,7 +30,7 @@ const ProjectCard = ({ project }) => {
                     aria-hidden="true"
                 >
                     <div className="flex items-center gap-1">
-                        <FontAwesomeIcon icon={faSolarPanel} className="text-indigo-500" />
+                        {renderIcon()}
                     </div>
                 </div>
 

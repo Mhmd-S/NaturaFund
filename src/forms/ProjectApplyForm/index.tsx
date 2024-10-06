@@ -1,29 +1,20 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-
-import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import FormField from "@forms/FormComponents/FormField";
 import FormWrapper from "@forms/FormComponents/FormWrapper";
 import FormButton from "@forms/FormComponents/FormButton";
 import FormTextArea from "@forms/FormComponents/FormTextArea";
 import FormSelect from "@forms/FormComponents/FormSelect";
-import FormGeneralError from "@forms/FormComponents/FormGeneralError";
 import MultiFileInput from "@forms/FormComponents/MultiFileInput";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-
 import * as applicationApi from "@api/application";
+
 import COUNTRY_LIST from "@utils/CountryList";
-import SuccessMessage from "@forms/RegistrationForm/SuccessMessage";
 
 const ProjectApplyForm = () => {
-    const navigate = useNavigate();
-
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<string | null>(null);
-    const [success, setSucces] = useState(false);
 
     const {
         register,
@@ -34,7 +25,6 @@ const ProjectApplyForm = () => {
 
     const onSubmit = async (formData) => {
         setLoading(true);
-        setError(null);
 
         // Create a FormData object
         const formDataToSend = new FormData();
@@ -58,12 +48,12 @@ const ProjectApplyForm = () => {
             const { status } = response;
 
             if (status === "success") {
-                setSucces(true);
+                toast.success("Application submitted successfully");
             } else {
-                setError("An error occurred, please try again.");
+                toast.error("Failed to submit application");
             }
         } catch (error) {
-            setError("An error occurred, please try again.");
+            toast.error("Failed to submit application");
         } finally {
             setLoading(false);
         }
@@ -72,8 +62,6 @@ const ProjectApplyForm = () => {
     return (
         <FormWrapper loading={loading} onSubmit={handleSubmit(onSubmit)}>
             <div className="w-3/4 flex flex-col">
-                {success && <SuccessMessage message="Application submitted successfully" />}
-                <FormGeneralError message={error} />
                 <h2 className="text-3xl pb-4 font-semibold capatalize">Project Application Form</h2>
                 <FormField
                     name="name"
