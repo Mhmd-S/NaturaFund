@@ -75,7 +75,7 @@ const BuyInvestments = ({ project }) => {
                         <dt className="text-sm text-gray-900">Price per {type}:</dt>
                         <dd>{price} RM</dd>
                         <dd className="text-smd text-gray-900">Total:</dd>
-                        <dt>{amount * price}</dt>
+                        <dt>{amount * price} RM</dt>
                     </dl>
                     <FormButton
                         text="Invest now"
