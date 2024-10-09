@@ -4,6 +4,7 @@ import SearchBar from "@components/common/SearchBar";
 import * as projectApi from "@api/project";
 import EmptyState from "@components/common/EmptyState";
 import { faMeh } from "@fortawesome/free-solid-svg-icons";
+import LoadingIcon from "@components/common/LoadingIcon";
 
 const filterOptions = [
     {
@@ -50,7 +51,6 @@ const Explore = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [projects, setProjects] = useState([]);
     const [filteredProjects, setFilteredProjects] = useState([]);
-    const [errors, setErrors] = useState<String | null>(null);
     const containerRef = useRef(null);
 
     useEffect(() => {
@@ -77,8 +77,6 @@ const Explore = () => {
             setIsLoading(false);
             return;
         }
-
-        setErrors("Could not fetch projects");
         setIsLoading(false);
     };
 
@@ -94,12 +92,20 @@ const Explore = () => {
                 className="w-full min-h-screen p-4 flex flex-col gap-4 bg-white rounded-2xl"
                 ref={containerRef}
             >
-                {filteredProjects.length > 0 ? (
-                    filteredProjects.map((project, index) => (
-                        <ProjectCard project={project} key={index} />
-                    ))
+                {isLoading ? (
+                    <div className="w-full h-full flex items-center justify-center">
+                        <LoadingIcon />
+                    </div>
                 ) : (
-                    <EmptyState title="Nothing to display" icon={faMeh} />
+                    <>
+                        {filteredProjects.length > 0 ? (
+                            filteredProjects.map((project, index) => (
+                                <ProjectCard project={project} key={index} />
+                            ))
+                        ) : (
+                            <EmptyState title="Nothing to display" icon={faMeh} />
+                        )}
+                    </>
                 )}
             </div>
         </div>

@@ -95,7 +95,9 @@ const ProjectsTable = ({
                                     {Object.entries(dataEntry).map(([key, value], index) => {
                                         if (ignoreData?.includes(key)) return null;
                                         if (acceptData && !acceptData.includes(key)) return null;
-                                        console.log(value);
+                                        if (key == "createdAt" || key == "updatedAt") {
+                                            value = value.split("T")[0];
+                                        }
                                         return (
                                             <td
                                                 key={index}
