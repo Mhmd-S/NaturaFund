@@ -19,24 +19,21 @@ const Investee = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchProjects = async () => {
-            try {
-                const response = await projectApi.getProjecstByCorporation(current._id);
-                const flattenedProjects = response.data.map(project => ({
+        projectApi
+            .getProjecstByCorporation(current._id)
+            .then((response) => {
+                const flattenedProjects = response.data.map((project) => ({
                     _id: project._id,
                     name: project.name,
-                    status: project.status.current,
-                    investmentType: project.investmentDetails.type,
-    
+                    ...project.status,
                 }));
                 setProjects(flattenedProjects);
                 setLoading(false);
-            } catch (error) {
+            })
+            .catch((error) => {
                 setError(error);
                 setLoading(false);
-            }
-        };
-        fetchProjects();
+            });
     }, [current._id]);
 
     const handleOnClick = (projectId: string) => {

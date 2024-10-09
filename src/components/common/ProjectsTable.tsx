@@ -61,7 +61,7 @@ const ProjectsTable = ({
                 </div>
             ) : sortedData.length === 0 ? (
                 <div className="w-full h-full flex items-center justify-center">
-                    <EmptyState title="Nothing to display" icon={faMeh} />
+                    <EmptyState title="Nothing to display" />
                 </div>
             ) : (
                 <table className="w-full divide-y-2 divide-gray-200 text-sm">
@@ -75,7 +75,7 @@ const ProjectsTable = ({
                                         <th
                                             key={header}
                                             onClick={() => handleSort(header)}
-                                            className="text-left whitespace-nowrap px-4 py-2 font-medium text-gray-900 cursor-pointer"
+                                            className="text-left whitespace-nowrap text-ellipsis px-4 py-2 font-medium text-gray-900 cursor-pointer"
                                         >
                                             {normalizeCamelCase(header)}
                                             <FontAwesomeIcon

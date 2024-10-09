@@ -38,16 +38,19 @@ const PersonalDetails = () => {
 
         let userEntries = Object.entries(rest);
 
-        return userEntries.map(([key, value]) => (
-            <div key={key} className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                <dt className="text-sm font-medium leading-6 text-gray-900">
-                    {normalizeCamelCase(key)}
-                </dt>
-                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                    {value}
-                </dd>
-            </div>
-        ));
+        return userEntries.map(([key, value]) => {
+            if (key == "incorporationDate") value = value.split("T")[0];
+            return (
+                <div key={key} className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                    <dt className="text-sm font-medium leading-6 text-gray-900">
+                        {normalizeCamelCase(key)}
+                    </dt>
+                    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                        {value}
+                    </dd>
+                </div>
+            );
+        });
     };
 
     return (

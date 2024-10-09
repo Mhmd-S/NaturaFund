@@ -4,9 +4,6 @@ import { toast } from "react-toastify";
 
 import { useAuthContext } from "@context/AuthContext";
 
-import SuccessMessage from "@components/common/SuccessMessage";
-import EmptyState from "@components/common/EmptyState";
-
 import { FormWrapper, FormField, FormButton, FormGeneralError } from "@forms/FormComponents";
 
 import { updateUser } from "@api/user";

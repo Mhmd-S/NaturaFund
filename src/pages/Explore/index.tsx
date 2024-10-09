@@ -103,7 +103,7 @@ const Explore = () => {
                                 <ProjectCard project={project} key={index} />
                             ))
                         ) : (
-                            <EmptyState title="Nothing to display" icon={faMeh} />
+                            <EmptyState title="Nothing to display" />
                         )}
                     </>
                 )}

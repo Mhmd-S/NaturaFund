@@ -2,6 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { CubeTransparentIcon } from "@heroicons/react/20/solid";
 
 type EmptyStateProps = {
     title: string;
@@ -13,8 +14,12 @@ type EmptyStateProps = {
 
 const EmptyState = ({ title, description, icon, buttonLabel, handleClick }: EmptyStateProps) => {
     return (
-        <div className="w-full h-full flex flex-col justify-center items-center gap-4">
-            <FontAwesomeIcon icon={icon} className="text-5xl text-gray-300" />
+        <div className=" col-span-full w-full h-full flex flex-col justify-center items-center gap-4">
+            {icon ? (
+                <FontAwesomeIcon icon={icon} className="text-5xl text-gray-300" />
+            ) : (
+                <CubeTransparentIcon className="size-12 text-gray-300" />
+            )}
             <h3>{title}</h3>
             <p className="text-gray-400">{description}</p>
             {buttonLabel && (

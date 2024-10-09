@@ -1,15 +1,33 @@
 import DetailsTable from "@components/common/DetailsTable";
 
+import { ExclamationTriangleIcon } from "@heroicons/react/20/solid";
+
 const Overview = ({ project }) => {
     const getCompanyDetails = () => {
         const companyDetails = project.ownedBy;
         // Remove unwanted fields
-        const { userType, introduction, registeredName, _id, description, ...rest } = companyDetails;
+        const { userType, introduction, registeredName, _id, description, ...rest } =
+            companyDetails;
         return rest;
     };
 
     return (
         <>
+            {project.status.current == "Planning" && (
+                <div className="grid grid-cols-[15%_85%] place-items-center py-4 col-span-2 border-2 border-brand-700 rounded-lg p-2">
+                    <ExclamationTriangleIcon className=" text-yellow-500 row-span-2" />
+                    <p className="text-center">
+                        The project is in Planning stage. You, the project sponsor, are the only one
+                        who can view the project details.
+                    </p>
+                    <p className="text-center">
+                        {" "}
+                        Once the project is in the Funding stage, investors will be able to view the
+                        project and invest. Please keep in conact wih your account manager for more
+                        information.
+                    </p>
+                </div>
+            )}
             {/* Image */}
             <img
                 alt=""

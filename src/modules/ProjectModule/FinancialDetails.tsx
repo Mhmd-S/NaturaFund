@@ -1,14 +1,21 @@
 import React from "react";
+import { normalizeCamelCase } from "@utils/extractHeader";
+
 import ToolTip from "@components/common/ToolTip";
 import DetailsTable from "@components/common/DetailsTable";
-import { normalizeCamelCase } from "@utils/extractHeader";
+import EmptyState from "@components/common/EmptyState";
+
 
 const FinancialDetails = ({ finance }) => {
     const financeTips = (key) => {
+        key = normalizeCamelCase(key);
+
+        console.log(key);
+
         switch (key) {
-            case "I R R":
+            case " I R R":
                 return "IRR, or internal rate of return, is a metric used in financial analysis to estimate the profitability of potential investments. IRR is a discount rate that makes the net present value (NPV) of all cash flows equal to zero in a discounted cash flow analysis. ";
-            case "N P V":
+            case " N P V":
                 return "Net present value (NPV) is the difference between the present value of cash inflows and the present value of cash outflows over a period of time. NPV is used in capital budgeting to analyze the profitability of an investment or project.";
             case "Break Even":
                 return "The payback period is the amount of time it takes to recover the cost of an investment. The payback period is used by investors to determine the risk of an investment and to compare the profitability of different investments.";
@@ -29,17 +36,18 @@ const FinancialDetails = ({ finance }) => {
 
     return (
         <>
-            {Object.keys(finance).map((key, index) => {
+            {finance ? Object.keys(finance).map((key, index) => {
+                if (!!finance[key]) return;
                 return (
                     <div key={index}>
-                        <h2 className="flex items-center gap-4 text-3xl py-4 font-semibold capatalize">
+                        <h2 className="flex items-center gap-4 text-3xl py-4 font-semibold">
                             {normalizeCamelCase(key)}
-                            <ToolTip text={financeTips(normalizeCamelCase(key))} />
+                            <ToolTip text={financeTips(key)} />
                         </h2>
                         <DetailsTable items={finance[key]} />
                     </div>
                 );
-            })}
+            }): <EmptyState title="No Financial Details" />}
         </>
     );
 };
