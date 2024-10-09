@@ -12,11 +12,10 @@ import InvestmentsReceived from "@modules/ProjectModule/InvestmentsReceived";
 import BuyInvestment from "@modules/ProjectModule/BuyInvestment";
 
 import TabbedWindow from "@components/common/TabbedWindow";
+import LoadingIcon from "@components/common/LoadingIcon";
 
 import * as projectApi from "@api/project";
-import * as investmentApi from "@api/investment";
-
-import LoadingIcon from "@components/common/LoadingIcon";
+import * as investmentApi from "@api/investment"
 
 import { useAuthContext } from "@context/AuthContext";
 
@@ -32,7 +31,6 @@ const Project = () => {
     const { current } = state;
 
     useEffect(() => {
-        // Get the project data from the API
         projectApi
             .getProject(id)
             .then((data) => {

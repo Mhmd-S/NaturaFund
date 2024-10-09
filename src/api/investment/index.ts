@@ -52,3 +52,24 @@ export const getInvestmentsByInvestor = async (userId: string) => {
         return errorHandler(error);
     }
 };
+
+export const getInvestmentsByProject = async (projectId: string) => {
+    try {
+        const response = await api.request({
+            method: "GET",
+            url: `investment/project/${projectId}`,
+        });
+        const { status, data } = response;
+
+        successHandler(
+            { data, status },
+            {
+                notifyOnSuccess: false,
+                notifyOnFailed: true,
+            }
+        );
+        return data;
+    } catch (error) {
+        return errorHandler(error);
+    }
+};
