@@ -15,7 +15,7 @@ import TabbedWindow from "@components/common/TabbedWindow";
 import LoadingIcon from "@components/common/LoadingIcon";
 
 import * as projectApi from "@api/project";
-import * as investmentApi from "@api/investment"
+import * as investmentApi from "@api/investment";
 
 import { useAuthContext } from "@context/AuthContext";
 
@@ -85,7 +85,7 @@ const Project = () => {
         ];
 
         // If user is owner of the project
-        if (project.ownedBy._id == current._id) {
+        if (project.ownedBy._id == current._id && project.status.current !== "Planning") {
             const newTabs = tabs.slice(0, 5).concat(["Investments Received"]);
             return newTabs;
         } else if (
@@ -96,7 +96,7 @@ const Project = () => {
         } else if (project.status.current == "Funding") {
             return tabs.slice(0, 5).concat(["Buy Investments"]);
         } else {
-            return tabs.slice(0, 6);
+            return tabs.slice(0, 5);
         }
     };
 

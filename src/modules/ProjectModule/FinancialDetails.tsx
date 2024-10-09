@@ -37,7 +37,6 @@ const FinancialDetails = ({ finance }) => {
     return (
         <>
             {finance ? Object.keys(finance).map((key, index) => {
-                if (!!finance[key]) return;
                 return (
                     <div key={index}>
                         <h2 className="flex items-center gap-4 text-3xl py-4 font-semibold">
