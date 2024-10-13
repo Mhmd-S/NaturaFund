@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
-import FormField from "@forms/FormComponents/FormField";
-import FormWrapper from "@forms/FormComponents/FormWrapper";
-import FormButton from "@forms/FormComponents/FormButton";
-import FormTextArea from "@forms/FormComponents/FormTextArea";
-import FormSelect from "@forms/FormComponents/FormSelect";
-import MultiFileInput from "@forms/FormComponents/MultiFileInput";
+import {
+    FormMultiFileUpload,
+    FormSelect,
+    FormTextArea,
+    FormButton,
+    FormWrapper,
+    FormField,
+} from "@forms/FormComponents";
 
 import * as applicationApi from "@api/application";
 
@@ -20,23 +22,36 @@ const ProjectApplyForm = () => {
         register,
         handleSubmit,
         control,
+        resetField,
         formState: { errors },
-    } = useForm();
+    } = useForm({
+        defaultValues: {
+            name: "Sabahan Farm",
+            country: "Malaysia",
+            address:
+                "68, Jln Bukit Bintang, Bukit Bintang, 55100 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur",
+            description:
+                "68, Jln Bukit Bintang, Bukit Bintang, 55100 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur68, Jln Bukit Bintang, Bukit Bintang, 55100 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur kit Bintang, Bukit Bintang, 55100 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur",
+        },
+    });
 
     const onSubmit = async (formData) => {
         setLoading(true);
 
         // Create a FormData object
         const formDataToSend = new FormData();
-
+        console.log(formData);
         // set each field from formData to the FormData object
         for (const key in formData) {
+            console.log(key);
             if (key === "documents") {
-                // set each file in the documents array
-                formData[key].forEach((file) => {
+                // Append each file in the FileList
+                const fileList = formData[key];
+                for (let i = 0; i < fileList.length; i++) {
+                    const file = fileList[i];
                     console.log(file);
-                    formDataToSend.set("documents", file.file);
-                });
+                    formDataToSend.append("documents", file);
+                }
             } else {
                 formDataToSend.set(key, formData[key]);
             }
@@ -48,7 +63,7 @@ const ProjectApplyForm = () => {
             const { status } = response;
 
             if (status === "success") {
-                toast.success("Application submitted successfully");
+                toast.success("Application Submitted Successfully");
             } else {
                 toast.error("Failed to submit application");
             }
@@ -69,7 +84,7 @@ const ProjectApplyForm = () => {
                     label="Project Name"
                     register={register}
                     errors={errors}
-                    placeholder="ex. John"
+                    placeholder="ex. Sabahan Solar Farm"
                     validationRules={{
                         required: "Project name is required",
                         pattern: {
@@ -135,11 +150,18 @@ const ProjectApplyForm = () => {
                 <h3 className="col-span-2 text-2xl pb-4 font-semibold capatalize">
                     Supporting Documents
                 </h3>
-                <MultiFileInput
+                <FormMultiFileUpload
+                    name="documents"
                     label="Documents"
-                    description="Upload files related to the project. Ex. Project Proposal, Agreements, Propects, etc."
-                    name={"documents"}
-                    control={control}
+                    inputGuidelines="Only PDF files are allowed"
+                    accept="application/pdf"
+                    acceptSize={200000}
+                    register={register}
+                    errors={errors}
+                    validationRules={{
+                        required: "Legal documents are required",
+                    }}
+                    resetField={resetField}
                 />
                 <FormButton
                     type="submit"
