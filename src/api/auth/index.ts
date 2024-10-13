@@ -43,7 +43,7 @@ export const login = async (loginData: loginDataType) => {
     }
 };
 
-export const getUser = async () => {
+export const getUser = async (showError = false) => {
     try {
         const response = await api.request({
             method: "GET",
@@ -55,12 +55,12 @@ export const getUser = async () => {
             { data, status },
             {
                 notifyOnSuccess: false,
-                notifyOnFailed: true,
+                notifyOnFailed: false,
             }
         );
         return data;
     } catch (error) {
-        return errorHandler(error);
+        return errorHandler(error, showError);
     }
 };
 

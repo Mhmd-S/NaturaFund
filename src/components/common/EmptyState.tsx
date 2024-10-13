@@ -7,7 +7,7 @@ import { CubeTransparentIcon } from "@heroicons/react/20/solid";
 type EmptyStateProps = {
     title: string;
     description?: string;
-    icon: IconProp;
+    icon?: IconProp;
     buttonLabel?: string;
     handleClick?: () => void;
 };

@@ -55,26 +55,6 @@ const ProjectCard = ({ project }) => {
                     </div>
 
                     <p className="mt-1 text-sm text-gray-700">{project.description}</p>
-
-                    {/* <div className="mt-4 sm:flex sm:items-center sm:gap-2">
-                        <div className="flex items-center gap-2 text-gray-500">
-                            <FontAwesomeIcon icon={faCalendarAlt} className="text-indigo-500" />
-                            <p className="text-xs font-medium">
-                                {project.investmentDetails.features["End Date"]} Closing Date
-                            </p>
-                        </div>
-
-                        <span className="hidden sm:block" aria-hidden="true">
-                            &middot;
-                        </span>
-
-                        <div className="flex items-center gap-2 text-gray-500">
-                            <FontAwesomeIcon icon={faDollar} className="text-indigo-500" />
-                            <p className="text-xs font-medium">
-                                {project.financialDetails.IRR["Base Case"]} IRR
-                            </p>
-                        </div>
-                    </div> */}
                 </div>
             </div>
         </article>

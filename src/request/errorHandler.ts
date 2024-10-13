@@ -1,7 +1,15 @@
 import codeMessage from "./codeMessage";
 import { toast } from "react-toastify";
 
-const errorHandler = (error) => {
+const errorHandler = (error, showError = false) => {
+    if (!showError) {
+        return {
+            success: false,
+            result: null,
+            message: "Cannot connect to the server, Contact your Account administrator",
+        };
+    }
+
     // For internet connection - Check if the user is online
     if (!navigator.onLine) {
         // Code to execute when there is internet connection
