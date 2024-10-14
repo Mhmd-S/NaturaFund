@@ -44,6 +44,7 @@ const contextActions = (dispatch) => {
         //     }
         // },
         logout: async () => {
+            dispatch({ type: actionTypes.LOADING_REQUEST });
             const data = await authService.logout();
             if (data.status == "success") {
                 dispatch({ type: actionTypes.LOGOUT_FAILED, payload: data.data });

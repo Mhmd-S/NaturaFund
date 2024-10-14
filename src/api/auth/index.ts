@@ -39,7 +39,7 @@ export const login = async (loginData: loginDataType) => {
         );
         return data;
     } catch (error) {
-        return errorHandler(error);
+        return errorHandler(error, true);
     }
 };
 

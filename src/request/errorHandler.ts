@@ -46,7 +46,7 @@ const errorHandler = (error, showError = false) => {
 
         const errorText = message || codeMessage[response.status];
         const { status } = response;
-        toast.error(`Request error ${status}`, { data: { description: errorText } });
+        toast.error(errorText);
         return response.data;
     } else {
         if (navigator.onLine) {

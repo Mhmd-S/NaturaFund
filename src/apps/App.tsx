@@ -20,7 +20,6 @@ const App = () => {
     }, [current]);
 
     return (
-        <div className="relative">
             <div className="w-screen h-screen grid grid-cols-[20%_80%] grid-flow-row divide-x divide-y">
                 {current.verified == "verified" && (
                     <>
@@ -30,8 +29,6 @@ const App = () => {
                 )}
                 <AppRouter />
             </div>
-            <ToastContainer />
-        </div>
     );
 };
 

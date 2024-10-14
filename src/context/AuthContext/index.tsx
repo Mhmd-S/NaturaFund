@@ -3,6 +3,7 @@ import { initialState, contextReducer } from "./reducer";
 import contextActions from "./actions";
 import * as authService from "@api/auth";
 import * as actionTypes from "./types";
+import Cookies from "js-cookie";
 
 const AuthContext = createContext();
 
@@ -12,13 +13,25 @@ function AuthContextProvider({ children }) {
 
     useEffect(() => {
         dispatch({ type: actionTypes.LOADING_REQUEST });
+
         authService.getUser().then((data) => {
-            console.log(data);
             if (data.status === "success") {
+                if (data.data.suspended) {
+                    authService.logout().then((data) => {
+                        if (data.status === "success") {
+                            Cookies.remove("connect.sid").then(() => {
+                                dispatch({ type: actionTypes.LOGOUT_SUCCESS });
+                                window.location.reload();
+                            });
+                        }
+                    });
+                }
+
                 dispatch({ type: actionTypes.LOGIN_SUCCESS, payload: data.data });
-            } else {
-                dispatch({ type: actionTypes.FAILED_REQUEST });
+                return;
             }
+
+            dispatch({ type: actionTypes.FAILED_REQUEST });
         });
     }, []);
 
