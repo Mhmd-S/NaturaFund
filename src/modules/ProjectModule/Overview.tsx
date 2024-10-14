@@ -1,6 +1,6 @@
 import DetailsTable from "@components/common/DetailsTable";
 
-import { ExclamationTriangleIcon } from "@heroicons/react/20/solid";
+import { ExclamationTriangleIcon, CubeTransparentIcon } from "@heroicons/react/20/solid";
 
 const Overview = ({ project }) => {
     const getCompanyDetails = () => {
@@ -29,11 +29,15 @@ const Overview = ({ project }) => {
                 </div>
             )}
             {/* Image */}
-            <img
-                alt=""
-                src={project.image}
-                className="inset-0 size-96 object-cover rounded-lg image-rendering:pixelated"
-            />
+            {project.image ? (
+                <img
+                    alt=""
+                    src={project.image}
+                    className="inset-0 size-96 object-cover rounded-lg image-rendering:pixelated"
+                />
+            ) : (
+                <CubeTransparentIcon className="h-96 w-96 text-gray-400" />
+            )}
             {/* Description */}
             <div className="lg:py-8">
                 <h2 className="text-3xl py-4 font-bold sm:text-4xl">{project.name}</h2>

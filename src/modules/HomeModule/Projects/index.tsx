@@ -3,6 +3,7 @@ import ProjectCard from "@components/common/ProjectCard";
 import * as projectAPI from "@api/project";
 import { Link } from "react-router-dom";
 import LoadingIcon from "@components/common/LoadingIcon";
+import EmptyState from "@components/common/EmptyState";
 
 const Projects = () => {
     const [projects, setProjects] = useState([]);
@@ -31,9 +32,18 @@ const Projects = () => {
                         </Link>
                     </div>
                     <div className="w-full p-4 grid grid-cols-1 grid-flow-row place-items-center gap-8 bg-white rounded-2xl">
-                        {projects.slice(0, 2).map((project, index) => (
-                            <ProjectCard key={index} project={project} />
-                        ))}
+                        {projects.length >= 1 ? (
+                            projects
+                                .slice(0, 2)
+                                .map((project, index) => (
+                                    <ProjectCard key={index} project={project} />
+                                ))
+                        ) : (
+                            <EmptyState
+                                title="No Projects to display"
+                                description="There are no projects available to view. Please check back later."
+                            />
+                        )}
                     </div>
                 </>
             )}

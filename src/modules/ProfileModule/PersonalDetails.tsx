@@ -33,6 +33,7 @@ const PersonalDetails = () => {
             frontId,
             backId,
             selfieId,
+            suspended,
             ...rest
         } = userInfo;
 

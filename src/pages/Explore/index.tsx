@@ -103,7 +103,9 @@ const Explore = () => {
                                 <ProjectCard project={project} key={index} />
                             ))
                         ) : (
-                            <EmptyState title="Nothing to display" />
+                            <div className="w-full h-screen flex items-center justify-center">
+                                <EmptyState title="Nothing to display" />
+                            </div>
                         )}
                     </>
                 )}

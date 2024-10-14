@@ -83,7 +83,7 @@ export const register = async (registerData: registerDataType) => {
         );
         return data;
     } catch (error) {
-        return errorHandler(error);
+        return errorHandler(error, true);
     }
 };
 
@@ -109,7 +109,7 @@ export const verify = async (verifyData: verifyDataType) => {
         );
         return data;
     } catch (error) {
-        return errorHandler(error);
+        return errorHandler(error, true);
     }
 };
 

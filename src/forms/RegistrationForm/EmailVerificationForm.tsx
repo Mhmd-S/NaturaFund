@@ -16,7 +16,6 @@ const EmailVerificationForm = ({ setCurrentStep, email }) => {
             </p>
 
             <FormWrapper loading={isLoading} onSubmit={handleSubmit(onSubmit)}>
-                <FormGeneralError message={authError} />
 
                 <FormField
                     label="Verification Code"

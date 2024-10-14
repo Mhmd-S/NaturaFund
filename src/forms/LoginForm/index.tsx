@@ -2,17 +2,15 @@ import FormField from "@forms/FormComponents/FormField";
 import FormButton from "@forms/FormComponents/FormButton";
 import FormWrapper from "@forms/FormComponents/FormWrapper";
 import useLoginForm from "@forms/LoginForm/useLoginForm";
-import FormGeneralError from "@forms/FormComponents/FormGeneralError";
 
 import { Link } from "react-router-dom";
 
 const LoginForm = () => {
-    const { register, handleSubmit, onSubmit, isLoading, errors, authError } = useLoginForm();
+    const { register, handleSubmit, onSubmit, isLoading, errors } = useLoginForm();
 
     return (
         <div className="w-full min-h-full flex flex-col items-center gap-y-4">
             <FormWrapper loading={isLoading} onSubmit={handleSubmit(onSubmit)}>
-                <FormGeneralError message={authError} />
                 <FormField
                     name="email"
                     type="email"

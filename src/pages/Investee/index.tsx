@@ -55,6 +55,7 @@ const Investee = () => {
 
                 <ProjectsTable
                     data={projects}
+                    acceptData={["name", "current", ]}
                     ignoreData={["_id"]}
                     projectIdField="_id"
                     projectField="projectId"

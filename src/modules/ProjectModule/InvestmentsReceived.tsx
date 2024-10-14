@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import LoadingIcon from "@components/common/LoadingIcon";
 
 import { getInvestmentsByProject } from "@api/investment";
+import EmptyState from "@components/common/EmptyState";
 
 const InvestmentsReceived = ({ project }) => {
     const [loading, setLoading] = useState(true);
@@ -13,12 +14,21 @@ const InvestmentsReceived = ({ project }) => {
 
     useEffect(() => {
         getInvestmentsByProject(project._id)
-            .then(response => setInvestments(response.data))
-            .catch(err => toast.error("Couldn't get investors"))
+            .then((response) => setInvestments(response.data))
+            .catch((err) => toast.error("Couldn't get investors"))
             .finally(() => setLoading(false));
     }, []);
 
     const renderInvestments = () => {
+        if (!investments || investments.length == 0) {
+            return (
+                <EmptyState
+                    title="No Investments"
+                    description="No investments have been made yet."
+                />
+            );
+        }
+
         return investments.map((investment) => {
             return (
                 <li className="relative w-full grid grid-cols-[10%_50%_30%] items-center">
@@ -54,7 +64,7 @@ const InvestmentsReceived = ({ project }) => {
             ) : (
                 <>
                     <div className="flex justify-between items-center">
-                        <dd className="">Total Investments Received:</dd>
+                        <dd className="">Total Investments Received: </dd>
                         <dt className=" text-brand-900"> {renderTotalInvestments()} RM</dt>
                     </div>
 

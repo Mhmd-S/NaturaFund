@@ -13,8 +13,6 @@ const PaymentDetails = () => {
 
     const { state } = useAuthContext();
 
-    const bankAccount = JSON.parse(state.current.bankAccount);
-
     const {
         register,
         handleSubmit,
@@ -22,7 +20,9 @@ const PaymentDetails = () => {
         formState: { errors },
     } = useForm({
         defaultValues: {
-            ...bankAccount,
+            accountNumber: state.current.accountNumber || "",
+            bankName: state.current.bankName || "",
+            accountName: state.current.accountName || "",
         },
     });
 
@@ -31,7 +31,7 @@ const PaymentDetails = () => {
 
         try {
             const response = await updateUser(state.current._id, {
-                bankAccount: JSON.stringify(formData),
+                ...formData,
             });
             const { status, data } = response;
 

@@ -19,7 +19,7 @@ const EmailForm = ({ setCurrentStep, setEmail }) => {
     return (
         <div className="w-full min-h-full flex flex-col items-center gap-y-4">
             <FormWrapper loading={isLoading} onSubmit={handleSubmit(onSubmit)}>
-                {authError && <FormGeneralError message={authError} />}
+                {/* {authError && <FormGeneralError message={authError} />} */}
 
                 <FormField
                     label="Email"

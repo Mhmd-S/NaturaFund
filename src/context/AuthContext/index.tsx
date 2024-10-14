@@ -16,6 +16,7 @@ function AuthContextProvider({ children }) {
 
         authService.getUser().then((data) => {
             if (data.status === "success") {
+                
                 if (data.data.suspended) {
                     authService.logout().then((data) => {
                         if (data.status === "success") {
