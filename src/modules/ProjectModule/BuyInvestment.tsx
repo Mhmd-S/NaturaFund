@@ -13,7 +13,7 @@ const BuyInvestments = ({ project }) => {
     const navigate = useNavigate();
 
     const type = get(project, "investmentDetails.type", " ");
-    const price = get(project, `investmentDetails.features[${type} Price]`, " ");
+    const price = get(project, `investmentDetails.features[${type} Value]`, " ");
 
     const [loading, setLoading] = useState(false);
 
@@ -54,12 +54,12 @@ const BuyInvestments = ({ project }) => {
 
     return (
         <div className="col-span-2 w-full min-h-full flex items-center justify-center">
-            {Object.values(JSON.parse(current.bankAccount)).includes("") ? (
+            {[current.bankName, current.accountName, current.accountNumber].includes("") ? (
                 <EmptyState
                     title="Update Bank Details"
                     description="Please update your bank details which can be found in the Profile Page."
                     buttonLabel="Go to Profile"
-                    handleClick={()=> navigate('/profile')}
+                    handleClick={() => navigate("/profile")}
                 />
             ) : (
                 <FormWrapper loading={loading} onSubmit={handleSubmit(onSubmit)}>

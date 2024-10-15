@@ -22,7 +22,7 @@ export const createInvestment = async (investmentData: investmentDataType) => {
         successHandler(
             { data, status },
             {
-                notifyOnSuccess: true,
+                notifyOnSuccess: false,
                 notifyOnFailed: true,
             }
         );
